@@ -4,7 +4,7 @@ Component Documentation
 #### Props:
 Name|Type|Default|Description
 ---|---|---|---
-`type`|`"contained"|"outline"|"text"`|`"contained"`|The appearance of button
+`type`|`"contained"/"outline"/"text"`|`"contained"`|The appearance of button
 `theme`|`"light"|"dark"`|`"light"`|Theme color of button
 `fullWidth`|`true|false`|`false`|Button will take the whole width if true, else it will be inline
 `demo`|`true|false`|`false`|Only use for testing purpose, it will set the margin by 8px
