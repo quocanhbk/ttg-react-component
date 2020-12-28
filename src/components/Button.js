@@ -1,37 +1,50 @@
 import React from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
-//Button take in error, warning, disabled, fullWidth
-//rgb(237, 155, 1)
-const StyledButton = styled.button`
-    --clr: ${props => props.theme === "light" ? "#174091" : "#A59C87"};
-    --textclr: ${props => props.theme === "light"? "white" : "#141010"};
+
+const Button = styled.button`
     margin: ${props => props.demo? "8px": 
                 props => props.ingroup === "left" ? "0px -2px 0px 0px" : 
                     props => props.ingroup === "right" ? "0px 0px 0px -2px" : "0px"};
-    padding: ${props => props.type === "contained" ? "8px 12px" : "6px 12px"};
-    transition: all 0.15s linear;
+    padding: ${props => props.type === "outline" ? "6px 10px" : "8px 12px"};
+    transition: background 0.15s linear;
     font-size: 1rem;
     font-weight: 700;
     cursor: pointer;
-    border-color: var(--clr);
-    color: ${props => props.type === "contained" ? "var(--textclr)" : "var(--clr)"};
-    background-color: ${props => props.type === "contained"? "var(--clr)" : "transparent"};
+    border-color: rgb(${props=>props.theme.mClr.R},${props=>props.theme.mClr.G},${props=>props.theme.mClr.B});
+    outline: 0;
+
+    color:  rgb(${props => props.type === "contained" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
+                ${props => props.type === "contained" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
+                ${props => props.type === "contained" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B});
+
+    background: rgba(${props=>props.type === "contained" ? props=>props.theme.mClr.R : '255'},
+                    ${props=>props.type === "contained" ? props=>props.theme.mClr.G : '255'},
+                    ${props=>props.type === "contained" ? props=>props.theme.mClr.B : '255'},
+                    ${props=>props.type === "contained" ? 1 : 0}
+                    );
+
     border-style: ${props => props.type === "outline" ? "solid": "none"};
     border-width: ${props => props.type === "outline" ? "2px": "0px"};
-    border-radius: ${props => props.ingroup === "left" ? "8px 0px 0px 8px" : props => props.ingroup === "right" ? "0px 8px 8px 0px" : props => props.ingroup === "middle" ? "0px" : "8px"};
+    border-radius: ${props => props.ingroup === "left" ? "8px 0px 0px 8px" : 
+                        props => props.ingroup === "right" ? "0px 8px 8px 0px" : 
+                            props => props.ingroup === "middle" ? "0px" : "8px"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     min-width: ${props => props.fullWidth ? "100%": "auto"};
     box-shadow: ${props => props.type === "contained" ? "0px 2px 4px rgba(0,0,0,0.32)" : "none"};
 
     &:hover { 
-        --hoverclr: ${props => props.theme === "light" ? "#123374" : "#675F4C"};
-        --hoverclr2: ${props => props.theme === "light" ? "#D0D8E9" : "#675F4C"};
-        background: ${props => props.type === "contained" ? "var(--hoverclr)" : props => props.type === "outline" ? "var(--hoverclr2)" : "transparent"};
-        color: ${props => props.type === "text" ? "var(--hoverclr)": props => props.type === "contained" ? "var(--textclr)" : "var(--clr)"};
-    }
-    &:focus {
-        outline: none 
+        color: rgba(${props => props.type === "contained" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
+                    ${props => props.type === "contained" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
+                    ${props => props.type === "contained" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B},
+                    ${props => props.type === "text" ? 0.7 : 1}
+                    );
+        background: rgba(
+            ${props => props.type === "text" ? 'transparent' : props=>props.theme.mClr.R},
+            ${props => props.type === "text" ? 'transparent' : props=>props.theme.mClr.G},
+            ${props => props.type === "text" ? 'transparent' : props=>props.theme.mClr.B},
+            ${props => props.type === "outline"? 0.35: 0.75}
+        );
     }
     &:disabled { 
         color: #A3A3A3;
@@ -39,29 +52,25 @@ const StyledButton = styled.button`
         border: ${props => props.type === "outline" ? "2px solid #A3A3A3" : "none"};
     }
     &:active {
-        --pressedclr: ${props => props.theme === "light" ? "#5C79B2" : "#E8DEC8"};
-        color: ${props => props.type === "contained"? "var(--clr)": props => props.type === "outline"? "var(--textclr)": "var(--pressedclr)"}; 
-        background-color: ${props => props.type === "contained"? "var(--textclr)": props => props.type === "outline"? "var(--clr)": "transparent"}; 
+        color: rgb(
+            ${props => props.type === "outline" ? props.theme.tClr.R : props.theme.mClr.R},
+            ${props => props.type === "outline" ? props.theme.tClr.G : props.theme.mClr.G},
+            ${props => props.type === "outline" ? props.theme.tClr.B : props.theme.mClr.B}
+        );
+        background: rgba(
+            ${props => props.type === "contained" ? props.theme.tClr.R : props => props.type === "outline" ? props.theme.mClr.R : '255'},
+            ${props => props.type === "contained" ? props.theme.tClr.G : props => props.type === "outline" ? props.theme.mClr.G : '255'},
+            ${props => props.type === "contained" ? props.theme.tClr.B : props => props.type === "outline" ? props.theme.mClr.B : '255'},
+            ${props => props.type === "text" ? 0 : 1}
+            );
     }
 `;
-
-const Button = (props) => {
-    return (
-        <StyledButton {...props}>
-            {props.children}
-        </StyledButton>
-    )
-}
-
-Button.propTypes = {
-    type: PropTypes.oneOf(["contained", "outline", "text"]),
-    theme: PropTypes.oneOf(["light", "dark"])
-}
 Button.defaultProps = {
-    type: "contained",
     theme: {
-        fillColor: "#174091"
-    }
+        mClr: {R: 23, G: 64, B: 145},
+        tClr: {R: 255, G: 255, B: 255},
+    },
+    type: "contained",
+    mode: "normal"
 }
-
 export default Button

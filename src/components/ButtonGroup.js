@@ -25,7 +25,6 @@ const ButtonGroup = (props) => {
 
     const [Value, setValue] = useState(props.defaultValue)
     let attr = {
-        theme: props.theme,
         fullWidth: false,
         demo: false
     }
@@ -53,7 +52,7 @@ const ButtonGroup = (props) => {
 
 ButtonGroup.propTypes = {
     data: PropTypes.array,
-    theme: PropTypes.oneOf(["light", "dark"]),
+    theme: PropTypes.object,
     displayField: PropTypes.string.isRequired,
     returnField: PropTypes.string.isRequired,
     onSelect: PropTypes.func,
@@ -61,9 +60,15 @@ ButtonGroup.propTypes = {
     defaultValue: PropTypes.string
 }
 ButtonGroup.defaultProps = {
-    theme: "light",
     onSelect: (x) => console.log(x),
     fullWidth: false,
-    defaultValue: ""
+    defaultValue: "",
+    theme: {
+        mainColor: "#174091",
+        textColor: "#FFFFFF",
+        hoverColor1: "#123374",
+        hoverColor2: "#D0D8E9",
+        pressColor: "#5C79B2"
+    }
 }
 export default ButtonGroup
