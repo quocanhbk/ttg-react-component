@@ -38,7 +38,7 @@ function App() {
       </ThemeProvider>
       <br/>
       <ThemeProvider theme={appTheme.dark}>
-        <Container title="Light Theme" dark>
+        <Container title="Dark Theme" dark>
             <Button onClick={() => alert("Woo")} demo>Contained</Button>
             <Button demo disabled>Disabled Contained</Button>
             <Button demo type="outline">Outline</Button>

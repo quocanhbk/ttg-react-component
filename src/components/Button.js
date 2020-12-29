@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 const StyledButton = styled.button`
     margin: ${props => props.demo? "8px": 
-                props => props.ingroup === "left" ? "0px -2px 0px 0px" : 
-                    props => props.ingroup === "right" ? "0px 0px 0px -2px" : "0px"};
+                props => props.ingroup === "left" ? "0px -1px 0px 0px" : 
+                    props => props.ingroup === "right" ? "0px 0px 0px -1px" : "0px -1px 0px -1px"};
     padding: ${props => props.type === "outline" ? "6px 10px" : "8px 12px"};
     transition: background 0.15s linear;
     font-size: 1rem;
