@@ -18,7 +18,8 @@ const data = [
   {id: 2, name: "Orange"},
   {id: 3, name: "Jackfruit"},
   {id: 4, name: "Banana"},
-  {id: 5, name: "Strawberry "}
+  {id: 5, name: "Strawberry "},
+  {id: 6, name: "Coconut"}
 ]
 
 function App() {
