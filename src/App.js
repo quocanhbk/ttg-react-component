@@ -52,7 +52,7 @@ function App() {
             <Button demo><IcoBox left/> With Icon</Button>
             <Button demo disabled><IcoBox left/> Disabled</Button>
             <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-            <RadioButton value="Option1"/>
+            <RadioButton value="Option 1"/>
             <RadioButton value="Option 2"/>
             <RadioButton value="Option 3"/>
           </Container>
