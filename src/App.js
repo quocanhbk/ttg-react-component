@@ -36,7 +36,7 @@ function App() {
           <Button demo><IcoBox left/> With Icon</Button>
           <Button demo disabled><IcoBox left/> Disabled</Button>
           <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-          <RadioButtonGroup value={data} name="group 1"/>
+          <RadioButtonGroup value={data} name="group 1" displayField title="Fruits"/>
         </Container>
       </ThemeProvider>
       <br/>
@@ -50,7 +50,7 @@ function App() {
             <Button demo><IcoBox left/> With Icon</Button>
             <Button demo disabled><IcoBox left/> Disabled</Button>
             <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-            <RadioButtonGroup value={data} name="group 2"/>
+            <RadioButtonGroup value={data} name="group 2" displayField={false} title="Banana"/>
           </Container>
       </ThemeProvider>
       
