@@ -3,6 +3,7 @@ import Button from './components/Button'
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
 import IcoBox from './components/icons/IcoBox'
+import RadioButton from './components/RadioButton'
 const appTheme = {
     light: {
         mClr: {R: 23, G: 64, B: 145},
@@ -34,6 +35,9 @@ function App() {
           <Button demo><IcoBox left/> With Icon</Button>
           <Button demo disabled><IcoBox left/> Disabled</Button>
           <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
+          <RadioButton value="Option1"/>
+          <RadioButton value="Option 2"/>
+          <RadioButton value="Option 3"/>
         </Container>
       </ThemeProvider>
       <br/>
@@ -47,6 +51,9 @@ function App() {
             <Button demo><IcoBox left/> With Icon</Button>
             <Button demo disabled><IcoBox left/> Disabled</Button>
             <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
+            <RadioButton value="Option1"/>
+            <RadioButton value="Option 2"/>
+            <RadioButton value="Option 3"/>
           </Container>
       </ThemeProvider>
       
