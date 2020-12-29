@@ -33,6 +33,7 @@ const ButtonGroup = (props) => {
         setValue(x)
         props.onSelect(x)
     }
+    console.log(props.displayField)
     return (
         <StyledButtonGroup {...props}>
             <div>

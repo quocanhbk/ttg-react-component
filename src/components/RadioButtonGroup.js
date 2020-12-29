@@ -14,7 +14,7 @@ const RadioButtonGroup = (props) =>{
         {
             select.map((item, index) => {
                 return(
-                    <RadioButton value={item} key={index} name={props.name} displayField={props.displayField}/>
+                    <RadioButton value={item} key={index} name={props.displayField} displayDirection={props.displayDirection}/>
                 )
             })
         }
