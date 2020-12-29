@@ -6,6 +6,7 @@ const StyledButtonGroup = styled.div`
     margin: ${props => props.demo? "8px": "0"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     min-width: ${props => props.fullWidth ? "100%": "auto"};
+    margin-bottom: 10px;
     & div {
         display: flex;
         align-items: stretch;
