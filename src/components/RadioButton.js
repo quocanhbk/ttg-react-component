@@ -1,15 +1,14 @@
 import React, { } from 'react'
 import styled from 'styled-components'
-const FormCotrol = styled.div`
 
-`;
-const LabelRadioGroup = styled.label`
+const RadioGroup = styled.label`
     display: block;
     position: relative;
     padding-left: 35px;
     margin: 15px;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 1.2rem;
+    font-weight: 700
     user-select: none;
     display: inline;
 
@@ -49,9 +48,6 @@ const ValueInput = styled.strong`
    color:${props => props.color ? "blue" : "#d9ad7f"};
 `;
 
-const LabelRadio = styled.p`
-   color: black;
-`;
 
 const SpanRadio = styled.span`
     position: absolute;
@@ -74,11 +70,11 @@ const handleChangeValue = (value) =>{
 
 const RadioButton = (props) => {
     return (
-        <LabelRadioGroup>
-            <ValueInput>{props.value}</ValueInput>
-            <InputRadio type="radio" name="radio" value={props.value} onClick={()=>handleChangeValue(props.value)}/>
+        <RadioGroup name={props.name}>
+            <ValueInput>{props.value.name}</ValueInput>
+            <InputRadio type="radio" name={props.name} value={props.value} onClick={()=>handleChangeValue(props)}/>
             <SpanRadio />
-        </LabelRadioGroup>
+        </RadioGroup>
     )
 }
 export default RadioButton
