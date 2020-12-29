@@ -64,11 +64,8 @@ ButtonGroup.defaultProps = {
     fullWidth: false,
     defaultValue: "",
     theme: {
-        mainColor: "#174091",
-        textColor: "#FFFFFF",
-        hoverColor1: "#123374",
-        hoverColor2: "#D0D8E9",
-        pressColor: "#5C79B2"
+        mClr: {R: 23, G: 64, B: 145},
+        tClr: {R: 255, G: 255, B: 255},
     }
 }
 export default ButtonGroup

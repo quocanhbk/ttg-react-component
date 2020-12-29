@@ -1,8 +1,6 @@
-import React from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types';
 
-const Button = styled.button`
+const StyledButton = styled.button`
     margin: ${props => props.demo? "8px": 
                 props => props.ingroup === "left" ? "0px -2px 0px 0px" : 
                     props => props.ingroup === "right" ? "0px 0px 0px -2px" : "0px"};
@@ -65,12 +63,21 @@ const Button = styled.button`
             );
     }
 `;
-Button.defaultProps = {
+StyledButton.defaultProps = {
     theme: {
         mClr: {R: 23, G: 64, B: 145},
         tClr: {R: 255, G: 255, B: 255},
     },
     type: "contained",
-    mode: "normal"
+    displayMode: "edit"
 }
+
+const Button = (props) => {
+    return (
+        <StyledButton {...props}>
+        {props.children}
+        </StyledButton>
+    )
+}
+
 export default Button

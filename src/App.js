@@ -14,9 +14,11 @@ const appTheme = {
     }
 }
 const data = [
-  {id: 1, name: "Quanh"},
-  {id: 2, name: "Kiet"},
-  {id: 3, name: "Tan"}
+  {id: 1, name: "Apple"},
+  {id: 2, name: "Orange"},
+  {id: 3, name: "Jackfruit"},
+  {id: 4, name: "Banana"},
+  {id: 5, name: "Strawberry "}
 ]
 
 function App() {
@@ -24,22 +26,28 @@ function App() {
     <div>
       <ThemeProvider theme={appTheme.light}>
         <Container title="Light Theme">
-          <Button demo>Contained</Button>
+          <Button onClick={() => alert("Woo")} demo>Contained</Button>
+          <Button demo disabled>Disabled Contained</Button>
           <Button demo type="outline">Outline</Button>
+          <Button demo type="outline" disabled>Disabled Outline</Button>
           <Button demo type="text">Text</Button>
           <Button demo><IcoBox left/> With Icon</Button>
+          <Button demo disabled><IcoBox left/> Disabled</Button>
           <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
         </Container>
       </ThemeProvider>
       <br/>
       <ThemeProvider theme={appTheme.dark}>
-        <Container dark title="Dark Theme">
-          <Button demo>Contained</Button>
-          <Button demo type="outline">Outline</Button>
-          <Button demo type="text">Text</Button>
-          <Button demo><IcoBox left/> With Icon</Button>
-          <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-        </Container>
+        <Container title="Light Theme" dark>
+            <Button onClick={() => alert("Woo")} demo>Contained</Button>
+            <Button demo disabled>Disabled Contained</Button>
+            <Button demo type="outline">Outline</Button>
+            <Button demo type="outline" disabled>Disabled Outline</Button>
+            <Button demo type="text">Text</Button>
+            <Button demo><IcoBox left/> With Icon</Button>
+            <Button demo disabled><IcoBox left/> Disabled</Button>
+            <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
+          </Container>
       </ThemeProvider>
       
     </div>
