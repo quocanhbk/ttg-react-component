@@ -5,6 +5,8 @@ import Container from './components/Container'
 import IcoBox from './components/icons/IcoBox'
 import RadioButtonGroup from './components/RadioButtonGroup'
 import DropdownMenu from "./components/DropdownMenu"
+import Select from "./components/Select"
+import Accordioncomponent from './components/Accordioncomponent'
 const appTheme = {
     light: {
         mClr: {R: 23, G: 64, B: 145},
@@ -44,6 +46,9 @@ function App() {
                 displaydirection: hiển thị hướng hiển thị (mặc định true là dọc)
             */}
           <DropdownMenu data={data} value="Dropdown"/>
+          <Select  data={data}/>
+          <Select data={data}/>
+          <Accordioncomponent/>
         </Container>
       </ThemeProvider>
       <br/>
@@ -59,6 +64,8 @@ function App() {
             <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
             <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Radio button"/>
             <DropdownMenu data={data} value="Dropdown" color="true"/>
+            <Select color="true" background="true" data={data}/>
+            <Accordioncomponent/>
         </Container>
       </ThemeProvider>
     </div>

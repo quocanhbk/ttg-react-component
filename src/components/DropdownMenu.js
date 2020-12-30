@@ -1,4 +1,4 @@
-import React, {  } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 
@@ -57,12 +57,16 @@ const SubA = styled(StyledA)`
     }
 `;
 
-const handleClick = (props) =>{
-    console.log(props)
-}
 
 const DropdownMenu = (props) => {
-    var value = props.data;
+    const [is_dropdown, setIsDropdown] = useState(false); // kiểm tra ng dùng đã chọn hay chưa
+    const [valuedropwdown, setvalueDropdown] = useState(); //lấy value ng dùng chọn
+
+    // thay đổi giá trị khi người dùng chọn
+    const handleClick = (props) =>{
+        setvalueDropdown(props);
+        setIsDropdown(true);
+    }
     return (
         <StyledUl color = {props.color}>
             <StyledLi>
@@ -77,11 +81,13 @@ const DropdownMenu = (props) => {
             </StyledLi>
             <DropDownLi>
                 <StyledA >
-                    {props.value}
+                    {
+                        (is_dropdown === true) ? valuedropwdown : props.value
+                    }
                 </StyledA>
                 <DropDownContent>
                     {
-                        value.map((item, index)=>{
+                        props.data.map((item, index)=>{
                             return(
                                 <SubA key={index} onClick={()=>handleClick(item.name)}>
                                     {item.name}
