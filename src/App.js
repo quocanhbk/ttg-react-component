@@ -36,10 +36,10 @@ function App() {
           <Button demo><IcoBox left/> With Icon</Button>
           <Button demo disabled><IcoBox left/> Disabled</Button>
           <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-          <RadioButtonGroup value={data} displayField="group 1" displayDirection  title="Fruits"/>
+          <RadioButtonGroup value={data} name="group 1" displayDirection  title="Fruits"/>
           {/* displayfield để hiển thị name
                 title: tiêu đề hiển thị cho group
-                value: giá tri cho từng thành phần
+                value: giá muốn hiển thị ra 
                 displaydirection: hiển thị hướng hiển thị (mặc định true là dọc)
             */}
         </Container>
@@ -55,10 +55,9 @@ function App() {
             <Button demo><IcoBox left/> With Icon</Button>
             <Button demo disabled><IcoBox left/> Disabled</Button>
             <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-            <RadioButtonGroup value={data} displayField="group 2" displayDirection={false} title="Banana"/>
+            <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Banana"/>
           </Container>
       </ThemeProvider>
-      
     </div>
   )
 }

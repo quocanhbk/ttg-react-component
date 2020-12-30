@@ -7,7 +7,7 @@ const RadioGroup = styled.label`
     padding-left: 35px;
     margin: 15px;
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1em;
     font-weight: 700;
     user-select: none;
     display: ${props => props.displayDirection ? 'block' : 'inline'};
@@ -55,8 +55,8 @@ const SpanRadio = styled.span`
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 15px;
+    width: 15px;
     background-color: ${props => props.color ? "#eee" : "#cac0c0"};
     border-radius: 50%;
     &:after{
@@ -71,10 +71,9 @@ const handleChangeValue = (value) =>{
 }
 
 const RadioButton = (props) => {
-    console.log(props.displayDirection)
     return (
         <RadioGroup name={props.name} displayDirection={props.displayDirection}>
-            <ValueInput>{props.value.name}</ValueInput>
+            <ValueInput>{props.value}</ValueInput>
             <InputRadio type="radio" name={props.name} value={props.value} onClick={()=>handleChangeValue(props)}/>
             <SpanRadio />
         </RadioGroup>

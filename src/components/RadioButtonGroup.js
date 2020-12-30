@@ -6,7 +6,6 @@ const TitleRadio = styled.h2`
 `;
 
 const RadioButtonGroup = (props) =>{
-    console.log(props)
     const select = props.value;
     return (
         <>
@@ -14,7 +13,7 @@ const RadioButtonGroup = (props) =>{
         {
             select.map((item, index) => {
                 return(
-                    <RadioButton value={item} key={index} name={props.displayField} displayDirection={props.displayDirection}/>
+                    <RadioButton value={item.name} key={index} name={props.name} displayDirection={props.displayDirection}/>
                 )
             })
         }
