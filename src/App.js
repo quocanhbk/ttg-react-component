@@ -4,6 +4,7 @@ import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
 import IcoBox from './components/icons/IcoBox'
 import RadioButtonGroup from './components/RadioButtonGroup'
+import DropdownMenu from "./components/DropdownMenu"
 const appTheme = {
     light: {
         mClr: {R: 23, G: 64, B: 145},
@@ -36,12 +37,13 @@ function App() {
           <Button demo><IcoBox left/> With Icon</Button>
           <Button demo disabled><IcoBox left/> Disabled</Button>
           <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-          <RadioButtonGroup value={data} name="group 1" displayDirection  title="Fruits"/>
+          <RadioButtonGroup value={data} name="group 1" displayDirection  title="Radio button"/>
           {/* displayfield để hiển thị name
                 title: tiêu đề hiển thị cho group
                 value: giá muốn hiển thị ra 
                 displaydirection: hiển thị hướng hiển thị (mặc định true là dọc)
             */}
+          <DropdownMenu data={data} value="Dropdown"/>
         </Container>
       </ThemeProvider>
       <br/>
@@ -55,8 +57,9 @@ function App() {
             <Button demo><IcoBox left/> With Icon</Button>
             <Button demo disabled><IcoBox left/> Disabled</Button>
             <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-            <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Banana"/>
-          </Container>
+            <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Radio button"/>
+            <DropdownMenu data={data} value="Dropdown" color="true"/>
+        </Container>
       </ThemeProvider>
     </div>
   )
