@@ -40,15 +40,13 @@ function App() {
           <Button demo disabled><IcoBox left/> Disabled</Button>
           <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
           <RadioButtonGroup value={data} name="group 1" displayDirection  title="Radio button"/>
-          {/* displayfield để hiển thị name
-                title: tiêu đề hiển thị cho group
-                value: giá muốn hiển thị ra 
-                displaydirection: hiển thị hướng hiển thị (mặc định true là dọc)
-            */}
           <DropdownMenu data={data} value="Dropdown"/>
-          <Select  data={data}/>
-          <Select data={data}/>
-          <Accordioncomponent/>
+          <Select data={data} id="select1"/>
+          <Accordioncomponent 
+            background
+            text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+            title="Hello word 1"
+          />
         </Container>
       </ThemeProvider>
       <br/>
@@ -64,8 +62,11 @@ function App() {
             <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
             <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Radio button"/>
             <DropdownMenu data={data} value="Dropdown" color="true"/>
-            <Select color="true" background="true" data={data}/>
-            <Accordioncomponent/>
+            <Select color="true" background="true" data={data} id="select2"/>
+            <Accordioncomponent
+              text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." 
+              title="hello world 2"
+            />
         </Container>
       </ThemeProvider>
     </div>

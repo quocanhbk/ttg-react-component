@@ -19,14 +19,18 @@ const Optioncomponent = styled.option`
     border-radius: 10%;
 `;
 
+const handleSelectVale = (value)=>{
+    var valueSelect = document.getElementById(value);
+    console.log(valueSelect.value);
+}
 const CustomSelect = (props) =>{
     return (
         <>
-            <SelectComponent color={props.color} background={props.background}>
+            <SelectComponent color={props.color} background={props.background} id={props.id} onChange={()=>handleSelectVale(props.id)}>
                 {
                     props.data.map((value, index)=>{
                         return(
-                            <Optioncomponent key={index}>{value.name}</Optioncomponent>
+                            <Optioncomponent key={index} value={value.name}>{value.name}</Optioncomponent>
                         )
                     })
                 }
