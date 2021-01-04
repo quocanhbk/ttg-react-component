@@ -1,62 +1,32 @@
-import ButtonGroup from './components/ButtonGroup'
 import Button from './components/Button'
+import ButtonGroup from './components/ButtonGroup'
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import IcoBox from './components/icons/IcoBox'
-import RadioButtonGroup from './components/RadioButtonGroup'
 const appTheme = {
     light: {
-        mClr: {R: 23, G: 64, B: 145},
-        tClr: {R: 255, G: 255, B: 255},
+        textColor: "#FFFFFF",
+        fillColor: "#174091"
     },
     dark: {
-        mClr: {R: 165, G: 156, B: 135},
-        tClr: {R: 20, G: 16, B: 16}
+        textColor: "#000000",
+        fillColor: "#A59C87"
     }
 }
-const data = [
-  {id: 1, name: "Apple"},
-  {id: 2, name: "Orange"},
-  {id: 3, name: "Jackfruit"},
-  {id: 4, name: "Banana"},
-  {id: 5, name: "Strawberry "},
-  {id: 6, name: "Coconut"}
-]
 
 function App() {
   return (
     <div>
       <ThemeProvider theme={appTheme.light}>
         <Container title="Light Theme">
-          <Button onClick={() => alert("Woo")} demo>Contained</Button>
-          <Button demo disabled>Disabled Contained</Button>
-          <Button demo type="outline">Outline</Button>
-          <Button demo type="outline" disabled>Disabled Outline</Button>
-          <Button demo type="text">Text</Button>
-          <Button demo><IcoBox left/> With Icon</Button>
-          <Button demo disabled><IcoBox left/> Disabled</Button>
-          <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-          <RadioButtonGroup value={data} name="group 1" displayDirection  title="Fruits"/>
-          {/* displayfield để hiển thị name
-                title: tiêu đề hiển thị cho group
-                value: giá muốn hiển thị ra 
-                displaydirection: hiển thị hướng hiển thị (mặc định true là dọc)
-            */}
+          <Button demo>Contained</Button>
+          <Button fullWidth>Contained</Button>
+          <ButtonGroup>
+            <Button value={1}>One</Button>
+            <Button value={2}>Two</Button>
+            <Button value={3}>Three</Button>
+          </ButtonGroup>
         </Container>
-      </ThemeProvider>
-      <br/>
-      <ThemeProvider theme={appTheme.dark}>
-        <Container title="Dark Theme" dark>
-            <Button onClick={() => alert("Woo")} demo>Contained</Button>
-            <Button demo disabled>Disabled Contained</Button>
-            <Button demo type="outline">Outline</Button>
-            <Button demo type="outline" disabled>Disabled Outline</Button>
-            <Button demo type="text">Text</Button>
-            <Button demo><IcoBox left/> With Icon</Button>
-            <Button demo disabled><IcoBox left/> Disabled</Button>
-            <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-            <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Banana"/>
-          </Container>
+        
       </ThemeProvider>
     </div>
   )

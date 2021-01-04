@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import styled from 'styled-components'
-import PropTypes from 'prop-types';
 import Button from './Button';
+
 const StyledButtonGroup = styled.div`
     margin: ${props => props.demo? "8px": "0"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
@@ -17,12 +17,6 @@ const StyledButtonGroup = styled.div`
 `;
 
 const ButtonGroup = (props) => {
-    let returnFieldList = props.data.map(x => x[props.returnField])
-    if((new Set(returnFieldList)).size !== props.data.length)
-        throw new Error("Button group can't have duplicate return value")
-    
-    if (props.defaultValue !== "" && !returnFieldList.includes(props.defaultValue))
-        throw new Error("defaultValue must be in returnField list")
 
     const [Value, setValue] = useState(props.defaultValue)
     let attr = {
@@ -51,15 +45,6 @@ const ButtonGroup = (props) => {
     )
 }
 
-ButtonGroup.propTypes = {
-    data: PropTypes.array,
-    theme: PropTypes.object,
-    displayField: PropTypes.string.isRequired,
-    returnField: PropTypes.string.isRequired,
-    onSelect: PropTypes.func,
-    fullWidth: PropTypes.bool,
-    defaultValue: PropTypes.string
-}
 ButtonGroup.defaultProps = {
     onSelect: (x) => console.log(x),
     fullWidth: false,
