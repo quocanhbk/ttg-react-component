@@ -2,17 +2,14 @@ import styled from 'styled-components'
 import {getFader} from '../utils/color'
 
 const LabelCheckbox = styled.label`
-    display: block;
+    display: flex;
     position: relative;
-    padding-left: 35px;
     margin: 5px 0 10px 0;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
-    margin-left:10px;
-    
+    user-select: none;    
 `;
 
 const InputChkbox = styled.input`
@@ -33,7 +30,7 @@ const InputChkbox = styled.input`
 
 const SpanChkBox = styled.span`
     display:block;  
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     height:22px;
@@ -63,6 +60,7 @@ const SpanChkBox = styled.span`
 const SpanChkName= styled.span`
     display:block;
     font-size:1rem;
+    margin: 0 10px;
     color:${props => props.theme.name === "light" ? "black" : "white"};
 `;
 
