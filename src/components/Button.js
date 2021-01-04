@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {getDarker, getLighter} from '../../utils/color'
+import {getDarker, getLighter} from '../utils/color'
 
 const StyledButton = styled.button`
     --textColor: ${props => props.theme.textColor};
@@ -10,7 +10,7 @@ const StyledButton = styled.button`
     --lightFillColor: ${props => getLighter(props.theme.fillColor)};
 
     margin: ${props => props.demo? "8px": "0px"};
-    padding: ${props => props.ingroup ? "4px 10px" : props.type === "outline" ? "4px 10px" : "6px 12px"};
+    padding: ${props => props.ingroup ? "6px 10px" : props.type === "outline" ? "6px 10px" : "8px 12px"};
     transition: background 0.15s linear;
     font-size: 1rem;
     font-weight: 700;
