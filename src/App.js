@@ -1,84 +1,58 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import CheckboxGroup from './components/CheckboxGroup'
+import {useState, useEffect} from 'react'
+
 import Checkbox from './components/Checkbox'
-import ToggleSwitch from './components/ToggleSwitch'
-import ToggleGroup from './components/ToggleGroup'
-import Tabs from "./components/Tabs"
-import TabPane from "./components/TabPane";
+import CheckboxGroup from './components/CheckboxGroup'
+import Select from './components/Select'
+
 const appTheme = {
-    light: {
-        mClr: {R: 23, G: 64, B: 145},
-        tClr: {R: 255, G: 255, B: 255},
-        
-    },
-    dark: {
-        mClr: {R: 165, G: 156, B: 135},
-        tClr: {R: 20, G: 16, B: 16}
-    }
+  light: {
+      name: "light",
+      textColor: "#FFFFFF",
+      fillColor: "#174091"
+  },
+  dark: {
+      name: "dark",
+      textColor: "#000000",
+      fillColor: "#A59C87"
+  }
 }
+
+
 const data = [
-  {id: 1, name: "Apple"},
-  {id: 2, name: "Orange"},
-  {id: 3, name: "Jackfruit"},
-  {id: 4, name: "Banana"},
-  {id: 5, name: "Strawberry "},
-  {id: 6, name: "Coconut"}
+  {id: 1, name: "Quanh"},
+  {id: 2, name: "Tuh"}
 ]
 
 function App() {
+  const [value, setValue] = useState("")
+
+  useEffect(() => {
+    console.log(value)
+  })
+
   return (
     <div>
-      <ThemeProvider theme={appTheme.light}>
-        <Container title="Light Theme">
-          
-          <CheckboxGroup value={data} name="groupcheck1" />
-          <Checkbox value="Disable" name="disable" disabled ></Checkbox>
-          <Checkbox value="Auto Check" name="disable" checked disabled ></Checkbox>
-          <ToggleSwitch value="Toggle Switch"></ToggleSwitch>
-          <ToggleSwitch value="Toggle Switch Disable" disabled></ToggleSwitch>
-          <ToggleSwitch value="Toggle Switch Auto Check" checked></ToggleSwitch>
-          <ToggleGroup value={data} name="groupswitch1" displayDirection></ToggleGroup>
-          
-          <Tabs name="group tab">
-            <TabPane name="Tab 1" key="1" >
-              Content 1
-            </TabPane>
-            <TabPane name="Tab 2" key="2">
-              Content 2
-            </TabPane>
-            <TabPane name="Tab 3" key="3">
-              Content 3
-            </TabPane>
-          </Tabs>
-        </Container>
-      </ThemeProvider>
-      <br/>
       <ThemeProvider theme={appTheme.dark}>
-        <Container title="Dark Theme" dark>
-           
-            <CheckboxGroup value={data}  displayDirection={false} name="groupcheck2"/>
-            <Checkbox value="Disable" disabled ></Checkbox>
-            <Checkbox value="Auto Check" checked disabled ></Checkbox>
-            <ToggleSwitch value="Toggle Switch"></ToggleSwitch>
-            <ToggleSwitch value="Toggle Switch Disable" disabled></ToggleSwitch>
-            <ToggleSwitch value="Toggle Switch Auto Check" checked></ToggleSwitch>
-            <ToggleGroup value={data} name="groupswitch1" displayDirection={false} ></ToggleGroup>
-            <Tabs name="group tab">
-            <TabPane name="Tab 1" title={data}>
-                Content of Tab Pane 1
-            </TabPane>
-            <TabPane name="Tab 2" title={data} >
-                Content of Tab Pane 2
-            </TabPane>
-            <TabPane name="Tab 3" title={data} >
-                Content of Tab Pane 3
-            </TabPane>
-          </Tabs>
+        <Container title="Light Theme">
+          <span>Radio</span>
+          {/* <RadioGroup fullWidth horizontal name="ra1" onSelect={(x) => setValue(x)}>
+            <RadioButton value={1}>One</RadioButton>
+            <RadioButton value={2}>Two</RadioButton>
+            <RadioButton value={3}>Three</RadioButton>
+          </RadioGroup> */}
+          <span>Checkbox</span>
+          <CheckboxGroup fullWidth horizontal name="ra1" >
+            <Checkbox value={1}>One</Checkbox>
+            <Checkbox value={2}>Two</Checkbox>
+            <Checkbox value={3}>Three</Checkbox>
+          </CheckboxGroup>
+        </Container>
+        <Container title="Dark Theme">
+        <Select data={data} color="false" background="false" id="select1"></Select>`
         </Container>
       </ThemeProvider>
     </div>
-  )
-}
-
-export default App;
+)}
+export default App
