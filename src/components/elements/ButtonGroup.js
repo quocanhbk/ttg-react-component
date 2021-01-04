@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import Button from './Button';
 
@@ -20,17 +20,26 @@ StyledButtonGroup.defaultProps = {
     }
 }
 const ButtonGroup = (props) => {
+    //Catching errors
     props.children.forEach(child => {
-        if (child.type !== Button)
+        if (child.type != Button)
             throw Error("Children of ButtonGroup must be Button")
         else if (child.props.value === undefined)
             throw Error("Children must contain props 'value' ")
     })
+    if (props.children.filter(child => child.props.default).length > 1)
+        throw Error("Cannot have more than one default value")
+
+    
     const [Value, setValue] = useState(props.defaultValue)
-    let attr = {
-        fullWidth: false,
-        demo: false
-    }
+
+    useEffect(() => {
+        let defElement = props.children.find(child => child.props.default)
+        if (defElement) {
+            handleClick(defElement.props.value)
+        }
+    }, [])
+
     const handleClick = (x) => {
         setValue(x)
         props.onSelect(x)
@@ -41,7 +50,7 @@ const ButtonGroup = (props) => {
                 return React.cloneElement(
                     child, 
                     {
-                        ...attr, 
+                        fullWidth: false, demo: false,
                         ingroup: idx === 0 ? "left" : idx === props.children.length - 1 ? "right" : "middle", 
                         type: Value === child.props.value ? "contained": "outline", 
                         onClick: () => handleClick(child.props.value)})

@@ -67,7 +67,7 @@ const RadioButton = (props) => {
     return (
         <Radio {...props}>
             <ValueInput>{props.children}</ValueInput>
-            <InputRadio type="radio" name={props.name} value={props.value}/>
+            <InputRadio type="radio" name={props.name} value={props.value} defaultChecked={props.default}/>
             <SpanRadio/>
         </Radio>
     )

@@ -8,14 +8,13 @@ import Select from './components/Select'
 
 const appTheme = {
     light: {
-        name: "light",
-        textColor: "#FFFFFF",
-        fillColor: "#174091"
+        mClr: {R: 23, G: 64, B: 145},
+        tClr: {R: 255, G: 255, B: 255},
+        
     },
     dark: {
-        name: "dark",
-        textColor: "#000000",
-        fillColor: "#A59C87"
+        mClr: {R: 165, G: 156, B: 135},
+        tClr: {R: 20, G: 16, B: 16}
     }
 }
 
@@ -26,10 +25,6 @@ const data = [
 ]
 
 function App() {
-  const [value, setValue] = useState("")
-  useEffect(() => {
-    console.log(value)
-  })
   return (
     <div>
       <ThemeProvider theme={appTheme.light}>
