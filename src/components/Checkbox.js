@@ -21,7 +21,7 @@ const InputChkbox = styled.input`
     cursor:pointer;
     &:checked ~ span:nth-child(2){
         transition: 0.4s;
-        background: ${props => props.theme.fillColor};
+        background: transparent;
     }
     &:checked ~ span:after {
         display: block;
@@ -46,7 +46,7 @@ const SpanChkBox = styled.span`
         top: 2px;
         width: 4px;
         height: 8px;
-        border: solid white;
+        border: solid ${props => props.theme.fillColor};
         border-width: 0 3px 3px 0;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);

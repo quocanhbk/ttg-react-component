@@ -1,51 +1,24 @@
 import React, { } from 'react'
-import ToggleSwitch from "./ToggleSwitch"
 import styled from 'styled-components'
 
-const ToggleGroup = (props) =>{
-    const select = props.value;
-    const display= props.displayDirection;
-    const StyleChkGroup = styled.div`
-    margin: 8px 0;
-    display:block;
-    min-width:auto;
-    margin-bottom: 10px;
-  
-    position:relative;
+    const StyleGroup = styled.div`
+    display: ${props => props.fullWidth ? "flex" : "inline-flex"};
+    flex-direction: ${props => props.horizontal ? "row" : "column"};
     &>div{
-     display:flex;
-     flex-direction: ${display===false ? 'row' : 'column'};
-    }
-    &>div>div{
-        justify-content:space-between;
+        justify-content: ${props => props.horizontal ? "" : "space-between"}
     }
 `;
-
-
-    StyleChkGroup.defaultProps = {
-        theme: {
-            tClr: {R: 23, G: 64, B: 145},
-            mClr: {R: 255, G: 255, B: 255},
-        },
-        
-        name: "switch",
-        displayMode: "edit"
-    }
+const ToggleGroup = (props) =>{
+    if (props.name === undefined)
+        throw Error("ToggleGroup need a name")
     return (
-        <>
-        <StyleChkGroup>
-            <div displayDirection={props.displayDirection}>
+        <StyleGroup {...props}>
         {
-            select.map((item, index) => {
-                return(
-                    <ToggleSwitch value={item.name} key={index} name={props.name}/>
-
-                )
+            React.Children.map(props.children, child => {
+                return React.cloneElement(child, {name: props.name})
             })
         }
-            </div>
-        </StyleChkGroup>
-        </>
+        </StyleGroup>
     )
 }
 

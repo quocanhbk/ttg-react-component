@@ -7,6 +7,8 @@ import {useState, useEffect} from 'react'
 import Checkbox from './components/Checkbox'
 import CheckboxGroup from './components/CheckboxGroup'
 import Select from './components/Select'
+import ToggleGroup from './components/ToggleGroup'
+import ToggleSwitch from './components/ToggleSwitch'
 
 const appTheme = {
   light: {
@@ -28,6 +30,11 @@ const data = [
 ]
 
 function App() {
+  const [value, setValue] = useState("")
+
+  useEffect(() => {
+    console.log(value)
+  })
   return (
     <div>
       <ThemeProvider theme={appTheme.light}>
@@ -44,7 +51,13 @@ function App() {
             <Checkbox value={1}>One</Checkbox>
             <Checkbox value={2}>Two</Checkbox>
             <Checkbox value={3}>Three</Checkbox>
-          </CheckboxGroup>  
+          </CheckboxGroup> 
+          <span>Toggle</span> 
+          <ToggleGroup fullWidth horizontal={false} name="check1" onSelect={(x) => setValue(x)} >
+            <ToggleSwitch value={1}>One</ToggleSwitch>
+            <ToggleSwitch value={2}>Two</ToggleSwitch>
+            <ToggleSwitch value={3}>Three</ToggleSwitch>
+          </ToggleGroup>  
         </Container>
       </ThemeProvider>
     </div>
