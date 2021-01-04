@@ -34,11 +34,6 @@ function App() {
         <Container title="Light Theme">
           <Button demo>Contained</Button>
           <Button fullWidth>Contained</Button>
-          <ButtonGroup>
-            <Button value={1}>One</Button>
-            <Button value={2}>Two</Button>
-            <Button value={3}>Three</Button>
-          </ButtonGroup>
           <Button onClick={() => alert("Woo")} demo>Contained</Button>
           <Button demo disabled>Disabled Contained</Button>
           <Button demo type="outline">Outline</Button>
@@ -75,7 +70,7 @@ function App() {
             <Button demo><IcoBox left/> With Icon</Button>
             <Button demo disabled><IcoBox left/> Disabled</Button>
             <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-            <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Radio button" color="true"/>
+            <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Radio button" color="true" border="true"/>
             <DropdownMenu data={data} value="Dropdown" color="true"/>
             <Select
               color="true"

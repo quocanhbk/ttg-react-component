@@ -32,8 +32,8 @@ const RadioGroup = styled.label`
     }
 
     .checkmark:after {
-        top: -5px;
-        left: -5px;
+        top: -6px;
+        left: -6px;
         width: 20px;
         height: 20px;
         border-radius: 50%;
@@ -73,11 +73,12 @@ const handleChangeValue = (value) =>{
 }
 
 const RadioButton = (props) => {
+    console.log(props.border)
     return (
         <RadioGroup name={props.name} displayDirection={props.displayDirection}>
             <ValueInput color={props.color}>{props.value}</ValueInput>
             <InputRadio type="radio" name={props.name} value={props.value} onClick={()=>handleChangeValue(props)}/>
-            <SpanRadio className="checkmark"/>
+            <SpanRadio className="checkmark" border={props.border}/>
         </RadioGroup>
     )
 }
