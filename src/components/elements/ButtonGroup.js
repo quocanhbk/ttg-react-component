@@ -60,7 +60,7 @@ const ButtonGroup = (props) => {
                 return React.cloneElement(
                     child, 
                     {
-                        fullWidth: false, demo: false, disabled: props.displayMode === "disabled",
+                        fullWidth: false, demo: false, displayMode: props.displayMode,
                         ingroup: idx === 0 ? "left" : idx === props.children.length - 1 ? "right" : "middle", 
                         type: Value === child.props.value ? "contained": "outline", 
                         onClick: () => handleClick(child.props.value)})

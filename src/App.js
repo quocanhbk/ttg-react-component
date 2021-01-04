@@ -3,6 +3,8 @@ import Container from './components/Container'
 import {useState, useEffect} from 'react'
 import {RadioGroup, Radio, Button, ButtonGroup} from './components/elements'
 
+import Select from './components/Select'
+
 const appTheme = {
     light: {
         name: "light",
@@ -15,46 +17,22 @@ const appTheme = {
         fillColor: "#A59C87"
     }
 }
-const data = [
-  {id: 1, name: "Quanh"},
-  {id: 2, name: "Tuh"}
-]
+
 
 function App() {
-  const [value, setValue] = useState("")
-
-  useEffect(() => {
-    console.log(value)
-  })
-
   return (
     <div>
-      <ThemeProvider theme={appTheme.light}>
+      <ThemeProvider theme={appTheme.dark}>
         <Container title="Dark Theme">
-          <p>Edit</p>
-          <ButtonGroup horizontal displayMode="edit">
+          <Button displayMode="edit" onClick={() => console.log("Clicked")}>Edit</Button>
+          <Button displayMode="view" onClick={() => console.log("Clicked")}>View</Button>
+          <Button disabled onClick={() => console.log("Clicked")}>Disabled</Button>
+          <ButtonGroup displayMode="view">
             <Button value={1}>One</Button>
             <Button value={2} default>Two</Button>
             <Button value={3}>Three</Button>
           </ButtonGroup>
-          <br/>
-          <p>View</p>
-          <ButtonGroup horizontal displayMode="view">
-            <Button value={1}>One</Button>
-            <Button value={2} default>Two</Button>
-            <Button value={3}>Three</Button>
-          </ButtonGroup>
-          <br/>
-          <p>Disabled</p>
-          <ButtonGroup horizontal displayMode="disabled">
-            <Button value={1}>One</Button>
-            <Button value={2}>Two</Button>
-            <Button value={3}>Three</Button>
-          </ButtonGroup>
-          <br/>
-
         </Container>
-        
       </ThemeProvider>
     </div>
   )

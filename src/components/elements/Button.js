@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {getDarker, getLighter} from '../../utils/color'
 
 const StyledButton = styled.button`
@@ -16,7 +16,7 @@ const StyledButton = styled.button`
     font-weight: 700;
     cursor: pointer;
     outline: 0;
-    pointer-events: none;
+    pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
     border-color: var(--fillColor);
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
     background: ${props=>props.type === "contained" ? "var(--fillColor)" : "transparent"};
@@ -47,12 +47,13 @@ StyledButton.defaultProps = {
         textColor: "#FFFFFF",
         fillColor: "#174091"
     },
-    type: "contained"
+    type: "contained",
+    displayMode: "edit"
 }
 
 const Button = (props) => {
     return (
-        <StyledButton {...props}>
+        <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled}>
         {props.children}
         </StyledButton>
     )
