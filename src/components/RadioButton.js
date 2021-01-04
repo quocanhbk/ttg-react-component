@@ -11,7 +11,6 @@ const Radio = styled.label`
     font-weight: 500;
     user-select: none;
     flex: 1;
-
 `;
 
 const InputRadio = styled.input`
