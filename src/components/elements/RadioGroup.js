@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import RadioButton from './RadioButton'
+import RadioButton from './Radio'
 import styled from 'styled-components'
 
 const StyledRadioGroup = styled.div`
@@ -10,7 +10,7 @@ const StyledRadioGroup = styled.div`
 const RadioGroup = (props) => {
     //Catching errors
     props.children.forEach(child => {
-        if (child.type !== RadioButton)
+        if (child.type != RadioButton)
             throw Error("Children of RadioGroup must be RadioButton")
         else if (child.props.value === undefined)
             throw Error("Children must contain props 'value' ")
@@ -30,14 +30,15 @@ const RadioGroup = (props) => {
         <StyledRadioGroup {...props}>
         {
             React.Children.map(props.children, child => {
-                return React.cloneElement(child, {name: props.name || (new Date()).getTime(), onClick: () => handleClick(child.props.value)})
+                return React.cloneElement(child, {name: props.name || (new Date()).getTime(), onClick: () => handleClick(child.props.value), displayMode: props.displayMode})
             })
         }
         </StyledRadioGroup>
     )
 }
 RadioGroup.defaultProps = {
-    onSelect: (x) => console.log(x)
+    onSelect: (x) => console.log(x),
+    displayMode: "edit"
 }
 
 export default RadioGroup

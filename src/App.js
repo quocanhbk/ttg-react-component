@@ -1,7 +1,7 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
 import {useState, useEffect} from 'react'
-import Select from './components/Select'
+import {RadioGroup, Radio, Button, ButtonGroup} from './components/elements'
 
 const appTheme = {
     light: {
@@ -29,10 +29,32 @@ function App() {
 
   return (
     <div>
-      <ThemeProvider theme={appTheme.dark}>
+      <ThemeProvider theme={appTheme.light}>
         <Container title="Dark Theme">
-        `<Select data={data} color="false" background="false" id="select1"></Select>`
+          <p>Edit</p>
+          <ButtonGroup horizontal displayMode="edit">
+            <Button value={1}>One</Button>
+            <Button value={2} default>Two</Button>
+            <Button value={3}>Three</Button>
+          </ButtonGroup>
+          <br/>
+          <p>View</p>
+          <ButtonGroup horizontal displayMode="view">
+            <Button value={1}>One</Button>
+            <Button value={2} default>Two</Button>
+            <Button value={3}>Three</Button>
+          </ButtonGroup>
+          <br/>
+          <p>Disabled</p>
+          <ButtonGroup horizontal displayMode="disabled">
+            <Button value={1}>One</Button>
+            <Button value={2}>Two</Button>
+            <Button value={3}>Three</Button>
+          </ButtonGroup>
+          <br/>
+
         </Container>
+        
       </ThemeProvider>
     </div>
   )

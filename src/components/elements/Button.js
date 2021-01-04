@@ -16,7 +16,7 @@ const StyledButton = styled.button`
     font-weight: 700;
     cursor: pointer;
     outline: 0;
-
+    pointer-events: none;
     border-color: var(--fillColor);
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
     background: ${props=>props.type === "contained" ? "var(--fillColor)" : "transparent"};
@@ -35,7 +35,7 @@ const StyledButton = styled.button`
     &:disabled { 
         color: #A3A3A3;
         background-color: ${props => props.type === "contained" ? "#CCC" : "transparent"};
-        border: ${props => props.type === "outline" ? "2px solid #A3A3A3" : "none"};
+        border-color: ${props => props.type === "outline" ? "#A3A3A3" : "transparent"};
     }
     &:active {
         color: ${props => props.type === "contained" ? "var(--fillColor)" : props.type === "outline" ? "var(--textColor)" : "var(--lightFillColor)"};
