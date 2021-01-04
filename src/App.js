@@ -1,9 +1,7 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
 import {useState, useEffect} from 'react'
-
-import RadioGroup from './components/RadioGroup'
-import RadioButton from './components/RadioButton'
+import Select from './components/Select'
 
 const appTheme = {
     light: {
@@ -17,23 +15,23 @@ const appTheme = {
         fillColor: "#A59C87"
     }
 }
-
+const data = [
+  {id: 1, name: "Quanh"},
+  {id: 2, name: "Tuh"}
+]
 
 function App() {
   const [value, setValue] = useState("")
+
   useEffect(() => {
     console.log(value)
   })
+
   return (
     <div>
       <ThemeProvider theme={appTheme.dark}>
-        <Container title="Light Theme">
-          <span>Radio</span>
-          <RadioGroup fullWidth horizontal name="ra1" onSelect={(x) => setValue(x)}>
-            <RadioButton value={1}>One</RadioButton>
-            <RadioButton value={2}>Two</RadioButton>
-            <RadioButton value={3}>Three</RadioButton>
-          </RadioGroup>
+        <Container title="Dark Theme">
+        `<Select data={data} color="false" background="false" id="select1"></Select>`
         </Container>
       </ThemeProvider>
     </div>
