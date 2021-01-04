@@ -14,6 +14,7 @@ const StyledButtonGroup = styled.div`
 `;
 StyledButtonGroup.defaultProps = {
     theme: {
+        name: "light",
         textColor: "#FFFFFF",
         fillColor: "#174091"
     }

@@ -1,82 +1,76 @@
 import React, { } from 'react'
 import styled from 'styled-components'
-
-const RadioGroup = styled.label`
-    display: block;
+import {getFader} from '../utils/color'
+const Radio = styled.label`
+    display: inline-block;
     position: relative;
-    padding-left: 35px;
-    margin: 15px;
+    padding: 4px 8px 4px 1.5rem;
+    margin-right: 8px;
     cursor: pointer;
-    font-size: 1em;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 500;
     user-select: none;
-    display: ${props => props.displayDirection ? 'block' : 'inline'};
+    flex: 1;
 
-    &:hover span{
-        background-color: #ccc;
-        transition: 0.4s;
-        width: 20px;
-        height: 20px;
-        -moz-box-shadow: -3px -3px 5px 0px ${props => props.color ? "#7c717b" : "#7c600b"};
-        -webkit-box-shadow: -3px -3px 3px 3px ${props => props.color ? "#7c717b" : "#7c600b"};
-        box-shadow: -1px -1px 3px 5px ${props => props.color ? "#7c717b" : "#7c600b"};
-    }
-
-    input:checked ~ span {
-        background-color: #2196F3;
-    }
-
-    input:checked ~ .checkmark:after {
-        display: block;
-    }
-
-    .checkmark:after {
-        top: 9px;
-        left: 9px;
-        width: 8px;
-        height: 8px;
-        border-radius: 50%;
-        background: red;
-   }
 `;
 
 const InputRadio = styled.input`
     position: absolute;
     opacity: 0;
     cursor: pointer;
+
+    //update the dot when checked
+    &:checked ~ span:after {
+        background-color: ${props => props.theme.fillColor};
+        border-radius: 50%;
+    }
 `;
 
-const ValueInput = styled.strong`
-   color:${props => props.color ? "blue" : "#d9ad7f"};
+const ValueInput = styled.p`
+    color:${props => props.theme.name === "light" ? "black" : "white"};
+    display: inline-block;
 `;
 
 
 const SpanRadio = styled.span`
+    // the ring
     position: absolute;
-    top: 0;
-    left: 0;
-    height: 15px;
-    width: 15px;
-    background-color: ${props => props.color ? "#eee" : "#cac0c0"};
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0rem;
+    height: 1.2rem;
+    width: 1.2rem;
+    border: 2px solid ${props => props.theme.fillColor};
     border-radius: 50%;
-    &:after{
+    background: transparent;
+
+    &:hover {
+        box-shadow: 0px 0px 16px ${props => getFader(props.theme.fillColor, 0.8)};
+    }
+
+    //the dot
+    &::after {
         content: "";
         position: absolute;
-        display: none;
-    }
+        display: inline-block;
+        top: 50%;
+        transform: translate(-50%,-50%);
+        left: 50%;
+        height: 0.6rem;
+        width: 0.6rem;
+        border-radius: 50%;
+        background: transparent;
+        transition: background 0.15s linear;
+   }
 `;
-
-const handleChangeValue = (value) =>{
-    console.log(value);
-}
 
 const RadioButton = (props) => {
     return (
-        <RadioGroup name={props.name} displayDirection={props.displayDirection}>
-            <ValueInput>{props.value}</ValueInput>
-            <InputRadio type="radio" name={props.name} value={props.value} onClick={()=>handleChangeValue(props)}/>
-            <SpanRadio />
-        </RadioGroup>
+        <Radio {...props}>
+            <ValueInput>{props.children}</ValueInput>
+            <InputRadio type="radio" name={props.name} value={props.value}/>
+            <SpanRadio/>
+        </Radio>
     )
 }
 export default RadioButton

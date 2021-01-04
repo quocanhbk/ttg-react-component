@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const StyledContainer = styled.div`
-    background: ${props => props.dark ? "#212223" : "white"};
-    color: ${props => props.dark ? "White" : "#171717"};
+    background: ${props => props.theme.name === "dark" ? "#212223" : "white"};
+    color: ${props => props.theme.name === "dark" ? "White" : "#171717"};
     display: inline-block;
     padding: 8px;
     border: 1px solid #333;
