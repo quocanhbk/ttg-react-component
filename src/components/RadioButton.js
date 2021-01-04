@@ -13,17 +13,18 @@ const RadioGroup = styled.label`
     display: ${props => props.displayDirection ? 'block' : 'inline'};
 
     &:hover span{
-        background-color: #ccc;
         transition: 0.4s;
-        width: 20px;
-        height: 20px;
-        -moz-box-shadow: -3px -3px 5px 0px ${props => props.color ? "#7c717b" : "#7c600b"};
-        -webkit-box-shadow: -3px -3px 3px 3px ${props => props.color ? "#7c717b" : "#7c600b"};
-        box-shadow: -1px -1px 3px 5px ${props => props.color ? "#7c717b" : "#7c600b"};
+        box-shadow: 0px 0px 20px gray;
     }
 
     input:checked ~ span {
-        background-color: #2196F3;
+        background-color: rgb(220, 0, 78);
+        border-radius: 50%;
+        border-color: rgb(220, 0, 78);
+        &:hover{
+            width: 12px;
+            height: 12px;
+        }
     }
 
     input:checked ~ .checkmark:after {
@@ -31,12 +32,12 @@ const RadioGroup = styled.label`
     }
 
     .checkmark:after {
-        top: 9px;
-        left: 9px;
-        width: 8px;
-        height: 8px;
+        top: -5px;
+        left: -5px;
+        width: 20px;
+        height: 20px;
         border-radius: 50%;
-        background: red;
+        border: 1px solid red;
    }
 `;
 
@@ -47,7 +48,7 @@ const InputRadio = styled.input`
 `;
 
 const ValueInput = styled.strong`
-   color:${props => props.color ? "blue" : "#d9ad7f"};
+   color:${props => props.color ? "white" : "black"};
 `;
 
 
@@ -55,10 +56,11 @@ const SpanRadio = styled.span`
     position: absolute;
     top: 0;
     left: 0;
-    height: 15px;
-    width: 15px;
-    background-color: ${props => props.color ? "#eee" : "#cac0c0"};
+    height: 12px;
+    width: 12px;
+    border:1px solid gray;
     border-radius: 50%;
+    background:white;
     &:after{
         content: "";
         position: absolute;
@@ -73,9 +75,9 @@ const handleChangeValue = (value) =>{
 const RadioButton = (props) => {
     return (
         <RadioGroup name={props.name} displayDirection={props.displayDirection}>
-            <ValueInput>{props.value}</ValueInput>
+            <ValueInput color={props.color}>{props.value}</ValueInput>
             <InputRadio type="radio" name={props.name} value={props.value} onClick={()=>handleChangeValue(props)}/>
-            <SpanRadio />
+            <SpanRadio className="checkmark"/>
         </RadioGroup>
     )
 }

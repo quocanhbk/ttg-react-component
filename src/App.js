@@ -7,6 +7,7 @@ import RadioButtonGroup from './components/RadioButtonGroup'
 import DropdownMenu from "./components/DropdownMenu"
 import Select from "./components/Select"
 import Accordioncomponent from './components/Accordioncomponent'
+import FormDate from './components/FormDate'
 const appTheme = {
     light: {
         mClr: {R: 23, G: 64, B: 145},
@@ -41,11 +42,18 @@ function App() {
           <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
           <RadioButtonGroup value={data} name="group 1" displayDirection  title="Radio button"/>
           <DropdownMenu data={data} value="Dropdown"/>
-          <Select data={data} id="select1"/>
+          <Select 
+            data={data}
+            id="select1"
+          />
           <Accordioncomponent 
             background
             text="Lorem Ipsum is simply dummy text of the printing and typesetting industry."
             title="Hello word 1"
+          />
+          <FormDate 
+            id="date1"
+            title="select day"
           />
         </Container>
       </ThemeProvider>
@@ -60,12 +68,21 @@ function App() {
             <Button demo><IcoBox left/> With Icon</Button>
             <Button demo disabled><IcoBox left/> Disabled</Button>
             <ButtonGroup fullWidth data={data} displayField="name" returnField="id"/>
-            <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Radio button"/>
+            <RadioButtonGroup value={data} name="group 2" displayDirection={false} title="Radio button" color="true"/>
             <DropdownMenu data={data} value="Dropdown" color="true"/>
-            <Select color="true" background="true" data={data} id="select2"/>
+            <Select
+              color="true"
+              background="true" 
+              data={data} 
+              id="select2"/>
             <Accordioncomponent
               text="Lorem Ipsum is simply dummy text of the printing and typesetting industry." 
               title="hello world 2"
+            />
+            <FormDate 
+              color="true" 
+              id="date2"
+              title="Select day 2"
             />
         </Container>
       </ThemeProvider>
