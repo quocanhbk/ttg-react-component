@@ -20,13 +20,11 @@ const ButtonTab=styled.button`
     font-size:1rem;
     font-weight:700;
     margin-right:15px;
-    color: rgb(${props => props.type === "switch" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
-                ${props => props.type === "switch" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
-                ${props => props.type === "switch" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B});
+    color:${props => props.theme.fillColor};
     background: #fff;
     &:active {
         animation:  100ms ease out;
-        background: ${props => props.type === "switch" ? '#64b5f6' : '#eee'};
+        background: ${props => props.theme.fillColor};
         box-shadow: none;
         color:#000;
         border:0;
@@ -38,10 +36,7 @@ const ButtonTab=styled.button`
 const TabContain=styled.div`
     display:flex;
     margin-bottom:10px;
-    background:rgb(${props => props.type === "switch" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
-                ${props => props.type === "switch" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
-                ${props => props.type === "switch" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B});
-
+    background:${props => props.theme.fillColor};
 `;
 const StyleIndicator=styled.div`
     height: 3px;
@@ -83,15 +78,6 @@ const activeTab=props.children[tabs]; //click vao tab hien ra du lieu tuong ung
       <TabContent>{activeTab.props.children}</TabContent>
         </div>
     )
-}
-DivTab.defaultProps = {
-    theme: {
-        tClr: {R: 23, G: 64, B: 145},
-        mClr: {R: 255, G: 255, B: 255},
-    },
-    
-    name: "switch",
-    displayMode: "edit"
 }
 Tabs.propTypes = {
     selected: PropTypes.number,
