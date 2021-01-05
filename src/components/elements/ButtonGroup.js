@@ -31,7 +31,7 @@ const Cover = styled.div`
 const ButtonGroup = (props) => {
     //Catching errors
     props.children.forEach(child => {
-        if (child.type != Button)
+        if (child.type !== Button)
             throw Error("Children of ButtonGroup must be Button")
         else if (child.props.value === undefined)
             throw Error("Children must contain props 'value' ")
@@ -42,17 +42,19 @@ const ButtonGroup = (props) => {
 
     const [Value, setValue] = useState(props.defaultValue)
 
-    useEffect(() => {
-        let defElement = props.children.find(child => child.props.default)
-        if (defElement) {
-            handleClick(defElement.props.value)
-        }
-    }, [])
-
     const handleClick = (x) => {
         setValue(x)
         props.onSelect(x)
     }
+    useEffect(() => {
+        let defElement = props.children.find(child => child.props.default)
+        if (defElement) {
+            setValue(defElement.props.value)
+            props.onSelect(defElement.props.value)
+        }
+    }, [props])
+
+    
     return (
         <StyledButtonGroup {...props}>
             {props.displayMode !== "edit" && <Cover/>}

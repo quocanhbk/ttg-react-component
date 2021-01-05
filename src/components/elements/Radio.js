@@ -29,6 +29,10 @@ const InputRadio = styled.input`
 const ValueInput = styled.p`
     color:${props => props.theme.name === "light" ? "black" : "white"};
     display: inline-block;
+
+    &:disabled {
+        color: #A3A3A3;
+    }
 `;
 
 const SpanRadio = styled.span`
