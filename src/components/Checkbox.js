@@ -64,14 +64,11 @@ const SpanChkName= styled.span`
     color:${props => props.theme.name === "light" ? "black" : "white"};
 `;
 
-const handleChangeValue = (value) =>{
-    console.log(value);
-}
 
 const Checkbox = (props) => {
     return(
         <LabelCheckbox {...props}>
-            <InputChkbox type="checkbox" name={props.name} value={props.value} onClick={()=>handleChangeValue(props)}/>
+            <InputChkbox type="checkbox" name={props.name}  value={props.value}/>
             <SpanChkBox/>
             <SpanChkName>{props.children}</SpanChkName>
         </LabelCheckbox>

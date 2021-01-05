@@ -9,6 +9,8 @@ import CheckboxGroup from './components/CheckboxGroup'
 import Select from './components/Select'
 import ToggleGroup from './components/ToggleGroup'
 import ToggleSwitch from './components/ToggleSwitch'
+import Tabs from './components/Tabs'
+import TabPane from './components/TabPane'
 
 const appTheme = {
   light: {
@@ -57,7 +59,18 @@ function App() {
             <ToggleSwitch value={1}>One</ToggleSwitch>
             <ToggleSwitch value={2}>Two</ToggleSwitch>
             <ToggleSwitch value={3}>Three</ToggleSwitch>
-          </ToggleGroup>  
+          </ToggleGroup>
+          <Tabs>
+            <TabPane name="Tab1">
+            Content Tab 1  
+            </TabPane>
+            <TabPane name="Tab2">
+            Content Tab 2  
+            </TabPane>
+            <TabPane name="Tab3">
+            Content Tab 3  
+            </TabPane>  
+          </Tabs>  
         </Container>
       </ThemeProvider>
     </div>
