@@ -1,52 +1,43 @@
 import React, { } from 'react'
-import ToggleSwitch from "./ToggleSwitch"
 import styled from 'styled-components'
+import  ToggleSwitch  from './ToggleSwitch'
 
-const ToggleGroup = (props) =>{
-    const select = props.value;
-    const display= props.displayDirection;
-    const StyleChkGroup = styled.div`
-    margin: 8px 0;
-    display:block;
-    min-width:auto;
-    margin-bottom: 10px;
-  
-    position:relative;
+    const StyleGroup = styled.div`
+    display: ${props => props.fullWidth ? "flex" : "inline-flex"};
+    flex-direction: ${props => props.horizontal ? "row" : "column"};
     &>div{
-     display:flex;
-     flex-direction: ${display===false ? 'row' : 'column'};
+        justify-content: ${props => props.horizontal ? "" : "space-between"}
     }
-    &>div>div{
-        justify-content:space-between;
+    &>div>span{
+        order:${props => props.position ? '2' : '1'};
+    }
+    &>div>label{
+        order:${props => props.position ? '1' : '2'};
     }
 `;
-
-
-    StyleChkGroup.defaultProps = {
-        theme: {
-            tClr: {R: 23, G: 64, B: 145},
-            mClr: {R: 255, G: 255, B: 255},
-        },
-        
-        name: "switch",
-        displayMode: "edit"
+const ToggleGroup = (props) =>{
+    props.children.forEach(child => {
+        if (child.type !== ToggleSwitch)
+            throw Error("Children of ToggleGroup must be ToggleSwitch")
+        else if (child.props.value === undefined)
+            throw Error("Children must contain props 'value' ")
+    })
+    if (props.children.filter(child => child.props.default).length > 1)
+        throw Error("Cannot have more than one default value")
+    const handleClick = (value) => {
+        props.onSelect(value)
     }
     return (
-        <>
-        <StyleChkGroup>
-            <div displayDirection={props.displayDirection}>
+        <StyleGroup {...props}>
         {
-            select.map((item, index) => {
-                return(
-                    <ToggleSwitch value={item.name} key={index} name={props.name}/>
-
-                )
+            React.Children.map(props.children, child => {
+                return React.cloneElement(child, {name: props.name || (new Date()).getTime(), onClick: () => handleClick(child.props.value)})
             })
         }
-            </div>
-        </StyleChkGroup>
-        </>
+        </StyleGroup>
     )
 }
-
+ToggleGroup.defaultProps = {
+    onSelect: (x) => console.log(x)
+}
 export default ToggleGroup

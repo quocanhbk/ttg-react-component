@@ -1,17 +1,15 @@
 import styled from 'styled-components'
+import {getFader} from '../utils/color'
 
 const LabelCheckbox = styled.label`
-    display: block;
+    display: flex;
     position: relative;
-    padding-left: 35px;
     margin: 5px 0 10px 0;
     cursor: pointer;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
-    margin-left:10px;
-    
+    user-select: none;    
 `;
 
 const InputChkbox = styled.input`
@@ -20,12 +18,11 @@ const InputChkbox = styled.input`
     display:block;
     position: absolute;
     opacity:0;
+
     cursor:pointer;
     &:checked ~ span:nth-child(2){
         transition: 0.4s;
-        background: rgb(${props => props.type === "group check1" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
-        ${props => props.type === "group check1" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
-        ${props => props.type === "group check1" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B});
+        background: transparent;
     }
     &:checked ~ span:after {
         display: block;
@@ -34,7 +31,7 @@ const InputChkbox = styled.input`
 
 const SpanChkBox = styled.span`
     display:block;  
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     height:22px;
@@ -50,7 +47,7 @@ const SpanChkBox = styled.span`
         top: 2px;
         width: 4px;
         height: 8px;
-        border: solid white;
+        border: solid ${props => props.theme.fillColor};
         border-width: 0 3px 3px 0;
         -webkit-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
@@ -58,51 +55,23 @@ const SpanChkBox = styled.span`
     }
     &:hover{
         transition: 0.4s;
-        -moz-box-shadow: -1px 0px 4px 3px   
-        rgba(${props => props.type === "group check1" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
-            ${props => props.type === "group check1" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
-            ${props => props.type === "group check1" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B},
-            ${props => props.type === "group check1" ? 0.15: 0.15});
-        -webkit-box-shadow: -1px 0px 4px 3px   
-        rgba(${props => props.type === "group check1" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
-            ${props => props.type === "group check1" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
-            ${props => props.type === "group check1" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B},
-            ${props => props.type === "group check1" ? 0.15: 0.15});
         box-shadow: -1px 0px 4px 3px   
-            rgba(${props => props.type === "group check1" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
-                ${props => props.type === "group check1" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
-                ${props => props.type === "group check1" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B},
-                ${props => props.type === "group check1" ? 0.15: 0.15});
-            }
+        ${props => getFader(props.theme.fillColor, 0.8)};
 `;
 const SpanChkName= styled.span`
     display:block;
     font-size:1rem;
-    font-weight:700;
-    color:  rgb(${props => props.type === "group check1" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
-                ${props => props.type === "group check1" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
-                ${props => props.type === "group check1" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B});
-
+    margin: 0 10px;
+    color:${props => props.theme.name === "light" ? "black" : "white"};
 `;
-LabelCheckbox.defaultProps = {
-    theme: {
-        tClr: {R: 23, G: 64, B: 145},
-        mClr: {R: 255, G: 255, B: 255},
-    },
-    
-    name: "group check1",
-    displayMode: "edit"
-}
-const handleChangeValue = (value) =>{
-    console.log(value);
-}
+
 
 const Checkbox = (props) => {
     return(
-        <LabelCheckbox>
-            <InputChkbox {...props} type="checkbox"  onClick={()=>handleChangeValue(props)}/>
+        <LabelCheckbox {...props}>
+            <InputChkbox type="checkbox" name={props.name}  value={props.value}/>
             <SpanChkBox/>
-            <SpanChkName>{props.value}</SpanChkName>
+            <SpanChkName>{props.children}</SpanChkName>
         </LabelCheckbox>
     )
 }

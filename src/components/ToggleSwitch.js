@@ -11,10 +11,9 @@ const StyleDiv=styled.div`
 `;
 const LabelToggle = styled.label`
     position: relative;
-    display:inline-block;
+    display:flex;
     width: 40px;
     height: 20px;
-    
 `;
 const StyleInput = styled.input`
     border: 0;
@@ -36,9 +35,7 @@ const StyleInput = styled.input`
     }
     &:checked ~ .toggle-switch{
         transition: 0.4s;
-        background:rgb(${props => props.type === "switch" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
-        ${props => props.type === "switch" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
-        ${props => props.type === "switch" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B});
+        background:${props => props.theme.toggleColor};
     }
 `;
 const StyleSpan = styled.span`
@@ -67,13 +64,9 @@ const StyleSpan = styled.span`
 `;
 const StyleName= styled.span`
     font-size:1rem;
-    font-weight:700;
     display:block;
-    margin-right:15px;
-    color:  rgb(${props => props.type === "switch" ? props=>props.theme.tClr.R : props=>props.theme.mClr.R},
-                ${props => props.type === "switch" ? props=>props.theme.tClr.G : props=>props.theme.mClr.G},
-                ${props => props.type === "switch" ? props=>props.theme.tClr.B : props=>props.theme.mClr.B});
-
+    margin: 0 10px;
+    color:${props => props.theme.name === "light" ? "black" : "white"};
 `;
 const ToggleButton = (props) => {
     const [toggle,setToggle] = useState(false); //kiem tra khi check vao toggle
@@ -96,10 +89,10 @@ const ToggleButton = (props) => {
     }, className);
     
     return(
-        <StyleDiv>     
-            <StyleName>{props.value}</StyleName>
+        <StyleDiv {...props}>     
+            <StyleName>{props.children}</StyleName>
             <LabelToggle onChange={triggerToogle} className={toggleClasses}>
-                <StyleInput {...props} type="checkbox" />
+                <StyleInput type="checkbox" />
                 <StyleSpan className="toggle-switch"/>
             </LabelToggle>
         </StyleDiv>
@@ -119,13 +112,5 @@ ToggleButton.prototype={
         })
     ])
 }
-LabelToggle.defaultProps = {
-    theme: {
-        tClr: {R: 23, G: 64, B: 145},
-        mClr: {R: 255, G: 255, B: 255},
-    },
-    
-    name: "switch",
-    displayMode: "edit"
-}
+
 export default ToggleButton;

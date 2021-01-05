@@ -4,7 +4,7 @@ import Prototype from 'prop-types'
 const DivTab = styled.div`
     display:block;
     flex:1;
-    background:#eee;
+    background:transparent;
     
 `;
 const TabPane = (props) => {
