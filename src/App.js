@@ -16,12 +16,14 @@ const appTheme = {
   light: {
     name: "light",
     textColor: "#FFFFFF",
-    fillColor: "#174091"
+    fillColor: "#174091",
+    toggleColor: "#174091"
 },
 dark: {
     name: "dark",
     textColor: "#000000",
-    fillColor: "#A59C87"
+    fillColor: "#A59C87",
+    toggleColor: "transparent"
 }
 }
 
@@ -55,7 +57,7 @@ function App() {
             <Checkbox value={3}>Three</Checkbox>
           </CheckboxGroup> 
           <span>Toggle</span> 
-          <ToggleGroup fullWidth horizontal={false} name="check1" onSelect={(x) => setValue(x)} >
+          <ToggleGroup fullWidth horizontal position name="check1" onSelect={(x) => setValue(x)} >
             <ToggleSwitch value={1}>One</ToggleSwitch>
             <ToggleSwitch value={2}>Two</ToggleSwitch>
             <ToggleSwitch value={3}>Three</ToggleSwitch>

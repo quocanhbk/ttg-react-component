@@ -14,14 +14,14 @@ const ButtonTab=styled.button`
     display:block;
     position:relative;
     border:0;
+    border-radius:0;
     cursor: pointer;
     width:100%;
     padding: 5px 0;
     font-size:1rem;
     font-weight:700;
-    margin-right:15px;
-    color:${props => props.theme.fillColor};
-    background: #fff;
+    color:${props => props.theme.textColor};
+    background:${props => props.theme.fillColor};
     &:active {
         animation:  100ms ease out;
         background: ${props => props.theme.fillColor};

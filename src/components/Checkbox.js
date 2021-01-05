@@ -18,6 +18,7 @@ const InputChkbox = styled.input`
     display:block;
     position: absolute;
     opacity:0;
+
     cursor:pointer;
     &:checked ~ span:nth-child(2){
         transition: 0.4s;
