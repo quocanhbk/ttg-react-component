@@ -2,7 +2,6 @@ class Color {
     constructor (init = "#000000") {
         this.value = this.getArray(init);
     }
-
     getArray = (init) => {
         let arr = [init.slice(1, 3), init.slice(3, 5), init.slice(5, 7)]
         let clr = [0,0,0]
@@ -35,6 +34,7 @@ class Color {
         return 'RGB(' + newClr[0] + ', ' + newClr[1] + ', ' + newClr[2] + ')'
     }
 }
+export default Color
 
 export const getDarker = (hex, shade = 20) => {
     let arr = [hex.slice(1, 3), hex.slice(3, 5), hex.slice(5, 7)]
@@ -76,5 +76,3 @@ export const getFader = (hex, opa = 0.2) => {
     });
     return 'RGBA(' + clr[0] + ', ' + clr[1] + ', ' + clr[2] + ', ' + opa + ')'
 }
-
-export default Color

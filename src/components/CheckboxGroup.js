@@ -13,12 +13,14 @@ const CheckboxGroup = (props) =>{
         <StyleChkGroup {...props}>
         {
             React.Children.map(props.children, child => {
-                return React.cloneElement(child, {name: props.name})
+                return React.cloneElement(child, {name: props.name,onClick:()=> props.onSelect(child.props.value)})
             })
         }
         </StyleChkGroup>
     )
 }
-
+CheckboxGroup.defaultProps = {
+    onSelect: (x) => console.log(x)
+}
 
 export default CheckboxGroup
