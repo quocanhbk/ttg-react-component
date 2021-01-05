@@ -15,11 +15,13 @@ const ToggleGroup = (props) =>{
         <StyleGroup {...props}>
         {
             React.Children.map(props.children, child => {
-                return React.cloneElement(child, {name: props.name})
+                return React.cloneElement(child, {name: props.name,onClick:()=> props.onSelect(child.props.value)})
             })
         }
         </StyleGroup>
     )
 }
-
+ToggleGroup.defaultProps = {
+    onSelect: (x) => console.log(x)
+}
 export default ToggleGroup

@@ -47,7 +47,7 @@ function App() {
           </RadioGroup> */}
           <Select data={data} id={1} color="true" name="one"/>
           <span>Checkbox</span>
-          <CheckboxGroup fullWidth horizontal name="ra1" >
+          <CheckboxGroup fullWidth horizontal name="ra1" onSelect={(x) =>setValue(x)} >
             <Checkbox value={1}>One</Checkbox>
             <Checkbox value={2}>Two</Checkbox>
             <Checkbox value={3}>Three</Checkbox>
