@@ -77,7 +77,7 @@ const StyleName= styled.span`
 `;
 const ToggleButton = (props) => {
     const [toggle,setToggle] = useState(false); //kiem tra khi check vao toggle
-    const {defaultChecked,onChange,disabled,className} =props;
+    const {defaultChecked,onChange,disabled,className} = props;
     const triggerToogle = ()=>{
         if(disabled) {return;}
         setToggle(!toggle);

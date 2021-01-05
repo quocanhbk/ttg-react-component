@@ -1,6 +1,6 @@
 import React, { } from 'react'
 import styled from 'styled-components'
-import {getFader} from '../utils/color'
+import {getFader} from '../../utils/color'
 const Radio = styled.label`
     display: inline-block;
     position: relative;
