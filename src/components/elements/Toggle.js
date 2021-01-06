@@ -72,7 +72,7 @@ const StyleName= styled.span`
     color: ${props => props.displayMode === "disabled" ? "#A3A3A3": props.theme.textColor};
 
 `;
-const ToggleButton = (props) => {
+const Toggle = (props) => {
     const [toggle,setToggle] = useState(false); //kiem tra khi check vao toggle
     const [checked, setChecked] = useState(props.default)
     const {defaultChecked,onChange,disabled,className} = props;
@@ -115,7 +115,7 @@ const ToggleButton = (props) => {
 
     )
 }
-ToggleButton.prototype={
+Toggle.propTypes = {
     disable:PropTypes.bool,
     defaultChecked:PropTypes.bool,
     className: PropTypes.string,
@@ -133,4 +133,5 @@ ToggleButton.defaultProps = {
     default: false,
     displayMode: "edit"
 }
-export default ToggleButton;
+
+export default Toggle;

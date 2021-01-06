@@ -10,8 +10,9 @@ const StyledContainer = styled.div`
     border-radius: 8px;
     margin: 8px;
 
-    & h2 {
+    & h3 {
         font-weight: 500;
+        padding-bottom: 0.5rem;
     }
 `;
 
@@ -19,7 +20,7 @@ const Container = (props) => {
     return (
         <StyledContainer {...props}>
             {props.title && <h3>{props.title}</h3>}
-            {props.headline && <h4>{props.headline}</h4>}
+            {props.headline && <h3>{props.headline}</h3>}
             {props.children}
         </StyledContainer>
     )

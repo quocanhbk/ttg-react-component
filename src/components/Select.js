@@ -30,10 +30,10 @@ const Select = () => {
     useOutside(wrapper)
     return (
         <div>
-        <button onClick={() => setState(false)}>Remove combobox</button>
-        {state && <StyledComboBox onClick={() => console.log("Click inside")} ref={wrapper}>
-            Combobox
-        </StyledComboBox>}
+            <button onClick={() => setState(false)}>Remove combobox</button>
+            {state && <StyledComboBox onClick={() => console.log("Click inside")} ref={wrapper}>
+                Combobox
+            </StyledComboBox>}
         </div>
     )
 }

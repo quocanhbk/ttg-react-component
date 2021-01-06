@@ -1,6 +1,6 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Toggle, ToggleGroup} from './components/elements'
 import theme from './utils/theme'
 import {useState} from 'react'
 import Box from './components/Box'
@@ -34,7 +34,7 @@ function Quanh() {
             </ButtonGroup>
           </Container>
 
-          <hr/>
+          <br/>
 
           <Container title={"Elements"} fullWidth>
             <Box title="Checkbox Group">
@@ -64,15 +64,16 @@ function Quanh() {
               </ButtonGroup>
               <Code>{JSON.stringify(buttonGroupValue)}</Code>
             </Box>
-            <Box title="Button">
-              <div>
-              <Button size="small"displayMode={mode} demo onClick={() => setButtonValue("Clicked One")}>One</Button>
-              <Button size="medium"displayMode={mode} demo onClick={() => setButtonValue("Clicked One")}>One</Button>
-              <Button size="large"displayMode={mode} demo onClick={() => setButtonValue("Clicked One")}>One</Button>
-              <Button displayMode={mode} demo type="outline" onClick={() => setButtonValue("Clicked Two")}>Two</Button>
-              <Button displayMode={mode} demo type="text" onClick={() => setButtonValue("Clicked Three")}>Three</Button>
-              </div>
-              <Code>{JSON.stringify(buttonValue)}</Code>
+            <Box title="Button" block>
+              <Button size="small" displayMode={mode} demo onClick={() => setButtonValue("Clicked One")}>Small</Button>
+              <Button size="medium" displayMode={mode} demo onClick={() => setButtonValue("Clicked One")}>Medium</Button>
+              <Button size="large" displayMode={mode} demo onClick={() => setButtonValue("Clicked One")}>Large</Button>
+              <Button size="small" displayMode={mode} demo type="outline" onClick={() => setButtonValue("Clicked Two")}>Small</Button>
+              <Button size="medium" displayMode={mode} demo type="outline" onClick={() => setButtonValue("Clicked Three")}>Medium</Button>
+              <Button size="large" displayMode={mode} demo type="outline" onClick={() => setButtonValue("Clicked Three")}>Large</Button>
+              <Button size="small" displayMode={mode} demo type="text" onClick={() => setButtonValue("Clicked Two")}>Small</Button>
+              <Button size="medium" displayMode={mode} demo type="text" onClick={() => setButtonValue("Clicked Three")}>Medium</Button>
+              <Button size="large" displayMode={mode} demo type="text" onClick={() => setButtonValue("Clicked Three")}>Large</Button>
             </Box>
             
 

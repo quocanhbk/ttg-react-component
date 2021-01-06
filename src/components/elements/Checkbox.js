@@ -73,7 +73,7 @@ const Checkbox = (props) => {
 
     const handleSelect = (e) => {
         setChecked(e.target.checked)
-        props.onSelect(e.target.value, e.target.checked)
+        props.onSelect(e.target.checked)
     }
 
     return(
@@ -92,7 +92,7 @@ const Checkbox = (props) => {
 }
 
 Checkbox.defaultProps = {
-    onSelect: (x,y) => console.log(x,y),
+    onSelect: (x) => console.log(x),
     default: false,
     displayMode: "edit"
 }
