@@ -10,7 +10,7 @@ function App() {
   return (
     <div>
       <ThemeProvider theme={theme.light}>
-        <Quan/>
+        <Quanh/>
       </ThemeProvider>
     </div>
   )

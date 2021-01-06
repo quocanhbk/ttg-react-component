@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 
 const StyledBox = styled.div`
     border: 1px solid #A3A3A3;
@@ -18,12 +18,16 @@ const StyledBox = styled.div`
         background-color: transparent;
         padding: 8px;
         gap: 10px;
+        ${props => props.block && css `
+            display: block;
+        `}
     }
+    
 `;
 
 const Box = (props) => {
     return (
-        <StyledBox>
+        <StyledBox {...props}>
             <h4>{props.title}</h4>
             <div className="grid">
             {props.children}
