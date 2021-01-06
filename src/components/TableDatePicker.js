@@ -6,10 +6,13 @@ import styled from 'styled-components'
 
 const StyleTable = styled.div`
     position:relative;
-    margin:8px;
     & input{
         padding:3px 5px;
         font-size:1rem;
+        border:1px solid ${props => props.theme.fillColor};
+        background: ${props => props.theme.backgroundColor};
+        color: ${props => props.theme.textColor};
+
     }
     & .react-datepicker__day-name{
         color: ${props => props.theme.backgroundColor};
