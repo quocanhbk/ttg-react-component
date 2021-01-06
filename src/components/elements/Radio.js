@@ -18,8 +18,11 @@ const InputRadio = styled.input`
 
     //update the dot when checked
     &:checked ~ span:after {
-        background-color: ${props => props.theme.fillColor};
+        background-color: ${props => props.displayMode === "disabled" ? "#A0A0A0" : props.theme.fillColor};
         border-radius: 50%;
+    }
+    &:checked ~ span {
+        border-color: ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.fillColor};
     }
 `;
 
@@ -36,7 +39,7 @@ const SpanRadio = styled.span`
     left: 0rem;
     height: 1.2rem;
     width: 1.2rem;
-    border: 2px solid ${props => props.displayMode === "disabled" ? "#C3C3C3" : props.theme.fillColor};
+    border: 2px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : getFader(props.theme.fillColor, 0.4)};
     border-radius: 50%;
     background: transparent;
 
@@ -67,9 +70,9 @@ const Radio = (props) => {
             throw Error("Radio must be placed in RadioGroup")
     })
     return (
-        <RadioLabel>
+        <RadioLabel onClick={(e) => props.onSelect(e.target.value)}>
             <ValueInput displayMode={props.displayMode}>{props.children}</ValueInput>
-            <InputRadio type="radio" name={props.name} value={props.value} defaultChecked={props.default}/>
+            <InputRadio displayMode={props.displayMode} type="radio" name={props.name} value={props.value} defaultChecked={props.default}/>
             <SpanRadio displayMode={props.displayMode}/>
         </RadioLabel>
     )

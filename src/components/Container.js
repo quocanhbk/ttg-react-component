@@ -18,8 +18,8 @@ const StyledContainer = styled.div`
 const Container = (props) => {
     return (
         <StyledContainer {...props}>
-            <h3>{props.title}</h3>
-            <div>{props.headline}</div>
+            {props.title && <h3>{props.title}</h3>}
+            {props.headline && <h4>{props.headline}</h4>}
             {props.children}
         </StyledContainer>
     )

@@ -12,8 +12,8 @@ const StyledButton = styled.button`
     margin: ${props => props.demo? "8px": "0px"};
     padding: ${props => props.ingroup ? "4px 10px" : props.type === "outline" ? "4px 10px" : "6px 12px"};
     transition: background 0.15s linear;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: ${props => props.size === "large" ? "1.2rem" : props.size === "small" ? "0.8rem" : "1rem"};
+    font-weight: ${props => props.fontWeight ? props.fontWeight : 500};
     cursor: pointer;
     outline: 0;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
@@ -55,6 +55,7 @@ const Button = (props) => {
 Button.defaultProps = {
     type: "contained",
     displayMode: "edit",
-    default: false
+    default: false,
+    size: "medium"
 }
 export default Button

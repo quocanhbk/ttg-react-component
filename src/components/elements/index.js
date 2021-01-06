@@ -4,5 +4,6 @@ import Radio from './Radio'
 import RadioGroup from './RadioGroup'
 import Select from './Select'
 import Checkbox from './Checkbox'
-import CheckBoxGroup from './CheckboxGroup'
-export {Button, ButtonGroup, Radio, RadioGroup, Select, Checkbox, CheckBoxGroup}
+import CheckboxGroup from './CheckboxGroup'
+
+export {Button, ButtonGroup, Radio, RadioGroup, Select, Checkbox, CheckboxGroup}
