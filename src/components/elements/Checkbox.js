@@ -6,17 +6,19 @@ const LabelCheckbox = styled.label`
     position: relative;
     padding: 4px 8px 4px 1.5rem;
     cursor: pointer;
-    user-select: none;    
+    user-select: none;
+    pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
+
 `;
 
 const InputChkbox = styled.input`
     display: none;
-
+    
     &:checked ~ span:after {
-        border-color: ${props => props.theme.fillColor};
+        border-color: ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.fillColor};
     }
     &:checked ~ span {
-        border-color: ${props => props.theme.fillColor};
+        border-color: ${props => props.displayMode === "disabled" ? "#C#C#C#" : props.theme.fillColor};
     }
 `;
 
@@ -30,7 +32,7 @@ const SpanChkBox = styled.span`
     width: 1.2rem;
     background-color: transparent;
     border-radius: 4px;
-    border:2px solid ${props => getFader(props.theme.fillColor, 0.3)};;
+    border:2px solid ${props => props.displayMode === "disabled" ? "#C3C3C3" : getFader(props.theme.fillColor, 0.3)};
 
     &:after{
         transition: border-color 0.15s linear;
@@ -53,21 +55,42 @@ const SpanChkBox = styled.span`
 const SpanChkName= styled.span`
     display:block;
     font-size:1rem;
-    color: ${props => props.theme.textColor};
+    color: ${props => props.displayMode === "disabled" ? "#A3A3A3": props.theme.fillColor};
+
+    &:disabled {
+        color: red;
+    }
 `;
 
 
 const Checkbox = (props) => {
+    const [mount, setMount] = useState(false)
     const [checked, setChecked] = useState(props.default)
-    useEffect(() => {
 
-    } )
+    useEffect(() => {
+        if (!mount) {
+            props.onSelect(checked)
+            setMount(true)
+        }
+    },[])
+
+    const handleSelect = (e) => {
+        setChecked(e.target.checked)
+        props.onSelect(e.target.checked)
+    }
+
     return(
-        <LabelCheckbox {...props}>
-            <InputChkbox type="checkbox" name={props.name} value={props.value} onChange={(e) => setChecked(e.target.checked)} defaultChecked={props.default}/>
-            <SpanChkBox/>
-            <SpanChkName>{props.children}</SpanChkName>
+        <LabelCheckbox {...props} displayMode={props.disabled ? "disabled" : props.displayMode}>
+            <InputChkbox displayMode={props.disabled ? "disabled" : props.displayMode} type="checkbox" name={props.name} value={props.value} onChange={handleSelect} defaultChecked={props.default}/>
+            <SpanChkBox displayMode={props.disabled ? "disabled" : props.displayMode}/>
+            <SpanChkName displayMode={props.disabled ? "disabled" : props.displayMode}>{props.children}</SpanChkName>
         </LabelCheckbox>
     )
+}
+
+Checkbox.defaultProps = {
+    onSelect: (x) => console.log(x),
+    default: false,
+    displayMode: "edit"
 }
 export default Checkbox
