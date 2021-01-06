@@ -63,7 +63,7 @@ const SpanComponent = styled.span``;
 
 const TextInput = (props) =>{
     return(
-        <DivInput>
+        <DivInput {...props}>
             <InputComponent type="text" name="input_text" autoComplete="off" required/>
             <LabelComponent htmlFor="name" >
                 <SpanComponent>Name</SpanComponent>

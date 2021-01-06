@@ -1,26 +1,27 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
+import {Button, ButtonGroup} from './components/elements'
 import theme from './utils/theme'
-import {Checkbox, CheckBoxGroup, Radio, RadioGroup, Button, ButtonGroup} from './components/elements'
-import TableDatePicker from "./components/TableDatePicker"
+
 
 const data = [
-  {id: 1, name:"banana"},
-  {id: 2, name:"Orange"},
-  {id: 3,name:"Mango"}
+  {id: 1, name:"Apple"},
+  {id: 2, name:"Banana"},
+  {id: 3, name:"Orange"},
+  {id: 4, name:"Mango"},
+  {id: 5, name:"Kiwi"}
 ]
 
 function App() {
   return (
-    <div style={{display: "flex"}}>
+    <div>
       <ThemeProvider theme={theme.light}>
-        <Container title="Light">
-        <ButtonGroup demo>
+        <Container title="Light Theme">
+          <ButtonGroup>
             <Button value={1}>One</Button>
             <Button value={2}>Two</Button>
             <Button value={3}>Three</Button>
           </ButtonGroup>
-          <TableDatePicker>Don't forget</TableDatePicker>
         </Container>
       </ThemeProvider>
     </div>
