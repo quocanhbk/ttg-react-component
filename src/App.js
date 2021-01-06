@@ -1,20 +1,7 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-<<<<<<< HEAD
-import TextInput from './components/TextInput'
-=======
-import {useState, useEffect} from 'react'
-
-// import RadioGroup from './components/RadioGroup'
-// import RadioButton from './components/RadioButton'
-import Checkbox from './components/Checkbox'
-import CheckboxGroup from './components/CheckboxGroup'
-import Select from './components/Select'
-import ToggleGroup from './components/ToggleGroup'
-import ToggleSwitch from './components/ToggleSwitch'
-import Tabs from './components/Tabs'
-import TabPane from './components/TabPane'
->>>>>>> cd098f4048feb680a552b6e4bc605c1c190b2a56
+import Button from './components/elements/Button'
+import ButtonGroup from './components/elements/ButtonGroup'
 
 const appTheme = {
   light: {
@@ -31,51 +18,19 @@ dark: {
 }
 }
 
-function App() {
-  const [value, setValue] = useState("")
+const data = [
+  {id: 1, name:"Apple"},
+  {id: 2, name:"Banana"},
+  {id: 3, name:"Orange"},
+  {id: 4, name:"Mango"},
+  {id: 5, name:"Kiwi"}
+]
 
-  useEffect(() => {
-    console.log(value)
-  })
+function App() {
   return (
     <div>
       <ThemeProvider theme={appTheme.light}>
-<<<<<<< HEAD
         <Container>
-          <TextInput></TextInput>
-=======
-        <Container title="Light Theme">
-          <span>Radio</span>
-          {/* <RadioGroup fullWidth horizontal name="ra1" onSelect={(x) => setValue(x)}>
-            <RadioButton value={1}>One</RadioButton>
-            <RadioButton value={2}>Two</RadioButton>
-            <RadioButton value={3}>Three</RadioButton>
-          </RadioGroup> */}
-          <Select data={data} id={1} color="true" name="one"/>
-          <span>Checkbox</span>
-          <CheckboxGroup fullWidth horizontal name="ra1" onSelect={(x) =>setValue(x)} >
-            <Checkbox value={1}>One</Checkbox>
-            <Checkbox value={2}>Two</Checkbox>
-            <Checkbox value={3}>Three</Checkbox>
-          </CheckboxGroup> 
-          <span>Toggle</span> 
-          <ToggleGroup fullWidth horizontal position name="check1" onSelect={(x) => setValue(x)} >
-            <ToggleSwitch value={1}>One</ToggleSwitch>
-            <ToggleSwitch value={2}>Two</ToggleSwitch>
-            <ToggleSwitch value={3}>Three</ToggleSwitch>
-          </ToggleGroup>
-          <Tabs>
-            <TabPane name="Tab1">
-            Content Tab 1  
-            </TabPane>
-            <TabPane name="Tab2">
-            Content Tab 2  
-            </TabPane>
-            <TabPane name="Tab3">
-            Content Tab 3  
-            </TabPane>  
-          </Tabs>  
->>>>>>> cd098f4048feb680a552b6e4bc605c1c190b2a56
         </Container>
       </ThemeProvider>
     </div>

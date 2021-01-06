@@ -19,21 +19,22 @@ StyledButtonGroup.defaultProps = {
         fillColor: "#174091"
     }
 }
-const ButtonGroup = (props) => {
-    //Catching errors
-    props.children.forEach(child => {
-        if (child.type != Button)
-            throw Error("Children of ButtonGroup must be Button")
-        else if (child.props.value === undefined)
-            throw Error("Children must contain props 'value' ")
-    })
-    if (props.children.filter(child => child.props.default).length > 1)
-        throw Error("Cannot have more than one default value")
-
-    
+const ButtonGroup = (props) => {    
     const [Value, setValue] = useState(props.defaultValue)
 
     useEffect(() => {
+        // Catching errors
+        console.log(props.children)
+        props.children.forEach(child => {
+            if (child.type != Button)
+                throw Error("Children of ButtonGroup must be Button")
+            else if (child.props.value === undefined)
+                throw Error("Children must contain props 'value' ")
+        })
+        if (props.children.filter(child => child.props.default).length > 1)
+        throw Error("Cannot have more than one default value")
+
+        // setup default value
         let defElement = props.children.find(child => child.props.default)
         if (defElement) {
             handleClick(defElement.props.value)
@@ -53,7 +54,8 @@ const ButtonGroup = (props) => {
                         fullWidth: false, demo: false,
                         ingroup: idx === 0 ? "left" : idx === props.children.length - 1 ? "right" : "middle", 
                         type: Value === child.props.value ? "contained": "outline", 
-                        onClick: () => handleClick(child.props.value)})
+                        onClick: () => handleClick(child.props.value)
+                    })
             })}
         </StyledButtonGroup>
     )
