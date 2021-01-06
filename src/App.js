@@ -1,8 +1,11 @@
 import Quanh from './Quanh'
+import Quan from './Quan'
+
+
 
 function App() {
   return (
-    <Quanh/>
+    <Quan/>
   )
 }
 
