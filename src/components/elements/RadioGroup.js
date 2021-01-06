@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import RadioButton from './RadioButton'
+import RadioButton from './Radio'
 import styled from 'styled-components'
 
 const StyledRadioGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     flex-direction: ${props => props.horizontal ? "row" : "column"};
+    pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
 `
 
 const RadioGroup = (props) => {
@@ -17,27 +18,38 @@ const RadioGroup = (props) => {
     })
     if (props.children.filter(child => child.props.default).length > 1)
         throw Error("Cannot have more than one default value")
+    //================
+
     const handleClick = (value) => {
         props.onSelect(value)
     }
+
     useEffect(() => {
         let defElement = props.children.find(child => child.props.default)
         if (defElement) {
-            handleClick(defElement.props.value)
+            props.onSelect(defElement.props.value)
         }
-    }, [])
+    }, [props])
+
     return (
         <StyledRadioGroup {...props}>
         {
             React.Children.map(props.children, child => {
-                return React.cloneElement(child, {name: props.name || (new Date()).getTime(), onClick: () => handleClick(child.props.value)})
+                return React.cloneElement(
+                    child, 
+                    {
+                        name: props.name || (new Date()).getTime(), 
+                        onClick: () => handleClick(child.props.value), 
+                        displayMode: props.displayMode
+                    })
             })
         }
         </StyledRadioGroup>
     )
 }
 RadioGroup.defaultProps = {
-    onSelect: (x) => console.log(x)
+    onSelect: (x) => console.log(x),
+    displayMode: "edit"
 }
 
 export default RadioGroup

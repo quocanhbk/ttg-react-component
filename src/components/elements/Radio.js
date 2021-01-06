@@ -1,7 +1,8 @@
-import React, { } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import {getFader} from '../../utils/color'
-const Radio = styled.label`
+
+const RadioLabel = styled.label`
     display: inline-block;
     position: relative;
     padding: 4px 8px 4px 1.5rem;
@@ -14,9 +15,7 @@ const Radio = styled.label`
 `;
 
 const InputRadio = styled.input`
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+    display: none;
 
     //update the dot when checked
     &:checked ~ span:after {
@@ -26,10 +25,13 @@ const InputRadio = styled.input`
 `;
 
 const ValueInput = styled.p`
-    color:${props => props.theme.name === "light" ? "black" : "white"};
+    color:${props => props.theme.textColor};
     display: inline-block;
-`;
 
+    &:disabled {
+        color: #A3A3A3;
+    }
+`;
 
 const SpanRadio = styled.span`
     // the ring
@@ -63,13 +65,17 @@ const SpanRadio = styled.span`
    }
 `;
 
-const RadioButton = (props) => {
+const Radio = (props) => {
+    useEffect(() => {
+        if (!props.ingroup)
+            throw Error("Radio must be placed in RadioGroup")
+    })
     return (
-        <Radio {...props}>
+        <RadioLabel>
             <ValueInput>{props.children}</ValueInput>
-            <InputRadio type="radio" name={props.name} value={props.value} defaultChecked={props.default}/>
+            <InputRadio type="radio" name={props.name} value={props.value} defaultChecked={props.default} disabled={props.displayMode === "view"}/>
             <SpanRadio/>
-        </Radio>
+        </RadioLabel>
     )
 }
-export default RadioButton
+export default Radio

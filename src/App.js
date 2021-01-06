@@ -1,8 +1,7 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
+import NewButtonGroup from './components/elements/NewButtonGroup'
 import Button from './components/elements/Button'
-import ButtonGroup from './components/elements/ButtonGroup'
-
 const appTheme = {
   light: {
     name: "light",

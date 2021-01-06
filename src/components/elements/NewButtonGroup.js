@@ -4,24 +4,35 @@ import Button from './Button';
 
 const StyledButtonGroup = styled.div`
     --fillColor: ${props => props.theme.fillColor};
-
+    --count: ${props => props.count || 3};
     margin: ${props => props.demo ? "8px": "0px"};
     padding: 0px;
-    display: ${props => props.fullWidth ? "flex" : "inline-flex"};
+    display: ${props => props.fullWidth ? "block" : "inline-block"};
     align-items: flex-start;
     min-width: ${props => props.fullWidth ? "100%" : "auto"};
     border: 2px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : "var(--fillColor)"};
     border-radius: 8px;
     overflow: hidden;
-`;
-StyledButtonGroup.defaultProps = {
-    theme: {
-        name: "light",
-        textColor: "#FFFFFF",
-        fillColor: "#174091"
+
+    & div {
+        display: grid;
+        grid-template-columns: repeat(var(--count), 1fr);
+        grid-template-rows: 1;
     }
-}
-const ButtonGroup = (props) => {    
+`;
+
+const ButtonGroup = (props) => {
+    //Catching errors
+    props.children.forEach(child => {
+        if (child.type !== Button)
+            throw Error("Children of ButtonGroup must be Button")
+        else if (child.props.value === undefined)
+            throw Error("Children must contain props 'value' ")
+    })
+
+    if (props.children.filter(child => child.props.default).length > 1)
+        throw Error("Cannot have more than one default value")
+
     const [Value, setValue] = useState(props.defaultValue)
 
     const handleClick = (x) => {
@@ -29,18 +40,6 @@ const ButtonGroup = (props) => {
         props.onSelect(x)
     }
     useEffect(() => {
-        // Catching errors
-        console.log(props)
-        props.children.forEach(child => {
-            if (child.type !== Button)
-                throw Error("Children of ButtonGroup must be Button")
-            else if (child.props.value === undefined)
-                throw Error("Children must contain props 'value' ")
-        })
-        if (props.children.filter(child => child.props.default).length > 1)
-        throw Error("Cannot have more than one default value")
-
-        // setup default value
         let defElement = props.children.find(child => child.props.default)
         if (defElement) {
             setValue(defElement.props.value)
@@ -51,6 +50,7 @@ const ButtonGroup = (props) => {
     
     return (
         <StyledButtonGroup {...props}>
+            <div>
             {React.Children.map(props.children, (child, idx) => {
                 return React.cloneElement(
                     child, 
@@ -58,9 +58,9 @@ const ButtonGroup = (props) => {
                         fullWidth: false, demo: false, displayMode: props.displayMode,
                         ingroup: idx === 0 ? "left" : idx === props.children.length - 1 ? "right" : "middle", 
                         type: Value === child.props.value ? "contained": "outline", 
-                        onClick: () => handleClick(child.props.value)
-                    })
+                        onClick: () => handleClick(child.props.value)})
             })}
+            </div>
         </StyledButtonGroup>
     )
 }

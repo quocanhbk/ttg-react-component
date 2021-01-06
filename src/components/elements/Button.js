@@ -2,13 +2,13 @@ import styled from 'styled-components'
 import {getDarker, getLighter} from '../../utils/color'
 
 const StyledButton = styled.button`
-    --textColor: ${props => props.theme.textColor};
-    --darkTextColor: ${props => getDarker(props.theme.textColor)};
-    --lightTextColor: ${props => getLighter(props.theme.textColor)};
+    --textColor: ${props => props.theme.backgroundColor};
+    --darkTextColor: ${props => getDarker(props.theme.backgroundColor)};
+    --lightTextColor: ${props => getLighter(props.theme.backgroundColor)};
     --fillColor: ${props => props.theme.fillColor};
     --darkFillColor: ${props => getDarker(props.theme.fillColor)};
     --lightFillColor: ${props => getLighter(props.theme.fillColor)};
-
+    
     margin: ${props => props.demo? "8px": "0px"};
     padding: ${props => props.ingroup ? "4px 10px" : props.type === "outline" ? "4px 10px" : "6px 12px"};
     transition: background 0.15s linear;
@@ -16,7 +16,7 @@ const StyledButton = styled.button`
     font-weight: 700;
     cursor: pointer;
     outline: 0;
-
+    pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
     border-color: var(--fillColor);
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
     background: ${props=>props.type === "contained" ? "var(--fillColor)" : "transparent"};
@@ -35,7 +35,7 @@ const StyledButton = styled.button`
     &:disabled { 
         color: #A3A3A3;
         background-color: ${props => props.type === "contained" ? "#CCC" : "transparent"};
-        border: ${props => props.type === "outline" ? "2px solid #A3A3A3" : "none"};
+        border-color: ${props => props.type === "outline" ? "#A3A3A3" : "transparent"};
     }
     &:active {
         color: ${props => props.type === "contained" ? "var(--fillColor)" : props.type === "outline" ? "var(--textColor)" : "var(--lightFillColor)"};
@@ -43,16 +43,13 @@ const StyledButton = styled.button`
     }
 `;
 StyledButton.defaultProps = {
-    theme: {
-        textColor: "#FFFFFF",
-        fillColor: "#174091"
-    },
-    type: "contained"
+    type: "contained",
+    displayMode: "edit"
 }
 
 const Button = (props) => {
     return (
-        <StyledButton {...props}>
+        <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled}>
         {props.children}
         </StyledButton>
     )
