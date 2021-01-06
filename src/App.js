@@ -2,6 +2,7 @@ import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
 import {Button, ButtonGroup} from './components/elements'
 import theme from './utils/theme'
+import TableDatePicker from './components/TableDatePicker'
 
 
 const data = [
@@ -22,6 +23,7 @@ function App() {
             <Button value={2}>Two</Button>
             <Button value={3}>Three</Button>
           </ButtonGroup>
+          <TableDatePicker>Don't forget</TableDatePicker>
         </Container>
       </ThemeProvider>
     </div>
