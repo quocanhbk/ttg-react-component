@@ -21,7 +21,6 @@ const ButtonGroup = (props) => {
 
     useEffect(() => {
         // Catching errors
-        console.log(props)
         props.children.forEach(child => {
             if (child.type !== Button)
                 throw Error("Children of ButtonGroup must be Button")
