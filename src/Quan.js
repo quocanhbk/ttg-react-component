@@ -73,6 +73,8 @@ function Quanh() {
             defaultLength={rangeValue}
             value={rangeValue}
             onChangeValue={onChangeSlider}
+            linearGradientColor="#4aa1f3"
+            rangeBackgroundColor="#d7dcdf"
             ></Slider>
 
           </Container>
