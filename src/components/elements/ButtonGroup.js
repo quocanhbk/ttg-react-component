@@ -20,14 +20,14 @@ const ButtonGroup = (props) => {
     const [value, setValue] = useState(props.children.find(x => x.props.default) || "")
 
     useEffect(() => {
-        // Error checking
+        // Catching errors
+        console.log(props)
         props.children.forEach(child => {
             if (child.type !== Button)
                 throw Error("Children of ButtonGroup must be Button")
             else if (child.props.value === undefined)
                 throw Error("Children must contain props 'value' ")
         })
-    
         if (props.children.filter(child => child.props.default).length > 1)
             throw Error("Cannot have more than one default value")
     }, [props])
