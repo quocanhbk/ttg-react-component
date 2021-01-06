@@ -3,6 +3,9 @@ import Container from './components/Container'
 import {Button, ButtonGroup, Checkbox, Radio, RadioGroup} from './components/elements'
 import CheckboxGroup from './components/elements/CheckboxGroup'
 import TableDatePicker from './components/TableDatePicker'
+import ToggleGroup from './components/ToggleGroup'
+import ToggleSwitch from './components/ToggleSwitch'
+
 import Slider from './components/Silder'
 
 import theme from './utils/theme'
@@ -54,6 +57,12 @@ function Quan() {
               <Radio value={1}>One</Radio>
               <Radio value={2}>Two</Radio>
             </RadioGroup>
+
+            <p>Toggle Group</p>
+            <ToggleGroup position displayMode={mode}>
+              <ToggleSwitch value={1}>One</ToggleSwitch>
+              <ToggleSwitch value={2}>Two</ToggleSwitch>
+            </ToggleGroup>
 
             <p>Select Date</p>
             <TableDatePicker displayMode={mode}>Don't forget select date</TableDatePicker>
