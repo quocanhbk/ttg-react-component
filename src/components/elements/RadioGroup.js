@@ -40,7 +40,8 @@ const RadioGroup = (props) => {
                     {
                         name: props.name || (new Date()).getTime(), 
                         onClick: () => handleClick(child.props.value), 
-                        displayMode: props.displayMode
+                        displayMode: props.displayMode,
+                        ingroup: true
                     })
             })
         }

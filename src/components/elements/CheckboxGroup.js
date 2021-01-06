@@ -16,7 +16,7 @@ const CheckboxGroup = (props) =>{
         })
     })
 
-    const [value, setValue] = useState(props.children.map(child => {return {value: child.props.value, checked: child.props.default ? true : false}}))
+    const [value, setValue] = useState(props.children.map(child => {return {value: child.props.value, checked: child.props.default}}))
 
     const handleClick = (obj) => {
         setValue([...value.filter(x => x.value !== obj.value), obj])
@@ -25,18 +25,25 @@ const CheckboxGroup = (props) =>{
     useEffect(() => {
         props.onSelect(value)
     })
+
     return (
         <StyleChkGroup {...props}>
         {
             React.Children.map(props.children, child => {
-                return React.cloneElement(child, {name: props.name || (new Date()).getTime(), onSelect: (checked) => handleClick({value: child.props.value, checked: checked})})
+                return React.cloneElement(
+                    child, {
+                        name: props.name || (new Date()).getTime(), 
+                        onSelect: (checked) => handleClick({value: child.props.value, checked: checked}),
+                        displayMode: props.displayMode
+                    })
             })
         }
         </StyleChkGroup>
     )
 }
 CheckboxGroup.defaultProps = {
-    onSelect: (x) => console.log(x)
+    onSelect: (x) => console.log(x),
+    displayMode: "edit"
 }
 
 export default CheckboxGroup

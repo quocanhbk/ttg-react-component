@@ -17,11 +17,11 @@ const StyledButtonGroup = styled.div`
 
 const ButtonGroup = (props) => {
 
-    const [value, setValue] = useState(props.children.find(x => x.props.default) || "")
+    const [value, setValue] = useState(props.children.find(child => child.props.default).props.value)
 
     useEffect(() => {
         // Catching errors
-        console.log(props)
+        console.log(props.children.map(child => child.props.default))
         props.children.forEach(child => {
             if (child.type !== Button)
                 throw Error("Children of ButtonGroup must be Button")
