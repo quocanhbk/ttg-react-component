@@ -49,8 +49,8 @@ const  TableDatePicker = (props) => {
         <StyleTable {...props}>
       <DatePicker selected={startDate}
        dateFormat="dd/MM/yyyy"
-        onSelect={date => setStartDate(date)}
-        onChange={date => props.onSelect(date)}
+        onChange={date => setStartDate(date)}
+        onSelect={date => props.onSelect(date)}
         isClearable
         placeholderText="Select date"
         >
