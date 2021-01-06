@@ -11,7 +11,6 @@ const RadioLabel = styled.label`
     font-size: 1rem;
     font-weight: 500;
     user-select: none;
-    flex: 1;
 `;
 
 const InputRadio = styled.input`
@@ -25,12 +24,8 @@ const InputRadio = styled.input`
 `;
 
 const ValueInput = styled.p`
-    color:${props => props.theme.textColor};
+    color:${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.textColor};
     display: inline-block;
-
-    &:disabled {
-        color: #A3A3A3;
-    }
 `;
 
 const SpanRadio = styled.span`
@@ -41,9 +36,10 @@ const SpanRadio = styled.span`
     left: 0rem;
     height: 1.2rem;
     width: 1.2rem;
-    border: 2px solid ${props => props.theme.fillColor};
+    border: 2px solid ${props => props.displayMode === "disabled" ? "#C3C3C3" : props.theme.fillColor};
     border-radius: 50%;
     background: transparent;
+
 
     &:hover {
         box-shadow: 0px 0px 16px ${props => getFader(props.theme.fillColor, 0.8)};
@@ -72,9 +68,9 @@ const Radio = (props) => {
     })
     return (
         <RadioLabel>
-            <ValueInput>{props.children}</ValueInput>
-            <InputRadio type="radio" name={props.name} value={props.value} defaultChecked={props.default} disabled={props.displayMode === "view"}/>
-            <SpanRadio/>
+            <ValueInput displayMode={props.displayMode}>{props.children}</ValueInput>
+            <InputRadio type="radio" name={props.name} value={props.value} defaultChecked={props.default}/>
+            <SpanRadio displayMode={props.displayMode}/>
         </RadioLabel>
     )
 }
