@@ -8,6 +8,7 @@ const LabelCheckbox = styled.label`
     cursor: pointer;
     user-select: none;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
+    margin-bottom: ${props => props.horizontal ? "0px" : "10px"};
 
 `;
 
