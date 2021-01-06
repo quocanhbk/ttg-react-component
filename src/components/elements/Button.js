@@ -19,10 +19,10 @@ const StyledButton = styled.button`
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
     border-color: var(--fillColor);
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
-    background: ${props=>props.type === "contained" ? "var(--fillColor)" : "gray"};
+    background: ${props=>props.type === "contained" ? "var(--fillColor)" : "var(--textColor)"};
     flex: 1;
+    border-style: solid;
     border-width: ${props => props.ingroup === "left" ? "0 1px 0 0" : props.ingroup === "right" ? "0 0 0 1px" : props.ingroup === "middle" ? "0 1px 0 1px" : props.type === "outline" ? "2px": "0px"};
-    border-color: #174091;
     border-radius: ${props => props.ingroup ? "0" : "8px"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     width: ${props => props.fullWidth ? "100%": "auto"};
@@ -33,7 +33,7 @@ const StyledButton = styled.button`
     }
     &:disabled { 
         color: #A3A3A3;
-        background-color: red;
+        background-color: ${props => props.type === "contained"? "#CCCCCC": "var(--textColor)"};
         border-color: ${props => props.type === "outline" ? "#A3A3A3" : "transparent"};
     }
     &:active {

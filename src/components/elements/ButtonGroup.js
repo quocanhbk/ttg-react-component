@@ -11,8 +11,8 @@ const StyledButtonGroup = styled.div`
     align-items: flex-start;
     border-radius: 8px;
     overflow: hidden;
-    background: #174091;
-    border: 2px solid #174091;
+    background: var(--fillColor);
+    border: 2px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : "var(--fillColor)"};
 `;
 
 const ButtonGroup = (props) => {
