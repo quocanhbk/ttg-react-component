@@ -1,4 +1,4 @@
-import React, { useState,useEffect} from 'react'
+import React, { } from 'react'
 import styled from 'styled-components'
 import  ToggleSwitch  from './ToggleSwitch'
 
@@ -16,42 +16,28 @@ import  ToggleSwitch  from './ToggleSwitch'
     }
 `;
 const ToggleGroup = (props) =>{
-    useEffect(() => {
-        props.children.forEach(child => {
-            if (child.type !== ToggleSwitch)
-                throw Error("Children of ToggleGroup must be ToggleSwitch")
-            else if (child.props.value === undefined)
-                throw Error("Children must contain props 'value' ")
-        })
+    props.children.forEach(child => {
+        if (child.type !== ToggleSwitch)
+            throw Error("Children of ToggleGroup must be ToggleSwitch")
+        else if (child.props.value === undefined)
+            throw Error("Children must contain props 'value' ")
     })
-
-    const [value, setValue] = useState(props.children.map(child => {return {value: child.props.value, checked: child.props.default}}))
-
-    const handleClick = (obj) => {
-        setValue([...value.filter(x => x.value !== obj.value), obj])
-    }
-
-    useEffect(() => {
+    if (props.children.filter(child => child.props.default).length > 1)
+        throw Error("Cannot have more than one default value")
+    const handleClick = (value) => {
         props.onSelect(value)
-    })
-
+    }
     return (
         <StyleGroup {...props}>
         {
             React.Children.map(props.children, child => {
-                return React.cloneElement(
-                    child, {
-                        name: props.name || (new Date()).getTime(), 
-                        onSelect: (checked) => handleClick({value: child.props.value, checked: checked}),
-                        displayMode: props.displayMode
-                    })
+                return React.cloneElement(child, {name: props.name || (new Date()).getTime(), onClick: () => handleClick(child.props.value)})
             })
         }
         </StyleGroup>
     )
 }
 ToggleGroup.defaultProps = {
-    onSelect: (x) => console.log(x),
-    displayMode: "edit"
+    onSelect: (x) => console.log(x)
 }
 export default ToggleGroup
