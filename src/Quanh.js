@@ -1,6 +1,6 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Toggle, ToggleGroup} from './components/elements'
 import theme from './utils/theme'
 import {useState} from 'react'
 import Box from './components/Box'
@@ -54,6 +54,14 @@ function Quanh() {
                 <Radio value={2}>Two</Radio>
                 <Radio value={3}>Three</Radio>
               </RadioGroup>
+              <Code>{JSON.stringify(radioGroupValue)}</Code>
+            </Box>
+            <Box title="Toggle Group">
+              <ToggleGroup displayMode={mode} onSelect={(value) => setRadioGroupValue(value)}>
+                <Toggle value={1}>One</Toggle>
+                <Toggle value={2}>Two</Toggle>
+                <Toggle value={3}>Three</Toggle>
+              </ToggleGroup>
               <Code>{JSON.stringify(radioGroupValue)}</Code>
             </Box>
             <Box title="Button Group">

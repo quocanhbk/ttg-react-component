@@ -1,6 +1,6 @@
 import React, { } from 'react'
 import styled from 'styled-components'
-import  ToggleSwitch  from './ToggleSwitch'
+import Toggle  from './Toggle'
 
     const StyleGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
@@ -17,7 +17,7 @@ import  ToggleSwitch  from './ToggleSwitch'
 `;
 const ToggleGroup = (props) =>{
     props.children.forEach(child => {
-        if (child.type !== ToggleSwitch)
+        if (child.type !== Toggle)
             throw Error("Children of ToggleGroup must be ToggleSwitch")
         else if (child.props.value === undefined)
             throw Error("Children must contain props 'value' ")

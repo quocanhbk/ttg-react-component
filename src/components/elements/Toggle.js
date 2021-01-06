@@ -68,7 +68,7 @@ const StyleName= styled.span`
     margin: 0 10px;
     color:${props => props.theme.name === "light" ? "black" : "white"};
 `;
-const ToggleButton = (props) => {
+const Toggle = (props) => {
     const [toggle,setToggle] = useState(false); //kiem tra khi check vao toggle
     const {defaultChecked,onChange,disabled,className} = props;
     const triggerToogle = ()=>{
@@ -99,7 +99,7 @@ const ToggleButton = (props) => {
 
     )
 }
-ToggleButton.prototype={
+Toggle.propTypes = {
     disable:PropTypes.bool,
     defaultChecked:PropTypes.bool,
     className: PropTypes.string,
@@ -113,4 +113,4 @@ ToggleButton.prototype={
     ])
 }
 
-export default ToggleButton;
+export default Toggle;
