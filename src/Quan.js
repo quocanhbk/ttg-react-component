@@ -3,8 +3,8 @@ import Container from './components/Container'
 import {Button, ButtonGroup, Checkbox, Radio, RadioGroup} from './components/elements'
 import CheckboxGroup from './components/elements/CheckboxGroup'
 import TableDatePicker from './components/TableDatePicker'
-import ToggleGroup from './components/ToggleGroup'
-import ToggleSwitch from './components/ToggleSwitch'
+import ToggleGroup from './components/elements/ToggleGroup'
+import Toggle from './components/elements/Toggle'
 
 import Slider from './components/Silder'
 
@@ -60,8 +60,8 @@ function Quan() {
 
             <p>Toggle Group</p>
             <ToggleGroup position displayMode={mode}>
-              <ToggleSwitch value={1}>One</ToggleSwitch>
-              <ToggleSwitch value={2}>Two</ToggleSwitch>
+              <Toggle value={1}>One</Toggle>
+              <Toggle value={2}>Two</Toggle>
             </ToggleGroup>
 
             <p>Select Date</p>

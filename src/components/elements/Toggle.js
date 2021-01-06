@@ -128,7 +128,7 @@ Toggle.propTypes = {
         })
     ])
 }
-ToggleButton.defaultProps = {
+Toggle.defaultProps = {
     onSelect: (x,y) => console.log(x,y),
     default: false,
     displayMode: "edit"
