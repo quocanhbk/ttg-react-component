@@ -9,10 +9,10 @@ const StyledButtonGroup = styled.div`
     padding: 0px;
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     align-items: flex-start;
-    min-width: ${props => props.fullWidth ? "100%" : "auto"};
     border-radius: 8px;
     overflow: hidden;
-    background: #80808040;
+    background: #174091;
+    border: 2px solid #174091;
 `;
 
 const ButtonGroup = (props) => {

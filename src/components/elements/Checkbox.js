@@ -55,11 +55,8 @@ const SpanChkBox = styled.span`
 const SpanChkName= styled.span`
     display:block;
     font-size:1rem;
-    color: ${props => props.displayMode === "disabled" ? "#A3A3A3": props.theme.fillColor};
+    color: ${props => props.displayMode === "disabled" ? "#A3A3A3": props.theme.textColor};
 
-    &:disabled {
-        color: red;
-    }
 `;
 
 
