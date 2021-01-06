@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import {getFader, getLighter, getDarker} from '../../utils/color'
-
+import {getFader} from '../../utils/color'
+import {useState, useEffect} from 'react'
 const LabelCheckbox = styled.label`
     display: inline-block;
     position: relative;
@@ -58,9 +58,13 @@ const SpanChkName= styled.span`
 
 
 const Checkbox = (props) => {
+    const [checked, setChecked] = useState(props.default)
+    useEffect(() => {
+
+    } )
     return(
         <LabelCheckbox {...props}>
-            <InputChkbox type="checkbox" name={props.name} value={props.value} onChange={(e) => props.onSelect(e.target.checked)}/>
+            <InputChkbox type="checkbox" name={props.name} value={props.value} onChange={(e) => setChecked(e.target.checked)} defaultChecked={props.default}/>
             <SpanChkBox/>
             <SpanChkName>{props.children}</SpanChkName>
         </LabelCheckbox>

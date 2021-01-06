@@ -14,23 +14,22 @@ const CheckboxGroup = (props) =>{
             else if (child.props.value === undefined)
                 throw Error("Children must contain props 'value' ")
         })
-        if (props.children.filter(child => child.props.default).length > 1)
-            throw Error("Cannot have more than one default value")
     })
-    const [value, setValue] = useState([])
+
+    const [value, setValue] = useState(props.children.map(child => {return {value: child.props.value, checked: child.props.default ? true : false}}))
 
     const handleClick = (obj) => {
-        //props.onSelect(value)
         setValue([...value.filter(x => x.value !== obj.value), obj])
     }
+
     useEffect(() => {
-        console.log(value)
+        props.onSelect(value)
     })
     return (
         <StyleChkGroup {...props}>
         {
             React.Children.map(props.children, child => {
-                return React.cloneElement(child, {name: props.name || (new Date()).getTime(), onSelect: (e) => handleClick({value: child.props.value, checked: e.target.checked})})
+                return React.cloneElement(child, {name: props.name || (new Date()).getTime(), onSelect: (checked) => handleClick({value: child.props.value, checked: checked})})
             })
         }
         </StyleChkGroup>

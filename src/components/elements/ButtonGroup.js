@@ -17,12 +17,8 @@ const StyledButtonGroup = styled.div`
 
 const ButtonGroup = (props) => {
 
-    const [Value, setValue] = useState(props.defaultValue)
+    const [value, setValue] = useState(props.children.find(x => x.props.default) || "")
 
-    const handleClick = (x) => {
-        setValue(x)
-        props.onSelect(x)
-    }
     useEffect(() => {
         // Error checking
         props.children.forEach(child => {
@@ -34,15 +30,11 @@ const ButtonGroup = (props) => {
     
         if (props.children.filter(child => child.props.default).length > 1)
             throw Error("Cannot have more than one default value")
-
-        // Setup default value
-        let defElement = props.children.find(child => child.props.default)
-        if (defElement) {
-            setValue(defElement.props.value)
-            props.onSelect(defElement.props.value)
-        }
     }, [props])
 
+    useEffect(() => {
+        if (value) props.onSelect(value)
+    })
     
     return (
         <StyledButtonGroup {...props}>
@@ -52,8 +44,8 @@ const ButtonGroup = (props) => {
                     {
                         fullWidth: false, demo: false, displayMode: props.displayMode,
                         ingroup: idx === 0 ? "left" : idx === props.children.length - 1 ? "right" : "middle", 
-                        type: Value === child.props.value ? "contained": "outline", 
-                        onClick: () => handleClick(child.props.value)})
+                        type: value === child.props.value ? "contained": "outline", 
+                        onClick: () => setValue(child.props.value)})
             })}
         </StyledButtonGroup>
     )

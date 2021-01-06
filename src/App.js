@@ -10,7 +10,7 @@ function App() {
         <Container title="Light">
           <ButtonGroup demo>
             <Button value={1}>One</Button>
-            <Button value={2}>Two</Button>
+            <Button value={2} default>Two</Button>
             <Button value={3}>Three</Button>
           </ButtonGroup>
           <Checkbox value={1} onSelect={(value) => console.log(value)}>One</Checkbox>
