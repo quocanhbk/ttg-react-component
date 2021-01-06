@@ -39,8 +39,8 @@ const SpanChkBox = styled.span`
         transition: border-color 0.15s linear;
         content: "";
         position: absolute;
-        left: 1.5px;
-        top: -1px;
+        left: 4px;
+        top: 0px;
         width: 4px;
         height: 8px;
         border-style: solid;
