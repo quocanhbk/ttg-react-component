@@ -35,7 +35,7 @@ const StyleInput = styled.input`
     }
     &:checked ~ .toggle-switch{
         transition: 0.4s;
-        background:${props => props.theme.fillColor};
+        background:${props => props.theme.toggleColor};
     }
 `;
 const StyleSpan = styled.span`
@@ -66,7 +66,7 @@ const StyleName= styled.span`
     font-size:1rem;
     display:block;
     margin: 0 10px;
-    color:${props => props.theme.TextColor};
+    color:${props => props.theme.name === "light" ? "black" : "white"};
 `;
 const ToggleButton = (props) => {
     const [toggle,setToggle] = useState(false); //kiem tra khi check vao toggle
