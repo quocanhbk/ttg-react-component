@@ -9,10 +9,10 @@ const StyledButtonGroup = styled.div`
     padding: 0px;
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     align-items: flex-start;
-    min-width: ${props => props.fullWidth ? "100%" : "auto"};
-    border: 2px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : "var(--fillColor)"};
     border-radius: 8px;
     overflow: hidden;
+    background: #174091;
+    border: 2px solid #174091;
 `;
 
 const ButtonGroup = (props) => {
@@ -28,7 +28,7 @@ const ButtonGroup = (props) => {
 
     useEffect(() => {
         // Catching errors
-        console.log(props.children.map(child => child.props.default))
+        console.log(props)
         props.children.forEach(child => {
             if (child.type !== Button)
                 throw Error("Children of ButtonGroup must be Button")

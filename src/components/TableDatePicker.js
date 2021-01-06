@@ -6,6 +6,14 @@ import styled from 'styled-components'
 
 const StyleTable = styled.div`
     position:relative;
+    & input{
+        padding:3px 5px;
+        font-size:1rem;
+        border:1px solid ${props => props.theme.fillColor};
+        background: ${props => props.theme.backgroundColor};
+        color: ${props => props.theme.textColor};
+
+    }
     & .react-datepicker__day-name{
         color: ${props => props.theme.backgroundColor};
     }
@@ -28,6 +36,9 @@ const StyleTable = styled.div`
     & .react-datepicker__close-icon::after{
         background:${props => props.theme.fillColor};
     }
+    & .react-datepicker__day--today{
+        font-size:1rem;
+    }
 `;
 
 
@@ -38,11 +49,12 @@ const  TableDatePicker = (props) => {
         <StyleTable {...props}>
       <DatePicker selected={startDate}
        dateFormat="dd/MM/yyyy"
+        onSelect={date => setStartDate(date)}
         onChange={date => props.onSelect(date)}
         isClearable
         placeholderText="Select date"
         >
-      <div style={{ color: "red" }}>{props.children}</div>
+      <div style={{color:"red"}}>{props.children}</div>
     </DatePicker>
       </StyleTable>
     );
