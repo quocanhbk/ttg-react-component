@@ -8,6 +8,7 @@ const LabelCheckbox = styled.label`
     cursor: pointer;
     user-select: none;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
+    margin-bottom: ${props => props.horizontal ? "0px" : "10px"};
 
 `;
 
@@ -38,8 +39,8 @@ const SpanChkBox = styled.span`
         transition: border-color 0.15s linear;
         content: "";
         position: absolute;
-        left: 4.5px;
-        top: 1px;
+        left: 1.5px;
+        top: -1px;
         width: 4px;
         height: 8px;
         border-style: solid;
@@ -69,16 +70,22 @@ const Checkbox = (props) => {
             props.onSelect(checked)
             setMount(true)
         }
-    },[])
+    },[mount, checked, props])
 
     const handleSelect = (e) => {
         setChecked(e.target.checked)
-        props.onSelect(e.target.checked)
+        props.onSelect(e.target.value, e.target.checked)
     }
 
     return(
         <LabelCheckbox {...props} displayMode={props.disabled ? "disabled" : props.displayMode}>
-            <InputChkbox displayMode={props.disabled ? "disabled" : props.displayMode} type="checkbox" name={props.name} value={props.value} onChange={handleSelect} defaultChecked={props.default}/>
+            <InputChkbox displayMode={props.disabled ? "disabled" : props.displayMode} 
+                type="checkbox" 
+                name={props.name} 
+                value={props.value} 
+                onChange={handleSelect} 
+                defaultChecked={props.default}
+            />
             <SpanChkBox displayMode={props.disabled ? "disabled" : props.displayMode}/>
             <SpanChkName displayMode={props.disabled ? "disabled" : props.displayMode}>{props.children}</SpanChkName>
         </LabelCheckbox>
@@ -86,7 +93,7 @@ const Checkbox = (props) => {
 }
 
 Checkbox.defaultProps = {
-    onSelect: (x) => console.log(x),
+    onSelect: (x,y) => console.log(x,y),
     default: false,
     displayMode: "edit"
 }

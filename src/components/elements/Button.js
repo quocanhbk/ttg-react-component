@@ -17,16 +17,16 @@ const StyledButton = styled.button`
     cursor: pointer;
     outline: none;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
-    border-color: var(--fillColor);
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
     background: ${props=>props.type === "contained" ? "var(--fillColor)" : "var(--textColor)"};
     flex: 1;
     border-style: solid;
+    border-color: var(--fillColor);
     border-width: ${props => props.ingroup === "left" ? "0 1px 0 0" : props.ingroup === "right" ? "0 0 0 1px" : props.ingroup === "middle" ? "0 1px 0 1px" : props.type === "outline" ? "2px": "0px"};
     border-radius: ${props => props.ingroup ? "0" : "8px"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     width: ${props => props.fullWidth ? "100%": "auto"};
-    box-shadow: ${props => props.type === "contained" ? "0px 2px 4px rgba(0,0,0,0.32)" : "none"};
+    box-shadow: ${props => props.type === "contained" ? "0px 2px 4px rgba(0,0,0,0.64)" : "none"};
     &:hover {
         color: ${props => props.type === "contained" ? "var(--textColor)" : props.type === "outline" ? "var(--fillColor)" : "var(--darkFillColor)"};
         background: ${props => props.type === "contained" ? "var(--lightFillColor)" : props.type === "outline" ? "var(--darkTextColor)" : "transparent"};
