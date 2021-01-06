@@ -1,26 +1,20 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Select} from './components/elements'
 import theme from './utils/theme'
-import ToggleGroup from './components/ToggleGroup'
-import ToggleSwitch from './components/ToggleSwitch'
-import Tabs from './components/Tabs'
-import TabPane from './components/TabPane'
-import Checkbox from './components/Checkbox'
-import CheckboxGroup from './components/CheckboxGroup'
+import {Checkbox, CheckBoxGroup, Radio, RadioGroup, Button, ButtonGroup} from './components/elements'
+
 function App() {
   return (
-    <div>
+    <div style={{display: "flex"}}>
       <ThemeProvider theme={theme.light}>
-        <Container title="Light Theme">
-          <span>Toggle</span> 
-          <CheckboxGroup fullWidth horizontal={true} name="check1">
-            <Checkbox value={1}>One</Checkbox>
-            <Checkbox value={2}>Two</Checkbox>
-            <Checkbox value={3}>Three</Checkbox>
-          </CheckboxGroup>
+        <Container title="Light">
+          <ButtonGroup demo>
+            <Button value={1}>One</Button>
+            <Button value={2}>Two</Button>
+            <Button value={3}>Three</Button>
+          </ButtonGroup>
+          <Checkbox value={1} onSelect={(value) => console.log(value)}>One</Checkbox>
         </Container>
-        
       </ThemeProvider>
     </div>
   )

@@ -15,7 +15,7 @@ const InputDate = styled.input`
     border: none;
     border-bottom: 3px solid gray;
     background: none;
-    color: ${props => props.color ? "wheat" : "blue"};
+    color: ${props => props.color ? "#bc841c" : "blue"};
     &:hover{
         border-bottom: 3px solid black;
     }
@@ -35,14 +35,13 @@ const FormDate = (props) =>{
     var CurrentDate = Current.getDate();
     var CurrentMonth = Current.getMonth() + 1;
     var CurrentYear = Current.getFullYear();
-    var MonentDay =  CurrentYear + "-" + CurrentMonth + "-" + CurrentDate ;
+    var MonentDay =  CurrentYear + "-" + CurrentDate + "-" + CurrentMonth ;
+    console.log(MonentDay)
     return(
-        <>
-            <Form>
-                <TextField>{props.title}</TextField>
-                <InputDate type="date" color={props.color} id={props.id} defaultValue={(MonentDay)} onChange={()=>handleChangeDate(props.id)}></InputDate>
-            </Form>
-        </>
+        <Form>
+            <TextField>{props.title}</TextField>
+            <InputDate type="date" color={props.color} id={props.id} defaultValue="2021/5/1" onChange={()=>handleChangeDate(props.id)}></InputDate>
+        </Form>
     )
 }
 

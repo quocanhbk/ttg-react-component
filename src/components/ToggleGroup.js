@@ -8,6 +8,12 @@ import  ToggleSwitch  from './ToggleSwitch'
     &>div{
         justify-content: ${props => props.horizontal ? "" : "space-between"}
     }
+    &>div>span{
+        order:${props => props.position ? '2' : '1'};
+    }
+    &>div>label{
+        order:${props => props.position ? '1' : '2'};
+    }
 `;
 const ToggleGroup = (props) =>{
     props.children.forEach(child => {

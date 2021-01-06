@@ -2,13 +2,13 @@ import styled from 'styled-components'
 import {getDarker, getLighter} from '../../utils/color'
 
 const StyledButton = styled.button`
-    --textColor: ${props => props.theme.textColor};
-    --darkTextColor: ${props => getDarker(props.theme.textColor)};
-    --lightTextColor: ${props => getLighter(props.theme.textColor)};
+    --textColor: ${props => props.theme.backgroundColor};
+    --darkTextColor: ${props => getDarker(props.theme.backgroundColor)};
+    --lightTextColor: ${props => getLighter(props.theme.backgroundColor)};
     --fillColor: ${props => props.theme.fillColor};
     --darkFillColor: ${props => getDarker(props.theme.fillColor)};
     --lightFillColor: ${props => getLighter(props.theme.fillColor)};
-
+    
     margin: ${props => props.demo? "8px": "0px"};
     padding: ${props => props.ingroup ? "4px 10px" : props.type === "outline" ? "4px 10px" : "6px 12px"};
     transition: background 0.15s linear;
@@ -43,10 +43,6 @@ const StyledButton = styled.button`
     }
 `;
 StyledButton.defaultProps = {
-    theme: {
-        textColor: "#FFFFFF",
-        fillColor: "#174091"
-    },
     type: "contained",
     displayMode: "edit"
 }

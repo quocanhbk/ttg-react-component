@@ -14,7 +14,6 @@ const LabelToggle = styled.label`
     display:flex;
     width: 40px;
     height: 20px;
-    
 `;
 const StyleInput = styled.input`
     border: 0;
@@ -36,7 +35,7 @@ const StyleInput = styled.input`
     }
     &:checked ~ .toggle-switch{
         transition: 0.4s;
-        background:${props => props.theme.fillColor};
+        background:${props => props.theme.toggleColor};
     }
 `;
 const StyleSpan = styled.span`
@@ -71,7 +70,7 @@ const StyleName= styled.span`
 `;
 const ToggleButton = (props) => {
     const [toggle,setToggle] = useState(false); //kiem tra khi check vao toggle
-    const {defaultChecked,onChange,disabled,className} =props;
+    const {defaultChecked,onChange,disabled,className} = props;
     const triggerToogle = ()=>{
         if(disabled) {return;}
         setToggle(!toggle);
@@ -113,13 +112,5 @@ ToggleButton.prototype={
         })
     ])
 }
-LabelToggle.defaultProps = {
-    theme: {
-        tClr: {R: 23, G: 64, B: 145},
-        mClr: {R: 255, G: 255, B: 255},
-    },
-    
-    name: "switch",
-    displayMode: "edit"
-}
+
 export default ToggleButton;

@@ -1,4 +1,4 @@
-import React, { } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import {getFader} from '../../utils/color'
 
@@ -15,9 +15,7 @@ const RadioLabel = styled.label`
 `;
 
 const InputRadio = styled.input`
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
+    display: none;
 
     //update the dot when checked
     &:checked ~ span:after {
@@ -27,7 +25,7 @@ const InputRadio = styled.input`
 `;
 
 const ValueInput = styled.p`
-    color:${props => props.theme.name === "light" ? "black" : "white"};
+    color:${props => props.theme.textColor};
     display: inline-block;
 
     &:disabled {
@@ -68,6 +66,10 @@ const SpanRadio = styled.span`
 `;
 
 const Radio = (props) => {
+    useEffect(() => {
+        if (!props.ingroup)
+            throw Error("Radio must be placed in RadioGroup")
+    })
     return (
         <RadioLabel>
             <ValueInput>{props.children}</ValueInput>
