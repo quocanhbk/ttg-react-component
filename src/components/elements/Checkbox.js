@@ -16,10 +16,10 @@ const InputChkbox = styled.input`
     display: none;
     
     &:checked ~ span:after {
-        border-color: ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.fillColor};
+        border-color: ${props => props.displayMode === "disabled" ? "#A0A0A0" : props.theme.fillColor};
     }
     &:checked ~ span {
-        border-color: ${props => props.displayMode === "disabled" ? "#C#C#C#" : props.theme.fillColor};
+        border-color: ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.fillColor};
     }
 `;
 
@@ -33,14 +33,14 @@ const SpanChkBox = styled.span`
     width: 1.2rem;
     background-color: transparent;
     border-radius: 4px;
-    border:2px solid ${props => props.displayMode === "disabled" ? "#C3C3C3" : getFader(props.theme.fillColor, 0.3)};
+    border:2px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : getFader(props.theme.fillColor, 0.4)};
 
     &:after{
         transition: border-color 0.15s linear;
         content: "";
         position: absolute;
-        left: 1.5px;
-        top: -1px;
+        left: 4px;
+        top: 0px;
         width: 4px;
         height: 8px;
         border-style: solid;

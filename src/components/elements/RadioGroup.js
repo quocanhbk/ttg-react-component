@@ -39,7 +39,7 @@ const RadioGroup = (props) => {
                     child, 
                     {
                         name: props.name || (new Date()).getTime(), 
-                        onClick: () => handleClick(child.props.value), 
+                        onSelect: () => handleClick(child.props.value), 
                         displayMode: props.displayMode,
                         ingroup: true
                     })

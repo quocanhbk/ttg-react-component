@@ -12,18 +12,18 @@ const StyledButton = styled.button`
     margin: ${props => props.demo? "8px": "0px"};
     padding: ${props => props.ingroup ? "4px 10px" : props.type === "outline" ? "4px 10px" : "6px 12px"};
     transition: background 0.15s linear;
-    font-size: 1rem;
-    font-weight: 700;
+    font-size: ${props => props.size === "large" ? "1.2rem" : props.size === "small" ? "0.8rem" : "1rem"};
+    font-weight: ${props => props.fontWeight ? props.fontWeight : 500};
     cursor: pointer;
     outline: none;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
-    background: ${props=>props.type === "contained" ? "var(--fillColor)" : "#808080a6"};
+    background: ${props=>props.type === "contained" ? "var(--fillColor)" : "var(--textColor)"};
     flex: 1;
-    border-color: var(--fillColor);
     border-style: solid;
+    border-color: var(--fillColor);
     border-width: ${props => props.ingroup === "left" ? "0 1px 0 0" : props.ingroup === "right" ? "0 0 0 1px" : props.ingroup === "middle" ? "0 1px 0 1px" : props.type === "outline" ? "2px": "0px"};
-    border-radius: ${props => props.ingroup ? "0" : "8px"};
+    border-radius: ${props => props.ingroup ? "0" : "6px"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     width: ${props => props.fullWidth ? "100%": "auto"};
     box-shadow: ${props => props.type === "contained" ? "0px 2px 4px rgba(0,0,0,0.64)" : "none"};
@@ -33,7 +33,7 @@ const StyledButton = styled.button`
     }
     &:disabled { 
         color: #A3A3A3;
-        background-color: red;
+        background-color: ${props => props.type === "contained"? "#CCCCCC": "var(--textColor)"};
         border-color: ${props => props.type === "outline" ? "#A3A3A3" : "transparent"};
     }
     &:active {
@@ -54,4 +54,10 @@ const Button = (props) => {
     )
 }
 
+Button.defaultProps = {
+    type: "contained",
+    displayMode: "edit",
+    default: false,
+    size: "medium"
+}
 export default Button

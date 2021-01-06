@@ -1,15 +1,15 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import theme from './utils/theme'
+import {Button, ButtonGroup} from './components/elements'
 import Dat from './Dat'
+import Quanh from './Quanh'
+import theme from './utils/theme'
 
 function App() {
   return (
     <div>
       <ThemeProvider theme={theme.light}>
-        <Container title="Light Theme">
-          <Dat/>
-        </Container>
+        <Quanh/>
       </ThemeProvider>
     </div>
   )
