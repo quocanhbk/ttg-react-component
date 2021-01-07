@@ -27,27 +27,27 @@ const MultiSelect = () => {
 
     return (
     <div>
+        <div>
+            <div>
+                {
+                    selectedItems.map((tag, index) => {
+                        return (
+                            <div key={index}>
+                                <div>{ tag }</div>
+                                <div>
+                                    <div onClick={() => removeTag(tag)}>
+                                        <button></button>
+                                    </div>
+                                </div>
+                            </div>)
+                    })
+                }
                 <div>
-                    <div>
-                        {
-                            selectedItems.map((tag, index) => {
-                                return (
-                                    <div key={index}>
-                                            <div>{ tag }</div>
-                                            <div>
-                                                <div onClick={() => removeTag(tag)}>
-                                                    <button></button>
-                                                </div>
-                                            </div>
-                                        </div>)
-                            })
-                        }
-                        <div>
-                            <input onClick={toogleDropdown}/>
-                        </div>
-                    </div>
+                    <input onClick={toogleDropdown}/>
                 </div>
-         { dropdown  ? <Dropdown list={items} addItem={addTag}></Dropdown>: null }
+            </div>
+        </div>
+        { dropdown  ? <Dropdown list={items} addItem={addTag}></Dropdown>: null }
     </div>
         )
 };

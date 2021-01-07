@@ -1,13 +1,10 @@
 import React from 'react'
-import Select from './components/Dropdown/Select'
+import Search from './components/Dropdown/Search'
+import TextInput from './components/TextInput'
 
-const data = [
-    {id: 1, name:"One"},
-    {id: 2, name:"Two"},
-    {id: 3, name:"Three"}
-]
+const option = ["One", "Two", "Three", "Four"]
 export default function Dat() {
     return (
-        <Select/>
+        <Search value={option}/>
     )
 }

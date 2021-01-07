@@ -5,6 +5,7 @@ const DivInput = styled.div`
     position: relative;
     height: 50px;
     overflow: hidden;
+    width: 200px;
 
     input:focus + label,
     input:valid + label
@@ -36,7 +37,7 @@ const InputComponent = styled.input`
     color: gray;
     padding-top: 20px;
     border: none;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid red;
     outline: none;
 `;
 
@@ -66,7 +67,7 @@ const TextInput = (props) =>{
         <DivInput {...props}>
             <InputComponent type="text" name="input_text" autoComplete="off" required/>
             <LabelComponent htmlFor="name" >
-                <SpanComponent>Name</SpanComponent>
+                <SpanComponent>{props.value}</SpanComponent>
             </LabelComponent>
         </DivInput>
     )
