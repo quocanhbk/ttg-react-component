@@ -1,6 +1,6 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, TextInput} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
@@ -45,7 +45,12 @@ function Quanh() {
           <br/>
 
           <Container title={"Elements"} fullWidth>
-          <Box title="Button" block>
+            <Box title="Text Input" block>
+              <SimpleInput displayMode={mode} default="default"/>
+              <br/>
+              <TextInput/>
+            </Box>
+            <Box title="Button" block>
               <Button color="success" size="small" displayMode={mode} demo >Success</Button>
               <Button color="warning" size="medium" displayMode={mode} demo >Warning</Button>
               <Button color="danger" size="large" displayMode={mode} demo >Danger</Button>

@@ -9,7 +9,12 @@ const theme = {
         successFillColor: "#0A842F",
         warningFillColor: "#FFA000",
         dangerFillColor: "#B00020",
-        secondFillColor: "#212223"
+        secondFillColor: "#212223",
+        textSize: {
+            small: "0.8rem",
+            medium: "1rem",
+            large: "1.2rem"
+        }
     },
     emerald: {
         name: "Emerald",
@@ -21,7 +26,12 @@ const theme = {
         successFillColor: "#0A842F",
         warningFillColor: "#FFA000",
         dangerFillColor: "#B00020",
-        secondFillColor: "#212223"
+        secondFillColor: "#212223",
+        textSize: {
+            small: "0.8rem",
+            medium: "1rem",
+            large: "1.2rem"
+        }
     },
     rosewood: {
         name: "Rosewood",
@@ -33,7 +43,12 @@ const theme = {
         successFillColor: "#0A842F",
         warningFillColor: "#FFA000",
         dangerFillColor: "#B00020",
-        secondFillColor: "#212223"
+        secondFillColor: "#212223",
+        textSize: {
+            small: "0.8rem",
+            medium: "1rem",
+            large: "1.2rem"
+        }
     },
     amethyst: {
         name: "Amethyst",
@@ -45,7 +60,12 @@ const theme = {
         successFillColor: "#0A842F",
         warningFillColor: "#FFA000",
         dangerFillColor: "#B00020",
-        secondFillColor: "#212223"
+        secondFillColor: "#212223",
+        textSize: {
+            small: "0.8rem",
+            medium: "1rem",
+            large: "1.2rem"
+        }
     },
     dark: {
         name: "Dark",
@@ -57,7 +77,12 @@ const theme = {
         successFillColor: "#56C26A",
         warningFillColor: "#FFD54F",
         dangerFillColor: "#ED323B",
-        secondFillColor: "#E8DEC8"
+        secondFillColor: "#E8DEC8",
+        textSize: {
+            small: "0.8rem",
+            medium: "1rem",
+            large: "1.2rem"
+        }
     }
 }
 
