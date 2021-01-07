@@ -10,7 +10,6 @@ import Slider from './components/Silder'
 
 import theme from './utils/theme'
 import {useState} from 'react'
-import MultiSelect from './components/Test/MultiSelect'
 
 function Quan() {
   const [mode, setMode] = useState("edit")
@@ -76,7 +75,6 @@ function Quan() {
             value={rangeValue}
             onChangeValue={onChangeSlider}
             ></Slider>
-            <MultiSelect/>
           </Container>
         </Container>
         
