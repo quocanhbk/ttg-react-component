@@ -2,12 +2,12 @@ import React from 'react'
 import styled, {css} from 'styled-components'
 
 const StyledBox = styled.div`
-    border: 1px solid #A3A3A3;
+    border: 1px solid #333;
     border-radius: 8px;
 
     margin-bottom: 8px;
     & h4 {
-        border-bottom: 1px solid #A3A3A3;
+        border-bottom: 1px solid #333;
         padding: 4px 12px;
         background-color: rgba(0,0,0,0.2);
     }

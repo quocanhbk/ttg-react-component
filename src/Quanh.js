@@ -24,7 +24,6 @@ function Quanh() {
     <div>
       <ThemeProvider theme={theme[myTheme] || theme.light}>
         <Container title= {theme[myTheme].name}>
-
           <Container headline="Display Mode" >
             <ButtonGroup fullWidth onSelect={x => setMode(x)}>
               <Button value="edit" default >Edit</Button>
@@ -46,6 +45,15 @@ function Quanh() {
           <br/>
 
           <Container title={"Elements"} fullWidth>
+          <Box title="Button" block>
+              <Button color="success" size="small" displayMode={mode} demo >Success</Button>
+              <Button color="warning" size="medium" displayMode={mode} demo >Warning</Button>
+              <Button color="danger" size="large" displayMode={mode} demo >Danger</Button>
+              <Button color="primary"size="large" displayMode={mode} demo >Primary</Button>
+              <Button color="secondary"size="small" displayMode={mode} demo >Secondary</Button>
+              <Button displayMode={mode} demo type="outline" >Outline</Button>
+              <Button size="medium" displayMode={mode} demo type="text" >Text</Button>
+            </Box>
 
             <Box title="Toggle">
               <Toggle displayMode={mode} onSelect={v => setToggleValue(v)}>Awesome</Toggle>
@@ -89,20 +97,7 @@ function Quanh() {
                 <Button value={3}>Three</Button>
               </ButtonGroup>
               <Code>{JSON.stringify(buttonGroupValue)}</Code>
-            </Box>
-
-            <Box title="Button" block>
-              <Button success size="small" displayMode={mode} demo >Small</Button>
-              <Button warning size="medium" displayMode={mode} demo >Medium</Button>
-              <Button danger size="large" displayMode={mode} demo >Large</Button>
-              <Button size="small" displayMode={mode} demo type="outline" >Small</Button>
-              <Button size="medium" displayMode={mode} demo type="outline" >Medium</Button>
-              <Button size="large" displayMode={mode} demo type="outline" >Large</Button>
-              <Button size="small" displayMode={mode} demo type="text" >Small</Button>
-              <Button size="medium" displayMode={mode} demo type="text" >Medium</Button>
-              <Button size="large" displayMode={mode} demo type="text" >Large</Button>
-            </Box>
-              
+            </Box>              
             <Box title="Slide">
               <Slider onSlide={(v) => setSliderValue(v)} displayMode={mode}/>
               <Code>{JSON.stringify(sliderValue)}</Code>

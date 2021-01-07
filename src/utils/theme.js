@@ -6,9 +6,10 @@ const theme = {
         backgroundColor: "#FFFFFF", 
         disabledTextColor: "#A3A3A3",
         disabledFillColor: "#C3C3C3",
-        successFillColor: "#28A745",
-        warningFillColor: "#FFC107",
-        dangerFillColor: "#B00020"
+        successFillColor: "#0A842F",
+        warningFillColor: "#FFA000",
+        dangerFillColor: "#B00020",
+        secondFillColor: "#212223"
     },
     emerald: {
         name: "Emerald",
@@ -17,9 +18,10 @@ const theme = {
         backgroundColor: "#FFFFFF", 
         disabledTextColor: "#A3A3A3",
         disabledFillColor: "#C3C3C3",
-        successFillColor: "#28A745",
-        warningFillColor: "#FFC107",
-        dangerFillColor: "#B00020"
+        successFillColor: "#0A842F",
+        warningFillColor: "#FFA000",
+        dangerFillColor: "#B00020",
+        secondFillColor: "#212223"
     },
     rosewood: {
         name: "Rosewood",
@@ -28,9 +30,10 @@ const theme = {
         backgroundColor: "#FFFFFF", 
         disabledTextColor: "#A3A3A3",
         disabledFillColor: "#C3C3C3",
-        successFillColor: "#28A745",
-        warningFillColor: "#FFC107",
-        dangerFillColor: "#B00020"
+        successFillColor: "#0A842F",
+        warningFillColor: "#FFA000",
+        dangerFillColor: "#B00020",
+        secondFillColor: "#212223"
     },
     amethyst: {
         name: "Amethyst",
@@ -39,9 +42,10 @@ const theme = {
         backgroundColor: "#FFFFFF", 
         disabledTextColor: "#A3A3A3",
         disabledFillColor: "#C3C3C3",
-        successFillColor: "#28A745",
-        warningFillColor: "#FFC107",
-        dangerFillColor: "#B00020"
+        successFillColor: "#0A842F",
+        warningFillColor: "#FFA000",
+        dangerFillColor: "#B00020",
+        secondFillColor: "#212223"
     },
     dark: {
         name: "Dark",
@@ -50,9 +54,10 @@ const theme = {
         backgroundColor: "#212223", 
         disabledTextColor: "#646464",
         disabledFillColor: "#C3C3C3",
-        successFillColor: "#28A745",
-        warningFillColor: "#FFC107",
-        dangerFillColor: "#B00020"
+        successFillColor: "#56C26A",
+        warningFillColor: "#FFD54F",
+        dangerFillColor: "#ED323B",
+        secondFillColor: "#E8DEC8"
     }
 }
 

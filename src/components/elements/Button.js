@@ -6,9 +6,23 @@ const StyledButton = styled.button`
     --textColor: ${props => props.theme.backgroundColor};
     --darkTextColor: ${props => getDarker(props.theme.backgroundColor)};
     --lightTextColor: ${props => getLighter(props.theme.backgroundColor)};
-    --fillColor: ${props => props.danger ? props.theme.dangerFillColor : props.warning ? props.theme.warningFillColor : props.success ? props.theme.successFillColor : props.theme.fillColor};
-    --darkFillColor: ${props => getDarker(props.theme.fillColor)};
-    --lightFillColor: ${props => getLighter(props.theme.fillColor)};
+    --fillColor: ${props => props.color === "secondary" ? props.theme.secondFillColor :
+                    props.color === "danger" ? props.theme.dangerFillColor :
+                    props.color === "warning" ? props.theme.warningFillColor :
+                    props.color === "success" ? props.theme.successFillColor :
+                    props.theme.fillColor};
+    --darkFillColor: ${props => getDarker(
+                    props.color === "secondary" ? props.theme.secondFillColor :
+                    props.color === "danger" ? props.theme.dangerFillColor :
+                    props.color === "warning" ? props.theme.warningFillColor :
+                    props.color === "success" ? props.theme.successFillColor :
+                    props.theme.fillColor)};
+    --lightFillColor: ${props => getLighter(
+                    props.color === "secondary" ? props.theme.secondFillColor :
+                    props.color === "danger" ? props.theme.dangerFillColor :
+                    props.color === "warning" ? props.theme.warningFillColor :
+                    props.color === "success" ? props.theme.successFillColor :
+                    props.theme.fillColor)};
     
     margin: ${props => props.demo? "8px": "0px"};
     padding: ${props => props.ingroup ? "2px 8px" : props.type === "outline" ? "2px 8px" : "4px 10px"};
@@ -52,14 +66,15 @@ const Button = (props) => {
 }
 
 Button.defaultProps = {
+    color: "primary",
     type: "contained",
     displayMode: "edit",
-    default: false,
     size: "medium",
     disabled: false
 }
 
 Button.propTypes ={
+    color: PropTypes.string,
     disabled: PropTypes.bool,
     theme: PropTypes.string,
     size: PropTypes.string,
