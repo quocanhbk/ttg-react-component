@@ -84,7 +84,13 @@ Radio.propTypes = {
     defaultChecked: PropTypes.bool,
     displayMode: PropTypes.string,
     onClick: PropTypes.func,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    name:PropTypes.string
+}
+Radio.defaultProps = {
+    onSelect: (x) => console.log(x),
+    defaultChecked: false,
+    displayMode: "edit"
 }
 
 export default Radio

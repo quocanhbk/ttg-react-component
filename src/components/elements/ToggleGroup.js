@@ -1,6 +1,7 @@
 import React, { useEffect,useState} from 'react'
 import styled from 'styled-components'
 import  Toggle  from './Toggle'
+import PropTypes from "prop-types"
 
     const StyleGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
@@ -49,8 +50,17 @@ const ToggleGroup = (props) =>{
         </StyleGroup>
     )
 }
+ToggleGroup.propTypes={
+    className: PropTypes.string,
+    displayMode:PropTypes.string,
+    onSelect: PropTypes.func,
+    name:PropTypes.string,
+    position: PropTypes.bool
+}
 ToggleGroup.defaultProps = {
     onSelect: (x) => console.log(x),
-    displayMode: "edit"
+    displayMode: "edit",
+    position: false,
+    fullWidth:false
 }
 export default ToggleGroup

@@ -63,9 +63,29 @@ Name|Type|Default|Description
 #### Example:
 `<CheckboxGroup name="group 1" horizontal ></CheckboxGroup>`
 `<CheckboxGroup name="group 1" fullWidth ></CheckboxGroup>`
+### 7. `<Toggle/>` *Styled Toggle*
+#### Props
+Name|Type|Default|Description
+---|---|---|---
+`name`|`string`|`none`|Name of Child Toggle
+`value`|`string`|`none`|Value of Child Toggle
+`default`|`bool`|`false`| Auto checked
+#### Example:
+`<Toggle value="1" name="example 1" default>Auto checked</Toggle>`
+### 8.`<ToggleGroup/>` *Group of Toggle*
+#### Props
+Name|Type|Default|Description
+---|---|---|---
+`name`|`string`|`none`|Name of Group
+`fullWidth`|`bool`|`false`|Toggle will take the whole width if true, else it will be inline
+`horizontal`|`bool`|`false`|Field that will display direction of Toggle (row or column)
+`position`|`bool`|`false`| Position label set to right
+#### Example:
+`<ToggleGroup name="group 1" horizontal ></ToggleGroup>`
+`<ToggleGroup name="group 1" fullWidth ></ToggleGroup>`
+`<ToggleGroup name="group 1" position ></ToggleGroup>`
 
-
-### 5. `<Select/>` *Select-Option*
+### 9. `<Select/>` *Select-Option*
 #### Props
 Name|Type|Default|Description
 ---|---|---|---

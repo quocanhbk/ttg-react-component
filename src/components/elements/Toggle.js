@@ -116,21 +116,17 @@ const Toggle = (props) => {
     )
 }
 Toggle.propTypes = {
-    disable:PropTypes.bool,
+    disabled:PropTypes.bool,
     defaultChecked:PropTypes.bool,
     className: PropTypes.string,
+    name:PropTypes.string,
     onChange: PropTypes.func,
-    icons: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.shape({
-            checked: PropTypes.node,
-            unchecked: PropTypes.node
-        })
-    ])
+    onSelect: PropTypes.func,
+    displayMode: PropTypes.string
 }
 Toggle.defaultProps = {
     onSelect: (x,y) => console.log(x,y),
-    default: false,
+    defaultChecked: false,
     displayMode: "edit"
 }
 

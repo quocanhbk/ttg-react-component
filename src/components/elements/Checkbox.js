@@ -97,12 +97,13 @@ Checkbox.propTypes = {
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
     defaultChecked: PropTypes.bool,
-    displayMode: PropTypes.string
+    displayMode: PropTypes.string,
+    name:PropTypes.string
 }
 
 Checkbox.defaultProps = {
     onSelect: (x) => console.log(x),
-    default: false,
+    defaultChecked: false,
     displayMode: "edit"
 }
 export default Checkbox

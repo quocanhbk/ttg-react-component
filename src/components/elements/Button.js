@@ -65,6 +65,7 @@ Button.defaultProps = {
 Button.propTypes ={
     disabled: PropTypes.bool,
     className: PropTypes.string,
-    displayMode: PropTypes.string
+    displayMode: PropTypes.string,
+    name:PropTypes.string
 }
 export default Button

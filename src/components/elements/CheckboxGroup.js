@@ -46,11 +46,13 @@ const CheckboxGroup = (props) =>{
 CheckboxGroup.propTypes= {
     className: PropTypes.string,
     onSelect: PropTypes.func,
-    displayMode: PropTypes.string
+    displayMode: PropTypes.string,
+    name:PropTypes.string
 }
 CheckboxGroup.defaultProps = {
     onSelect: (x) => console.log(x),
-    displayMode: "edit"
+    displayMode: "edit",
+    fullWidth: false
 }
 
 export default CheckboxGroup
