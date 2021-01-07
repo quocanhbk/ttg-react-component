@@ -62,7 +62,7 @@ Button.defaultProps = {
     size: "medium"
 }
 
-Button.propsTypes ={
+Button.propTypes ={
     disabled: PropTypes.bool,
     className: PropTypes.string,
     displayMode: PropTypes.string

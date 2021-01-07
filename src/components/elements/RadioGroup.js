@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import RadioButton from './Radio'
 import styled from 'styled-components'
-import PropsType from 'prop-types'
+import PropTypes from 'prop-types'
 
 
 const StyledRadioGroup = styled.div`
@@ -50,10 +50,10 @@ const RadioGroup = (props) => {
         </StyledRadioGroup>
     )
 }
-RadioGroup.propsType = {
-    className: PropsType.string,
-    displayMode: PropsType.string,
-    onSelect: PropsType.func
+RadioGroup.propTypes = {
+    className: PropTypes.string,
+    displayMode: PropTypes.string,
+    onSelect: PropTypes.func
 }
 
 RadioGroup.defaultProps = {

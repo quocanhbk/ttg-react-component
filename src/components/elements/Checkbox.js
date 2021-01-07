@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import {getFader} from '../../utils/color'
 import {useState, useEffect} from 'react'
-import PropsType from 'prop-types'
+import PropTypes from 'prop-types'
 
 const LabelCheckbox = styled.label`
     display: inline-block;
@@ -92,12 +92,12 @@ const Checkbox = (props) => {
         </LabelCheckbox>
     )
 }
-Checkbox.propsType = {
-    className: PropsType.string,
-    disabled: PropsType.bool,
-    onChange: PropsType.func,
-    defaultChecked: PropsType.bool,
-    displayMode: PropsType.string
+Checkbox.propTypes = {
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    onChange: PropTypes.func,
+    defaultChecked: PropTypes.bool,
+    displayMode: PropTypes.string
 }
 
 Checkbox.defaultProps = {

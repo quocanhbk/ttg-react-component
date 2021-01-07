@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react'
 import styled from 'styled-components'
 import Checkbox from './Checkbox'
-import PropsType from 'prop-types'
+import PropTypes from 'prop-types'
 
 const StyleChkGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
@@ -43,10 +43,10 @@ const CheckboxGroup = (props) =>{
         </StyleChkGroup>
     )
 }
-CheckboxGroup.propsType= {
-    className: PropsType.string,
-    onSelect: PropsType.func,
-    displayMode: PropsType.string
+CheckboxGroup.propTypes= {
+    className: PropTypes.string,
+    onSelect: PropTypes.func,
+    displayMode: PropTypes.string
 }
 CheckboxGroup.defaultProps = {
     onSelect: (x) => console.log(x),
