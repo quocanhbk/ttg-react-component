@@ -6,7 +6,7 @@ import TableDatePicker from './components/TableDatePicker'
 import ToggleGroup from './components/elements/ToggleGroup'
 import Toggle from './components/elements/Toggle'
 
-import Slider from './components/Silder'
+import Slider from './components/elements/Slider'
 
 import theme from './utils/theme'
 import {useState} from 'react'

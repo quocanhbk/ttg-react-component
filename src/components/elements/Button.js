@@ -5,12 +5,12 @@ const StyledButton = styled.button`
     --textColor: ${props => props.theme.backgroundColor};
     --darkTextColor: ${props => getDarker(props.theme.backgroundColor)};
     --lightTextColor: ${props => getLighter(props.theme.backgroundColor)};
-    --fillColor: ${props => props.theme.fillColor};
+    --fillColor: ${props => props.danger ? props.theme.dangerFillColor : props.warning ? props.theme.warningFillColor : props.success ? props.theme.successFillColor : props.theme.fillColor};
     --darkFillColor: ${props => getDarker(props.theme.fillColor)};
     --lightFillColor: ${props => getLighter(props.theme.fillColor)};
     
     margin: ${props => props.demo? "8px": "0px"};
-    padding: ${props => props.ingroup ? "4px 10px" : props.type === "outline" ? "4px 10px" : "6px 12px"};
+    padding: ${props => props.ingroup ? "2px 8px" : props.type === "outline" ? "2px 8px" : "4px 10px"};
     transition: background 0.15s linear;
     font-size: ${props => props.size === "large" ? "1.2rem" : props.size === "small" ? "0.8rem" : "1rem"};
     font-weight: ${props => props.fontWeight ? props.fontWeight : 500};
@@ -41,10 +41,6 @@ const StyledButton = styled.button`
         background: ${props => props.type === "contained" ? "var(--textColor)" : props.type === "outline" ? "var(--fillColor)" : "transparent"};
     }
 `;
-StyledButton.defaultProps = {
-    type: "contained",
-    displayMode: "edit"
-}
 
 const Button = (props) => {
     return (

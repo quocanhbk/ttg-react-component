@@ -1,23 +1,29 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Toggle, ToggleGroup} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider} from './components/elements'
 import theme from './utils/theme'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import Box from './components/Box'
 import Code from './components/Code'
-
+import Toggle from './components/elements/Toggle'
+import ToggleGroup from './components/elements/ToggleGroup'
 function Quanh() {
+  useEffect(() => {
+    document.title = "Theme: " + theme[myTheme].name
+  })
   const [mode, setMode] = useState("edit")
   const [myTheme, setTheme] = useState("light")
   const [checkboxGroupValue, setCheckboxGroupValue] = useState([])
   const [radioGroupValue, setRadioGroupValue] = useState("")
   const [checkboxValue, setCheckboxValue] = useState(false)
   const [buttonGroupValue, setButtonGroupValue] = useState("")
-  const [buttonValue, setButtonValue] = useState("")
+  const [sliderValue, setSliderValue] = useState(0)
+  const [toggleValue, setToggleValue] = useState("")
+  const [toggleGroupValue, setToggleGroupValue] = useState([])
   return (
     <div>
       <ThemeProvider theme={theme[myTheme] || theme.light}>
-        <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
+        <Container title= {theme[myTheme].name}>
 
           <Container headline="Display Mode" >
             <ButtonGroup fullWidth onSelect={x => setMode(x)}>
@@ -31,12 +37,34 @@ function Quanh() {
             <ButtonGroup fullWidth onSelect={x => setTheme(x)}>
               <Button value="light" default >Light</Button>
               <Button value="dark">Dark</Button>
+              <Button value="emerald">Emerald</Button>
+              <Button value="rosewood">Rosewood</Button>
+              <Button value="amethyst">Amethyst</Button>
             </ButtonGroup>
           </Container>
 
           <br/>
 
           <Container title={"Elements"} fullWidth>
+
+            <Box title="Toggle">
+              <Toggle displayMode={mode} onSelect={v => setToggleValue(v)}>Awesome</Toggle>
+              <Code>{JSON.stringify(toggleValue)}</Code>
+            </Box>
+
+            <Box title="Toggle Group">
+              <ToggleGroup displayMode={mode} onSelect={v => setToggleGroupValue(v)}>
+                <Toggle value={1}>One</Toggle>
+                <Toggle value={2}>Two</Toggle>
+              </ToggleGroup>
+              <Code>{JSON.stringify(toggleGroupValue)}</Code>
+            </Box>
+
+            <Box title="Checkbox">
+              <Checkbox displayMode={mode} onSelect={(value) => setCheckboxValue(value)}>Awesome</Checkbox>
+              <Code>{JSON.stringify(checkboxValue)}</Code>
+            </Box>
+
             <Box title="Checkbox Group">
               <CheckboxGroup displayMode={mode} onSelect={(value) => setCheckboxGroupValue(value)}>
                 <Checkbox value={1}>One</Checkbox>
@@ -44,10 +72,7 @@ function Quanh() {
               </CheckboxGroup>
               <Code>{JSON.stringify(checkboxGroupValue)}</Code>
             </Box>
-            <Box title="Checkbox">
-              <Checkbox value={3} displayMode={mode} onSelect={(value) => setCheckboxValue(value)}>Awesome</Checkbox>
-              <Code>{JSON.stringify(checkboxValue)}</Code>
-            </Box>
+
             <Box title="Radio Group">
               <RadioGroup displayMode={mode} onSelect={(value) => setRadioGroupValue(value)}>
                 <Radio value={1}>One</Radio>
@@ -56,6 +81,7 @@ function Quanh() {
               </RadioGroup>
               <Code>{JSON.stringify(radioGroupValue)}</Code>
             </Box>
+
             <Box title="Button Group">
               <ButtonGroup displayMode={mode} onSelect={(value) => setButtonGroupValue(value)}>
                 <Button value={1}>One</Button>
@@ -64,19 +90,23 @@ function Quanh() {
               </ButtonGroup>
               <Code>{JSON.stringify(buttonGroupValue)}</Code>
             </Box>
-            <Box title="Button" block>
-              <Button size="small" displayMode={mode} demo onClick={() => setButtonValue("Clicked One")}>Small</Button>
-              <Button size="medium" displayMode={mode} demo onClick={() => setButtonValue("Clicked One")}>Medium</Button>
-              <Button size="large" displayMode={mode} demo onClick={() => setButtonValue("Clicked One")}>Large</Button>
-              <Button size="small" displayMode={mode} demo type="outline" onClick={() => setButtonValue("Clicked Two")}>Small</Button>
-              <Button size="medium" displayMode={mode} demo type="outline" onClick={() => setButtonValue("Clicked Three")}>Medium</Button>
-              <Button size="large" displayMode={mode} demo type="outline" onClick={() => setButtonValue("Clicked Three")}>Large</Button>
-              <Button size="small" displayMode={mode} demo type="text" onClick={() => setButtonValue("Clicked Two")}>Small</Button>
-              <Button size="medium" displayMode={mode} demo type="text" onClick={() => setButtonValue("Clicked Three")}>Medium</Button>
-              <Button size="large" displayMode={mode} demo type="text" onClick={() => setButtonValue("Clicked Three")}>Large</Button>
-            </Box>
-            
 
+            <Box title="Button" block>
+              <Button success size="small" displayMode={mode} demo >Small</Button>
+              <Button warning size="medium" displayMode={mode} demo >Medium</Button>
+              <Button danger size="large" displayMode={mode} demo >Large</Button>
+              <Button size="small" displayMode={mode} demo type="outline" >Small</Button>
+              <Button size="medium" displayMode={mode} demo type="outline" >Medium</Button>
+              <Button size="large" displayMode={mode} demo type="outline" >Large</Button>
+              <Button size="small" displayMode={mode} demo type="text" >Small</Button>
+              <Button size="medium" displayMode={mode} demo type="text" >Medium</Button>
+              <Button size="large" displayMode={mode} demo type="text" >Large</Button>
+            </Box>
+              
+            <Box title="Slide">
+              <Slider onSlide={(v) => setSliderValue(v)} displayMode={mode}/>
+              <Code>{JSON.stringify(sliderValue)}</Code>
+            </Box>
 
           </Container>
         </Container>

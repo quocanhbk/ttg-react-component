@@ -1,46 +1,37 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import styled from 'styled-components'
-import { useEffect } from "react"
-import {useState} from "react"
-import classNames from 'classnames';
+import {getFader} from '../../utils/color'
 
-const StyleDiv=styled.div`
-    display:flex;
-    padding: 4px 8px 4px 0;
-    align-items:center;
-`;
 const LabelToggle = styled.label`
     position: relative;
-    display:flex;
-    width: 40px;
-    height: 20px;
+    display: inline-flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    padding: 4px 8px 4px 0;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
-
+    
+`;
+const ToggleSpan = styled.span`
+    position: relative;
+    display:block;
+    width: 32px;
+    height: 18px;
+    
 `;
 const StyleInput = styled.input`
-    border: 0;
-    height: 0;
-    width:0;
-    overflow: hidden;
-    padding: 0;
-    margin:0;
-    &:checked + .toggle-switch{
-        background-color: #2196F3;
-    }
-    &:focus + .toggle-switch{
-        box-shadow: 0 0 1px #2196F3;
-    }
+    display: none;
+
     &:checked + .toggle-switch:before{
-        -webkit-transform: translateX(18px);
-        -ms-transform: translateX(18px);
-        transform: translateX(18px);
+        transform: translateX(15px);
     }
     &:checked ~ .toggle-switch{
         transition: 0.4s;
-        background:${props => props.theme.fillColor};
+        background: ${props => props.displayMode === "disabled" ? props.theme.disabledFillColor : props.theme.fillColor};
     }
 `;
+//the toggle
 const StyleSpan = styled.span`
     position: absolute;
     cursor: pointer;
@@ -48,60 +39,56 @@ const StyleSpan = styled.span`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
+    background-color: ${props => props.displayMode === "disabled" ? props.theme.disabledFillColor : getFader(props.theme.fillColor, 0.52)};
     transition: .4s;
     border-radius:34px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.64);
+    overflow: hidden;
+    &:hover {
+        box-shadow: 0px 0px 16px ${props => getFader(props.theme.fillColor, 0.8)};
+    }
+    //the dot
     &:before{
         position: absolute;
         content: "";
         height: 16px;
         width: 16px;
-        left: 3px;
+        left: 1px;
         border-radius:50%;
-        bottom: 2px;
-        background-color: white;
+        bottom: 1px;
+        background-color: ${props => props.theme.backgroundColor};
+        box-shadow: 0px 0px 4px rgba(0,0,0,0.64);
         -webkit-transition: .4s;
         transition: .4s;
     }
 `;
 const StyleName= styled.span`
+    user-select: none;
     font-size:1rem;
-    display:block;
-    margin: 0 5px;
-    color: ${props => props.displayMode === "disabled" ? "#A3A3A3": props.theme.textColor};
+    display:inline-block;
+    padding: 0px 8px;
+    color: ${props => props.displayMode === "disabled" ? props.theme.disabledTextColor: props.theme.textColor};
 
 `;
 const Toggle = (props) => {
-    const [toggle,setToggle] = useState(false); //kiem tra khi check vao toggle
+    const [mount, setMount] = useState(false)
     const [checked, setChecked] = useState(props.default)
-    const {defaultChecked,onChange,disabled,className} = props;
-    const triggerToogle = ()=>{
-        if(disabled) {return;}
-        setToggle(!toggle);
-        if(typeof onChange ==='function'){
-            onChange(!toggle);
+
+    useEffect(() => {
+        if (!mount) {
+            props.onSelect(checked)
+            setMount(true)
         }
-    }
-    useEffect(()=>{
-        if(defaultChecked){
-            setToggle(defaultChecked);
-        }
-    },[defaultChecked]);
-    const toggleClasses = classNames('toggle', {
-        'toggle--checked': toggle,
-        'toggle--disabled': disabled
-    }, className);
-    
+    },[mount, checked, props])
+
     const handleSelect = (e) => {
         setChecked(e.target.checked)
-        props.onSelect(e.target.value, e.target.checked)
+        props.onSelect(e.target.checked)
     }
 
-    return(
-        <StyleDiv {...props}>     
-            <StyleName displayMode={props.disabled ? "disabled" : props.displayMode}>{props.children}</StyleName>
-            <LabelToggle displayMode={props.disabled ? "disabled" : props.displayMode} onChange={triggerToogle} className={toggleClasses}>
+    return(  
+        <LabelToggle {...props} displayMode={props.disabled ? "disabled" : props.displayMode}>
+            <ToggleSpan>
                 <StyleInput  displayMode={props.disabled ? "disabled" : props.displayMode} 
                 type="checkbox"
                 name={props.name} 
@@ -109,9 +96,11 @@ const Toggle = (props) => {
                 onChange={handleSelect} 
                 defaultChecked={props.default}
                 />
-                <StyleSpan className="toggle-switch"/>
-            </LabelToggle>
-        </StyleDiv>
+                <StyleSpan displayMode={props.disabled ? "disabled" : props.displayMode} className="toggle-switch"/>
+            </ToggleSpan>
+            <StyleName displayMode={props.disabled ? "disabled" : props.displayMode}>{props.children}</StyleName>
+        </LabelToggle>
+        
 
     )
 }
@@ -119,7 +108,7 @@ Toggle.propTypes = {
     disable:PropTypes.bool,
     defaultChecked:PropTypes.bool,
     className: PropTypes.string,
-    onChange: PropTypes.func,
+    onSelect: PropTypes.func,
     icons: PropTypes.oneOfType([
         PropTypes.bool,
         PropTypes.shape({
@@ -129,7 +118,7 @@ Toggle.propTypes = {
     ])
 }
 Toggle.defaultProps = {
-    onSelect: (x,y) => console.log(x,y),
+    onSelect: (x) => console.log(x),
     default: false,
     displayMode: "edit"
 }
