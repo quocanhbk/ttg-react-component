@@ -55,12 +55,16 @@ ToggleGroup.propTypes={
     displayMode:PropTypes.string,
     onSelect: PropTypes.func,
     name:PropTypes.string,
+    fullWidth: PropTypes.bool,
+    horizontal: PropTypes.bool,
     position: PropTypes.bool
 }
 ToggleGroup.defaultProps = {
     onSelect: (x) => console.log(x),
     displayMode: "edit",
     position: false,
-    fullWidth:false
+    fullWidth:false,
+    horizontal:false,
+    position:false
 }
 export default ToggleGroup

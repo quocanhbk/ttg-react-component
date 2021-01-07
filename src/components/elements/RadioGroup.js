@@ -54,13 +54,16 @@ RadioGroup.propTypes = {
     className: PropTypes.string,
     displayMode: PropTypes.string,
     onSelect: PropTypes.func,
-    name:PropTypes.string
+    name:PropTypes.string,
+    fullWidth: PropTypes.bool,
+    horizontal: PropTypes.bool
 }
 
 RadioGroup.defaultProps = {
     onSelect: (x) => console.log(x),
     displayMode: "edit",
-    fullWidth: false
+    fullWidth: false,
+    horizontal:false
 }
 
 export default RadioGroup

@@ -42,10 +42,7 @@ const StyledButton = styled.button`
         background: ${props => props.type === "contained" ? "var(--textColor)" : props.type === "outline" ? "var(--fillColor)" : "transparent"};
     }
 `;
-StyledButton.defaultProps = {
-    type: "contained",
-    displayMode: "edit"
-}
+
 
 const Button = (props) => {
     return (
@@ -59,13 +56,18 @@ Button.defaultProps = {
     type: "contained",
     displayMode: "edit",
     default: false,
-    size: "medium"
+    size: "medium",
+    disabled: false
 }
 
 Button.propTypes ={
     disabled: PropTypes.bool,
+    theme: PropTypes.string,
+    size: PropTypes.string,
     className: PropTypes.string,
     displayMode: PropTypes.string,
-    name:PropTypes.string
+    name:PropTypes.string,
+    fullWidth: PropTypes.bool,
+    type: PropTypes.string
 }
 export default Button

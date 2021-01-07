@@ -117,17 +117,19 @@ const Toggle = (props) => {
 }
 Toggle.propTypes = {
     disabled:PropTypes.bool,
-    defaultChecked:PropTypes.bool,
+    default:PropTypes.bool,
     className: PropTypes.string,
     name:PropTypes.string,
     onChange: PropTypes.func,
     onSelect: PropTypes.func,
-    displayMode: PropTypes.string
+    displayMode: PropTypes.string,
+    theme:PropTypes.string
 }
 Toggle.defaultProps = {
     onSelect: (x,y) => console.log(x,y),
-    defaultChecked: false,
-    displayMode: "edit"
+    default: false,
+    displayMode: "edit",
+    disabled:false
 }
 
 export default Toggle;
