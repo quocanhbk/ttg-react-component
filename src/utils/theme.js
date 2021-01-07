@@ -1,15 +1,63 @@
 const theme = {
     light: {
-        name: "light",
-        textColor: "#000000", //Black
-        fillColor: "#174091", //Opal blue
-        backgroundColor: "#FFFFFF", //White
+        name: "Opal",
+        textColor: "#000000",
+        fillColor: "#174091", 
+        backgroundColor: "#FFFFFF", 
+        disabledTextColor: "#A3A3A3",
+        disabledFillColor: "#C3C3C3",
+        successFillColor: "#0A842F",
+        warningFillColor: "#FFA000",
+        dangerFillColor: "#B00020",
+        secondFillColor: "#212223"
+    },
+    emerald: {
+        name: "Emerald",
+        textColor: "#000000",
+        fillColor: "#015A64", 
+        backgroundColor: "#FFFFFF", 
+        disabledTextColor: "#A3A3A3",
+        disabledFillColor: "#C3C3C3",
+        successFillColor: "#0A842F",
+        warningFillColor: "#FFA000",
+        dangerFillColor: "#B00020",
+        secondFillColor: "#212223"
+    },
+    rosewood: {
+        name: "Rosewood",
+        textColor: "#000000",
+        fillColor: "#6D2C1F", 
+        backgroundColor: "#FFFFFF", 
+        disabledTextColor: "#A3A3A3",
+        disabledFillColor: "#C3C3C3",
+        successFillColor: "#0A842F",
+        warningFillColor: "#FFA000",
+        dangerFillColor: "#B00020",
+        secondFillColor: "#212223"
+    },
+    amethyst: {
+        name: "Amethyst",
+        textColor: "#000000",
+        fillColor: "#5D196A",
+        backgroundColor: "#FFFFFF", 
+        disabledTextColor: "#A3A3A3",
+        disabledFillColor: "#C3C3C3",
+        successFillColor: "#0A842F",
+        warningFillColor: "#FFA000",
+        dangerFillColor: "#B00020",
+        secondFillColor: "#212223"
     },
     dark: {
-        name: "dark",
-        textColor: "#E8DEC8", //Antique gold light
-        fillColor: "#A59C87", //Antique gold
-        backgroundColor: "#212223" //Obsidian
+        name: "Dark",
+        textColor: "#E8DEC8",
+        fillColor: "#A59C87",
+        backgroundColor: "#212223", 
+        disabledTextColor: "#646464",
+        disabledFillColor: "#C3C3C3",
+        successFillColor: "#56C26A",
+        warningFillColor: "#FFD54F",
+        dangerFillColor: "#ED323B",
+        secondFillColor: "#E8DEC8"
     }
 }
 

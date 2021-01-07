@@ -61,11 +61,15 @@ const ButtonGroup = (props) => {
 ButtonGroup.propTypes ={
     className: PropTypes.string,
     displayMode: PropTypes.string,
+    name:PropTypes.string,
+    onClick:PropTypes.func,
+    onSelect:PropTypes.func,
+    fullWidth: PropTypes.bool,
     type: PropTypes.string
 }
 ButtonGroup.defaultProps = {
     onSelect: (x) => console.log(x),
-    defaultValue: "",
-    displayMode: "edit"
+    fullWidth: false,
+    displayMode: "edit",
 }
 export default ButtonGroup

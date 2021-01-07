@@ -81,10 +81,20 @@ const Radio = (props) => {
 }
 Radio.propTypes = {
     className: PropTypes.string,
-    defaultChecked: PropTypes.bool,
+    disabled: PropTypes.bool,
+    default: PropTypes.bool,
     displayMode: PropTypes.string,
     onClick: PropTypes.func,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    name:PropTypes.string,
+    ingroup: PropTypes.bool,
+    theme: PropTypes.string
+}
+Radio.defaultProps = {
+    onSelect: (x) => console.log(x),
+    default: false,
+    displayMode: "edit",
+    disabled: false
 }
 
 export default Radio

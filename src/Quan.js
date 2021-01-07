@@ -6,16 +6,14 @@ import TableDatePicker from './components/TableDatePicker'
 import ToggleGroup from './components/elements/ToggleGroup'
 import Toggle from './components/elements/Toggle'
 
-import Slider from './components/Silder'
+import Slider from './components/elements/Slider'
 
 import theme from './utils/theme'
 import {useState} from 'react'
-import MultiSelect from './components/Test/MultiSelect'
 
 function Quan() {
   const [mode, setMode] = useState("edit")
   const [myTheme, setTheme] = useState("light")
-  const [checkboxGroupValue, setCheckboxGroupValue] = useState("initialState")
   const [rangeValue, setRangeValue] = useState(0)
 
   const onChangeSlider = e => {
@@ -76,7 +74,6 @@ function Quan() {
             value={rangeValue}
             onChangeValue={onChangeSlider}
             ></Slider>
-            <MultiSelect/>
           </Container>
         </Container>
         

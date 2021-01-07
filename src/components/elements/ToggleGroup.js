@@ -1,19 +1,12 @@
 import React, { useEffect,useState} from 'react'
 import styled from 'styled-components'
 import  Toggle  from './Toggle'
+import PropTypes from "prop-types"
 
     const StyleGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     flex-direction: ${props => props.horizontal ? "row" : "column"};
-    &>div{
-        justify-content: ${props => props.horizontal ? "" : "space-between"}
-    }
-    &>div>span{
-        order:${props => props.position ? '2' : '1'};
-    }
-    &>div>label{
-        order:${props => props.position ? '1' : '2'};
-    }
+
 `;
 const ToggleGroup = (props) =>{
     useEffect(() => {
@@ -34,6 +27,7 @@ const ToggleGroup = (props) =>{
     useEffect(() => {
         props.onSelect(value)
     })
+    
     return (
         <StyleGroup {...props}>
         {
@@ -49,8 +43,21 @@ const ToggleGroup = (props) =>{
         </StyleGroup>
     )
 }
+ToggleGroup.propTypes={
+    className: PropTypes.string,
+    displayMode:PropTypes.string,
+    onSelect: PropTypes.func,
+    name:PropTypes.string,
+    fullWidth: PropTypes.bool,
+    horizontal: PropTypes.bool,
+    position: PropTypes.bool
+}
 ToggleGroup.defaultProps = {
     onSelect: (x) => console.log(x),
-    displayMode: "edit"
+    displayMode: "edit",
+    position: false,
+    fullWidth:false,
+    horizontal:false,
+    position:false
 }
 export default ToggleGroup
