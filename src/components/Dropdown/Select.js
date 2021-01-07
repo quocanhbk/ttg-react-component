@@ -9,38 +9,23 @@ const SelectDiv = styled.div`
     height: 33px;
     .show {display: block;}
     margin: 10px;
+    border-radius: 10px;
+    border: 2px solid red;
 `;
 
 const DivInput = styled.div`
     display: flex;
     height: 100%;
+    over-flow: hidden;
+    border-left: 10px;
 `;
 
 const Input = styled.input`
-    width: 66%;
+    width: 100%;
     padding-left: 3%;
+    border-radius: 10px;
     &:focus{
         outline: none;
-    }
-`;
-
-const ButtonFilter = styled.button`
-    background-color: #4CAF50;
-    color: white;
-    padding: 0px 10px 0px 10px;
-    font-size: 1.1em;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    max-height: 100%;
-
-    &:hover{
-        background-color: #3e8e41;
-        color: black;
-    }
-
-    &:focus{
-        background-color: #3e8e41;
     }
 `;
 
@@ -48,11 +33,12 @@ const DivSelect = styled.div`
     display: none;
     position: absolute;
     background-color: #f6f6f6;
-    width: 90%;
+    width: 100%;
     overflow: auto;
     border: 1px solid #ddd;
     z-index: 1;
     color: white;
+    border-radius: 10px;
 `;
 
 const Select = (props) =>{
@@ -80,6 +66,10 @@ const Select = (props) =>{
     const GetValue = (e) =>{
         setvalueInput(e.target.value)
     }
+
+    const handleClick = (e) =>{
+        setvalueInput(e)
+    }
     
     return(
         <SelectDiv>
@@ -94,13 +84,12 @@ const Select = (props) =>{
                     onChange={GetValue}
                     value={valueInput}
                 />
-                <ButtonFilter onClick={()=>myFunction()}>Filter here</ButtonFilter>
             </DivInput>
 
             <DivSelect id="myDropdown">
-                <Option value="One"/>
-                <Option value="Two"/>
-                <Option value="Three"/>
+                <Option value="One" handleClick={()=>handleClick("One")} name="One"/>
+                <Option value="Two" handleClick={()=>handleClick("Two")} name="Two"/>
+                <Option value="Three" handleClick={()=>handleClick("three")} name="Three"/>
             </DivSelect>
         </SelectDiv>
     )

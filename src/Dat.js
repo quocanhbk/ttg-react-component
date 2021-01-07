@@ -8,8 +8,6 @@ const data = [
 ]
 export default function Dat() {
     return (
-        <>
-            <Select/>
-        </>
+        <Select/>
     )
 }
