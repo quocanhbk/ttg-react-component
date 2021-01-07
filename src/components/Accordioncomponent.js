@@ -42,7 +42,7 @@ const AccordionComponent = (props) =>{
             setDisplay(true);
             setIsdisplay(0)
         }
-        console.log(display, _isDisplay)
+        // console.log(display, _isDisplay)
     }
     
     return (

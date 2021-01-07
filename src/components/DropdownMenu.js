@@ -64,26 +64,15 @@ const DropdownMenu = (props) => {
 
     // thay đổi giá trị khi người dùng chọn
     const handleClick = (props) =>{
-        setvalueDropdown(props);
-        setIsDropdown(true);
+        // setvalueDropdown(props);
+        // setIsDropdown(true);
+        console.log(props)
     }
     return (
         <StyledUl color = {props.color}>
-            <StyledLi>
-                <StyledA >
-                    Home
-                </StyledA>
-            </StyledLi>
-            <StyledLi>
-                <StyledA >
-                    Contact
-                </StyledA>
-            </StyledLi>
             <DropDownLi>
                 <StyledA >
-                    {
-                        (is_dropdown === true) ? valuedropwdown : props.value
-                    }
+                    { props.value }
                 </StyledA>
                 <DropDownContent>
                     {

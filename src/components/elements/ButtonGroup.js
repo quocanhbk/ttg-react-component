@@ -16,7 +16,7 @@ const StyledButtonGroup = styled.div`
 `;
 
 const ButtonGroup = (props) => {
-
+    
     const [value, setValue] = useState("")
     useEffect(() => {
         let defElement = props.children.find(child => child.props.default)
