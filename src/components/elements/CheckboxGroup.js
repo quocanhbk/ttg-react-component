@@ -1,6 +1,8 @@
 import React, { useState, useEffect} from 'react'
 import styled from 'styled-components'
 import Checkbox from './Checkbox'
+import PropsType from 'prop-types'
+
 const StyleChkGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     flex-direction: ${props => props.horizontal ? "row" : "column"};
@@ -40,6 +42,11 @@ const CheckboxGroup = (props) =>{
         }
         </StyleChkGroup>
     )
+}
+CheckboxGroup.propsType= {
+    className: PropsType.string,
+    onSelect: PropsType.func,
+    displayMode: PropsType.string
 }
 CheckboxGroup.defaultProps = {
     onSelect: (x) => console.log(x),

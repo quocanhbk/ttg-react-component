@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import Button from './Button';
+import PropsType from 'prop-types'
 
 const StyledButtonGroup = styled.div`
     --fillColor: ${props => props.theme.fillColor};
@@ -57,7 +58,11 @@ const ButtonGroup = (props) => {
         </StyledButtonGroup>
     )
 }
-
+ButtonGroup.propsType ={
+    className: PropsType.string,
+    displayMode: PropsType.string,
+    type: PropsType.string
+}
 ButtonGroup.defaultProps = {
     onSelect: (x) => console.log(x),
     defaultValue: "",

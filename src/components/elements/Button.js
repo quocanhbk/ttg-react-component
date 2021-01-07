@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {getDarker, getLighter} from '../../utils/color'
+import PropTypes from 'prop-types'
 
 const StyledButton = styled.button`
     --textColor: ${props => props.theme.backgroundColor};
@@ -59,5 +60,11 @@ Button.defaultProps = {
     displayMode: "edit",
     default: false,
     size: "medium"
+}
+
+Button.propsTypes ={
+    disabled: PropTypes.bool,
+    className: PropTypes.string,
+    displayMode: PropTypes.string
 }
 export default Button
