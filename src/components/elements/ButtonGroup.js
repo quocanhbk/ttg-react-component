@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import styled from 'styled-components'
 import Button from './Button';
+import PropTypes from 'prop-types'
 
 const StyledButtonGroup = styled.div`
     --fillColor: ${props => props.theme.fillColor};
@@ -16,7 +17,7 @@ const StyledButtonGroup = styled.div`
 `;
 
 const ButtonGroup = (props) => {
-
+    
     const [value, setValue] = useState("")
     useEffect(() => {
         let defElement = props.children.find(child => child.props.default)
@@ -57,10 +58,18 @@ const ButtonGroup = (props) => {
         </StyledButtonGroup>
     )
 }
-
+ButtonGroup.propTypes ={
+    className: PropTypes.string,
+    displayMode: PropTypes.string,
+    name:PropTypes.string,
+    onClick:PropTypes.func,
+    onSelect:PropTypes.func,
+    fullWidth: PropTypes.bool,
+    type: PropTypes.string
+}
 ButtonGroup.defaultProps = {
     onSelect: (x) => console.log(x),
-    defaultValue: "",
-    displayMode: "edit"
+    fullWidth: false,
+    displayMode: "edit",
 }
 export default ButtonGroup

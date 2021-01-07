@@ -14,7 +14,6 @@ import {useState} from 'react'
 function Quan() {
   const [mode, setMode] = useState("edit")
   const [myTheme, setTheme] = useState("light")
-  const [checkboxGroupValue, setCheckboxGroupValue] = useState("initialState")
   const [rangeValue, setRangeValue] = useState(0)
 
   const onChangeSlider = e => {

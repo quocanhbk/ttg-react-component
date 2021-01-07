@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import {getFader} from '../../utils/color'
+import PropTypes from 'prop-types'
+
 
 const RadioLabel = styled.label`
     display: inline-block;
@@ -77,4 +79,22 @@ const Radio = (props) => {
         </RadioLabel>
     )
 }
+Radio.propTypes = {
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    default: PropTypes.bool,
+    displayMode: PropTypes.string,
+    onClick: PropTypes.func,
+    onSelect: PropTypes.func,
+    name:PropTypes.string,
+    ingroup: PropTypes.bool,
+    theme: PropTypes.string
+}
+Radio.defaultProps = {
+    onSelect: (x) => console.log(x),
+    default: false,
+    displayMode: "edit",
+    disabled: false
+}
+
 export default Radio

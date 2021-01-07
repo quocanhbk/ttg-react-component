@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import RadioButton from './Radio'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
+
 
 const StyledRadioGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
@@ -48,9 +50,20 @@ const RadioGroup = (props) => {
         </StyledRadioGroup>
     )
 }
+RadioGroup.propTypes = {
+    className: PropTypes.string,
+    displayMode: PropTypes.string,
+    onSelect: PropTypes.func,
+    name:PropTypes.string,
+    fullWidth: PropTypes.bool,
+    horizontal: PropTypes.bool
+}
+
 RadioGroup.defaultProps = {
     onSelect: (x) => console.log(x),
-    displayMode: "edit"
+    displayMode: "edit",
+    fullWidth: false,
+    horizontal:false
 }
 
 export default RadioGroup
