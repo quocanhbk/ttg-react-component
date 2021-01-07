@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {getDarker, getLighter} from '../../utils/color'
+import PropTypes from 'prop-types'
 
 const StyledButton = styled.button`
     --textColor: ${props => props.theme.backgroundColor};
@@ -23,7 +24,7 @@ const StyledButton = styled.button`
     border-style: solid;
     border-color: var(--fillColor);
     border-width: ${props => props.ingroup === "left" ? "0 1px 0 0" : props.ingroup === "right" ? "0 0 0 1px" : props.ingroup === "middle" ? "0 1px 0 1px" : props.type === "outline" ? "2px": "0px"};
-    border-radius: ${props => props.ingroup ? "0" : "6px"};
+    border-radius: ${props => props.ingroup ? "0" : "4px"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     width: ${props => props.fullWidth ? "100%": "auto"};
     box-shadow: ${props => props.type === "contained" ? "0px 2px 4px rgba(0,0,0,0.64)" : "none"};
@@ -59,5 +60,11 @@ Button.defaultProps = {
     displayMode: "edit",
     default: false,
     size: "medium"
+}
+
+Button.propTypes ={
+    disabled: PropTypes.bool,
+    className: PropTypes.string,
+    displayMode: PropTypes.string
 }
 export default Button

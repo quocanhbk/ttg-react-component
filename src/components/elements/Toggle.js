@@ -6,14 +6,17 @@ import {useState} from "react"
 import classNames from 'classnames';
 
 const StyleDiv=styled.div`
-    margin:10px;
     display:flex;
+    padding: 4px 8px 4px 0;
+    align-items:center;
 `;
 const LabelToggle = styled.label`
     position: relative;
     display:flex;
     width: 40px;
     height: 20px;
+    pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
+
 `;
 const StyleInput = styled.input`
     border: 0;
@@ -35,7 +38,7 @@ const StyleInput = styled.input`
     }
     &:checked ~ .toggle-switch{
         transition: 0.4s;
-        background:${props => props.theme.toggleColor};
+        background:${props => props.theme.fillColor};
     }
 `;
 const StyleSpan = styled.span`
@@ -65,11 +68,13 @@ const StyleSpan = styled.span`
 const StyleName= styled.span`
     font-size:1rem;
     display:block;
-    margin: 0 10px;
-    color:${props => props.theme.name === "light" ? "black" : "white"};
+    margin: 0 5px;
+    color: ${props => props.displayMode === "disabled" ? "#A3A3A3": props.theme.textColor};
+
 `;
 const Toggle = (props) => {
     const [toggle,setToggle] = useState(false); //kiem tra khi check vao toggle
+    const [checked, setChecked] = useState(props.default)
     const {defaultChecked,onChange,disabled,className} = props;
     const triggerToogle = ()=>{
         if(disabled) {return;}
@@ -88,11 +93,22 @@ const Toggle = (props) => {
         'toggle--disabled': disabled
     }, className);
     
+    const handleSelect = (e) => {
+        setChecked(e.target.checked)
+        props.onSelect(e.target.value, e.target.checked)
+    }
+
     return(
         <StyleDiv {...props}>     
-            <StyleName>{props.children}</StyleName>
-            <LabelToggle onChange={triggerToogle} className={toggleClasses}>
-                <StyleInput type="checkbox" />
+            <StyleName displayMode={props.disabled ? "disabled" : props.displayMode}>{props.children}</StyleName>
+            <LabelToggle displayMode={props.disabled ? "disabled" : props.displayMode} onChange={triggerToogle} className={toggleClasses}>
+                <StyleInput  displayMode={props.disabled ? "disabled" : props.displayMode} 
+                type="checkbox"
+                name={props.name} 
+                value={props.value} 
+                onChange={handleSelect} 
+                defaultChecked={props.default}
+                />
                 <StyleSpan className="toggle-switch"/>
             </LabelToggle>
         </StyleDiv>
@@ -111,6 +127,11 @@ Toggle.propTypes = {
             unchecked: PropTypes.node
         })
     ])
+}
+Toggle.defaultProps = {
+    onSelect: (x,y) => console.log(x,y),
+    default: false,
+    displayMode: "edit"
 }
 
 export default Toggle;

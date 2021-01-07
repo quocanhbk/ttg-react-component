@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect,useState} from 'react'
 import styled from 'styled-components'
-import Toggle  from './Toggle'
+import  Toggle  from './Toggle'
 
     const StyleGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
@@ -19,7 +19,7 @@ const ToggleGroup = (props) =>{
     useEffect(() => {
         props.children.forEach(child => {
             if (child.type !== Toggle)
-                throw Error("Children of ToggleGroup must be ToggleSwitch")
+                throw Error("Children of ToggleGroup must be Toggle")
             else if (child.props.value === undefined)
                 throw Error("Children must contain props 'value' ")
         })

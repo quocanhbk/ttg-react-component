@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import {getFader} from '../../utils/color'
 import {useState, useEffect} from 'react'
+import PropTypes from 'prop-types'
+
 const LabelCheckbox = styled.label`
     display: inline-block;
     position: relative;
@@ -73,7 +75,7 @@ const Checkbox = (props) => {
 
     const handleSelect = (e) => {
         setChecked(e.target.checked)
-        props.onSelect(e.target.value, e.target.checked)
+        props.onSelect(e.target.checked)
     }
 
     return(
@@ -90,9 +92,16 @@ const Checkbox = (props) => {
         </LabelCheckbox>
     )
 }
+Checkbox.propTypes = {
+    className: PropTypes.string,
+    disabled: PropTypes.bool,
+    onChange: PropTypes.func,
+    defaultChecked: PropTypes.bool,
+    displayMode: PropTypes.string
+}
 
 Checkbox.defaultProps = {
-    onSelect: (x,y) => console.log(x,y),
+    onSelect: (x) => console.log(x),
     default: false,
     displayMode: "edit"
 }
