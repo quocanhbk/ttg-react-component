@@ -5,6 +5,7 @@ const OptionChild = styled.a`
     padding: 12px 16px;
     text-decoration: none;
     display: block;
+    border-radius: 10px;
 
     &:hover{
         :hover {background-color: #ddd;}
@@ -13,9 +14,7 @@ const OptionChild = styled.a`
 
 const Option = (props) =>{
     return(
-        <>
-            <OptionChild >{props.value}</OptionChild>
-        </>
+        <OptionChild onClick={props.handleClick} name={props.name}>{props.value}</OptionChild>
     )
 }
 
