@@ -1,12 +1,13 @@
 //Made by La Quoc Anh
-import React from 'react'
+import React, {useEffect, useRef, useState} from 'react'
 import styled from 'styled-components'
 import { getFader } from '../../utils/color'
 import PropTypes from 'prop-types'
 const StyledInput = styled.input`
-    color: ${props => props.theme.textColor};
+    margin: ${props => props.demo? "8px": "0px"};
+    color: ${props => props.theme.color.text.primary};
     padding: 4px 8px;
-    border: 2px solid ${props => getFader(props.theme.fillColor, 0.4)};
+    border: 2px solid ${props => getFader(props.theme.color.fill.primary, 0.4)};
     outline: 0;
     border-radius: 5px;
     font-size: ${props => props.theme.textSize.medium};
@@ -30,25 +31,30 @@ const StyledInput = styled.input`
 
 const SimpleInput = (props) => {
     return <StyledInput 
-                type="text" {...props} 
+                type="search" {...props} 
                 disabled={props.displayMode === "disabled" || props.disabled} 
                 spellCheck="false"
                 defaultValue={props.default}
                 placeholder={props.placeholder}
+                onChange={(e) => props.onChange(e.target.value)}
+                on
             />
 }
 
 SimpleInput.propTypes = {
+    demo: PropTypes.bool,
     placeholder: PropTypes.string,
     displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     fullWidth: PropTypes.bool,
-    default: PropTypes.string
+    default: PropTypes.string,
+    onChange: PropTypes.func
 }
 SimpleInput.defaultProps = {
     placeholder: "",
     default: "",
     displayMode: "edit",
-    fullWidth: false
+    fullWidth: false,
+    onChange: (x) => {}
 }
 
 export default SimpleInput

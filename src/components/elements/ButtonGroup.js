@@ -4,7 +4,7 @@ import Button from './Button';
 import PropTypes from 'prop-types'
 
 const StyledButtonGroup = styled.div`
-    --fillColor: ${props => props.theme.fillColor};
+    --fillColor: ${props => props.theme.color.fill[props.color] || props.theme.color.fill.primary};
 
     margin: ${props => props.demo ? "8px": "0px"};
     padding: 0px;
@@ -50,7 +50,10 @@ const ButtonGroup = (props) => {
                 return React.cloneElement(
                     child, 
                     {
-                        fullWidth: false, demo: false, displayMode: props.displayMode,
+                        fullWidth: false, 
+                        demo: false, 
+                        displayMode: props.displayMode,
+                        color: props.color,
                         ingroup: idx === 0 ? "left" : idx === props.children.length - 1 ? "right" : "middle", 
                         type: value === child.props.value ? "contained": "outline", 
                         onClick: () => handleClick(child.props.value)})
@@ -65,11 +68,13 @@ ButtonGroup.propTypes ={
     onClick:PropTypes.func,
     onSelect:PropTypes.func,
     fullWidth: PropTypes.bool,
-    type: PropTypes.string
+    type: PropTypes.string,
+    color: PropTypes.string
 }
 ButtonGroup.defaultProps = {
     onSelect: (x) => console.log(x),
     fullWidth: false,
     displayMode: "edit",
+    color: "primary"
 }
 export default ButtonGroup

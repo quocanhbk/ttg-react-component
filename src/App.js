@@ -9,14 +9,11 @@ import theme from './utils/theme'
 import {useState} from 'react'
 import Box from './components/Box'
 import Container from './components/Container'
+import { Button } from './components/elements'
 function App() {
   const [value, setValue] = useState(1)
   return (
-    <div>
-      <ThemeProvider theme={theme.light}>
-        <Dat/>
-      </ThemeProvider>
-    </div>
+    <Quanh/>
   )
 }
 

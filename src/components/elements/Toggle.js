@@ -28,7 +28,7 @@ const StyleInput = styled.input`
     }
     &:checked ~ .toggle-switch{
         transition: 0.4s;
-        background: ${props => props.displayMode === "disabled" ? props.theme.disabledFillColor : props.theme.fillColor};
+        background: ${props => props.displayMode === "disabled" ? props.theme.color.fill.disabled : props.theme.color.fill.primary};
     }
 `;
 //the toggle
@@ -39,13 +39,13 @@ const StyleSpan = styled.span`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${props => props.displayMode === "disabled" ? props.theme.disabledFillColor : getFader(props.theme.fillColor, 0.52)};
+    background-color: ${props => props.displayMode === "disabled" ? props.theme.color.fill.disabled : getFader(props.theme.color.fill.primary, 0.52)};
     transition: .4s;
     border-radius:34px;
     box-shadow: 0px 0px 4px rgba(0,0,0,0.64);
     overflow: hidden;
     &:hover {
-        box-shadow: 0px 0px 16px ${props => getFader(props.theme.fillColor, 0.8)};
+        box-shadow: 0px 0px 16px ${props => getFader(props.theme.color.fill.primary, 0.8)};
     }
     //the dot
     &:before{
@@ -56,7 +56,7 @@ const StyleSpan = styled.span`
         left: 1px;
         border-radius:50%;
         bottom: 1px;
-        background-color: ${props => props.theme.backgroundColor};
+        background-color: ${props => props.theme.color.background.primary};
         box-shadow: 0px 0px 4px rgba(0,0,0,0.64);
         -webkit-transition: .4s;
         transition: .4s;
@@ -67,7 +67,7 @@ const StyleName= styled.span`
     font-size:1rem;
     display:inline-block;
     padding: 0px 8px;
-    color: ${props => props.displayMode === "disabled" ? props.theme.disabledTextColor: props.theme.textColor};
+    color: ${props => props.displayMode === "disabled" ? props.theme.color.text.disabled: props.theme.color.text.primary};
 
 `;
 const Toggle = (props) => {
