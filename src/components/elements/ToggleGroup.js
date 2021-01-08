@@ -50,7 +50,6 @@ ToggleGroup.propTypes={
     name:PropTypes.string,
     fullWidth: PropTypes.bool,
     horizontal: PropTypes.bool,
-    position: PropTypes.bool
 }
 ToggleGroup.defaultProps = {
     onSelect: (x) => console.log(x),
@@ -58,6 +57,5 @@ ToggleGroup.defaultProps = {
     position: false,
     fullWidth:false,
     horizontal:false,
-    position:false
 }
 export default ToggleGroup

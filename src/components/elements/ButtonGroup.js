@@ -25,7 +25,7 @@ const ButtonGroup = (props) => {
             setValue(defElement.props.value)
             props.onSelect(defElement.props.value)
         }
-    }, [])
+    }, [props])
 
     useEffect(() => {
         // Catching errors
