@@ -1,6 +1,6 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
@@ -19,7 +19,7 @@ function Quanh() {
   const [sliderValue, setSliderValue] = useState(0)
   const [toggleValue, setToggleValue] = useState("")
   const [toggleGroupValue, setToggleGroupValue] = useState([])
-
+  const [textValue, setTextValue] = useState("")
   return (
     <div>
       <ThemeProvider theme={theme[myTheme] || theme.light}>
@@ -42,8 +42,16 @@ function Quanh() {
           <br/>
 
           <Container title={"Elements"} fullWidth>
-            <Box title="Text Input" block>
-              <SimpleInput displayMode={mode} default="default" demo/>
+            <Box title="Link" block>
+              Very beautiful <Link href="https://google.com">link</Link>
+              <br/>
+              Visited or not <Link href="#">link</Link>
+              <br/>
+              It can have <Link href="#" underline>underline</Link>
+            </Box>
+            <Box title="Text Input">
+              <SimpleInput displayMode={mode} default="default" demo onChange={(v) => setTextValue(v)} value={textValue}/>
+              <Code>{JSON.stringify(textValue)}</Code>
             </Box>
             <Box title="Button" block>
               <Button color="success" size="small" displayMode={mode} demo >Success</Button>
@@ -98,10 +106,10 @@ function Quanh() {
               </ButtonGroup>
               <Code>{JSON.stringify(buttonGroupValue)}</Code>
             </Box>              
-            {/* <Box title="Slide">
+            <Box title="Slide">
               <Slider onSlide={(v) => setSliderValue(v)} displayMode={mode}/>
               <Code>{JSON.stringify(sliderValue)}</Code>
-            </Box> */}
+            </Box>
 
           </Container>
         </Container>

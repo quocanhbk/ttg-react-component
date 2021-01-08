@@ -6,7 +6,8 @@ import Checkbox from './Checkbox'
 import CheckboxGroup from './CheckboxGroup'
 import Slider from './Slider'
 import SimpleInput from './SimpleInput'
-
 import Toggle from './Toggle'
 import ToggleGroup from './ToggleGroup'
-export {Button, ButtonGroup, Radio, RadioGroup, Checkbox, CheckboxGroup, Slider, SimpleInput, Toggle, ToggleGroup}
+import Link from './Link'
+
+export {Button, ButtonGroup, Radio, RadioGroup, Checkbox, CheckboxGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link}

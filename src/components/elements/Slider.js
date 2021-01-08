@@ -17,14 +17,14 @@ const InputStyle = styled.input`
     width: ${props => props.fullWidth ? "100%" : props.width};
     height: 3px;
     outline: none;
-    background: ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.fillColor};
+    background: ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.color.fill.primary};
     &::-webkit-slider-thumb {
         pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
         appearance: none;
-        background: ${props => props.theme.backgroundColor};
+        background: ${props => props.theme.color.background.primary};
         width: 20px;
         height: 20px;
-        border: 3px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.fillColor};
+        border: 3px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.color.fill.primary};
         border-radius: 50%;
         cursor: pointer;
         transition: all .15s ease-in-out;
@@ -33,17 +33,17 @@ const InputStyle = styled.input`
         transform: scale(1.3, 1.3)
     }
     &::-webkit-slider-thumb:hover {
-        box-shadow: 0px 0px 16px ${props => props.displayMode === "edit" ? getFader(props.theme.fillColor, 0.8) : "transparent"};
+        box-shadow: 0px 0px 16px ${props => props.displayMode === "edit" ? getFader(props.theme.color.fill.primary, 0.8) : "transparent"};
     }
     &:hover ~ span {
         opacity: 1;
     }
     &::-moz-range-thumb {
         appearance: none;
-        background: ${props => props.theme.backgroundColor};
+        background: ${props => props.theme.color.background.primary};
         width: 20px;
         height: 20px;
-        border: 2px solid ${props => props.theme.fillColor};
+        border: 2px solid ${props => props.theme.color.fill.primary};
         border-radius: 50%;
         cursor: pointer;
         transition: background .15s ease-in-out;
@@ -55,13 +55,13 @@ InputStyle.defaultProps = {
 
 //Value
 const SliderValue= styled.span`
-    color  : ${props => props.theme.textColor};
+    color  : ${props => props.theme.color.text.primary};
     opacity: 0;
     position: absolute;
     transition: opacity 0.15s ease-in;
     top: 35px;
     background: ${props => props.theme.backgroundColor};
-    box-shadow: 0px 0px 4px ${props => getFader(props.theme.fillColor, 0.8)};
+    box-shadow: 0px 0px 4px ${props => getFader(props.theme.color.text.primary, 0.8)};
     text-align: center;
     border-radius: 5px;
     padding: 1px 2px;

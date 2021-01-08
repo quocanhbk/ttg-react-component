@@ -5,7 +5,8 @@ const theme = {
             text: {
                 primary: "#000000",
                 secondary: "#2F8DE3",
-                link: "#0000FF",
+                link: "#2F8DE3",
+                visited: "#7B237B",
                 disabled: "#A3A3A3"
             },
             fill: {
@@ -33,12 +34,13 @@ const theme = {
         }
     },
     dark: {
-        name: "Opal",
+        name: "Dark",
         color: {
             text: {
                 primary: "#E8DEC8",
                 secondary: "#9E9FA1",
-                link: "#0000FF",
+                link: "#0F90A8",
+                visited: "#6A126A",
                 disabled: "#646464"
             },
             fill: {
