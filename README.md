@@ -6,11 +6,11 @@ Name|Type|Default|Description
 ---|---|---|---
 `type`|`"contained"/"outline"/"text"`|`"contained"`|The appearance of button
 `demo`|`bool`|`false`|Only use for testing purpose, it will set the margin by 8px
-`size`|`"small"/"medium"/"large"`|`medium` The size of button will change if set size="Type"
+`size`|`"small"/"medium"/"large"`|`medium`| Specifies the size in type
 #### Examples:
-`<Button type="outline">Outline Button</Button>`  
-`<Button demo>Demo Button</Button>` 
-`<Button size="small">Small Button </Button>` 
+`<Button name="example 1" type="outline">Outline Button</Button>`  
+`<Button name="example 1" demo>Demo Button</Button>` 
+`<Button name="example 1" size="small">Small Button </Button>` 
 ### 2. `<ButtonGroup/>` *Group of buttons*
 #### Props:
 Name|Type|Default|Description
@@ -18,20 +18,20 @@ Name|Type|Default|Description
 `name`|`string`|`none`|Name of Group
 `fullWidth`|`bool`|`false`|Button group will take the whole width if true, else it will be inline
 `onSelect={x => setMode(x)}>`|`function`|`edit`|Function to handle set mode of ThemeProvider
-`displayMode`|`mode`|` `| Apply mode to group
+`displayMode`|`mode`|`none`| Apply mode to group
 `onSelect={x => setTheme(x)}>`|`function`|`light`|Function to handle set color of ThemeProvider
 #### Examples:
-`<ButtonGroup fullWidth>`
-`<ButtonGroup fullWidth onSelect={x => setMode(x)>`
-`<ButtonGroup fullWidth onSelect={x => setTheme(x)>`
-`<ButtonGroup displayMode={mode}>`
+`<ButtonGroup name="example 1" fullWidth></ButtonGroup>`
+`<ButtonGroup name="example 1" fullWidth onSelect={x => setMode(x)></ButtonGroup`
+`<ButtonGroup name="example 1" fullWidth onSelect={x => setTheme(x)></ButtonGroup`
+`<ButtonGroup name="example 1" displayMode={mode}></ButtonGroup>`
 ### 3. `<Radio/>` *Styled radio*
 #### Props
 Name|Type|Default|Description
 ---|---|---|---
-`name`|`string`|`none`|Name of Child radio
-`value`|`string`|`none`|Value of Child radio
-`default`|`bool`|`false`| Auto checked
+`name`|`string`|`none`|Name of radio
+`value`|`string`|`none`|Value of radio
+`default`|`bool`|`false`| Specifies should be pre-selected when the page loads
 #### Example:
 `<Radio value="1" name="example 1" default>Auto checked</Radio>`
 ### 4.`<RadioButtoGroup/>` *Group of Radio*
@@ -42,15 +42,15 @@ Name|Type|Default|Description
 `fullWidth`|`bool`|`false`|Radio will take the whole width if true, else it will be inline
 `horizontal`|`bool`|`false`|Field that will display direction of radio (row or column)
 #### Example:
-`<RadioButtonGroup name="group 1" fullWidth ></RadioButtonGroup>`
-`<RadioButtonGroup name="group 1" horizontal ></RadioButtonGroup>`
+`<RadioButtonGroup name="example 1" fullWidth ></RadioButtonGroup>`
+`<RadioButtonGroup name="example 2" horizontal ></RadioButtonGroup>`
 ### 5. `<Checkbox/>` *Styled checkbox*
 #### Props
 Name|Type|Default|Description
 ---|---|---|---
-`name`|`string`|`none`|Name of Child checkbox
-`value`|`string`|`none`|Value of Child checkbox
-`default`|`bool`|`false`| Auto checked
+`name`|`string`|`none`|Name of checkbox
+`value`|`string`|`none`|Value of checkbox
+`default`|`bool`|`false`| Specifies should be pre-selected when the page loads
 #### Example:
 `<Checkbox value="1" name="example 1" default>Auto checked</Checkbox>`
 ### 6.`<CheckboxGroup/>` *Group of Checkbox*
@@ -61,15 +61,15 @@ Name|Type|Default|Description
 `fullWidth`|`bool`|`false`|Checkbox will take the whole width if true, else it will be inline
 `horizontal`|`true/false`|`false`|Field that will display direction of checkbox (row or column)
 #### Example:
-`<CheckboxGroup name="group 1" horizontal ></CheckboxGroup>`
-`<CheckboxGroup name="group 1" fullWidth ></CheckboxGroup>`
+`<CheckboxGroup name="example 1" horizontal ></CheckboxGroup>`
+`<CheckboxGroup name="example 1" fullWidth ></CheckboxGroup>`
 ### 7. `<Toggle/>` *Styled Toggle*
 #### Props
 Name|Type|Default|Description
 ---|---|---|---
-`name`|`string`|`none`|Name of Child Toggle
-`value`|`string`|`none`|Value of Child Toggle
-`default`|`bool`|`false`| Auto checked
+`name`|`string`|`none`|Name of Toggle
+`value`|`string`|`none`|Value of Toggle
+`default`|`bool`|`false`|Specifies should be pre-selected when the page loads
 #### Example:
 `<Toggle value="1" name="example 1" default>Auto checked</Toggle>`
 ### 8.`<ToggleGroup/>` *Group of Toggle*
@@ -80,29 +80,16 @@ Name|Type|Default|Description
 `fullWidth`|`bool`|`false`|Toggle will take the whole width if true, else it will be inline
 `horizontal`|`bool`|`false`|Field that will display direction of Toggle (row or column)
 =#### Example:
-`<ToggleGroup name="group 1" horizontal ></ToggleGroup>`
-`<ToggleGroup name="group 1" fullWidth ></ToggleGroup>`
-`<ToggleGroup name="group 1" position ></ToggleGroup>`
+`<ToggleGroup name="example 1" horizontal ></ToggleGroup>`
+`<ToggleGroup name="example 1" fullWidth ></ToggleGroup>`
 ### 9.`<SimpleInput/>` *Styte Input*
 #### Props
 Name|Type|Default|Description
 ---|---|---|---
 `name`|`string`|`none`|Name of Input
+`placeholder`|`string`|`none`|Specifies a short hint that describes the expected value
 `fullWidth`|`bool`|`false`|Input will take the whole width if true, else it will be inline
 #### Example:
-`<ToggleGroup name="group 1" horizontal ></ToggleGroup>`
-`<ToggleGroup name="group 1" fullWidth ></ToggleGroup>`
-`<ToggleGroup name="group 1" position ></ToggleGroup>`
-### 9. `<Select/>` *Select-Option*
-#### Props
-Name|Type|Default|Description
----|---|---|---
-`data`|`json array or object`|`none`|Data of Option
-`color`|`true/false`|`false`|Theme color of select
-`background`|`true/false`|`none`|Theme Background-color of select
-`id`|`string`|`none`|Field that will display id of select (Each select has a different id)
-`handleSelectVale`|`function`|`()=>handleSelectVale(props.id)`|Function to handle get value Select
-#### Example:
-`<Select data={data} color="false" background="false" id="select1"></Select>`
-`<Select data={data} color="true" background="true" id="select2"></Select>`
-
+`<SimpleInput name="group 1" horizontal ></SimpleInput>`
+`<SimpleInput name="group 1" placeholder="Hello" ></SimpleInput>`
+`<SimpleInput name="group 1" fullWidth ></SimpleInput>`

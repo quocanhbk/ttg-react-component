@@ -1,10 +1,12 @@
 import React from 'react'
-import Search from './components/Dropdown/Search'
-import TextInput from './components/TextInput'
+import TextInput from './components/InputComponent/TextInput'
+import Input from "./components/InputComponent/Input"
 
-const option = ["One", "Two", "Three", "Four"]
 export default function Dat() {
     return (
-        <Search value={option}/>
+        <>
+            <TextInput value="name"/>
+            <Input/>
+        </>
     )
 }

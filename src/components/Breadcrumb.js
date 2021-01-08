@@ -1,19 +1,16 @@
 import React,{  } from "react";
 import styled from 'styled-components'
 
+import {getFader, getLighter} from './../utils/color'
 
 
 const ULStyte= styled.ul`
     display:flex;
     list-style:none;
     align-items:center;
-    
-    & li:last-child a{
-        color:black;
-    }
 `;
 const LabelSeparator= styled.label`
-    color: #333;
+    color: ${props => getFader(props.theme.color.fill.primary,0.7)}; 
     margin: auto 5px;
     font-size:12px;
 `;
@@ -21,10 +18,14 @@ const LiItem = styled.li`
     & a{
         text-decoration:none;
         font-size:14px;
-        color:#ccc;   
+        color: ${props => getFader(props.theme.color.fill.primary,0.7)}; 
+    }
+    &:last-child a{
+        color: ${props => getFader(props.theme.color.fill.primary,1)}; 
+        font-weight:bold;
     }
     & a:hover{
-        color:#000;
+        color: ${props => getLighter(props.theme.color.fill[props.color] || props.theme.color.fill.primary)};
     }
     & a:active{
         color:red;
