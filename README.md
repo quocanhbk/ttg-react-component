@@ -6,7 +6,7 @@ Name|Type|Default|Description
 ---|---|---|---
 `type`|`"contained"/"outline"/"text"`|`"contained"`|The appearance of button
 `demo`|`bool`|`false`|Only use for testing purpose, it will set the margin by 8px
-`size`|`"small"/"medium"/"large"`|`medium` The size of button will change if set size="Type"
+`size`|`"small"/"medium"/"large"`|`medium`| The size of button will change if set size="Type"
 #### Examples:
 `<Button type="outline">Outline Button</Button>`  
 `<Button demo>Demo Button</Button>` 
@@ -18,7 +18,7 @@ Name|Type|Default|Description
 `name`|`string`|`none`|Name of Group
 `fullWidth`|`bool`|`false`|Button group will take the whole width if true, else it will be inline
 `onSelect={x => setMode(x)}>`|`function`|`edit`|Function to handle set mode of ThemeProvider
-`displayMode`|`mode`|` `| Apply mode to group
+`displayMode`|`mode`|`none`| Apply mode to group
 `onSelect={x => setTheme(x)}>`|`function`|`light`|Function to handle set color of ThemeProvider
 #### Examples:
 `<ButtonGroup fullWidth>`
@@ -82,7 +82,6 @@ Name|Type|Default|Description
 =#### Example:
 `<ToggleGroup name="group 1" horizontal ></ToggleGroup>`
 `<ToggleGroup name="group 1" fullWidth ></ToggleGroup>`
-`<ToggleGroup name="group 1" position ></ToggleGroup>`
 ### 9.`<SimpleInput/>` *Styte Input*
 #### Props
 Name|Type|Default|Description
@@ -90,19 +89,5 @@ Name|Type|Default|Description
 `name`|`string`|`none`|Name of Input
 `fullWidth`|`bool`|`false`|Input will take the whole width if true, else it will be inline
 #### Example:
-`<ToggleGroup name="group 1" horizontal ></ToggleGroup>`
-`<ToggleGroup name="group 1" fullWidth ></ToggleGroup>`
-`<ToggleGroup name="group 1" position ></ToggleGroup>`
-### 9. `<Select/>` *Select-Option*
-#### Props
-Name|Type|Default|Description
----|---|---|---
-`data`|`json array or object`|`none`|Data of Option
-`color`|`true/false`|`false`|Theme color of select
-`background`|`true/false`|`none`|Theme Background-color of select
-`id`|`string`|`none`|Field that will display id of select (Each select has a different id)
-`handleSelectVale`|`function`|`()=>handleSelectVale(props.id)`|Function to handle get value Select
-#### Example:
-`<Select data={data} color="false" background="false" id="select1"></Select>`
-`<Select data={data} color="true" background="true" id="select2"></Select>`
-
+`<SimpleInput name="group 1" horizontal ></SimpleInput>`
+`<SimpleInput name="group 1" fullWidth ></SimpleInput>`

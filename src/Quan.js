@@ -5,11 +5,27 @@ import CheckboxGroup from './components/elements/CheckboxGroup'
 import TableDatePicker from './components/TableDatePicker'
 import ToggleGroup from './components/elements/ToggleGroup'
 import Toggle from './components/elements/Toggle'
-
+import { Router, Link } from "@reach/router"
 import Slider from './components/elements/Slider'
+
+import Home from './components/pages/Home'
+import Blog from './components/pages/Blog'
+import Contact from './components/pages/Contact'
+import Dashboard from './components/pages/Dashboard'
 
 import theme from './utils/theme'
 import {useState} from 'react'
+import Breadcrumb from './components/Breadcrumb'
+import { lightBlue } from '@material-ui/core/colors'
+
+
+const items=[
+  { to: '/', label: 'Home' },
+  { to: '/dashboard', label: 'Dashboard' },
+  { to: '/contact', label: 'Contact' },
+  { to: '/blog', label: 'Blog' },
+]
+
 
 function Quan() {
   const [mode, setMode] = useState("edit")
@@ -19,64 +35,23 @@ function Quan() {
   const onChangeSlider = e => {
     setRangeValue(parseInt(e.target.value, 10))
   }
+
   return (
     <div>
-      <ThemeProvider theme={theme[myTheme] || theme.light}>
+      <ThemeProvider theme={ theme.dark}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-
-          <Container headline="Display Mode" >
-            <ButtonGroup fullWidth onSelect={x => setMode(x)}>
-              <Button value="edit" default >Edit</Button>
-              <Button value="view">View</Button>
-              <Button value="disabled">Disabled</Button>
-            </ButtonGroup>
-          </Container>
-
-          <Container headline="Theme" >
-            <ButtonGroup fullWidth onSelect={x => setTheme(x)}>
-              <Button value="light" default >Light</Button>
-              <Button value="dark">Dark</Button>
-            </ButtonGroup>
-          </Container>
-
-          <hr/>
-
-          <Container title={"Elements"}>
-            <p>Checkbox Group</p>
-            <CheckboxGroup displayMode={mode}>
-              <Checkbox value={1}>One</Checkbox>
-              <Checkbox value={2}>Two</Checkbox>
-            </CheckboxGroup>
-
-            <p>Normal Checkbox</p>
-            <Checkbox value={3} displayMode={mode}>Three</Checkbox>
-
-            <p>Radio Group</p>
-            <RadioGroup displayMode={mode}>
-              <Radio value={1}>One</Radio>
-              <Radio value={2}>Two</Radio>
-            </RadioGroup>
-
-            <p>Toggle Group</p>
-            <ToggleGroup position displayMode={mode}>
-              <Toggle value={1}>One</Toggle>
-              <Toggle value={2}>Two</Toggle>
-            </ToggleGroup>
-
-            <p>Select Date</p>
-            <TableDatePicker displayMode={mode}>Don't forget select date</TableDatePicker>
-            <p>Slider</p>
-            <Slider displayMode={mode}
-            min={0}
-            max={100}
-            step={1}
-            defaultLength={rangeValue}
-            value={rangeValue}
-            onChangeValue={onChangeSlider}
-            ></Slider>
-          </Container>
-        </Container>
-        
+          <Breadcrumb>
+            {items.map(({to,label}) =>(
+              <Link key={to} to={to}>{label}</Link>
+            ))}
+          </Breadcrumb>
+          <Router>
+            <Home path='/' />
+            <Dashboard path='/dashboard' />
+            <Contact path='/contact' />
+            <Blog path='/blog' />
+          </Router>
+        </Container>        
       </ThemeProvider>
     </div>
   )
