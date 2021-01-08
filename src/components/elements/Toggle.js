@@ -11,7 +11,6 @@ const LabelToggle = styled.label`
     cursor: pointer;
     padding: 4px 8px 4px 0;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
-    
 `;
 const ToggleSpan = styled.span`
     position: relative;
@@ -33,6 +32,7 @@ const StyleInput = styled.input`
 `;
 //the toggle
 const StyleSpan = styled.span`
+    display:block;
     position: absolute;
     cursor: pointer;
     top: 0;
