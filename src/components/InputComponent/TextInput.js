@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styled from 'styled-components'
 
 const DivInput = styled.div`
@@ -5,7 +6,8 @@ const DivInput = styled.div`
     position: relative;
     height: 50px;
     overflow: hidden;
-    width: 200px;
+    width: ${props => props.width ? props.width : '200px'};
+    margin: auto;
 
     input:focus + label,
     input:valid + label
@@ -37,7 +39,7 @@ const InputComponent = styled.input`
     color: gray;
     padding-top: 20px;
     border: none;
-    border-bottom: 1px solid red;
+    border-bottom: 1px solid black;
     outline: none;
 `;
 
@@ -63,9 +65,17 @@ const LabelComponent = styled.label`
 const SpanComponent = styled.span``;
 
 const TextInput = (props) =>{
+    const [value, setValue] = useState({});
+    const handleGetValue = (e) =>{
+        setValue({
+            ...value,
+            [e.target.name]: e.target.value
+        })
+        console.log(value)
+    }
     return(
         <DivInput {...props}>
-            <InputComponent type="text" name="input_text" autoComplete="off" required/>
+            <InputComponent type="text" name="input_text" autoComplete="off" required onChange={handleGetValue}/>
             <LabelComponent htmlFor="name" >
                 <SpanComponent>{props.value}</SpanComponent>
             </LabelComponent>

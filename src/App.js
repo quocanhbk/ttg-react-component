@@ -13,7 +13,7 @@ import { Button } from './components/elements'
 function App() {
   const [value, setValue] = useState(1)
   return (
-    <Quan/>
+    <Dat/>
   )
 }
 
