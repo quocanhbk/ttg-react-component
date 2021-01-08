@@ -65,7 +65,8 @@ ButtonGroup.propTypes ={
     onClick:PropTypes.func,
     onSelect:PropTypes.func,
     fullWidth: PropTypes.bool,
-    type: PropTypes.string
+    type: PropTypes.string,
+    theme:PropTypes.string
 }
 ButtonGroup.defaultProps = {
     onSelect: (x) => console.log(x),

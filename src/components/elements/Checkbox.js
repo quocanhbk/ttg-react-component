@@ -99,7 +99,8 @@ Checkbox.propTypes = {
     default: PropTypes.bool,
     displayMode: PropTypes.string,
     name:PropTypes.string,
-    theme: PropTypes.string
+    theme: PropTypes.string,
+    onSelect: PropTypes.func
 }
 
 Checkbox.defaultProps = {
