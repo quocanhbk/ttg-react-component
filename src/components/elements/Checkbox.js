@@ -17,14 +17,17 @@ const InputChkbox = styled.input`
     display: none;
     
     &:checked ~ span:after {
-        border-color: ${props => props.displayMode === "disabled" ? "#A0A0A0" : props.theme.fillColor};
+        border-color: ${props => props.displayMode === "disabled" ? "#A0A0A0" : "var(--fillColor)"};
     }
     &:checked ~ span {
-        border-color: ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.fillColor};
+        border-color: ${props => props.displayMode === "disabled" ? "var(--disabledTextColor)" : "var(--fillColor)"};
     }
 `;
 
 const SpanChkBox = styled.span`
+    --fillColor: ${props => props.theme.color.fill[props.color] || props.theme.color.fill.primary};
+    --textColor: ${props => props.theme.color.background.primary};
+    --disabledTextColor: ${props => props.theme.color.text.disabled};
     display:block;  
     position: absolute;
     top: 50%;
@@ -34,7 +37,7 @@ const SpanChkBox = styled.span`
     width: 1.2rem;
     background-color: transparent;
     border-radius: 4px;
-    border:2px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : getFader(props.theme.fillColor, 0.4)};
+    border:2px solid ${props => props.displayMode === "disabled" ? "var(--disabledTextColor)" : getFader(props.theme.color.fill.primary, 0.4)};
 
     &:after{
         transition: border-color 0.15s linear;
@@ -50,14 +53,14 @@ const SpanChkBox = styled.span`
         transform: rotate(45deg);
     }
     &:hover{
-        box-shadow: 0px 0px 16px ${props => getFader(props.theme.fillColor, 0.8)};
+        box-shadow: 0px 0px 16px ${props => getFader(props.theme.color.fill.primary, 0.8)};
     }
 `;
 
 const SpanChkName= styled.span`
     display:block;
     font-size:1rem;
-    color: ${props => props.displayMode === "disabled" ? "#A3A3A3": props.theme.textColor};
+    color: ${props => props.displayMode === "disabled" ? "var(--disabledTextColor)": "var(--textColor)"};
 
 `;
 
@@ -97,9 +100,10 @@ Checkbox.propTypes = {
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
     default: PropTypes.bool,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     name:PropTypes.string,
-    theme: PropTypes.string
+    theme: PropTypes.string,
+    onSelect: PropTypes.func
 }
 
 Checkbox.defaultProps = {

@@ -3,32 +3,19 @@ import {getDarker, getLighter} from '../../utils/color'
 import PropTypes from 'prop-types'
 
 const StyledButton = styled.button`
-    --textColor: ${props => props.theme.backgroundColor};
-    --darkTextColor: ${props => getDarker(props.theme.backgroundColor)};
-    --lightTextColor: ${props => getLighter(props.theme.backgroundColor)};
-    --fillColor: ${props => props.color === "secondary" ? props.theme.secondFillColor :
-                    props.color === "danger" ? props.theme.dangerFillColor :
-                    props.color === "warning" ? props.theme.warningFillColor :
-                    props.color === "success" ? props.theme.successFillColor :
-                    props.theme.fillColor};
-    --darkFillColor: ${props => getDarker(
-                    props.color === "secondary" ? props.theme.secondFillColor :
-                    props.color === "danger" ? props.theme.dangerFillColor :
-                    props.color === "warning" ? props.theme.warningFillColor :
-                    props.color === "success" ? props.theme.successFillColor :
-                    props.theme.fillColor)};
-    --lightFillColor: ${props => getLighter(
-                    props.color === "secondary" ? props.theme.secondFillColor :
-                    props.color === "danger" ? props.theme.dangerFillColor :
-                    props.color === "warning" ? props.theme.warningFillColor :
-                    props.color === "success" ? props.theme.successFillColor :
-                    props.theme.fillColor)};
-    
+    --textColor: ${props => props.theme.color.background.primary};
+    --darkTextColor: ${props => getDarker(props.theme.color.background.primary)};
+    --lightTextColor: ${props => getLighter(props.theme.color.background.primary)};
+    --fillColor: ${props => props.theme.color.fill[props.color] || props.theme.color.fill.primary};
+    --darkFillColor: ${props => getDarker(props.theme.color.fill[props.color] || props.theme.color.fill.primary)};
+    --lightFillColor: ${props => getLighter(props.theme.color.fill[props.color] || props.theme.color.fill.primary)};
+    --disabledTextColor: ${props => props.theme.color.text.disabled};
+    --disabledFillColor: ${props => props.theme.color.fill.disabled};
     margin: ${props => props.demo? "8px": "0px"};
     padding: ${props => props.ingroup ? "2px 8px" : props.type === "outline" ? "2px 8px" : "4px 10px"};
     transition: background 0.15s linear;
-    font-size: ${props => props.size === "large" ? "1.2rem" : props.size === "small" ? "0.8rem" : "1rem"};
-    font-weight: ${props => props.fontWeight ? props.fontWeight : 500};
+    font-size: ${props => props.theme.textSize[props.size] || "1rem" };
+    font-weight: ${props => props.theme.weight[props.fontWeight] || 500};
     cursor: pointer;
     outline: none;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
@@ -47,9 +34,9 @@ const StyledButton = styled.button`
         background: ${props => props.type === "contained" ? "var(--lightFillColor)" : props.type === "outline" ? "var(--darkTextColor)" : "transparent"};
     }
     &:disabled { 
-        color: #A3A3A3;
-        background-color: ${props => props.type === "contained"? "#CCCCCC": "var(--textColor)"};
-        border-color: ${props => props.type === "outline" ? "#A3A3A3" : "transparent"};
+        color: var(--disabledTextColor);
+        background-color: ${props => props.type === "contained"? "var(--disabledFillColor)": "var(--textColor)"};
+        border-color: ${props => props.type === "outline" ? "var(--disabledTextColor)" : "transparent"};
     }
     &:active {
         color: ${props => props.type === "contained" ? "var(--fillColor)" : props.type === "outline" ? "var(--textColor)" : "var(--lightFillColor)"};
@@ -79,7 +66,7 @@ Button.propTypes ={
     theme: PropTypes.string,
     size: PropTypes.string,
     className: PropTypes.string,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     name:PropTypes.string,
     fullWidth: PropTypes.bool,
     type: PropTypes.string

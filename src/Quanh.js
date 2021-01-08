@@ -1,12 +1,11 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
 import Code from './components/Code'
-import Toggle from './components/elements/Toggle'
-import ToggleGroup from './components/elements/ToggleGroup'
+
 function Quanh() {
   useEffect(() => {
     document.title = "Theme: " + theme[myTheme].name
@@ -20,6 +19,7 @@ function Quanh() {
   const [sliderValue, setSliderValue] = useState(0)
   const [toggleValue, setToggleValue] = useState("")
   const [toggleGroupValue, setToggleGroupValue] = useState([])
+
   return (
     <div>
       <ThemeProvider theme={theme[myTheme] || theme.light}>
@@ -36,20 +36,20 @@ function Quanh() {
             <ButtonGroup fullWidth onSelect={x => setTheme(x)}>
               <Button value="light" default >Light</Button>
               <Button value="dark">Dark</Button>
-              <Button value="emerald">Emerald</Button>
-              <Button value="rosewood">Rosewood</Button>
-              <Button value="amethyst">Amethyst</Button>
             </ButtonGroup>
           </Container>
 
           <br/>
 
           <Container title={"Elements"} fullWidth>
-          <Box title="Button" block>
+            <Box title="Text Input" block>
+              <SimpleInput displayMode={mode} default="default" demo/>
+            </Box>
+            <Box title="Button" block>
               <Button color="success" size="small" displayMode={mode} demo >Success</Button>
               <Button color="warning" size="medium" displayMode={mode} demo >Warning</Button>
               <Button color="danger" size="large" displayMode={mode} demo >Danger</Button>
-              <Button color="primary"size="large" displayMode={mode} demo >Primary</Button>
+              <Button color="primary"size="medium" displayMode={mode} demo >Primary</Button>
               <Button color="secondary"size="small" displayMode={mode} demo >Secondary</Button>
               <Button displayMode={mode} demo type="outline" >Outline</Button>
               <Button size="medium" displayMode={mode} demo type="text" >Text</Button>
@@ -98,10 +98,10 @@ function Quanh() {
               </ButtonGroup>
               <Code>{JSON.stringify(buttonGroupValue)}</Code>
             </Box>              
-            <Box title="Slide">
+            {/* <Box title="Slide">
               <Slider onSlide={(v) => setSliderValue(v)} displayMode={mode}/>
               <Code>{JSON.stringify(sliderValue)}</Code>
-            </Box>
+            </Box> */}
 
           </Container>
         </Container>

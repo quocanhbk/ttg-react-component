@@ -20,16 +20,16 @@ const InputRadio = styled.input`
 
     //update the dot when checked
     &:checked ~ span:after {
-        background-color: ${props => props.displayMode === "disabled" ? "#A0A0A0" : props.theme.fillColor};
+        background-color: ${props => props.displayMode === "disabled" ? "#A0A0A0" : props.theme.color.fill.primary};
         border-radius: 50%;
     }
     &:checked ~ span {
-        border-color: ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.fillColor};
+        border-color: ${props => props.displayMode === "disabled" ? props.theme.color.text.disabled : props.theme.color.fill.primary};
     }
 `;
 
 const ValueInput = styled.p`
-    color:${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.textColor};
+    color:${props => props.displayMode === "disabled" ? props.theme.color.text.disabled : props.theme.color.text.primary};
     display: inline-block;
 `;
 
@@ -41,13 +41,13 @@ const SpanRadio = styled.span`
     left: 0rem;
     height: 1.2rem;
     width: 1.2rem;
-    border: 2px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : getFader(props.theme.fillColor, 0.4)};
+    border: 2px solid ${props => props.displayMode === "disabled" ? props.theme.color.text.disabled : getFader(props.theme.color.fill.primary, 0.4)};
     border-radius: 50%;
     background: transparent;
 
 
     &:hover {
-        box-shadow: 0px 0px 16px ${props => getFader(props.theme.fillColor, 0.8)};
+        box-shadow: 0px 0px 16px ${props => getFader(props.theme.color.fill.primary, 0.8)};
     }
 
     //the dot
@@ -83,7 +83,7 @@ Radio.propTypes = {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     default: PropTypes.bool,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     onClick: PropTypes.func,
     onSelect: PropTypes.func,
     name:PropTypes.string,
