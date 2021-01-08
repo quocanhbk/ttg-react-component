@@ -100,7 +100,7 @@ Checkbox.propTypes = {
     disabled: PropTypes.bool,
     onChange: PropTypes.func,
     default: PropTypes.bool,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     name:PropTypes.string,
     theme: PropTypes.string,
     onSelect: PropTypes.func

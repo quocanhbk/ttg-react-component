@@ -63,7 +63,7 @@ const ButtonGroup = (props) => {
 }
 ButtonGroup.propTypes ={
     className: PropTypes.string,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     name:PropTypes.string,
     onClick:PropTypes.func,
     onSelect:PropTypes.func,

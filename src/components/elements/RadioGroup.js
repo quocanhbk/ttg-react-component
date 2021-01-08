@@ -52,7 +52,7 @@ const RadioGroup = (props) => {
 }
 RadioGroup.propTypes = {
     className: PropTypes.string,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     onSelect: PropTypes.func,
     name:PropTypes.string,
     fullWidth: PropTypes.bool,

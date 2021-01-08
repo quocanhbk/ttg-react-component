@@ -66,7 +66,7 @@ Button.propTypes ={
     theme: PropTypes.string,
     size: PropTypes.string,
     className: PropTypes.string,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     name:PropTypes.string,
     fullWidth: PropTypes.bool,
     type: PropTypes.string

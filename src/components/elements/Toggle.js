@@ -109,16 +109,9 @@ Toggle.propTypes = {
     default:PropTypes.bool,
     className: PropTypes.string,
     onSelect: PropTypes.func,
-    icons: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.shape({
-            checked: PropTypes.node,
-            unchecked: PropTypes.node
-        })
-    ]),
     name:PropTypes.string,
     onChange: PropTypes.func,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     theme:PropTypes.string
 }
 Toggle.defaultProps = {

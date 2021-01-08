@@ -46,7 +46,7 @@ const CheckboxGroup = (props) =>{
 CheckboxGroup.propTypes= {
     className: PropTypes.string,
     onSelect: PropTypes.func,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     name:PropTypes.string,
     fullWidth: PropTypes.bool,
     horizontal: PropTypes.bool

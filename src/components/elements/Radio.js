@@ -83,7 +83,7 @@ Radio.propTypes = {
     className: PropTypes.string,
     disabled: PropTypes.bool,
     default: PropTypes.bool,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     onClick: PropTypes.func,
     onSelect: PropTypes.func,
     name:PropTypes.string,
