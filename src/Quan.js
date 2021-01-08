@@ -38,7 +38,7 @@ function Quan() {
 
   return (
     <div>
-      <ThemeProvider theme={theme[myTheme] || theme.light}>
+      <ThemeProvider theme={ theme.dark}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
           <Breadcrumb>
             {items.map(({to,label}) =>(
