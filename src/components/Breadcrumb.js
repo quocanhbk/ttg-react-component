@@ -7,6 +7,10 @@ const ULStyte= styled.ul`
     display:flex;
     list-style:none;
     align-items:center;
+    
+    & li:last-child a{
+        color:black;
+    }
 `;
 const LabelSeparator= styled.label`
     color: #333;
@@ -17,13 +21,16 @@ const LiItem = styled.li`
     & a{
         text-decoration:none;
         font-size:14px;
-        color:#000;   
+        color:#ccc;   
+    }
+    & a:hover{
+        color:#000;
     }
     & a:active{
         color:red;
     }
 `;
-//Cac item cua Breadcrumb (mang)
+// item cua Breadcrumb (mang)
 const BreadcrumbItem = ({ children, ...props }) => (
     <LiItem className='breadcrumb-item' {...props}>
       {children}
@@ -40,6 +47,8 @@ const BreadcrumbSeparator = (props) => (
   //
   const Breadcrumb = ({ ...props }) => {
     let children = React.Children.toArray(props.children)
+
+    //render items
     children = children.map((child, index) => (
     <BreadcrumbItem key={`breadcrumb_item${index}`}>{child}</BreadcrumbItem>
   ))
