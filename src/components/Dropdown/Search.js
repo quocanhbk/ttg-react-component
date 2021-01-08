@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import OneSelect from './OneSelect'
-
 const DivParent = styled.div`
     background: #ede4e4;
     width: 50%;

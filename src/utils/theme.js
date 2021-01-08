@@ -1,9 +1,9 @@
 const theme = {
     light: {
-        name: "Opal",
+        name: "Light Theme",
         color: {
             text: {
-                primary: "#000000",
+                primary: "#404040",
                 secondary: "#2F8DE3",
                 link: "#2F8DE3",
                 visited: "#7B237B",
@@ -20,6 +20,9 @@ const theme = {
             background: {
                 primary: "#FFFFFF",
                 secondary: "#E5E5E5"
+            },
+            border: {
+                primary: "#CCCCCC"
             }
         },
         textSize: {
@@ -34,7 +37,7 @@ const theme = {
         }
     },
     dark: {
-        name: "Dark",
+        name: "Dark Theme",
         color: {
             text: {
                 primary: "#E8DEC8",
@@ -44,8 +47,8 @@ const theme = {
                 disabled: "#646464"
             },
             fill: {
-                primary: "#A59C87", //Antique Gold 500
-                secondary: "#E8DEC8", //Antique Gold 300
+                primary: "#E8DEC8", //Antique Gold 500
+                secondary: "#A59C87", //Antique Gold 300
                 disabled: "#C3C3C3", 
                 success: "#56C26A",
                 warning: "#FFD54F",
@@ -54,6 +57,9 @@ const theme = {
             background: {
                 primary: "#212223", //Obsidian 900
                 secondary: "#4C4C4C" //Pewter 800 
+            },
+            border: {
+                primary: "#555555"
             }
         },
         textSize: {

@@ -18,6 +18,7 @@ const StyledButton = styled.button`
     font-weight: ${props => props.theme.weight[props.fontWeight] || 500};
     cursor: pointer;
     outline: none;
+    user-select: none;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
     background: ${props=>props.type === "contained" ? "var(--fillColor)" : "var(--textColor)"};
@@ -46,7 +47,7 @@ const StyledButton = styled.button`
 
 const Button = (props) => {
     return (
-        <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled}>
+        <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled} onClick={props.onSelect}>
         {props.children}
         </StyledButton>
     )
@@ -57,7 +58,8 @@ Button.defaultProps = {
     type: "contained",
     displayMode: "edit",
     size: "medium",
-    disabled: false
+    disabled: false,
+    onSelect: () => {}
 }
 
 Button.propTypes ={
@@ -65,10 +67,9 @@ Button.propTypes ={
     disabled: PropTypes.bool,
     theme: PropTypes.string,
     size: PropTypes.string,
-    className: PropTypes.string,
     displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
-    name:PropTypes.string,
     fullWidth: PropTypes.bool,
-    type: PropTypes.string
+    type: PropTypes.string,
+    onSelect: PropTypes.func
 }
 export default Button

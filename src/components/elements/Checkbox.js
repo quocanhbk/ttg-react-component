@@ -58,6 +58,7 @@ const SpanChkBox = styled.span`
 `;
 
 const SpanChkName= styled.span`
+    --disabledTextColor: ${props => props.theme.color.text.disabled};
     display:block;
     font-size:1rem;
     color: ${props => props.displayMode === "disabled" ? "var(--disabledTextColor)": "var(--textColor)"};

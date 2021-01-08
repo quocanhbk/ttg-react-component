@@ -9,5 +9,5 @@ import SimpleInput from './SimpleInput'
 import Toggle from './Toggle'
 import ToggleGroup from './ToggleGroup'
 import Link from './Link'
-
-export {Button, ButtonGroup, Radio, RadioGroup, Checkbox, CheckboxGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link}
+import Modal from './Modal'
+export {Button, ButtonGroup, Radio, RadioGroup, Checkbox, CheckboxGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal}

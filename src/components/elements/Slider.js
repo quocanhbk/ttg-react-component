@@ -5,19 +5,37 @@ import {getFader} from '../../utils/color'
 const StyleSlider = styled.div`
     position:relative;
     display: ${props => props.fullWidth ? "block" : "inline-block"};
-    width: ${props => props.fullWidth ? "100%": "auto"};
+    width: ${props => props.fullWidth ? "100%": props.width + "px"};
     padding: 4px 8px;
     
 `;
-
+const Container = styled.div`
+    position: absolute;
+    background: ${props => props.theme.color.border.primary};
+    height: 2.5px;
+    left: 0;
+    top: 50%;
+    width: 100%;
+    transform: translate(0%, -50%);
+`;
+const Left = styled.div`
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 50px;
+    background: ${props => props.displayMode === "disabled" ? props.theme.color.text.disabled : props.theme.color.fill.primary};;
+`;
 const InputStyle = styled.input`
-
+    position: absolute;
+    background: red;
     display: inline-block;
     -webkit-appearance: none;
-    width: ${props => props.fullWidth ? "100%" : props.width};
+    -moz-appearance: none;
+    width: 100%;
     height: 3px;
     outline: none;
-    background: ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.color.fill.primary};
+    background: transparent; //${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.color.fill.primary};
     &::-webkit-slider-thumb {
         pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
         appearance: none;
@@ -59,14 +77,13 @@ const SliderValue= styled.span`
     opacity: 0;
     position: absolute;
     transition: opacity 0.15s ease-in;
-    top: 35px;
+    top: 16px;
     background: ${props => props.theme.backgroundColor};
-    box-shadow: 0px 0px 4px ${props => getFader(props.theme.color.text.primary, 0.8)};
+    box-shadow: 0px 0px 2px ${props => getFader(props.theme.color.text.primary, 0.8)};
     text-align: center;
     border-radius: 5px;
-    padding: 1px 2px;
+    padding: 1px 4px;
     font-size: 0.8rem;
-
 `;
 
 
@@ -89,17 +106,24 @@ const Slider = (props) =>{
     
     return(
         <StyleSlider {...props}>
-            <InputStyle {...props}
-            ref={x}
-            type="range"
-            step={step}
-            min={min}
-            max={max}
-            width={width+"px"}
-            value={range}
-            onChange={handleChange}
-            />
-            <SliderValue ref={y} style={{left:((range - min)/(max-min)) * (widthState-24) + 10}}>{range}</SliderValue>           
+            <Container>
+                <Left {...props} style={{width: parseInt((range - min)/(max-min)*100).toString() + "%"}}/>
+                <InputStyle {...props}
+                ref={x}
+                type="range"
+                step={step}
+                min={min}
+                max={max}
+                value={range}
+                onChange={handleChange}
+                />
+                <SliderValue 
+                    ref={y} 
+                    style={{
+                        left: parseInt((range - min)/(max-min)*100).toString() + "%",
+                        transform: "translateX(-" + parseInt((range - min)/(max-min)*100).toString() + "%)" 
+                    }}>{range}</SliderValue>  
+            </Container>   
         </StyleSlider>
     )
 }
@@ -116,9 +140,9 @@ Slider.propTypes ={
 Slider.defaultProps = {
     step: 1,
     min: 0,
-    max: 50,
+    max: 100,
     defaultLength: 0,
-    width: 250,
+    width: 100,
     onSlide: (x) => console.log(x),
     displayMode: "edit"
 }
