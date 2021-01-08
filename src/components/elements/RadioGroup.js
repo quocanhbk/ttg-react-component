@@ -40,7 +40,7 @@ const RadioGroup = (props) => {
                 return React.cloneElement(
                     child, 
                     {
-                        name: props.name || (new Date()).getTime(), 
+                        name: props.name || (new Date()).getTime().toString(), 
                         onSelect: () => handleClick(child.props.value), 
                         displayMode: props.displayMode,
                         ingroup: true
@@ -52,7 +52,7 @@ const RadioGroup = (props) => {
 }
 RadioGroup.propTypes = {
     className: PropTypes.string,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     onSelect: PropTypes.func,
     name:PropTypes.string,
     fullWidth: PropTypes.bool,

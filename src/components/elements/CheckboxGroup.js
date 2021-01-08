@@ -34,7 +34,7 @@ const CheckboxGroup = (props) =>{
             React.Children.map(props.children, child => {
                 return React.cloneElement(
                     child, {
-                        name: props.name || (new Date()).getTime(), 
+                        name: props.name || (new Date()).getTime().toString(), 
                         onSelect: (checked) => handleClick({value: child.props.value, checked: checked}),
                         displayMode: props.displayMode
                     })
@@ -46,7 +46,7 @@ const CheckboxGroup = (props) =>{
 CheckboxGroup.propTypes= {
     className: PropTypes.string,
     onSelect: PropTypes.func,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     name:PropTypes.string,
     fullWidth: PropTypes.bool,
     horizontal: PropTypes.bool

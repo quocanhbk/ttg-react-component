@@ -34,7 +34,7 @@ const ToggleGroup = (props) =>{
              React.Children.map(props.children, child => {
                 return React.cloneElement(
                     child, {
-                        name: props.name || (new Date()).getTime(), 
+                        name: props.name || (new Date()).getTime().toString(), 
                         onSelect: (checked) => handleClick({value: child.props.value, checked: checked}),
                         displayMode: props.displayMode
                     })
@@ -45,12 +45,11 @@ const ToggleGroup = (props) =>{
 }
 ToggleGroup.propTypes={
     className: PropTypes.string,
-    displayMode:PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     onSelect: PropTypes.func,
     name:PropTypes.string,
     fullWidth: PropTypes.bool,
     horizontal: PropTypes.bool,
-    position: PropTypes.bool
 }
 ToggleGroup.defaultProps = {
     onSelect: (x) => console.log(x),
@@ -58,6 +57,5 @@ ToggleGroup.defaultProps = {
     position: false,
     fullWidth:false,
     horizontal:false,
-    position:false
 }
 export default ToggleGroup

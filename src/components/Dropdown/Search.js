@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import OneSelect from './OneSelect'
+
 const DivParent = styled.div`
     background: #ede4e4;
     width: 50%;
@@ -10,7 +11,9 @@ const DivParent = styled.div`
     position: relative;
 `;
 
-const FormParent = styled.form``;
+const FormParent = styled.form`
+    z-index: 999;
+`;
 
 const Input = styled.input`
     padding-left: 10px;
@@ -44,11 +47,11 @@ const AllOption = styled.div`
     position: absolute;
     color: black;
     width: 100%;
-    background: white;
+    background: ${props => props.colorBackground ? '#80808073' : 'none'};
     margin: auto;
     top: 100%;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     display: ${props => (props.display === false) ? 'none' : undefined};
     li{
         list-style: none;
@@ -66,80 +69,84 @@ const AllOption = styled.div`
 const Search = (props) =>{
     var [Option, setOption] = useState(props.value);
     const [ArrayOption, setArray] = useState([]);
-
     const [displayOption, setDisplayOption] = useState(false);
+    var ArrayDefault = props.value;
+
     const handleClick = () =>{
         setDisplayOption(!displayOption)
     }
-
+     
     const handleDelete = (props) =>{
-        // kiem phan tu bi xoa
+        // kiếm phần tử bị xóa
         var temp = [];
         for(var i = 0; i<ArrayOption.length; i++){
-            if(props === i){}
+            if(props === i){
+                Option.push(ArrayOption[i])
+            }
             else{
                 temp.push(ArrayOption[i])
             }
         }
         setArray(temp)
     }
-
-    // xoa tat ca option da chon
+    
+    // xóa tất cả option người dùng đã chọn
     const handleDeleteAll = () =>{
+        // sắp xếp lại vị trí của các option
+        setOption(ArrayDefault)
         setArray([]);
     }
     
-    var OptionChoose = [];
-    const handleAdd = (value,index) =>{
-        // set lai option
-        const OptionTemp = [];
-        
-        for(var i=0; i<Option.length; i++){
+    // set lại option nếu người dùng xóa
+    const OptionTemp = [];
+    // lấy option người dùng chọn
+    var OptionChoose = '';
+
+    const handleAdd = (index) =>{
+        for(var i = 0; i < Option.length; i++){
             if(index === i){
-                OptionChoose.push(Option[index])
+                OptionChoose = Option[i]
             }
             else{
                 OptionTemp.push(Option[i])
             }
         }
         setOption(OptionTemp)
-        setArray(OptionChoose)
-        console.log(OptionChoose.length)
-        // hien thi option da chon
+        ArrayOption.push(OptionChoose)
     }
-    // hien thi button delete
+    // hiển thị button deleteAll nếu người dùng đã chọn > 1 option
     var isDelete = false;
+    var colorBackground = true;
     if(ArrayOption.length > 0){
-        isDelete = true
+        isDelete = !isDelete
     }
-
+    if(Option.length === 0){
+        colorBackground=!colorBackground
+    }
     
     return(
-        <>
-            <DivParent>
-                <FormParent>
-                    {
-                        ArrayOption.map((item, index)=>{
-                            return(
-                                <OneSelect value={item} key={index} handleClick={()=>handleDelete(index)}/>
-                            )
-                        })
-                    }
-                    <Input type="search" placeholder="Search..." onMouseDown={handleClick}/>
-                </FormParent>
-                <ButtonDelete onClick={handleDeleteAll} displayDelete={isDelete}>X</ButtonDelete>
-                <AllOption display = {displayOption}>
-                    {
-                        Option.map((item, index)=>{
-                            return(
-                                <li key={index} onClick={()=>handleAdd(item,index)}>{item}</li>
-                            )
-                        })
-                    }
-                </AllOption>
-            </DivParent>
-            
-        </>
+        <DivParent id="menuwrap">
+            <FormParent>
+                {
+                    ArrayOption.map((item, index)=>{
+                        return(
+                            <OneSelect value={item} key={index} handleClick={()=>handleDelete(index)} id="menutoggle"/>
+                        )
+                    })
+                }
+                <Input type="search" placeholder="Search..." onMouseDown={handleClick}/>
+            </FormParent>
+            <ButtonDelete onClick={handleDeleteAll} displayDelete={isDelete}>X</ButtonDelete>
+            <AllOption display = {displayOption} colorBackground={colorBackground} id="menucontainer">
+                {
+                    Option.map((item, index)=>{
+                        return(
+                            <li key={index} onClick={()=>handleAdd(index)}>{item}</li>
+                        )
+                    })
+                }
+            </AllOption>
+        </DivParent>
     )
 }
 

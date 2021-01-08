@@ -11,7 +11,6 @@ const LabelToggle = styled.label`
     cursor: pointer;
     padding: 4px 8px 4px 0;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
-    
 `;
 const ToggleSpan = styled.span`
     position: relative;
@@ -33,6 +32,7 @@ const StyleInput = styled.input`
 `;
 //the toggle
 const StyleSpan = styled.span`
+    display:block;
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -109,16 +109,9 @@ Toggle.propTypes = {
     default:PropTypes.bool,
     className: PropTypes.string,
     onSelect: PropTypes.func,
-    icons: PropTypes.oneOfType([
-        PropTypes.bool,
-        PropTypes.shape({
-            checked: PropTypes.node,
-            unchecked: PropTypes.node
-        })
-    ]),
     name:PropTypes.string,
     onChange: PropTypes.func,
-    displayMode: PropTypes.string,
+    displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     theme:PropTypes.string
 }
 Toggle.defaultProps = {

@@ -79,12 +79,20 @@ Name|Type|Default|Description
 `name`|`string`|`none`|Name of Group
 `fullWidth`|`bool`|`false`|Toggle will take the whole width if true, else it will be inline
 `horizontal`|`bool`|`false`|Field that will display direction of Toggle (row or column)
-`position`|`bool`|`false`| Position label set to right
+=#### Example:
+`<ToggleGroup name="group 1" horizontal ></ToggleGroup>`
+`<ToggleGroup name="group 1" fullWidth ></ToggleGroup>`
+`<ToggleGroup name="group 1" position ></ToggleGroup>`
+### 9.`<SimpleInput/>` *Styte Input*
+#### Props
+Name|Type|Default|Description
+---|---|---|---
+`name`|`string`|`none`|Name of Input
+`fullWidth`|`bool`|`false`|Input will take the whole width if true, else it will be inline
 #### Example:
 `<ToggleGroup name="group 1" horizontal ></ToggleGroup>`
 `<ToggleGroup name="group 1" fullWidth ></ToggleGroup>`
 `<ToggleGroup name="group 1" position ></ToggleGroup>`
-
 ### 9. `<Select/>` *Select-Option*
 #### Props
 Name|Type|Default|Description
