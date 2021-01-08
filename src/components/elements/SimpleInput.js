@@ -37,7 +37,7 @@ const SimpleInput = (props) => {
                 defaultValue={props.default}
                 placeholder={props.placeholder}
                 onChange={(e) => props.onChange(e.target.value)}
-                on
+                on="true"
             />
 }
 

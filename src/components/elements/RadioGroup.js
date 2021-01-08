@@ -40,7 +40,7 @@ const RadioGroup = (props) => {
                 return React.cloneElement(
                     child, 
                     {
-                        name: props.name || (new Date()).getTime(), 
+                        name: props.name || (new Date()).getTime().toString(), 
                         onSelect: () => handleClick(child.props.value), 
                         displayMode: props.displayMode,
                         ingroup: true
