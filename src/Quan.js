@@ -1,6 +1,6 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, Radio, RadioGroup} from './components/elements'
+import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput} from './components/elements'
 import CheckboxGroup from './components/elements/CheckboxGroup'
 import TableDatePicker from './components/TableDatePicker'
 import ToggleGroup from './components/elements/ToggleGroup'
@@ -51,6 +51,7 @@ function Quan() {
             <Contact path='/contact' />
             <Blog path='/blog' />
           </Router>
+          <SimpleInput></SimpleInput>
         </Container>        
       </ThemeProvider>
     </div>
