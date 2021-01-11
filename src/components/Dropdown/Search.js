@@ -1,4 +1,3 @@
-import { type } from 'jquery';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import OneSelect from './OneSelect'
