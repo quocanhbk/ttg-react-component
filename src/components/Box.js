@@ -9,7 +9,7 @@ const StyledBox = styled.div`
     & h4 {
         border-bottom: 1px solid #333;
         padding: 4px 12px;
-        background-color: rgba(0,0,0,0.2);
+        background: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.3))
     }
     & .grid {
         display: grid;

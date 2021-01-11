@@ -8,9 +8,9 @@ const data = ['banana','mango','apple','fruits']
 export default function Dat() {
     return (
         <>
-          {/* <Badge
+          <Badge
             value="3"
-            /> */}
+            />
           {/* <ComboBox value={data}/> */}
           {/* <Search/> */}
         </>

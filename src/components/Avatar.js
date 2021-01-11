@@ -29,25 +29,25 @@ const Avatar = (props) => {
 
     const ImgStyle = styled.img`
     display:block;
-    width:  ${props => props.theme.avatarSize[size] || "48px" };
-    height: ${props => props.theme.avatarSize[size] || "48px" };
+    width:  ${props => props.theme.avatarSize[props.size] || "48px" };
+    height: ${props => props.theme.avatarSize[props.size] || "48px" };
     border-radius:50%;
 `;
 const DivImg = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
-    width:  ${props => props.theme.avatarSize[size] || "48px" };
-    height: ${props => props.theme.avatarSize[size] || "48px" };
+    width:  ${props => props.theme.avatarSize[props.size] || "48px" };
+    height: ${props => props.theme.avatarSize[props.size] || "48px" };
     border-radius:50%;
     background: ${props => props.theme.color.border.primary}; 
 `;
 let strNameImg = props.children;
-let NameImg = strNameImg.split(/\s/).reduce((response,word)=> response+=word.slice(0,1),'')
+let NameImg = strNameImg.split(/\s/).reduce((response,word)=> response+=word.toUpperCase().slice(0,1),'')
 
       if (props.src) {
         inner = <ImgStyle src={props.src} ></ImgStyle>
-      } else {
+      } else if (props.src==="") {
         inner = (
           <DivImg
               className="avatar-icon"
