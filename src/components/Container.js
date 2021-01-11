@@ -9,7 +9,7 @@ const StyledContainer = styled.div`
     border: 1px solid #333;
     border-radius: 8px;
     margin: 8px;
-
+    transition: background 0.2s linear;
     & h3 {
         font-weight: 500;
         padding-bottom: 0.5rem;

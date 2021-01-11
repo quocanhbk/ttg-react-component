@@ -48,10 +48,11 @@ const ExitIcon = styled.div`
     }
 
 `;
-const slideDown = keyframes`
+const modalEnter = keyframes`
     from { top: -20%; }
     to { top: 50%; }
 `;
+
 const grayen = keyframes`
     from { background: rgba(0,0,0,0);}
     to {background: rgba(0,0,0,0.3);}
@@ -62,7 +63,6 @@ const StyledBackground = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    //background: rgba(0,0,0,0.3);
     animation: ${grayen} 0.5s ease-out 0s 1 forwards normal;
 `;
 const StyledContainer = styled.div`
@@ -77,7 +77,7 @@ const StyledContainer = styled.div`
     height: ${props => props.height || "auto"};
     width: ${props => props.width || "auto"};
     transform: ${props => props.ani ? "translate(-50%, -50%)" : "translate(-50%, 700px)"};
-    animation: ${slideDown} 0.5s ease-out 0s 1 forwards normal;
+    animation: ${modalEnter} 0.5s ease-out 0s 1 forwards normal;
     z-index: 2;
     box-shadow: 0px 0px 8px ${props => getDarker(props.theme.color.border.primary)};
 `;
@@ -108,11 +108,18 @@ const Modal = (props) => {
 
     }, [props.visible])
     useEffect(() => {
-        console.log("I run")
         document.addEventListener("keydown", (e) => {
-          if (e.key === "Escape") {
-            props.onClickOutside()
-          }
+            if (e.key === "Escape") {
+                props.onClickOutside()
+            }
+        })
+
+        return(() => {
+            document.removeEventListener("keydown", (e) => {
+                if (e.key === "Escape") {
+                  props.onClickOutside()
+                }
+            })
         })
       }, [])
     return (

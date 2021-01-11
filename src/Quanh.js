@@ -5,10 +5,12 @@ import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
 import Code from './components/Code'
+import Calendar from './components/Calendar'
 function Quanh() {
   useEffect(() => {
     document.title = "Theme: " + theme[myTheme].name
   })
+  
   const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit mattis arcu semper elementum. Nullam accumsan erat vitae quam sagittis placerat. In sodales mi eros, id commodo nulla fermentum in. Cras vehicula, sapien id fringilla lobortis, erat nisl rhoncus ante, et maximus libero tellus commodo ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dapibus justo nunc, sed molestie tortor dictum vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris maximus est quis ligula ullamcorper semper. Integer tempus orci dui, a lacinia lorem tempus ut. Donec sapien leo, sodales eu odio molestie, cursus lacinia quam. Aenean rhoncus rhoncus erat, nec volutpat nulla ullamcorper sit amet. Maecenas finibus, ante in suscipit rhoncus, massa lorem posuere est, vel faucibus turpis neque sit amet augue. Nulla sit amet mauris sit amet augue pharetra luctus vitae nec turpis. Duis sollicitudin commodo nisi quis mollis."
   const [mode, setMode] = useState("edit")
   const [myTheme, setTheme] = useState("light")
@@ -22,6 +24,7 @@ function Quanh() {
   const [textValue, setTextValue] = useState("")
   const [modalState, setModalState] = useState(false)
   const [modalState2, setModalState2] = useState(false)
+  const [dateValue, setDateValue] = useState("")
   return (
     <div>
       <ThemeProvider theme={theme[myTheme] || theme.light}>
@@ -42,7 +45,7 @@ function Quanh() {
           </Container>
 
           <br/>
-          
+
           <Container headline={"Elements"} fullWidth>
             <Box headline="Modal" block>
               <Modal visible={modalState} onClickOutside={() => setModalState(false)} title="Great Title">
@@ -66,7 +69,7 @@ function Quanh() {
               <Code>{JSON.stringify(textValue)}</Code>
             </Box>
             <Box headline="Button" block>
-              <Button color="success" size="small" displayMode={mode} demo >Success</Button>
+              <Button color="success" size="small" displayMode={mode} demo onSelect={() => console.log("Wow")}>Success</Button>
               <Button color="warning" size="medium" displayMode={mode} demo >Warning</Button>
               <Button color="danger" size="large" displayMode={mode} demo >Danger</Button>
               <Button color="primary"size="medium" displayMode={mode} demo >Primary</Button>
@@ -74,7 +77,12 @@ function Quanh() {
               <Button displayMode={mode} demo type="outline" >Outline</Button>
               <Button size="medium" displayMode={mode} demo type="text" >Text</Button>
             </Box>
-
+            <Box headline="Calendar">
+              <div>
+                <Calendar demo onSelect={date => setDateValue(date)}/>
+              </div>
+              <Code>{dateValue.toString()}</Code>
+            </Box>
             <Box headline="Toggle">
               <Toggle displayMode={mode} onSelect={v => setToggleValue(v)}>Awesome</Toggle>
               <Code>{JSON.stringify(toggleValue)}</Code>
