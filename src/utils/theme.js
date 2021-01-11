@@ -30,6 +30,11 @@ const theme = {
             medium: "1rem",
             large: "1.2rem"
         },
+        avatarSize: {
+            small: "30px",
+            medium: "36px",
+            large: "48px"
+        },
         weight: {
             light: 300,
             normal: 500,
@@ -66,6 +71,11 @@ const theme = {
             small: "0.8rem",
             medium: "1rem",
             large: "1.2rem"
+        },
+        avatarSize: {
+            small: "30px",
+            medium: "36px",
+            large: "48px"
         },
         weight: {
             light: 300,

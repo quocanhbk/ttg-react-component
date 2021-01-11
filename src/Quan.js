@@ -6,7 +6,9 @@ import TableDatePicker from './components/TableDatePicker'
 import ToggleGroup from './components/elements/ToggleGroup'
 import Toggle from './components/elements/Toggle'
 import Slider from './components/elements/Slider'
-// import {Router, Link} from '@reach/router'
+import {Router, Link} from '@reach/router'
+import Avatar from './components/Avatar'
+import hinh from "./components/gai2.jpg";
 
 import Home from './components/pages/Home'
 import Blog from './components/pages/Blog'
@@ -38,19 +40,9 @@ function Quan() {
 
   return (
     <div>
-      <ThemeProvider theme={ theme.dark}>
+      <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          {/* <Breadcrumb>
-            {items.map(({to,label}) =>(
-              <Link key={to} to={to}>{label}</Link>
-            ))}
-          </Breadcrumb> */}
-          {/* <Router>
-            <Home path='/' />
-            <Dashboard path='/dashboard' />
-            <Contact path='/contact' />
-            <Blog path='/blog' />
-          </Router> */}
+          <Avatar  size="large">Gái Xinh</Avatar>
         </Container>        
       </ThemeProvider>
     </div>
