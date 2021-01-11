@@ -1,3 +1,4 @@
+import { type } from 'jquery';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import OneSelect from './OneSelect'
@@ -7,7 +8,7 @@ const DivParent = styled.div`
     margin: auto;
     display: flex;
     height: 45px;
-    position: relative;
+    position: absolute;
 `;
 
 const FormParent = styled.form`
@@ -26,7 +27,6 @@ const Input = styled.input`
 `;
 
 const ButtonDelete = styled.button`
-    position: relative;
     margin: auto 0;
     background: transparent;
     transition: all .3s ease;
@@ -36,6 +36,9 @@ const ButtonDelete = styled.button`
     padding: 0px 5px;
     outline: none;
     display: ${props => props.displayDelete ? undefined : 'none'};
+    left: 45%;
+    position: fixed;
+    top: 3%;
     &:hover{
         background: red;
         color: white;
@@ -66,7 +69,6 @@ const AllOption = styled.div`
 `;
 
 const Search = (props) =>{
-    console.log(props)
     var [Option, setOption] = useState(props.value);
     const [ArrayOption, setArray] = useState([]);
     const [displayOption, setDisplayOption] = useState(false);
@@ -92,28 +94,25 @@ const Search = (props) =>{
     
     // xóa tất cả option người dùng đã chọn
     const handleDeleteAll = () =>{
-        // sắp xếp lại vị trí của các option
         setOption(ArrayDefault)
         setArray([]);
     }
     
-    // set lại option nếu người dùng xóa
+    // set lại option nếu người dùng xóa 1 option
     const OptionTemp = [];
     // lấy option người dùng chọn
-    var OptionChoose = '';
-
     const handleAdd = (index) =>{
         for(var i = 0; i < Option.length; i++){
             if(index === i){
-                OptionChoose = Option[i]
+                ArrayOption.push(Option[index])
             }
             else{
                 OptionTemp.push(Option[i])
             }
         }
         setOption(OptionTemp)
-        ArrayOption.push(OptionChoose)
-    }
+    } //end hàm xóa 1 option
+
     // hiển thị button deleteAll nếu người dùng đã chọn > 1 option
     var isDelete = false;
     var colorBackground = true;
@@ -122,8 +121,31 @@ const Search = (props) =>{
     }
     if(Option.length === 0){
         colorBackground=!colorBackground
-    }
+    } //end hiển thị button deleteAll
     
+    // lay value ng dung input
+    const [valueInput, setValueInput] = useState({})
+    var uppercase = '';
+    const handleGetValue = (e) =>{
+        setValueInput({
+            ...valueInput,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    // phần đang fix
+    const handleFilter = ()=> {
+        uppercase = JSON.stringify(valueInput).toUpperCase()
+        for (var i = 0; i < ArrayDefault.length; i++) {
+            // console.log(ArrayDefault[i].toUpperCase(), uppercase)
+            // console.log(ArrayDefault[i].toUpperCase().indexOf(uppercase))
+            if (ArrayDefault[i].toUpperCase().indexOf(uppercase) > -1) {
+                console.log("hello 1")
+            } else {
+                console.log("hello 2")
+            }
+        }
+    }
     return(
         <DivParent id="menuwrap">
             <FormParent>
@@ -134,7 +156,7 @@ const Search = (props) =>{
                         )
                     })
                 }
-                <Input type="search" placeholder="Search..." onMouseDown={handleClick}/>
+                <Input type="search" placeholder="Search..." onMouseDown={handleClick} onChange={handleGetValue} name="valueInput" onKeyUp={()=>handleFilter()}/>
             </FormParent>
             <ButtonDelete onClick={handleDeleteAll} displayDelete={isDelete}>X</ButtonDelete>
             <AllOption display = {displayOption} colorBackground={colorBackground} id="menucontainer">
