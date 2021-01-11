@@ -6,7 +6,7 @@ const DivSelect = styled.div`
 
 const DivText = styled.div`
     box-shadow: 0 0 0 1px #bac8d3;
-    border-radius: 2px;
+    border-radius: 8px;
     padding-left: 4px;
     margin: 10px 10px 10px 0;
     font-size: 14px;

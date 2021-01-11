@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components'
 import OneSelect from './OneSelect'
 const DivParent = styled.div`
     background: #ede4e4;
-    width: 50%;
+    width: ${props => props.width ? props.width : '50%'};
     margin: auto;
     display: flex;
-    height: 45px;
+    height: ${props => props.height ? props.height : '45px'};
     position: absolute;
 `;
 
@@ -67,7 +67,7 @@ const AllOption = styled.div`
     }
 `;
 
-const Search = (props) =>{
+const ComboBox = (props) =>{
     var [Option, setOption] = useState(props.value);
     const [ArrayOption, setArray] = useState([]);
     const [displayOption, setDisplayOption] = useState(false);
@@ -134,6 +134,7 @@ const Search = (props) =>{
 
     // phần đang fix
     const handleFilter = ()=> {
+        // chuyển valueInput thành dạng string
         uppercase = JSON.stringify(valueInput).toUpperCase()
         for (var i = 0; i < ArrayDefault.length; i++) {
             // console.log(ArrayDefault[i].toUpperCase(), uppercase)
@@ -145,6 +146,7 @@ const Search = (props) =>{
             }
         }
     }
+
     return(
         <DivParent id="menuwrap">
             <FormParent>
@@ -160,9 +162,9 @@ const Search = (props) =>{
             <ButtonDelete onClick={handleDeleteAll} displayDelete={isDelete}>X</ButtonDelete>
             <AllOption display = {displayOption} colorBackground={colorBackground} id="menucontainer">
                 {
-                    Option.map((item, index)=>{
+                    Option.map((name, index)=>{
                         return(
-                            <li key={index} onClick={()=>handleAdd(index)}>{item}</li>
+                            <li key={index} onClick={()=>handleAdd(index)}>{name}</li>
                         )
                     })
                 }
@@ -171,4 +173,4 @@ const Search = (props) =>{
     )
 }
 
-export default Search
+export default ComboBox

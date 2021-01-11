@@ -10,7 +10,7 @@ const StyledButtonGroup = styled.div`
     padding: 0px;
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     align-items: flex-start;
-    border-radius: 8px;
+    border-radius: 5px;
     overflow: hidden;
     background: var(--fillColor);
     border: 2px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : "var(--fillColor)"};

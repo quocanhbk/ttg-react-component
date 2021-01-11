@@ -24,8 +24,8 @@ const Avatar = (props) => {
     display:block;
     width:  ${props => props.theme.avatarSize[props.size] || "48px" };
     height:  ${props => props.theme.avatarSize[props.size] || "48px" };
-    min-height: ${props => props.fluid ? "100%" : ""};
-    min-width: ${props => props.fluid ? "100%" : ""};
+    min-height: ${props => fluid ? "100%" : "48px"};
+    min-width: ${props => fluid ? "100%" : "48px"};
     border-radius:50%;
     border:1px solid #fff;
 `;
