@@ -1,11 +1,12 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
 import Code from './components/Code'
 import Calendar from './components/Calendar'
+import IcoMail from './components/icons/IcoMail'
 function Quanh() {
   useEffect(() => {
     document.title = "Theme: " + theme[myTheme].name
@@ -47,6 +48,12 @@ function Quanh() {
           <br/>
 
           <Container headline={"Elements"} fullWidth>
+            <Box headline="Badge" block>
+              <Badge demo icon={<IcoMail/>} value={1} max={10} dot/>
+              <Badge demo icon={<IcoMail/>} value={99} max={999}/>
+              <Badge demo icon={<IcoMail/>} value={50} max={10}/>
+              <Badge demo icon={<IcoMail/>} value={0} max={10} showZero/>
+            </Box>
             <Box headline="Modal" block>
               <Modal visible={modalState} onClickOutside={() => setModalState(false)} title="Great Title">
                 {text}

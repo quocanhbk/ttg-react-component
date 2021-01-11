@@ -10,4 +10,5 @@ import Toggle from './Toggle'
 import ToggleGroup from './ToggleGroup'
 import Link from './Link'
 import Modal from './Modal'
-export {Button, ButtonGroup, Radio, RadioGroup, Checkbox, CheckboxGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal}
+import Badge from './Badge'
+export {Button, ButtonGroup, Radio, RadioGroup, Checkbox, CheckboxGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge}
