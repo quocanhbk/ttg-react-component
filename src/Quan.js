@@ -5,8 +5,8 @@ import CheckboxGroup from './components/elements/CheckboxGroup'
 import TableDatePicker from './components/TableDatePicker'
 import ToggleGroup from './components/elements/ToggleGroup'
 import Toggle from './components/elements/Toggle'
-import { Router, Link } from "@reach/router"
 import Slider from './components/elements/Slider'
+// import {Router, Link} from '@reach/router'
 
 import Home from './components/pages/Home'
 import Blog from './components/pages/Blog'
@@ -40,18 +40,17 @@ function Quan() {
     <div>
       <ThemeProvider theme={ theme.dark}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          <Breadcrumb>
+          {/* <Breadcrumb>
             {items.map(({to,label}) =>(
               <Link key={to} to={to}>{label}</Link>
             ))}
-          </Breadcrumb>
-          <Router>
+          </Breadcrumb> */}
+          {/* <Router>
             <Home path='/' />
             <Dashboard path='/dashboard' />
             <Contact path='/contact' />
             <Blog path='/blog' />
-          </Router>
-          <SimpleInput></SimpleInput>
+          </Router> */}
         </Container>        
       </ThemeProvider>
     </div>
