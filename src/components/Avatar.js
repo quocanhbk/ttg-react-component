@@ -3,24 +3,28 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
 const DivStyle = styled.div`
-    display:block;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+`;
 
-`;
-const ImgStyle = styled.img`
-    display:block;
-    width:  ${props => props.theme.avatarSize[props.size] || "48px" };
-    height: ${props => props.theme.avatarSize[props.size] || "48px" };
-    border-radius:50%;
-`;
 const LabelName = styled.label`
     display:block;
     font-size:14px;
     font-weight:normal;
+    color:${props => props.displayMode === "disabled" ? props.theme.color.text.disabled: props.theme.color.text.primary};
+
 `;
 const Avatar = (props) => {
       let inner = null;
+    const size=props.size
 
-  
+    const ImgStyle = styled.img`
+    display:block;
+    width:  ${props => props.theme.avatarSize[size] || "48px" };
+    height: ${props => props.theme.avatarSize[size] || "48px" };
+    border-radius:50%;
+`;
       if (props.src) {
         inner = <ImgStyle src={props.src} ></ImgStyle>
       } else {
@@ -36,15 +40,16 @@ const Avatar = (props) => {
         );
         }
         return(
-            <>
                 <DivStyle className="avatar" {...props}>
                     {inner}
                     <LabelName>{props.children}</LabelName>
                 </DivStyle>
-            </>
         )
     }
     Avatar.defaultProps = {
         size: "medium"
+    }
+    Avatar.propTypes={
+        size:PropTypes.string
     }
 export default Avatar

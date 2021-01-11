@@ -40,9 +40,9 @@ function Quan() {
 
   return (
     <div>
-      <ThemeProvider theme={ theme.dark}>
+      <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          <Avatar src={hinh} size="medium">Gái xinh</Avatar>
+          <Avatar src={hinh} size="large">Gái xinh</Avatar>
         </Container>        
       </ThemeProvider>
     </div>
