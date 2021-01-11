@@ -43,7 +43,7 @@ function Quan() {
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          <AvatarGroup sizeGroup="large" max={4}>
+          <AvatarGroup  max={4}>
             <Avatar alt="Ha Thi Buoi" src={hinh} ></Avatar>
             <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
             <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
@@ -51,6 +51,17 @@ function Quan() {
             <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
           </AvatarGroup>
           <Avatar alt="Quan Van" fluid={false} src=""></Avatar>
+          <Breadcrumb>
+            {items.map(({to,label}) =>(
+              <Link key={to} to={to}>{label}</Link>
+            ))}
+          </Breadcrumb>
+          <Router>
+            <Home path='/' />
+            <Dashboard path='/dashboard' />
+            <Contact path='/contact' />
+            <Blog path='/blog' />
+          </Router>
         </Container>        
       </ThemeProvider>
     </div>
