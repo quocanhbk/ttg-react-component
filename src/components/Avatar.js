@@ -43,11 +43,11 @@ const DivImg = styled.div`
     background: ${props => props.theme.color.border.primary}; 
 `;
 let strNameImg = props.children;
-let NameImg = strNameImg.split(/\s/).reduce((response,word)=> response+=word.slice(0,1),'')
+let NameImg = strNameImg.split(/\s/).reduce((response,word)=> response+=word.toUpperCase().slice(0,1),'')
 
       if (props.src) {
         inner = <ImgStyle src={props.src} ></ImgStyle>
-      } else {
+      } else if (props.src==="") {
         inner = (
           <DivImg
               className="avatar-icon"
