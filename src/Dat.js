@@ -7,7 +7,8 @@ const data = ['banana','mango','apple','fruits']
 export default function Dat() {
     return (
         <>
-          <Badge value="3"/>
+          {/* <Badge value="3"/> */}
+          <Search value={data}/>
         </>
     )
 }

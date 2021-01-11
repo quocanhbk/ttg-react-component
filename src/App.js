@@ -5,7 +5,7 @@ import {useEffect} from 'react'
 function App() {
   
   return (
-    <Quan/>
+    <Dat/>
   )
 }
 

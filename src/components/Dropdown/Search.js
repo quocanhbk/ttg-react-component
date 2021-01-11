@@ -135,6 +135,7 @@ const Search = (props) =>{
 
     // phần đang fix
     const handleFilter = ()=> {
+        // chuyển valueInput thành dạng string
         uppercase = JSON.stringify(valueInput).toUpperCase()
         for (var i = 0; i < ArrayDefault.length; i++) {
             // console.log(ArrayDefault[i].toUpperCase(), uppercase)
