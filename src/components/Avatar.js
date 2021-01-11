@@ -15,6 +15,14 @@ const LabelName = styled.label`
     color:${props => props.displayMode === "disabled" ? props.theme.color.text.disabled: props.theme.color.text.primary};
 
 `;
+const LabelImg = styled.label`
+    display:block;
+    font-size:16px;
+    font-weight:bold;
+    color:${props => props.displayMode === "disabled" ? props.theme.color.text.disabled: props.theme.color.text.primary};
+
+`;
+
 const Avatar = (props) => {
       let inner = null;
     const size=props.size
@@ -25,18 +33,28 @@ const Avatar = (props) => {
     height: ${props => props.theme.avatarSize[size] || "48px" };
     border-radius:50%;
 `;
+const DivImg = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:  ${props => props.theme.avatarSize[size] || "48px" };
+    height: ${props => props.theme.avatarSize[size] || "48px" };
+    border-radius:50%;
+    background: ${props => props.theme.color.border.primary}; 
+`;
+let strNameImg = props.children;
+let NameImg = strNameImg.split(/\s/).reduce((response,word)=> response+=word.slice(0,1),'')
+
       if (props.src) {
         inner = <ImgStyle src={props.src} ></ImgStyle>
       } else {
         inner = (
-          <svg>
-            <rect x="0" y="0" ></rect>
-            <text
+          <DivImg
               className="avatar-icon"
               fill="#ffffff"
               textAnchor="middle">
-            </text>
-          </svg>
+                  <LabelImg>{NameImg}</LabelImg>
+            </DivImg>
         );
         }
         return(
