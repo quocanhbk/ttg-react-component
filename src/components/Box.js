@@ -28,7 +28,7 @@ const StyledBox = styled.div`
 const Box = (props) => {
     return (
         <StyledBox {...props}>
-            <h4>{props.title}</h4>
+            <h4>{props.headline}</h4>
             <div className="grid">
             {props.children}
             </div>
@@ -36,6 +36,6 @@ const Box = (props) => {
     )
 }
 Box.defaultProps = {
-    title: "Box"
+    headline: "Box"
 }
 export default Box

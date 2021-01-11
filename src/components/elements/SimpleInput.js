@@ -18,12 +18,12 @@ const StyledInput = styled.input`
     background-color: transparent;
     
     &:disabled {
-        color: ${props => props.theme.disabledTextColor};
-        border-color: ${props => props.theme.disabledFillColor};
+        color: ${props => props.theme.color.text.disabled};
+        border-color: ${props => props.theme.color.fill.disabled};
     }
 
     &:focus {
-        border-color: ${props => props.theme.fillColor};
+        border-color: ${props => props.theme.color.fill.primary};
     }
    
 
@@ -31,13 +31,13 @@ const StyledInput = styled.input`
 
 const SimpleInput = (props) => {
     return <StyledInput 
-                type="search" {...props} 
-                disabled={props.displayMode === "disabled" || props.disabled} 
+                type="text" {...props} 
+                disabled={props.displayMode === "disabled" || props.disabled}
                 spellCheck="false"
                 defaultValue={props.default}
                 placeholder={props.placeholder}
                 onChange={(e) => props.onChange(e.target.value)}
-                on="true"
+                value={props.value}
             />
 }
 
@@ -47,7 +47,8 @@ SimpleInput.propTypes = {
     displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     fullWidth: PropTypes.bool,
     default: PropTypes.string,
-    onChange: PropTypes.func
+    onChange: PropTypes.func,
+    value: PropTypes.string
 }
 SimpleInput.defaultProps = {
     placeholder: "",

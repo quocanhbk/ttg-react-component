@@ -2,6 +2,7 @@ import styled from 'styled-components'
     
 const StyledSpan = styled.span`
     margin: ${props => props.left ? "0px 8px 0px 0px" : props => props.right ? "0px 0px 0px 8px" : "0px"};
+    background: transparent;
     svg {
         vertical-align: middle;
     }

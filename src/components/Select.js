@@ -27,7 +27,7 @@ function useOutside(ref, func = () => console.log("Clicked Outside")) {
 const Select = () => {
     const [state, setState] = useState(true)
     const wrapper = useRef(null)
-    useOutside(wrapper)
+    useOutside(wrapper, myfunc())
     return (
         <div>
             <button onClick={() => setState(false)}>Remove combobox</button>

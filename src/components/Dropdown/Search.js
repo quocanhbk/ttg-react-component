@@ -66,6 +66,7 @@ const AllOption = styled.div`
 `;
 
 const Search = (props) =>{
+    console.log(props)
     var [Option, setOption] = useState(props.value);
     const [ArrayOption, setArray] = useState([]);
     const [displayOption, setDisplayOption] = useState(false);

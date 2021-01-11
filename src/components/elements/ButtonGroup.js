@@ -25,7 +25,7 @@ const ButtonGroup = (props) => {
             setValue(defElement.props.value)
             props.onSelect(defElement.props.value)
         }
-    }, [props])
+    }, [])
 
     useEffect(() => {
         // Catching errors
@@ -56,7 +56,7 @@ const ButtonGroup = (props) => {
                         color: props.color,
                         ingroup: idx === 0 ? "left" : idx === props.children.length - 1 ? "right" : "middle", 
                         type: value === child.props.value ? "contained": "outline", 
-                        onClick: () => handleClick(child.props.value)})
+                        onSelect: () => handleClick(child.props.value)})
             })}
         </StyledButtonGroup>
     )

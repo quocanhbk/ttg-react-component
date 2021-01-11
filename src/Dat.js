@@ -1,12 +1,12 @@
 import React from 'react'
-import TextInput from './components/InputComponent/TextInput'
-import Input from "./components/InputComponent/Input"
+import Search from './components/Dropdown/Search'
+import Select from "./components/Select/Select"
 
+const data = ['banana','mango','apple','fruits']
 export default function Dat() {
     return (
         <>
-            <TextInput value="name"/>
-            <Input/>
+          <Search value={data}/>
         </>
     )
 }
