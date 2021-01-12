@@ -56,7 +56,7 @@ Badge.propTypes = {
     dot: PropTypes.bool,
     showZero: PropTypes.bool
 }
-Badge.propTypes = {
+Badge.defaultProps = {
     value: 0,
     max: 999,
     dot: false,
