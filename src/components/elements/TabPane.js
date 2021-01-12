@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import Prototype from 'prop-types'
+import PropTypes from 'prop-types'
 
 const DivTab = styled.div`
     display:block;
@@ -13,9 +13,14 @@ const TabPane = (props) => {
         </DivTab>
     )
 }
-TabPane.prototype={
-    name:Prototype.string,
-    title:Prototype.string
+TabPane.propTypes = {
+    disabled: PropTypes.bool,
+    selected: PropTypes.bool,
+    key: PropTypes.any.isRequired
+}
+TabPane.defaultProps = {
+    disabled: false,
+    selected: false
 }
 
 export default TabPane

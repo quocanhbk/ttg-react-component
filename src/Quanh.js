@@ -1,12 +1,14 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge, Breadcrumb} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge, Breadcrumb, Avatar, AvatarGroup, TabPane, Tab, TableDatePicker} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
 import Code from './components/Code'
 import Calendar from './components/elements/Calendar'
 import IcoMail from './components/icons/IcoMail'
+import IcoAlertTriangle from './components/icons/IcoAlertTriangle'
+import IcoSettings from './components/icons/IcoSettings'
 function Quanh() {
   useEffect(() => {
     document.title = "Theme: " + theme[myTheme].name
@@ -46,8 +48,59 @@ function Quanh() {
           </Container>
 
           <br/>
-
           <Container headline={"Elements"} fullWidth>
+            <Box headline="Tab" block>
+              <div style={{height: "160px"}}>
+                <Tab name="group tab" fullHeight>
+                  <TabPane name="Active" value="1">
+                    <Button>Active Tab 160px</Button>
+                  </TabPane>
+                  <TabPane name="Default Tab" value="2" selected>
+                    This is default
+                  </TabPane>
+                  <TabPane name="Just Another Tab" value="3">
+                    Just Another Tab
+                  </TabPane>
+                  <TabPane name="Last Tab" value="4">
+                    Last Tab
+                  </TabPane>
+                  <TabPane name="Disabled Tab" value="5" disabled>
+                    You Can't See This! Can You?
+                  </TabPane>
+                </Tab>
+              </div>
+            </Box>
+            <Box headline="Avatar" block>
+                <Avatar demo alt="Quan Van" fluid={false} size="small"></Avatar>
+                <Avatar demo alt="Quan Van" fluid={false} size="medium"></Avatar>
+                <Avatar demo alt="Quan Van" fluid={false} size="large"></Avatar>
+                <div style={{width: "100px", height: "100px", padding: "8px"}}>
+                  <Avatar alt="Quan Van" fluid={true} size="large"></Avatar>
+                </div>
+                <AvatarGroup demo  max={9} size="small">
+                  <Avatar alt="A"></Avatar>
+                  <Avatar alt="B"></Avatar>
+                  <Avatar alt="C"></Avatar>
+                </AvatarGroup>
+                <AvatarGroup demo  max={9} size="medium">
+                  <Avatar alt="A"></Avatar>
+                  <Avatar alt="B"></Avatar>
+                  <Avatar alt="C"></Avatar>
+                </AvatarGroup>
+                <AvatarGroup demo  max={9} size="large">
+                  <Avatar alt="A"></Avatar>
+                  <Avatar alt="B"></Avatar>
+                  <Avatar alt="C"></Avatar>
+                </AvatarGroup>
+                <AvatarGroup demo max={4} size="large">
+                  <Avatar alt="A"></Avatar>
+                  <Avatar alt="B"></Avatar>
+                  <Avatar alt="C"></Avatar>
+                  <Avatar alt="D"></Avatar>
+                  <Avatar alt="E"></Avatar>
+                </AvatarGroup>
+                
+            </Box>
             <Box headline="Breadcrumb" block>
               <Breadcrumb>
                 <a href="#">Home</a>
@@ -79,21 +132,27 @@ function Quanh() {
               It can have <Link href="#" underline>underline</Link>
             </Box>
             <Box headline="Text Input">
-              <SimpleInput displayMode={mode} default="default" demo onChange={(v) => setTextValue(v)} value={textValue}/>
+              <SimpleInput displayMode={mode} defaultValue="my default text is here" demo onChange={(v) => setTextValue(v)} value={textValue}/>
               <Code>{JSON.stringify(textValue)}</Code>
             </Box>
             <Box headline="Button" block>
-              <Button color="success" size="small" displayMode={mode} demo onSelect={() => console.log("Wow")}>Success</Button>
-              <Button color="warning" size="medium" displayMode={mode} demo >Warning</Button>
-              <Button color="danger" size="large" displayMode={mode} demo >Danger</Button>
+              <Button color="success" size="small" displayMode={mode} demo onSelect={() => console.log("Wow")}>Success small</Button>
+              <Button color="warning" size="medium" displayMode={mode} demo ><IcoAlertTriangle/> Warning medium</Button>
+              <Button color="danger" size="large" displayMode={mode} demo >Danger large</Button>
               <Button color="primary"size="medium" displayMode={mode} demo >Primary</Button>
               <Button color="secondary"size="small" displayMode={mode} demo >Secondary</Button>
               <Button displayMode={mode} demo type="outline" >Outline</Button>
               <Button size="medium" displayMode={mode} demo type="text" >Text</Button>
+              <Button size="medium" displayMode={mode} demo type="contained" ><IcoSettings/></Button>
             </Box>
             <Box headline="Calendar">
               <div>
+                <p>Made by me</p>
                 <Calendar demo onSelect={date => setDateValue(date)}/>
+                <p>Using third-party library</p>
+                <div style={{margin: "8px"}}>
+                  <TableDatePicker/>
+                </div>
               </div>
               <Code>{dateValue.toString()}</Code>
             </Box>
@@ -141,7 +200,7 @@ function Quanh() {
               <Code>{JSON.stringify(buttonGroupValue)}</Code>
             </Box>              
             <Box headline="Slide">
-              <Slider onSlide={(v) => setSliderValue(v)} displayMode={mode} fullWidth/>
+              <Slider onSlide={(v) => setSliderValue(v)} displayMode={mode} fullWidth defaultValue={50}/>
               <Code>{JSON.stringify(sliderValue)}</Code>
             </Box>
 

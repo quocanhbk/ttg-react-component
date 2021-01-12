@@ -1,7 +1,7 @@
 import React,{  } from "react";
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import {getFader, getLighter, getDarker} from '../../utils/color'
+import {getLighter, getDarker} from '../../utils/color'
 
 
 const BreadcrumbContainer = styled.ul`
@@ -10,7 +10,7 @@ const BreadcrumbContainer = styled.ul`
     align-items:center;
 `;
 const StyledBreadcrumbSeparator = styled.label`
-    color: ${props => getFader(props.theme.color.fill.primary,0.7)}; 
+    color: ${props => props.theme.color.fill.primary}; 
     margin: auto 5px;
     font-size: ${props => props.theme.textSize.small};
 `;
@@ -18,7 +18,7 @@ const StyledBreadcrumbItem = styled.li`
     & a{
         text-decoration:none;
         font-size:${props => props.theme.textSize.medium};
-        color: ${props => getFader(props.theme.color.fill.primary,0.7)}; 
+        color: ${props => props.theme.color.fill.primary}; 
     }
     &:last-child a{
         color: ${props => props.theme.color.fill.primary}; 

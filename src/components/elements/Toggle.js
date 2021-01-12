@@ -39,10 +39,10 @@ const StyleSpan = styled.span`
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: ${props => props.displayMode === "disabled" ? props.theme.color.fill.disabled : getFader(props.theme.color.fill.primary, 0.52)};
+    background-color: ${props => props.displayMode === "disabled" ? props.theme.color.fill.disabled : getFader(props.theme.color.fill.primary, 0.4)};
     transition: .4s;
     border-radius:34px;
-    box-shadow: 0px 0px 4px rgba(0,0,0,0.64);
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.3);
     overflow: hidden;
     &:hover {
         box-shadow: 0px 0px 16px ${props => getFader(props.theme.color.fill.primary, 0.8)};

@@ -30,14 +30,28 @@ const StyledInput = styled.input`
 `;
 
 const SimpleInput = (props) => {
+    let runInit = useRef(false)
+    let {defaultValue, onChange} = props
+    const [value, setValue] = useState(props.defaultValue || "")
+    const handleChange = (v) => {
+        setValue(v)
+        props.onChange(v)
+    }
+    useEffect(() => {
+        if (!runInit.current) {
+            console.log("I run")
+            if (defaultValue) 
+                onChange(defaultValue)
+            runInit.current = true
+        }
+    }, [defaultValue, onChange])
     return <StyledInput 
                 type="text" {...props} 
                 disabled={props.displayMode === "disabled" || props.disabled}
                 spellCheck="false"
-                defaultValue={props.default}
                 placeholder={props.placeholder}
-                onChange={(e) => props.onChange(e.target.value)}
-                value={props.value}
+                onChange={(e) => handleChange(e.target.value)}
+                value={value}
             />
 }
 
@@ -46,13 +60,13 @@ SimpleInput.propTypes = {
     placeholder: PropTypes.string,
     displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     fullWidth: PropTypes.bool,
-    default: PropTypes.string,
+    defaultValue: PropTypes.string,
     onChange: PropTypes.func,
     value: PropTypes.string
 }
 SimpleInput.defaultProps = {
     placeholder: "",
-    default: "",
+    defaultValue: "",
     displayMode: "edit",
     fullWidth: false,
     onChange: (x) => {}

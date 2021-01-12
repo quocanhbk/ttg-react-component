@@ -47,7 +47,7 @@ const StyledButton = styled.button`
 
 const Button = (props) => {
     return (
-        <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled} onClick={props.onClick} onSelect={props.onSelect}>
+        <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled} onClick={props.onSelect}>
         {props.children}
         </StyledButton>
     )

@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import styled from 'styled-components'
 import Button from './Button';
 import PropTypes from 'prop-types'
@@ -17,27 +17,33 @@ const StyledButtonGroup = styled.div`
 `;
 
 const ButtonGroup = (props) => {
-    
+    let runInit = useRef(false)
+    let {onSelect, children} = props
     const [value, setValue] = useState("")
     useEffect(() => {
-        let defElement = props.children.find(child => child.props.default)
-        if (defElement) {
-            setValue(defElement.props.value)
-            props.onSelect(defElement.props.value)
+        console.log("rn")
+        if (!runInit.current) {
+            console.log("Btn group run")
+            let defElement = children.find(child => child.props.default)
+            if (defElement) {
+                handleClick(defElement.props.value)
+            }
+            runInit.current = true
         }
-    }, [])
+        
+    }, [children, onSelect])
 
     useEffect(() => {
         // Catching errors
-        props.children.forEach(child => {
+        children.forEach(child => {
             if (child.type !== Button)
                 throw Error("Children of ButtonGroup must be Button")
             else if (child.props.value === undefined)
                 throw Error("Children must contain props 'value' ")
         })
-        if (props.children.filter(child => child.props.default).length > 1)
+        if (children.filter(child => child.props.default).length > 1)
             throw Error("Cannot have more than one default value")
-    }, [props])
+    }, [children])
 
     const handleClick = (value) => {
         setValue(value)

@@ -52,32 +52,17 @@ const ButtonDelete = styled.span`
 `;
 
 const LiOfListOption = styled.li`
-    display: -webkit-inline-box;
-    display: -moz-inline-box;
-    display: -moz-inline-flexbox;
-    display: -ms-inline-flexbox;
-    display: -o-inline-flexbox;
-    display: -webkit-inline-flex;
     display: inline-flex;
 `;
 
 const DivAllOption = styled.div`
-    display: -webkit-inline-box;
-    display: -moz-inline-box;
-    display: -moz-inline-flexbox;
-    display: -ms-inline-flexbox;
-    display: -o-inline-flexbox;
-    display: -webkit-inline-flex;
     display: inline-flex;
 `;
 
 const Input = styled.input`
     padding-right: 20px;
     width: 100%;
-    -moz-box-sizing: border-box;
-    -ms-box-sizing: border-box;
-    box-sizing: border-box;
-    border: 0 none;
+    border: none;
     outline: 0;
     margin-top: 6px;
     margin-bottom: 6px;
@@ -133,18 +118,18 @@ const DivDropList = styled.div`
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    opacity: ${props => props.opacity ? '1' : '0'}
+    opacity: ${props => props.opacity ? '1' : '0'};
 `;
 
-const DivDropListChild = styled.div`
-    background: #80808057;
+const Tag = styled.div`
+    background: #f00;
     margin-bottom: 1%;
     padding: 1%;
     cursor: pointer;
 
     &:hover{
         background: gray;
-        color: white;
+        color: yellow;
     }
 `;  
 
@@ -262,16 +247,16 @@ const ComboBox = (props) => {
                             onKeyUp={handleFilter}
                         />
                         <SpanDelete onClick={handleDeleteAll} displayDelete={isDelete}>X</SpanDelete>
-                        <Span aria-hidden="true" data-reactid=".0.1.1.0.3" onClick={handleClick}>▾</Span>
+                        <Span  onClick={handleClick}>▾</Span>
                         <DivDropList display={displayOption} opacity={opacity}>
                             {
                                 AllOption.map((item, index)=>{
                                     return(
-                                        <DivDropListChild 
+                                        <Tag 
                                             key={index}
                                             onClick={()=>handleChoose(index)}>
                                             {item}
-                                        </DivDropListChild>
+                                        </Tag>
                                     )
                                 })
                             }
