@@ -6,15 +6,9 @@ const DivStyle = styled.div`
     display:flex;
     flex-direction:column;
     align-items:center;
+ 
 `;
 
-const LabelName = styled.label`
-    display:block;
-    font-size:14px;
-    font-weight:normal;
-    color:${props => props.displayMode === "disabled" ? props.theme.color.text.disabled: props.theme.color.text.primary};
-
-`;
 const LabelImg = styled.label`
     display:block;
     font-size:16px;
@@ -24,35 +18,43 @@ const LabelImg = styled.label`
 `;
 
 const Avatar = (props) => {
-      let inner = null;
-    const size=props.size
+    let inner = null;
 
     const ImgStyle = styled.img`
     display:block;
     width:  ${props => props.theme.avatarSize[props.size] || "48px" };
-    height: ${props => props.theme.avatarSize[props.size] || "48px" };
+    height:  ${props => props.theme.avatarSize[props.size] || "48px" };
+    min-height: ${props => fluid ? "100%" : "48px"};
+    min-width: ${props => fluid ? "100%" : "48px"};
     border-radius:50%;
+    border:1px solid #fff;
 `;
 const DivImg = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
     width:  ${props => props.theme.avatarSize[props.size] || "48px" };
-    height: ${props => props.theme.avatarSize[props.size] || "48px" };
+    height:  ${props => props.theme.avatarSize[props.size] || "48px" };
+    min-height: ${props => fluid ? "100%" : "48px"};
+    min-width: ${props => fluid ? "100%" : "48px"};
     border-radius:50%;
+    border:1px solid #fff;
     background: ${props => props.theme.color.border.primary}; 
 `;
-let strNameImg = props.children;
-let NameImg = strNameImg.split(/\s/).reduce((response,word)=> response+=word.toUpperCase().slice(0,1),'')
+let fluid=props.fluid
+let strNameImg = props.alt
+let  lastName = strNameImg.split(' ').slice(-1).join(' ');
+let NameImg =lastName.split(/\s/).reduce((response,word)=> response+=word.toUpperCase().slice(0,1),'')
 
       if (props.src) {
-        inner = <ImgStyle src={props.src} ></ImgStyle>
+        inner = <ImgStyle alt={props.alt} src={props.src} ></ImgStyle>
       } else if (props.src==="") {
         inner = (
           <DivImg
               className="avatar-icon"
               fill="#ffffff"
-              textAnchor="middle">
+              textAnchor="middle"
+              alt={props.alt}>
                   <LabelImg>{NameImg}</LabelImg>
             </DivImg>
         );
@@ -60,14 +62,16 @@ let NameImg = strNameImg.split(/\s/).reduce((response,word)=> response+=word.toU
         return(
                 <DivStyle className="avatar" {...props}>
                     {inner}
-                    <LabelName>{props.children}</LabelName>
+                    {props.children}
                 </DivStyle>
         )
     }
     Avatar.defaultProps = {
-        size: "medium"
+        alt: "",
+        fluid: false
     }
     Avatar.propTypes={
-        size:PropTypes.string
+        fluid:PropTypes.bool,
+        alt: PropTypes.string
     }
 export default Avatar
