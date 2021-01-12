@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
  const StyledSnackbarWrapper = styled.div`
     position: fixed;
@@ -24,6 +25,7 @@ import styled from 'styled-components';
     ${props => props.type === 'warning' && 'background-color: #ff9800;'}
     ${props => props.type === 'info' && 'background-color: #2196f3;'}
     ${props => props.type === 'error' && 'background-color: #f44336;'}
+    ${props => props.type === 'default' && 'background-color: #000;'}
     border-radius: 4px;
     color: #fff;
     display: flex;
@@ -76,5 +78,20 @@ const Snackbar = ({ position = 'topCenter', message, type = 'info', timeout = 10
         </StyledSnackbar>
     </StyledSnackbarWrapper>;
 };
+Snackbar.propTypes = {
+    onClose: PropTypes.func,
+    horizontal: PropTypes.string,
+    vertical: PropTypes.string,
+    type: PropTypes.string,
+    message : PropTypes.string
+    
+}
+Snackbar.defaultProps={
+    onClose: ()=> {},
+    horizontal: "bottom",
+    vertical: "center",
+    type: "default",
+    message: "default"
+}
 
 export default Snackbar;
