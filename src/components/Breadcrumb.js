@@ -1,6 +1,6 @@
 import React,{  } from "react";
 import styled from 'styled-components'
-
+import  PropTypes from "prop-types";
 import {getFader, getLighter} from './../utils/color'
 
 
@@ -75,5 +75,11 @@ const BreadcrumbSeparator = (props) => (
 
     return <ULStyte>{children}</ULStyte>
   }
-  
+  Breadcrumb.propTypes = {
+    theme: PropTypes.string,
+
+  }
+  Breadcrumb.defaultProps={
+
+  }
   export default Breadcrumb

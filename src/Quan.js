@@ -6,6 +6,8 @@ import TableDatePicker from './components/TableDatePicker'
 import ToggleGroup from './components/elements/ToggleGroup'
 import Toggle from './components/elements/Toggle'
 import Slider from './components/elements/Slider'
+import Tabs from './components/Tabs'
+import TabPane from './components/TabPane'
 import {Router, Link} from '@reach/router'
 import Avatar from './components/Avatar'
 import AvatarGroup from './components/AvatarGroup'
@@ -43,6 +45,7 @@ function Quan() {
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
+          <p>Avatar</p>
           <AvatarGroup  max={4}>
             <Avatar alt="Ha Thi Buoi" src={hinh} ></Avatar>
             <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
@@ -51,6 +54,7 @@ function Quan() {
             <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
           </AvatarGroup>
           <Avatar alt="Quan Van" fluid={false} src=""></Avatar>
+          <p>Breadcrumb</p>
           <Breadcrumb>
             {items.map(({to,label}) =>(
               <Link key={to} to={to}>{label}</Link>
@@ -62,6 +66,20 @@ function Quan() {
             <Contact path='/contact' />
             <Blog path='/blog' />
           </Router>
+          <p>Date Picker</p>
+          <TableDatePicker>Don't forget</TableDatePicker>
+          <p>Tabs</p>
+          <Tabs name="group tab">
+            <TabPane name="Tab 1" key="1" >
+              Content 1
+            </TabPane>
+            <TabPane name="Tab 2" key="2">
+              Content 2
+            </TabPane>
+            <TabPane name="Tab 3" key="3">
+              Content 3
+            </TabPane>
+          </Tabs>
         </Container>        
       </ThemeProvider>
     </div>
