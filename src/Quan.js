@@ -8,6 +8,7 @@ import Toggle from './components/elements/Toggle'
 import Slider from './components/elements/Slider'
 import {Router, Link} from '@reach/router'
 import Avatar from './components/Avatar'
+import AvatarGroup from './components/AvatarGroup'
 import hinh from "./components/gai2.jpg";
 
 import Home from './components/pages/Home'
@@ -17,7 +18,7 @@ import Dashboard from './components/pages/Dashboard'
 
 import theme from './utils/theme'
 import {useState} from 'react'
-import Breadcrumb from './components/Breadcrumb'
+import Breadcrumb from './components/elements/Breadcrumb'
 import { lightBlue } from '@material-ui/core/colors'
 
 
@@ -42,7 +43,26 @@ function Quan() {
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          <Avatar  src="" size="large">Gái Xinh</Avatar>
+          <AvatarGroup  max={4}>
+            <Avatar alt="Ha Thi Buoi" src={hinh} ></Avatar>
+            <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
+            <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
+            <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
+            <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
+          </AvatarGroup>
+          <Avatar alt="Quan Van" fluid={false} src=""></Avatar>
+
+          <Breadcrumb>
+            {items.map(({to,label}) =>(
+              <Link key={to} to={to}>{label}</Link>
+            ))}
+          </Breadcrumb>
+          <Router>
+            <Home path='/' />
+            <Dashboard path='/dashboard' />
+            <Contact path='/contact' />
+            <Blog path='/blog' />
+          </Router>
         </Container>        
       </ThemeProvider>
     </div>

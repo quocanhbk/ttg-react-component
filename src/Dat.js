@@ -1,14 +1,19 @@
 import React from 'react'
-import Search from './components/Dropdown/Search'
+import ComboBox from './components/Dropdown/ComboBox'
 import AccordionComponent from './components/Accordioncomponent'
-import Badge from './components/elements/Badge'
-import IcoMail from './components/icons/IcoMail'
+import Badge from './components/Badge/Badge'
+import Search from './components/Search/Search'
+
 const data = ['banana','mango','apple','fruits']
 export default function Dat() {
     return (
-        <div style={{padding: "24px"}}>
-          <Badge icon={<IcoMail/>} value={3} max={9}/>
-        </div>
+        <>
+          <Badge
+            value="3"
+            />
+          {/* <ComboBox value={data}/> */}
+          {/* <Search/> */}
+        </>
     )
 }
 

@@ -1,6 +1,6 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge, Breadcrumb} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
@@ -48,6 +48,13 @@ function Quanh() {
           <br/>
 
           <Container headline={"Elements"} fullWidth>
+            <Box headline="Breadcrumb" block>
+              <Breadcrumb>
+                <a href="#">Home</a>
+                <a href="#">Trending</a>
+                <a href="#">Funny</a>
+              </Breadcrumb>
+            </Box>
             <Box headline="Badge" block>
               <Badge demo icon={<IcoMail/>} value={1} max={10} dot/>
               <Badge demo icon={<IcoMail/>} value={99} max={999}/>
