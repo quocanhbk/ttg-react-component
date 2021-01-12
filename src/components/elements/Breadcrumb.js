@@ -1,6 +1,6 @@
 import React,{  } from "react";
 import styled from 'styled-components'
-
+import PropTypes from 'prop-types'
 import {getFader, getLighter, getDarker} from '../../utils/color'
 
 
@@ -33,7 +33,7 @@ const StyledBreadcrumbItem = styled.li`
 `;
 
 const Breadcrumb = ({ ...props }) => (
-    <BreadcrumbContainer>
+    <BreadcrumbContainer name={props.name}>
           {/* Render "not last" item along with the separator*/}
           {props.children.slice(0, -1).map(child => 
               <>
@@ -45,5 +45,11 @@ const Breadcrumb = ({ ...props }) => (
           <StyledBreadcrumbItem key={props.children[props.children.length-1].children}>{props.children[props.children.length-1]}</StyledBreadcrumbItem>
     </BreadcrumbContainer>
 )
+Breadcrumb.defaultProps ={
+    
+}
+Breadcrumb.propsTypes={
+    name: PropTypes.string
+}
   
 export default Breadcrumb

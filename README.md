@@ -93,3 +93,33 @@ Name|Type|Default|Description
 `<SimpleInput name="group 1" horizontal ></SimpleInput>`
 `<SimpleInput name="group 1" placeholder="Hello" ></SimpleInput>`
 `<SimpleInput name="group 1" fullWidth ></SimpleInput>`
+### 10.`<Slider/>` *Styte slider*
+#### Props
+Name|Type|Default|Description
+---|---|---|---
+`name`|`string`|`none`|Name of Slider
+`fullWidth`|`bool`|`false`|Silder will take the whole width if true, else it will be inline
+#### Example:
+`<Slider name="example 1" fullWidth ></Slider>`
+### 10.`<Breadcrumb/>` *Styte breadcrumb*
+#### Props
+Name|Type|Default|Description
+---|---|---|---
+`name`|`string`|`none`|Name of Breadcrumb
+#### Example:
+`<Breadcrumb name="example 1" ></Breadcrumb>`
+### 11.`<Link/>` *Styte link*
+#### Props
+Name|Type|Default|Description
+---|---|---|---
+`name`|`string`|`none`|Name of Link
+`href`|`string`|`none`|URL of Link
+#### Example:
+`<Link name="example 1" href="google.com.vn" >Google</Link>`
+### 11.`<Modal/>` *Styte modal*
+#### Props
+Name|Type|Default|Description
+---|---|---|---
+`name`|`string`|`none`|Name of Modal
+`title`|`string`|`none`|Title of Modal
+#### Example:
