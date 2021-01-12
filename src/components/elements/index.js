@@ -14,6 +14,9 @@ import Badge from './Badge'
 import Breadcrumb from './Breadcrumb'
 import Avatar from './Avatar'
 import AvatarGroup from './AvatarGroup'
+import TableDatePicker from './TableDatePicker'
+import Tab from './Tab'
+import TabPane from './TabPane'
 export {
     Button, 
     ButtonGroup, 
@@ -30,5 +33,8 @@ export {
     Badge,
     Breadcrumb,
     Avatar,
-    AvatarGroup
+    AvatarGroup,
+    TableDatePicker,
+    Tab,
+    TabPane
 }

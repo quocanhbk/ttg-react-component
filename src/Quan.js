@@ -1,13 +1,11 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput, Avatar, AvatarGroup} from './components/elements'
+import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput, Avatar, AvatarGroup, Tab, TabPane} from './components/elements'
 import CheckboxGroup from './components/elements/CheckboxGroup'
-import TableDatePicker from './components/TableDatePicker'
+import TableDatePicker from './components/elements/TableDatePicker'
 import ToggleGroup from './components/elements/ToggleGroup'
 import Toggle from './components/elements/Toggle'
 import Slider from './components/elements/Slider'
-import Tabs from './components/Tabs'
-import TabPane from './components/TabPane'
 import {Router, Link} from '@reach/router'
 import hinh from "./components/genericAvatar.jpg";
 
@@ -67,7 +65,7 @@ function Quan() {
           <p>Date Picker</p>
           <TableDatePicker>Don't forget</TableDatePicker>
           <p>Tabs</p>
-          <Tabs name="group tab">
+          <Tab name="group tab">
             <TabPane name="Tab 1" key="1" >
               Content 1
             </TabPane>
@@ -77,7 +75,7 @@ function Quan() {
             <TabPane name="Tab 3" key="3">
               Content 3
             </TabPane>
-          </Tabs>
+          </Tab>
         </Container>        
       </ThemeProvider>
     </div>

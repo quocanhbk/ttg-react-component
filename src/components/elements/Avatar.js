@@ -7,7 +7,7 @@ const DivStyle = styled.div`
     display: ${props => props.fluid ? "block" : "inline-block"};
     border-radius: 50%;
     box-shadow: 0px 0px 5px rgba(0,0,0,1);
-    vertical-align: top;
+    vertical-align: bottom;
     height: 100%;
 `;
 const ImgStyle = styled.img`

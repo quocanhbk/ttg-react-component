@@ -1,6 +1,6 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge, Breadcrumb, Avatar, AvatarGroup} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge, Breadcrumb, Avatar, AvatarGroup, TabPane, Tab, TableDatePicker} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
@@ -48,6 +48,27 @@ function Quanh() {
 
           <br/>
           <Container headline={"Elements"} fullWidth>
+            <Box headline="Tab" block>
+              <div style={{height: "160px"}}>
+                <Tab name="group tab" fullHeight>
+                  <TabPane name="Active" value="1">
+                    <Button>Active Tab 160px</Button>
+                  </TabPane>
+                  <TabPane name="Default Tab" value="2" selected>
+                    This is default
+                  </TabPane>
+                  <TabPane name="Just Another Tab" value="3">
+                    Just Another Tab
+                  </TabPane>
+                  <TabPane name="Last Tab" value="4">
+                    Last Tab
+                  </TabPane>
+                  <TabPane name="Disabled Tab" value="5" disabled>
+                    You Can't See This! Can You?
+                  </TabPane>
+                </Tab>
+              </div>
+            </Box>
             <Box headline="Avatar" block>
                 <Avatar demo alt="Quan Van" fluid={false} size="small"></Avatar>
                 <Avatar demo alt="Quan Van" fluid={false} size="medium"></Avatar>
@@ -125,6 +146,7 @@ function Quanh() {
             <Box headline="Calendar">
               <div>
                 <Calendar demo onSelect={date => setDateValue(date)}/>
+                <TableDatePicker/>
               </div>
               <Code>{dateValue.toString()}</Code>
             </Box>
