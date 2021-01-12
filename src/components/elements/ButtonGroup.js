@@ -21,12 +21,12 @@ const ButtonGroup = (props) => {
     let {onSelect, children} = props
     const [value, setValue] = useState("")
     useEffect(() => {
+        console.log("rn")
         if (!runInit.current) {
             console.log("Btn group run")
             let defElement = children.find(child => child.props.default)
             if (defElement) {
-                setValue(defElement.props.value)
-                onSelect(defElement.props.value)
+                handleClick(defElement.props.value)
             }
             runInit.current = true
         }
