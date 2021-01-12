@@ -36,10 +36,10 @@ function Quan() {
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
             <div>
-            <Button
+            <button
                   disabled={isSnackbarOpen}
                 onClick={() => openSnackbar()}
-            >Click show alert</Button>
+            >Click show alert</button>
             </div>
             {isSnackbarOpen && <Snackbar
                 message={"Hello every body"}
