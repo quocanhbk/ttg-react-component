@@ -1,6 +1,6 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput} from './components/elements'
+import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput, Avatar, AvatarGroup} from './components/elements'
 import CheckboxGroup from './components/elements/CheckboxGroup'
 import TableDatePicker from './components/TableDatePicker'
 import ToggleGroup from './components/elements/ToggleGroup'
@@ -9,9 +9,7 @@ import Slider from './components/elements/Slider'
 import Tabs from './components/Tabs'
 import TabPane from './components/TabPane'
 import {Router, Link} from '@reach/router'
-import Avatar from './components/Avatar'
-import AvatarGroup from './components/AvatarGroup'
-import hinh from "./components/gai2.jpg";
+import hinh from "./components/genericAvatar.jpg";
 
 import Home from './components/pages/Home'
 import Blog from './components/pages/Blog'

@@ -1,7 +1,7 @@
 import React , {useState, useRef, useEffect} from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import PropTypes from "prop-types";
-import {getFader} from '../../utils/color'
+import {getDarker, getFader, getLighter} from '../../utils/color'
 const StyleSlider = styled.div`
     position:relative;
     display: ${props => props.fullWidth ? "block" : "inline-block"};
@@ -19,12 +19,29 @@ const Container = styled.div`
     transform: translate(0%, -50%);
 `;
 const Left = styled.div`
+    overflow: hidden;
     position: absolute;
     top: 0px;
     left: 0px;
     height: 100%;
     width: 50px;
-    background: ${props => props.displayMode === "disabled" ? props.theme.color.text.disabled : props.theme.color.fill.primary};;
+    background: ${props => props.displayMode === "disabled" ? props.theme.color.text.disabled : props.theme.color.fill.primary};
+`;
+const bg = keyframes`
+    from {
+        left: -50%;
+    }
+    to {
+        left: 100%;
+    }
+`;
+const InLeft = styled.div`
+    --clr: ${props => getFader(props.theme.color.background.primary, 0.8)};
+    position: absolute;
+    height: 100%;
+    width: 40%;
+    background: linear-gradient(to right, rgba(0,0,0,0), var(--clr), rgba(0,0,0,0));
+    animation: ${bg} 2s ease-in-out 0s infinite forwards normal;
 `;
 const InputStyle = styled.input`
     position: absolute;
@@ -92,7 +109,6 @@ const Slider = (props) =>{
     const [range,setRange]=useState(defaultLength);
     const [widthState, setWidth] = useState(0)
     const x = useRef()
-    const y = useRef()
     const handleChange = v => {
         if (props.displayMode === "edit") {
             props.onSlide(parseInt(v.target.value))
@@ -107,7 +123,9 @@ const Slider = (props) =>{
     return(
         <StyleSlider {...props}>
             <Container>
-                <Left {...props} style={{width: parseInt((range - min)/(max-min)*100).toString() + "%"}}/>
+                <Left {...props} style={{width: parseInt((range - min)/(max-min)*100).toString() + "%"}}>
+                    <InLeft/>
+                </Left>
                 <InputStyle {...props}
                 ref={x}
                 type="range"
@@ -118,7 +136,6 @@ const Slider = (props) =>{
                 onChange={handleChange}
                 />
                 <SliderValue 
-                    ref={y} 
                     style={{
                         left: parseInt((range - min)/(max-min)*100).toString() + "%",
                         transform: "translateX(-" + parseInt((range - min)/(max-min)*100).toString() + "%)" 

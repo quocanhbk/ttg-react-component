@@ -1,12 +1,13 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge, Breadcrumb} from './components/elements'
+import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge, Breadcrumb, Avatar, AvatarGroup} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
 import Code from './components/Code'
 import Calendar from './components/elements/Calendar'
 import IcoMail from './components/icons/IcoMail'
+
 function Quanh() {
   useEffect(() => {
     document.title = "Theme: " + theme[myTheme].name
@@ -46,8 +47,38 @@ function Quanh() {
           </Container>
 
           <br/>
-
           <Container headline={"Elements"} fullWidth>
+            <Box headline="Avatar" block>
+                <Avatar demo alt="Quan Van" fluid={false} size="small"></Avatar>
+                <Avatar demo alt="Quan Van" fluid={false} size="medium"></Avatar>
+                <Avatar demo alt="Quan Van" fluid={false} size="large"></Avatar>
+                <div style={{width: "100px", height: "100px", padding: "8px"}}>
+                  <Avatar alt="Quan Van" fluid={true} size="large"></Avatar>
+                </div>
+                <AvatarGroup demo  max={9} size="small">
+                  <Avatar alt="A"></Avatar>
+                  <Avatar alt="B"></Avatar>
+                  <Avatar alt="C"></Avatar>
+                </AvatarGroup>
+                <AvatarGroup demo  max={9} size="medium">
+                  <Avatar alt="A"></Avatar>
+                  <Avatar alt="B"></Avatar>
+                  <Avatar alt="C"></Avatar>
+                </AvatarGroup>
+                <AvatarGroup demo  max={9} size="large">
+                  <Avatar alt="A"></Avatar>
+                  <Avatar alt="B"></Avatar>
+                  <Avatar alt="C"></Avatar>
+                </AvatarGroup>
+                <AvatarGroup demo max={4} size="large">
+                  <Avatar alt="A"></Avatar>
+                  <Avatar alt="B"></Avatar>
+                  <Avatar alt="C"></Avatar>
+                  <Avatar alt="D"></Avatar>
+                  <Avatar alt="E"></Avatar>
+                </AvatarGroup>
+                
+            </Box>
             <Box headline="Breadcrumb" block>
               <Breadcrumb>
                 <a href="#">Home</a>

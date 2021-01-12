@@ -33,7 +33,7 @@ const theme = {
         avatarSize: {
             small: "30px",
             medium: "36px",
-            large: "48px"
+            large: "42px"
         },
         weight: {
             light: 300,
@@ -75,7 +75,7 @@ const theme = {
         avatarSize: {
             small: "30px",
             medium: "36px",
-            large: "48px"
+            large: "42px"
         },
         weight: {
             light: 300,

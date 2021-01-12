@@ -12,6 +12,8 @@ import Link from './Link'
 import Modal from './Modal'
 import Badge from './Badge'
 import Breadcrumb from './Breadcrumb'
+import Avatar from './Avatar'
+import AvatarGroup from './AvatarGroup'
 export {
     Button, 
     ButtonGroup, 
@@ -26,5 +28,7 @@ export {
     Link, 
     Modal, 
     Badge,
-    Breadcrumb
+    Breadcrumb,
+    Avatar,
+    AvatarGroup
 }
