@@ -2,27 +2,11 @@ import {ThemeProvider} from 'styled-components'
 import { React } from "react";
 import Container from './components/Container'
 import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput} from './components/elements'
-import CheckboxGroup from './components/elements/CheckboxGroup'
-import TableDatePicker from './components/TableDatePicker'
-import ToggleGroup from './components/elements/ToggleGroup'
-import Toggle from './components/elements/Toggle'
-import Slider from './components/elements/Slider'
-import Tabs from './components/Tabs'
-import TabPane from './components/TabPane'
-import {Router, Link} from '@reach/router'
-import Avatar from './components/Avatar'
-import AvatarGroup from './components/AvatarGroup'
-import hinh from "./components/gai2.jpg";
 
-import Home from './components/pages/Home'
-import Blog from './components/pages/Blog'
-import Contact from './components/pages/Contact'
-import Dashboard from './components/pages/Dashboard'
 import  Snackbar  from "./components/Snackbar";
 import theme from './utils/theme'
 import {useState,useRef} from 'react'
-import Breadcrumb from './components/elements/Breadcrumb'
-import { lightBlue } from '@material-ui/core/colors'
+
 
 const items=[
   { to: '/', label: 'Home' },
