@@ -18,13 +18,11 @@ import Home from './components/pages/Home'
 import Blog from './components/pages/Blog'
 import Contact from './components/pages/Contact'
 import Dashboard from './components/pages/Dashboard'
-
+import  Snackbar  from "./components/Snackbar";
 import theme from './utils/theme'
 import {useState,useRef} from 'react'
 import Breadcrumb from './components/elements/Breadcrumb'
 import { lightBlue } from '@material-ui/core/colors'
-import Snackbar from './components/Snackbar'
-import useSnackbar from './hooks/useSnackbar'
 
 const items=[
   { to: '/', label: 'Home' },
@@ -42,16 +40,33 @@ function Quan() {
   const onChangeSlider = e => {
     setRangeValue(parseInt(e.target.value, 10))
   }
-  const {isActive,openSnackBar} = useSnackbar()
-  const showSnackbarHandler = () =>{
-    openSnackBar();
-  }
+  const [ isSnackbarOpen, setIsSnackbarOpen ] = useState(null);
+  const [ snackbarProps, setSnackbarProps ] = useState({});
+  const openSnackbar = (position, type, message) => {
+    setSnackbarProps({ position, type, message });
+    setIsSnackbarOpen(true);
+};
+
+  const closeSnackbar = () => setIsSnackbarOpen(false);
+  
   return (
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          <button onClick={showSnackbarHandler}>Click open to snackbar</button>
-          <Snackbar isActive={isActive} message="Hello every body"></Snackbar>
+            <div>
+            <Button
+                disabled={isSnackbarOpen}
+                onClick={() => openSnackbar()}
+            >Click</Button>
+            </div>
+            {isSnackbarOpen && <Snackbar
+                message={"Hello every body"}
+                position={"bottomCenter"}
+                type={"success"}
+                onClose={closeSnackbar}
+                timeout={3000}
+                
+            />}
         </Container>        
       </ThemeProvider>
     </div>
