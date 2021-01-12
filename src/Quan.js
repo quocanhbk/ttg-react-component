@@ -41,9 +41,7 @@ function Quan() {
     setRangeValue(parseInt(e.target.value, 10))
   }
   const [ isSnackbarOpen, setIsSnackbarOpen ] = useState(null);
-  const [ snackbarProps, setSnackbarProps ] = useState({});
-  const openSnackbar = (position, type, message) => {
-    setSnackbarProps({ position, type, message });
+  const openSnackbar = () => {
     setIsSnackbarOpen(true);
 };
 
@@ -55,9 +53,9 @@ function Quan() {
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
             <div>
             <Button
-                disabled={isSnackbarOpen}
+                  disabled={isSnackbarOpen}
                 onClick={() => openSnackbar()}
-            >Click</Button>
+            >Click show alert</Button>
             </div>
             {isSnackbarOpen && <Snackbar
                 message={"Hello every body"}

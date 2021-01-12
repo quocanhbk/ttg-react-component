@@ -46,6 +46,7 @@ import styled from 'styled-components';
 const CloseSnackbar = styled.button`
     font-size:1rem;
     font-weight:bold;
+    display:block;
     background:transparent;
     border:0;
     color: #000;
