@@ -9,11 +9,17 @@ import Calendar from './components/elements/Calendar'
 import IcoMail from './components/icons/IcoMail'
 import IcoAlertTriangle from './components/icons/IcoAlertTriangle'
 import IcoSettings from './components/icons/IcoSettings'
+import Combox from './components/combox/Combox'
 function Quanh() {
   useEffect(() => {
     document.title = "Theme: " + theme[myTheme].name
   })
-  
+  const ComboxData = [
+    {id: 1, name: "La Quoc Anh", job: "Staff"},
+    {id: 2, name: "Van Thuan Quan", job: "Intern"},
+    {id: 3, name: "Nguyen Quoc Dat", job: "Intern"},
+    {id: 4, name: "Nguyen Hoang Tan", job: "Lead"}
+  ]
   const text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed suscipit mattis arcu semper elementum. Nullam accumsan erat vitae quam sagittis placerat. In sodales mi eros, id commodo nulla fermentum in. Cras vehicula, sapien id fringilla lobortis, erat nisl rhoncus ante, et maximus libero tellus commodo ex. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dapibus justo nunc, sed molestie tortor dictum vitae. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Mauris maximus est quis ligula ullamcorper semper. Integer tempus orci dui, a lacinia lorem tempus ut. Donec sapien leo, sodales eu odio molestie, cursus lacinia quam. Aenean rhoncus rhoncus erat, nec volutpat nulla ullamcorper sit amet. Maecenas finibus, ante in suscipit rhoncus, massa lorem posuere est, vel faucibus turpis neque sit amet augue. Nulla sit amet mauris sit amet augue pharetra luctus vitae nec turpis. Duis sollicitudin commodo nisi quis mollis."
   const [mode, setMode] = useState("edit")
   const [myTheme, setTheme] = useState("light")
@@ -49,6 +55,13 @@ function Quanh() {
 
           <br/>
           <Container headline={"Elements"} fullWidth>
+            <Box headline="Combox" block>
+              <Combox>
+              {ComboxData.map(data => 
+                <Combox.Option id={data.id} value={data.name}>{data.name}</Combox.Option>
+              )}
+              </Combox>
+            </Box>
             <Box headline="Tab" block>
               <div style={{height: "160px"}}>
                 <Tab name="group tab" fullHeight>
