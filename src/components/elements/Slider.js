@@ -1,7 +1,7 @@
 import React , {useState, useRef, useEffect} from 'react'
 import styled, { keyframes } from 'styled-components'
 import PropTypes from "prop-types";
-import {getDarker, getFader, getLighter} from '../../utils/color'
+import { getFader } from '../../utils/color'
 const StyleSlider = styled.div`
     position:relative;
     display: ${props => props.fullWidth ? "block" : "inline-block"};
@@ -105,21 +105,25 @@ const SliderValue= styled.span`
 
 
 const Slider = (props) =>{
-    const {step, min, max, width, defaultLength} = props
+    let runInit = useRef(false)
+    const {step, min, max, defaultLength, defaultValue, onSlide} = props
     const [range,setRange]=useState(defaultLength);
-    const [widthState, setWidth] = useState(0)
     const x = useRef()
-    const handleChange = v => {
+    const handleChange = (v) => {
         if (props.displayMode === "edit") {
-            props.onSlide(parseInt(v.target.value))
-            setRange(v.target.value);
+            props.onSlide(parseInt(v))
+            setRange(v);
         }
     }
-    
+
     useEffect(() => {
-        setWidth(x.current.offsetWidth)
-    },[])
-    
+        if (!runInit.current) {
+            console.log("I run")
+            onSlide(defaultValue)
+            setRange(defaultValue)
+            runInit.current = true
+        }
+    }, [defaultValue, onSlide])
     return(
         <StyleSlider {...props}>
             <Container>
@@ -133,7 +137,7 @@ const Slider = (props) =>{
                 min={min}
                 max={max}
                 value={range}
-                onChange={handleChange}
+                onChange={(e) => handleChange(e.target.value)}
                 />
                 <SliderValue 
                     style={{
@@ -149,7 +153,7 @@ Slider.propTypes ={
     step: PropTypes.number,
     min: PropTypes.number,
     max: PropTypes.number,
-    defaultLength: PropTypes.number,
+    defaultValue: PropTypes.number,
     maxWidth: PropTypes.bool,
     onSlide: PropTypes.func,
     displayMode: PropTypes.oneOf(["edit", "view", "disabled"])
@@ -158,7 +162,7 @@ Slider.defaultProps = {
     step: 1,
     min: 0,
     max: 100,
-    defaultLength: 0,
+    defaultValue: 50,
     width: 100,
     onSlide: (x) => console.log(x),
     displayMode: "edit"

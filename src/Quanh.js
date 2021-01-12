@@ -7,7 +7,8 @@ import Box from './components/Box'
 import Code from './components/Code'
 import Calendar from './components/elements/Calendar'
 import IcoMail from './components/icons/IcoMail'
-
+import IcoAlertTriangle from './components/icons/IcoAlertTriangle'
+import IcoSettings from './components/icons/IcoSettings'
 function Quanh() {
   useEffect(() => {
     document.title = "Theme: " + theme[myTheme].name
@@ -131,22 +132,27 @@ function Quanh() {
               It can have <Link href="#" underline>underline</Link>
             </Box>
             <Box headline="Text Input">
-              <SimpleInput displayMode={mode} default="default" demo onChange={(v) => setTextValue(v)} value={textValue}/>
+              <SimpleInput displayMode={mode} defaultValue="my default text is here" demo onChange={(v) => setTextValue(v)} value={textValue}/>
               <Code>{JSON.stringify(textValue)}</Code>
             </Box>
             <Box headline="Button" block>
-              <Button color="success" size="small" displayMode={mode} demo onSelect={() => console.log("Wow")}>Success</Button>
-              <Button color="warning" size="medium" displayMode={mode} demo >Warning</Button>
-              <Button color="danger" size="large" displayMode={mode} demo >Danger</Button>
+              <Button color="success" size="small" displayMode={mode} demo onSelect={() => console.log("Wow")}>Success small</Button>
+              <Button color="warning" size="medium" displayMode={mode} demo ><IcoAlertTriangle/> Warning medium</Button>
+              <Button color="danger" size="large" displayMode={mode} demo >Danger large</Button>
               <Button color="primary"size="medium" displayMode={mode} demo >Primary</Button>
               <Button color="secondary"size="small" displayMode={mode} demo >Secondary</Button>
               <Button displayMode={mode} demo type="outline" >Outline</Button>
               <Button size="medium" displayMode={mode} demo type="text" >Text</Button>
+              <Button size="medium" displayMode={mode} demo type="contained" ><IcoSettings/></Button>
             </Box>
             <Box headline="Calendar">
               <div>
+                <p>Made by me</p>
                 <Calendar demo onSelect={date => setDateValue(date)}/>
-                <TableDatePicker/>
+                <p>Using third-party library</p>
+                <div style={{margin: "8px"}}>
+                  <TableDatePicker/>
+                </div>
               </div>
               <Code>{dateValue.toString()}</Code>
             </Box>
@@ -194,7 +200,7 @@ function Quanh() {
               <Code>{JSON.stringify(buttonGroupValue)}</Code>
             </Box>              
             <Box headline="Slide">
-              <Slider onSlide={(v) => setSliderValue(v)} displayMode={mode} fullWidth/>
+              <Slider onSlide={(v) => setSliderValue(v)} displayMode={mode} fullWidth defaultValue={50}/>
               <Code>{JSON.stringify(sliderValue)}</Code>
             </Box>
 

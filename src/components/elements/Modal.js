@@ -95,6 +95,7 @@ const StyledBody = styled.div`
 const Modal = (props) => {
     const [open, setOpen] = useState(props.visible)
     const [runAni, setRunAni] = useState(true)
+    let {onClickOutside} = props
     useEffect(() => {
         if (!props.visible) {
             setRunAni(false)
@@ -110,18 +111,18 @@ const Modal = (props) => {
     useEffect(() => {
         document.addEventListener("keydown", (e) => {
             if (e.key === "Escape") {
-                props.onClickOutside()
+                onClickOutside()
             }
         })
 
         return(() => {
             document.removeEventListener("keydown", (e) => {
                 if (e.key === "Escape") {
-                  props.onClickOutside()
+                    onClickOutside()
                 }
             })
         })
-      }, [])
+      }, [onClickOutside])
     return (
         <StyledModal visible={open} ani={runAni}>
             <StyledContainer ani={runAni} {...props}>

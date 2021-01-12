@@ -1,7 +1,7 @@
 import React,{  } from "react";
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import {getFader, getLighter, getDarker} from '../../utils/color'
+import {getLighter, getDarker} from '../../utils/color'
 
 
 const BreadcrumbContainer = styled.ul`

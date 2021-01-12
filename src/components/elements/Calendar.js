@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useRef} from 'react'
 import styled, { keyframes } from 'styled-components'
 import IcoChevronLeft from '../icons/IcoChevronLeft'
 import IcoChevronRight from '../icons/IcoChevronRight'
@@ -36,7 +36,6 @@ const Container = styled.div`
     margin: ${props => props.demo ? "8px" : "0"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     width: ${props => props.fullWidth ? "100%" : "auto"};
-
 `;
 const StyledSpan = styled.span`
     position: absolute;
@@ -148,17 +147,14 @@ function Calendar(props) {
     const closePopup = () => setPopup(false)
     let ref = useClickOutside(closePopup)
     const [position, setPosition] = useState('bottom')
-    let {dayName, months, days} = calendarData
+    let {dayName, months} = calendarData
     let date = useRef(new Date())
     useKeyEvent("Escape", () => {if (popup) setPopup(false)})
     const [popup, setPopup] = useState(false)
     // carry return date
     const [myDate, setMyDate] = useState({day: date.current.getDay(), date: date.current.getDate(), month: date.current.getMonth(), year: date.current.getFullYear()})
 
-
     const getMonthName = (id) => months.find(month => month.id === id).name
-
-    const getDayName = (id) =>  days.find(day => day.id === id).name
 
     const getDaysInMonth = (m, y) => {
         m += 1;

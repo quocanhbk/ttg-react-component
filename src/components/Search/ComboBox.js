@@ -51,9 +51,6 @@ const ButtonDelete = styled.span`
     }
 `;
 
-// xu ly input va all option
-
-// all option
 const LiOfListOption = styled.li`
     display: inline-flex;
 `;
@@ -193,8 +190,20 @@ const ComboBox = (props) => {
 
     // lay gia tri input search
     const [valueInput, setValueInput] = useState('')
+    
     const handleChangeValue = (e) =>{
+        var filterOption = []
         setValueInput(e.target.value)
+        // setAllOption(ArrayDefault)
+        for(var i=0; i<ArrayDefault.length; i++){
+            for(var j=0; j<Choose.length; j++){
+                if(ArrayDefault[i] === Choose[j]){}
+                else{
+                    filterOption.push(ArrayDefault[i])
+                }
+            }
+        }
+        setAllOption(filterOption)
     } //end
 
     // tim kiem
@@ -208,7 +217,8 @@ const ComboBox = (props) => {
                 search.push(AllOption[i])
             }
         }
-        console.log(search)
+        // console.log(search
+        setAllOption(search)
     }//end
 
 
@@ -216,7 +226,7 @@ const ComboBox = (props) => {
     
     return(
         <DivParent>
-            <ListOption>
+            <ListOption onClick={handleClick}>
                 {/* option user choose */}
                 {
                     Choose.map((item,index)=>{
@@ -232,8 +242,7 @@ const ComboBox = (props) => {
                 
                 <LiOfListOption>
                     <DivAllOption>
-                        <Input name="search" placeholder="Search..." autocomplete="off" spellcheck="false" type="search" aria-label="Start typing to search. Press the down arrow to navigate results. If you don't find an acceptable option, you can enter an alternative." aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-owns="ic-tokeninput-list-1" role="combobox" data-reactid=".0.1.1.0.2"
-                            onMouseDown={handleClick}
+                        <Input name="search" placeholder="Search..." autocomplete="off" spellcheck="false" type="search" aria-label="Start typing to search. Press the down arrow to navigate results. If you don't find an acceptable option, you can enter an alternative." aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-owns="ic-tokeninput-list-1" role="combobox" data-reactid=".0.1.1.0.2"                         
                             onChange={handleChangeValue}
                             onKeyUp={handleFilter}
                         />
