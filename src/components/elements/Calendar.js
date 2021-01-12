@@ -1,10 +1,10 @@
 import React, {useState, useEffect, useRef} from 'react'
 import styled, { keyframes } from 'styled-components'
-import IcoChevronLeft from '../components/icons/IcoChevronLeft'
-import IcoChevronRight from '../components/icons/IcoChevronRight'
-import {getFader} from '../utils/color'
-import useClickOutside from '../hooks/useClickOutside'
-import useKeyEvent from '../hooks/useKeyEvent'
+import IcoChevronLeft from '../icons/IcoChevronLeft'
+import IcoChevronRight from '../icons/IcoChevronRight'
+import {getFader} from '../../utils/color'
+import useClickOutside from '../../hooks/useClickOutside'
+import useKeyEvent from '../../hooks/useKeyEvent'
 const calendarData = {
     dayName: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
     months: [

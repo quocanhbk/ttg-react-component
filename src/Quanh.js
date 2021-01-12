@@ -5,7 +5,7 @@ import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
 import Code from './components/Code'
-import Calendar from './components/Calendar'
+import Calendar from './components/elements/Calendar'
 import IcoMail from './components/icons/IcoMail'
 function Quanh() {
   useEffect(() => {
