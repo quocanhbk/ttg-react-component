@@ -116,7 +116,7 @@ Name|Type|Default|Description
 `href`|`string`|`none`|URL of Link
 #### Example:
 `<Link name="example 1" href="google.com.vn" >Google</Link>`
-### 11.`<Modal/>` *Styte modal*
+### 12.`<Modal/>` *Styte modal*
 #### Props
 Name|Type|Default|Description
 ---|---|---|---

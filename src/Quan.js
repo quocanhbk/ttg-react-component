@@ -1,4 +1,5 @@
 import {ThemeProvider} from 'styled-components'
+import { React } from "react";
 import Container from './components/Container'
 import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput} from './components/elements'
 import CheckboxGroup from './components/elements/CheckboxGroup'
@@ -19,10 +20,11 @@ import Contact from './components/pages/Contact'
 import Dashboard from './components/pages/Dashboard'
 
 import theme from './utils/theme'
-import {useState} from 'react'
+import {useState,useRef} from 'react'
 import Breadcrumb from './components/elements/Breadcrumb'
 import { lightBlue } from '@material-ui/core/colors'
-
+import Snackbar from './components/Snackbar'
+import useSnackbar from './hooks/useSnackbar'
 
 const items=[
   { to: '/', label: 'Home' },
@@ -40,46 +42,16 @@ function Quan() {
   const onChangeSlider = e => {
     setRangeValue(parseInt(e.target.value, 10))
   }
-
+  const {isActive,openSnackBar} = useSnackbar()
+  const showSnackbarHandler = () =>{
+    openSnackBar();
+  }
   return (
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          <p>Avatar</p>
-          <AvatarGroup  max={4}>
-            <Avatar alt="Ha Thi Buoi" src={hinh} ></Avatar>
-            <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
-            <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
-            <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
-            <Avatar alt="Ha Thi Buoi" src={""} ></Avatar>
-          </AvatarGroup>
-          <Avatar alt="Quan Van" fluid={false} src=""></Avatar>
-          <p>Breadcrumb</p>
-          <Breadcrumb>
-            {items.map(({to,label}) =>(
-              <Link key={to} to={to}>{label}</Link>
-            ))}
-          </Breadcrumb>
-          <Router>
-            <Home path='/' />
-            <Dashboard path='/dashboard' />
-            <Contact path='/contact' />
-            <Blog path='/blog' />
-          </Router>
-          <p>Date Picker</p>
-          <TableDatePicker>Don't forget</TableDatePicker>
-          <p>Tabs</p>
-          <Tabs name="group tab">
-            <TabPane name="Tab 1" key="1" >
-              Content 1
-            </TabPane>
-            <TabPane name="Tab 2" key="2">
-              Content 2
-            </TabPane>
-            <TabPane name="Tab 3" key="3">
-              Content 3
-            </TabPane>
-          </Tabs>
+          <button onClick={showSnackbarHandler}>Click open to snackbar</button>
+          <Snackbar isActive={isActive} message="Hello every body"></Snackbar>
         </Container>        
       </ThemeProvider>
     </div>
