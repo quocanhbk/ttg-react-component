@@ -27,13 +27,13 @@ const StyledButton = styled.button`
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
     background: ${props=>props.type === "contained" ? "var(--fillColor)" : "var(--textColor)"};
-    display: ${props => props.fullWidth ? "flex" : "inline-flex"};
+    display: ${props => props.children ? "flex" : "inline-flex"};
     align-items:center;
     justify-content:center;
     border-style: solid;
     border-color: var(--fillColor);
     border-width: ${props => props.ingroup === "left" ? "0 1px 0 0" : props.ingroup === "right" ? "0 0 0 1px" : props.ingroup === "middle" ? "0 1px 0 1px" : props.type === "outline" ? "2px": "0px"};
-    border-radius:  ${props => props.children ? "24px" :  "50%" };
+    border-radius:  ${props => props.fullWidth ? "24px" :  "50%" };
     margin:0 10px;
     width:  ${props => props.fullWidth ? "100%" : props.theme.FBSize[props.size] || "46px" };
     height:  ${props => props.fullWidth ? "100%" : props.theme.FBSize[props.size] || "46px" };
