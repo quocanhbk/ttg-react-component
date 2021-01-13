@@ -8,7 +8,7 @@ const DivStyle = styled.div`
     border-radius: 50%;
     box-shadow: 0px 0px 5px rgba(0,0,0,1);
     vertical-align: bottom;
-    height: 100%;
+    height:  ${props => props.fluid ? "100%" : props.theme.avatarSize[props.size] || "32px" };
 `;
 const ImgStyle = styled.img`
     display:block;
@@ -22,7 +22,7 @@ const DivImg = styled.div`
     align-items:center;
     justify-content:center;
     width:  ${props => props.fluid ? "100%" : props.theme.avatarSize[props.size] || "32px" };
-    min-height:  ${props => props.theme.avatarSize[props.size] || "32px" };
+    min-height:  ${props => props.fluid ? "100%" : props.theme.avatarSize[props.size] || "32px" };
     border-radius:50%;
     background: ${props => props.theme.color.border.primary}; 
     font-size: ${props => props.theme.textSize.small};
@@ -45,9 +45,9 @@ const Avatar = (props) => {
 Avatar.defaultProps = {
     alt: "",
     fluid: false,
-    src: "https://source.unsplash.com/random/400x400",
     size: "medium",
     demo: false,
+    src: "https://source.unsplash.com/random/400x400"
 }
 Avatar.propTypes={
     fluid:PropTypes.bool,
