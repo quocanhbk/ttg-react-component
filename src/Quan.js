@@ -11,6 +11,7 @@ import  Snackbar  from "./components/Snackbar";
 import theme from './utils/theme'
 import {useState,useRef} from 'react'
 import { Icon } from '@material-ui/core';
+import Table from './components/Table/Table';
 
 
 const items=[
@@ -19,6 +20,31 @@ const items=[
   { to: '/contact', label: 'Contact' },
   { to: '/blog', label: 'Blog' },
 ]
+const schema = {
+  "id": "",
+  "name": "",
+  "author": "",
+  "released": ""
+}
+
+const data= [{
+  "id": "1",
+  "name": "Ghost in The Wires",
+  "author": "Kevin Mitnick",
+  "released": "08/15/2011"
+},
+{
+  "id": "2",
+  "name": "Console Wars",
+  "author": "Blake J. Harris",
+  "released": "05/13/2014"
+},
+{
+  "id": "3",
+  "name": "The Phoenix Project",
+  "author": "Gene Kim, Kevin Behr, George Spafford",
+  "released": "12/01/2017"
+}]
 
 
 function Quan() {
@@ -40,9 +66,8 @@ function Quan() {
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-        <FB color="primary" size="medium"  position={true}>{<IconPlus/>}</FB>
-        <FB color="danger" size="medium" fullWidth position={false}>{<IconPlus/>}EDIT</FB>
-        </Container>        
+          <Table headers={Object.keys(schema)} rows={data} />
+        </Container>
       </ThemeProvider>
     </div>
   )
