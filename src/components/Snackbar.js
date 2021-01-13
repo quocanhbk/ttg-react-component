@@ -26,7 +26,7 @@ import IcoX from './icons/IcoX';
 `;
 
  const StyledSnackbar = styled.div`
-    padding: 7px 7px 7px 10px;
+    padding: 10px 10px 10px 15px;
     ${props => props.type === 'success' && 'background-color: #4caf50;'}
     ${props => props.type === 'warning' && 'background-color: #ff9800;'}
     ${props => props.type === 'info' && 'background-color: #2196f3;'}
@@ -60,7 +60,7 @@ const CloseSnackbar = styled.button`
     cursor:pointer;
     color: #fff;
     border-radius:50%;
-    padding:3px;
+    padding:0 3px;
     &:hover{
         background-color: rgba(0, 0, 0, 0.04);
     }
