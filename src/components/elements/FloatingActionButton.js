@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const StyleFloatDiv=styled.div`
     position:fixed;
     margin: 1em;
-    right:  5vh;
+    ${props => props.position ? "left:1vh" : "right:5vh"};
     bottom: 5vh;
 `;
 const StyledButton = styled.button`
@@ -17,9 +17,9 @@ const StyledButton = styled.button`
     --disabledTextColor: ${props => props.theme.color.text.disabled};
     --disabledFillColor: ${props => props.theme.color.fill.disabled};
     margin: ${props => props.demo? "8px": "0px"};
-    padding: 5px 7px;
+    padding: 7px 5px;
     transition: background 0.15s linear;
-    font-size: ${props => props.theme.textSize[props.size] || "1rem" };
+    font-size: ${props => props.theme.FBText[props.size] || "14px" };
     font-weight: ${props => props.theme.weight[props.fontWeight] || 500};
     cursor: pointer;
     outline: none;
@@ -27,7 +27,7 @@ const StyledButton = styled.button`
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
     background: ${props=>props.type === "contained" ? "var(--fillColor)" : "var(--textColor)"};
-    display: ${props => props.children ? "flex" : "inline-flex"};
+    display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     align-items:center;
     justify-content:center;
     border-style: solid;
@@ -53,22 +53,22 @@ const StyledButton = styled.button`
         background: ${props => props.type === "contained" ? "var(--textColor)" : props.type === "outline" ? "var(--fillColor)" : "transparent"};
     }
     & svg{
-        width: 22px;
-        height: 22px;
+        width:  ${props => props.theme.svgSize[props.size] || "22px" };
+        height:  ${props => props.theme.svgSize[props.size] || "22px" };
+    }
+    &>span>span{
+        margin-right: ${props => props.fullWidth ? "8px" : "0"};
     }
 `;
-const StyleName = styled.span`
+const StyleFAB = styled.span`
     display:block;
-    margin: ${props => props.children? "5px": "0px"};
-
 `;
 
 const Button = (props) => {
     return (
-        <StyleFloatDiv>
+        <StyleFloatDiv {...props}>
         <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled} onClick={props.onClick} onClick={props.onSelect}>
-        {props.icon}
-        <StyleName>{props.children}</StyleName>
+        <StyleFAB>{props.children}</StyleFAB>
         </StyledButton>
         </StyleFloatDiv>
     )
@@ -78,6 +78,7 @@ Button.defaultProps = {
     color: "primary",
     icon: "",
     type: "contained",
+    position: false,
     displayMode: "edit",
     size: "medium",
     disabled: false,
@@ -91,6 +92,7 @@ Button.propTypes ={
     icon: PropTypes.element,
     theme: PropTypes.string,
     size: PropTypes.string,
+    position: PropTypes.bool,
     displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     fullWidth: PropTypes.bool,
     type: PropTypes.string,

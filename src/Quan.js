@@ -40,8 +40,8 @@ function Quan() {
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-        {/* <FB color="danger" size="medium"  fullWidth  icon={<IconPlus/>}>abc</FB> */}
-        <FB color="danger" size="large"  icon={<IconPlus/>}></FB>
+        <FB color="primary" size="medium"  position={true}>{<IconPlus/>}</FB>
+        <FB color="danger" size="medium" fullWidth position={false}>{<IconPlus/>}EDIT</FB>
         </Container>        
       </ThemeProvider>
     </div>

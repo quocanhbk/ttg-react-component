@@ -40,6 +40,16 @@ const theme = {
             medium: "46px",
             large: "52px"
         },
+        svgSize: {
+            small: "18px",
+            medium: "22px",
+            large: "24px"
+        },
+        FBText: {
+            small: "12px",
+            medium: "14px",
+            large: "16px"
+        },
         weight: {
             light: 300,
             normal: 500,
@@ -86,6 +96,16 @@ const theme = {
             small: "40px",
             medium: "46px",
             large: "52px"
+        },
+        svgSize: {
+            small: "18px",
+            medium: "22px",
+            large: "24px"
+        },
+        FBText: {
+            small: "12px",
+            medium: "14px",
+            large: "16px"
         },
         weight: {
             light: 300,
