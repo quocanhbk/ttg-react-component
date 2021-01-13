@@ -2,6 +2,9 @@ import {ThemeProvider} from 'styled-components'
 import { React } from "react";
 import Container from './components/Container'
 import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput} from './components/elements'
+import IconCheck from './components/icons/IcoCheckCircle';
+import IconError from './components/icons/IcoAlertCircle';
+
 
 import  Snackbar  from "./components/Snackbar";
 import theme from './utils/theme'
@@ -37,12 +40,12 @@ function Quan() {
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
             <div>
             <button
-                  disabled={isSnackbarOpen}
                 onClick={() => openSnackbar()}
-            >Click show alert</button>
+            >Click show success</button>
             </div>
             {isSnackbarOpen && <Snackbar
-                message={"Hello every body"}
+                icon={<IconCheck/>}
+                message={"Success"}
                 position={"bottomCenter"}
                 type={"success"}
                 onClose={closeSnackbar}
