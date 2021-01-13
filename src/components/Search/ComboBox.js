@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components'
 
 const DivParent = styled.div`
@@ -152,13 +152,12 @@ const ComboBox = (props) => {
     const [AllOption, setAllOption] = useState(props.value)
     const [Choose, setChoose] = useState([])
     var ArrayDefault = props.value;
-
     const [displayOption, setDisplayOption] = useState(false)
     const handleClick = () =>{
         setDisplayOption(!displayOption)
     }
 
-    // neu chon het thi AllOption se mat
+    // neu chon het thi Background AllOption se mat
     var opacity = false;
     if(AllOption.length > 0){
        opacity = !opacity
@@ -205,40 +204,46 @@ const ComboBox = (props) => {
 
     // lay gia tri input search
     const [valueInput, setValueInput] = useState('')
-    
     const handleChangeValue = (e) =>{
-        var filterOption = []
         setValueInput(e.target.value)
-        // setAllOption(ArrayDefault)
-        for(var i=0; i<ArrayDefault.length; i++){
-            for(var j=0; j<Choose.length; j++){
-                if(ArrayDefault[i] === Choose[j]){}
-                else{
-                    filterOption.push(ArrayDefault[i])
-                }
-            }
-        }
-        setAllOption(filterOption)
+        setDisplayOption(true)
     } //end
 
     // tim kiem
-    var search = []
     const handleFilter = ()=> {
+        var search =[]
+        var search_temp = []
         // chuyển valueInput thành dạng string
-        var txt = valueInput.toString().toUpperCase()
-        for (var i = 0; i < AllOption.length; i++) {
-            var uppercase = AllOption[i].toUpperCase();
-            if (uppercase.indexOf(txt) > -1) {
-                search.push(AllOption[i])
+        if(valueInput !== ''){
+            var txt = valueInput.toString().toUpperCase()
+            for (var i = 0; i < AllOption.length; i++) {
+                var uppercase = AllOption[i].toUpperCase();
+                if (uppercase.indexOf(txt) > -1) {
+                    search.push(AllOption[i])
+                }
             }
+            setAllOption(search)
         }
-        // console.log(search
-        setAllOption(search)
+        else{
+            search = []
+            if(Choose.length > 0){
+                for(let i=0; i<Choose.length; i++){
+                    for(let j=0; j<ArrayDefault.length; j++){
+                        if(Choose[i] === ArrayDefault[j]){}
+                        else{
+                            search.push(ArrayDefault[j])
+                        }
+                    }
+                }
+                search_temp = [...new Set(search)]
+            }
+            else{
+                search_temp = ArrayDefault
+            }
+            setAllOption(search_temp)
+        }
     }//end
 
-
-
-    
     return(
         <DivParent>
             <ListOption onClick={handleClick}>
@@ -257,7 +262,7 @@ const ComboBox = (props) => {
                 
                 <LiOfListOption>
                     <DivAllOption>
-                        <Input name="search" placeholder="Search..." autocomplete="off" spellcheck="false" type="search" aria-label="Start typing to search. Press the down arrow to navigate results. If you don't find an acceptable option, you can enter an alternative." aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-owns="ic-tokeninput-list-1" role="combobox" data-reactid=".0.1.1.0.2"                         
+                        <Input name="search" placeholder="Search..." autocomplete="off" spellcheck="false" aria-label="Start typing to search. Press the down arrow to navigate results. If you don't find an acceptable option, you can enter an alternative." aria-expanded="false" aria-haspopup="true" aria-autocomplete="list" aria-owns="ic-tokeninput-list-1" role="combobox" data-reactid=".0.1.1.0.2"                         
                             onChange={handleChangeValue}
                             onKeyUp={handleFilter}
                         />
@@ -269,7 +274,7 @@ const ComboBox = (props) => {
                                     return(
                                         <DivDropListChild 
                                             key={index}
-                                            onClick={()=>handleChoose(index)}>
+                                            onClick={()=>handleChoose(index,item)}>
                                             {item}
                                         </DivDropListChild>
                                     )
