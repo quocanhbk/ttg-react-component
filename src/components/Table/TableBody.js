@@ -1,11 +1,11 @@
 const TableBody = (props) => {
     const { headers, rows } = props;
   
-    const buildRow = (row, headers) => {
+    const buildRow = (rows, headers) => {
       return (
-           <tr key={row.id}>
+           <tr key={rows.id}>
            { headers.map((value, index) => {
-               return <td key={index}>{row[value]}</td>
+               return <td key={index}>{rows[value]}</td>
             })}
            </tr>
        )
