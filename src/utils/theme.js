@@ -35,6 +35,11 @@ const theme = {
             medium: "36px",
             large: "42px"
         },
+        FBSize: {
+            small: "40px",
+            medium: "46px",
+            large: "52px"
+        },
         weight: {
             light: 300,
             normal: 500,
@@ -76,6 +81,11 @@ const theme = {
             small: "30px",
             medium: "36px",
             large: "42px"
+        },
+        FBSize: {
+            small: "40px",
+            medium: "46px",
+            large: "52px"
         },
         weight: {
             light: 300,

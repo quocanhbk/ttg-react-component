@@ -4,11 +4,13 @@ import Container from './components/Container'
 import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput} from './components/elements'
 import IconCheck from './components/icons/IcoCheckCircle';
 import IconError from './components/icons/IcoAlertCircle';
+import IconPlus from './components/icons/IcoEdit2';
 
-
+import FB from './components/elements/FloatingActionButton';
 import  Snackbar  from "./components/Snackbar";
 import theme from './utils/theme'
 import {useState,useRef} from 'react'
+import { Icon } from '@material-ui/core';
 
 
 const items=[
@@ -38,20 +40,8 @@ function Quan() {
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-            <div>
-            <button
-                onClick={() => openSnackbar()}
-            >Click show success</button>
-            </div>
-            {isSnackbarOpen && <Snackbar
-                icon={<IconCheck/>}
-                message={"Success"}
-                position={"bottomCenter"}
-                type={"success"}
-                onClose={closeSnackbar}
-                timeout={3000}
-                
-            />}
+        <FB color="danger" size="medium"  fullWidth  icon={<IconPlus/>}>abc</FB>
+        <FB color="danger" size="medium" positon="5vh"  icon={<IconPlus/>}></FB>
         </Container>        
       </ThemeProvider>
     </div>
