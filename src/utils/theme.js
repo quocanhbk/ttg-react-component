@@ -33,7 +33,22 @@ const theme = {
         avatarSize: {
             small: "30px",
             medium: "36px",
-            large: "48px"
+            large: "42px"
+        },
+        FBSize: {
+            small: "40px",
+            medium: "46px",
+            large: "52px"
+        },
+        svgSize: {
+            small: "18px",
+            medium: "22px",
+            large: "24px"
+        },
+        FBText: {
+            small: "12px",
+            medium: "14px",
+            large: "16px"
         },
         weight: {
             light: 300,
@@ -61,7 +76,7 @@ const theme = {
             },
             background: {
                 primary: "#212223", //Obsidian 900
-                secondary: "#4C4C4C" //Pewter 800 
+                secondary: "#313233" //Pewter 800 
             },
             border: {
                 primary: "#555555"
@@ -75,7 +90,22 @@ const theme = {
         avatarSize: {
             small: "30px",
             medium: "36px",
-            large: "48px"
+            large: "42px"
+        },
+        FBSize: {
+            small: "40px",
+            medium: "46px",
+            large: "52px"
+        },
+        svgSize: {
+            small: "18px",
+            medium: "22px",
+            large: "24px"
+        },
+        FBText: {
+            small: "12px",
+            medium: "14px",
+            large: "16px"
         },
         weight: {
             light: 300,

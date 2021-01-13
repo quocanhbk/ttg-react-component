@@ -1,6 +1,4 @@
 import React from 'react'
-import AccordionComponent from './components/Accordioncomponent'
-import Badge from './components/Badge/Badge'
 import ComboBox from './components/Search/ComboBox'
 import Pagination from './components/Pagination/Pagination'
 

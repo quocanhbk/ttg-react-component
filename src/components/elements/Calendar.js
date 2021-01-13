@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useRef} from 'react'
 import styled, { keyframes } from 'styled-components'
 import IcoChevronLeft from '../icons/IcoChevronLeft'
 import IcoChevronRight from '../icons/IcoChevronRight'
@@ -36,7 +36,6 @@ const Container = styled.div`
     margin: ${props => props.demo ? "8px" : "0"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     width: ${props => props.fullWidth ? "100%" : "auto"};
-
 `;
 const StyledSpan = styled.span`
     position: absolute;
@@ -48,8 +47,7 @@ const StyledSpan = styled.span`
     justify-content: center;
     align-items: center;
     width: 40px;
-    border-left: 1px solid ${props => getFader(props.theme.color.fill.primary, 0.4)};
-    margin: ${props => props.left ? "0px 8px 0px 0px" : props => props.right ? "0px 0px 0px 8px" : "0px"};
+    border-left: 2px solid ${props => getFader(props.theme.color.fill.primary, 0.4)};
     svg {
         padding: 0 2px;
     }
@@ -149,23 +147,14 @@ function Calendar(props) {
     const closePopup = () => setPopup(false)
     let ref = useClickOutside(closePopup)
     const [position, setPosition] = useState('bottom')
-    let dayName = calendarData.dayName
-    let months = calendarData.months
-    let days = calendarData.days
+    let {dayName, months} = calendarData
     let date = useRef(new Date())
-    useKeyEvent("Escape", () => {
-        if (popup) {
-            setPopup(false)
-        }
-    })
+    useKeyEvent("Escape", () => {if (popup) setPopup(false)})
     const [popup, setPopup] = useState(false)
     // carry return date
     const [myDate, setMyDate] = useState({day: date.current.getDay(), date: date.current.getDate(), month: date.current.getMonth(), year: date.current.getFullYear()})
 
-
     const getMonthName = (id) => months.find(month => month.id === id).name
-
-    const getDayName = (id) =>  days.find(day => day.id === id).name
 
     const getDaysInMonth = (m, y) => {
         m += 1;
@@ -236,8 +225,6 @@ function Calendar(props) {
                 <CalendarHead>
                     <IcoChevronLeft onClick={() => swipe('prev')}>Prev</IcoChevronLeft>
                     <StyledCalendarDate >
-                        {/*myDate.date.toLocaleString(undefined, {minimumIntegerDigits: 2}) + " / " + (myDate.month+1).toLocaleString(undefined, {minimumIntegerDigits: 2}) +  " / " + myDate.year*/}
-                        {/* {(date.current.getMonth()+1).toLocaleString(undefined, {minimumIntegerDigits: 2}) +  " / " + date.current.getFullYear()} */}
                         {getMonthName(date.current.getMonth()) +  " " + date.current.getFullYear()}
                     </StyledCalendarDate>
                     <IcoChevronRight onClick={() => swipe('next')}>Next</IcoChevronRight>
