@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 
 const DivContainer = styled.div`
-  width: 100%;
+  width: 80%;
+  margin: auto;
   overflow-x: auto;
   border-radius: 4px;
   background: #fff;
@@ -49,11 +50,12 @@ const TableStyle = styled.table`
 
 const Table = (props) => {
     const { headers, rows } = props;
+
     return (
-      <DivContainer class="MuiTableContainer-root">
+      <DivContainer className="MuiTableContainer-root">
         <TableStyle className="table table-bordered table-hover">
-        <TableHeader headers={headers}></TableHeader>
-        <TableBody headers={headers} rows={rows}></TableBody>
+          <TableHeader headers={headers}></TableHeader>
+          <TableBody headers={headers} rows={rows}></TableBody>
         </TableStyle>
       </DivContainer>
     );

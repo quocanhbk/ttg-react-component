@@ -215,10 +215,8 @@ const ComboBox = (props) => {
                 for(let i=0; i<Choose.length; i++){
                     for(let j=0; j<ArrayDefault.length; j++){
                         if(Choose[i] === ArrayDefault[j]){}
-                        else{
-                            search.push(ArrayDefault[j])
-                        }
                     }
+                    search.push(ArrayDefault[j])
                 }
                 search_temp = [...new Set(search)]
             }

@@ -27,12 +27,18 @@ const ChildPagination = styled.a`
     }
 `;
 
+// truyen vao totalPage
 const Pagination = (props) =>{
     // lay so trang
     var page = [];
     for(var i=1; i<=props.totalPage; i++){
         page.push(i)
     } //end
+
+    useEffect(()=>{
+        var x = document.querySelectorAll('a');
+        x[1].classList.add('active')
+    })
 
     const Active = (index)=>{
         var x = document.querySelectorAll('a');
@@ -95,7 +101,12 @@ const Pagination = (props) =>{
             {
                 page.map((item, index)=>{
                     return(
-                        <ChildPagination onClick={()=>Active(item)} value={item} key={index}>{item}</ChildPagination>
+                        <ChildPagination 
+                            onClick={()=>Active(item)} 
+                            value={item} 
+                            key={index}
+                            >{item}
+                        </ChildPagination>
                     )
                 })
             }
