@@ -52,7 +52,7 @@ const TableStyle = styled.table`
   }
   & .tr-sort-data button{
     position: absolute;
-    top: -38px;
+    top: -34px;
     right: 10px;
   }
 
@@ -62,9 +62,10 @@ const TableStyle = styled.table`
   }
   & .tr-sort-data svg{
     color:${props => props.theme.color.text.primary};
-    width: 15px;
+    width: 16px;
     height: auto;
-    opacity: 0.6;    
+    opacity: 0.5; 
+    display:block;   
 `;
 
 const Table = (props) => {

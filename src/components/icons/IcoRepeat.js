@@ -4,7 +4,7 @@ const StyledSpan = styled.span`
     margin: ${props => props.left ? "0px 8px 0px 0px" : props => props.right ? "0px 0px 0px 8px" : "0px"};
     svg {
         vertical-align: middle;
-        transition: 1s;
+        transition: .8s;
         transform: rotate(${props => props.rotate ? '90deg' : '270deg'});
     }
 `;
