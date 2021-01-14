@@ -1,13 +1,13 @@
 import TableBody from "./TableBody";
 import TableHeader from "./TableHeader";
 import styled from 'styled-components';
-
+import PropTypes from 'prop-types'
 
 const DivContainer = styled.div`
   width: 100%;
   overflow-x: auto;
   border-radius: 4px;
-  background: #fff;
+  background: ${props => props.theme.color.background.primary};
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
 `;
 const TableStyle = styled.table`
@@ -24,18 +24,18 @@ const TableStyle = styled.table`
     vertical-align: middle;
   }
   & td{
-    color: rgba(0, 0, 0, 0.87);
+    color: ${props => props.theme.color.text.primary};
     font-weight: normal;
     line-height: 1.5rem;
     padding: 15px;
     font-size: 0.875rem;
     text-align: left;
-    border-bottom: 1px solid rgba(224,224,224,1);
+    border-bottom: 1px solid ${props => props.theme.color.border.primary};
     letter-spacing: 0.01071em;
     vertical-align: inherit;
   }
   & th {
-    color: rgba(0, 0, 0, 0.87);
+    color: ${props => props.theme.color.text.primary};
     padding: 15px;
     text-align: left;
     font-size: 0.875rem;
@@ -61,9 +61,10 @@ const TableStyle = styled.table`
     position: relative;
   }
   & .tr-sort-data svg{
+    color:${props => props.theme.color.text.primary};
     width: 15px;
     height: auto;
-    opacity: 0.5;
+    opacity: 0.6;
   }
 `;
 
@@ -72,10 +73,19 @@ const Table = (props) => {
     return (
       <DivContainer class="MuiTableContainer-root">
         <TableStyle className="table table-bordered table-hover">
-        <TableHeader headers={headers} rows={rows}  ></TableHeader>
+        <TableHeader headers={headers}   ></TableHeader>
         <TableBody headers={headers} rows={rows}></TableBody>
         </TableStyle>
       </DivContainer>
     );
   }
+
+Table.defaultProps = {
+  headers: {},
+  rows: {}
+}
+Table.propTypes={
+  headers:PropTypes.object,
+  rows:PropTypes.object
+}
 export default Table
