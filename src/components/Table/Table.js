@@ -34,16 +34,36 @@ const TableStyle = styled.table`
     letter-spacing: 0.01071em;
     vertical-align: inherit;
   }
-  & th{
+  & th {
     color: rgba(0, 0, 0, 0.87);
-    font-weight: bold;
-    line-height: 1.5rem;
     padding: 15px;
-    font-size: 0.875rem;
     text-align: left;
+    font-size: 0.875rem;
     border-bottom: 1px solid rgba(224,224,224,1);
     letter-spacing: 0.01071em;
     vertical-align: inherit;
+  }
+  & button{
+    display:block;
+    border:0;
+    background:transparent;
+    line-height: 1.5rem;
+    cursor:pointer;
+  }
+  & .tr-sort-data button{
+    position: absolute;
+    top: -38px;
+    right: 10px;
+  }
+
+  & .tr-sort-data th{
+    padding: 0;
+    position: relative;
+  }
+  & .tr-sort-data svg{
+    width: 15px;
+    height: auto;
+    opacity: 0.5;
   }
 `;
 
@@ -52,7 +72,7 @@ const Table = (props) => {
     return (
       <DivContainer class="MuiTableContainer-root">
         <TableStyle className="table table-bordered table-hover">
-        <TableHeader headers={headers}></TableHeader>
+        <TableHeader headers={headers} rows={rows}  ></TableHeader>
         <TableBody headers={headers} rows={rows}></TableBody>
         </TableStyle>
       </DivContainer>
