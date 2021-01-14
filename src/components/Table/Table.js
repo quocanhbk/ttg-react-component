@@ -4,11 +4,10 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types'
 
 const DivContainer = styled.div`
-  width: 80%;
   margin: auto;
   overflow-x: auto;
   border-radius: 4px;
-  background: gray;
+  background: ${props => props.theme.color.background.primary};;
   box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
 `;
 const TableStyle = styled.table`
@@ -65,8 +64,7 @@ const TableStyle = styled.table`
     color:${props => props.theme.color.text.primary};
     width: 15px;
     height: auto;
-    opacity: 0.6;
-  }
+    opacity: 0.6;    
 `;
 
 const Table = (props) => {
