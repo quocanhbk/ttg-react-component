@@ -27,11 +27,12 @@ import IcoX from './icons/IcoX';
 
  const StyledSnackbar = styled.div`
     padding: 10px 10px 10px 15px;
-    ${props => props.type === 'success' && 'background-color: #4caf50;'}
+    /* ${props => props.type === 'success' && 'background-color: #4caf50;'}
     ${props => props.type === 'warning' && 'background-color: #ff9800;'}
     ${props => props.type === 'info' && 'background-color: #2196f3;'}
     ${props => props.type === 'error' && 'background-color: #f44336;'}
-    ${props => props.type === 'default' && 'background-color: #000;'}
+    ${props => props.type === 'default' && 'background-color: #000;'} */
+    background-color: ${props => props.theme.color.fill[props.type] || (props.type === "error" ? props.theme.color.fill.danger : props.theme.color.fill.primary)};
     border-radius: 4px;
     color: #fff;
     font-size:14px;
@@ -76,7 +77,7 @@ const getVerticalPosition = position => {
     return 'top';
 };
 
-const Snackbar = ({icon, position = 'topCenter', message, type = 'info', timeout = 1000, onClose }) => {
+const Snackbar = ({icon, position = 'topCenter', message, type, timeout = 1000, onClose }) => {
     useEffect(() => {
         const snackbarTimeout = setTimeout(onClose, timeout);
 
@@ -98,17 +99,15 @@ const Snackbar = ({icon, position = 'topCenter', message, type = 'info', timeout
 Snackbar.propTypes = {
     icon: PropTypes.element,
     onClose: PropTypes.func,
-    horizontal: PropTypes.string,
-    vertical: PropTypes.string,
+    position: PropTypes.string,
     type: PropTypes.string,
     message : PropTypes.string
     
 }
 Snackbar.defaultProps={
     onClose: ()=> {},
-    horizontal: "bottom",
-    vertical: "center",
-    type: "default",
+    position: "bottomCenter",
+    type: "info",
     message: "default"
 }
 

@@ -46,8 +46,8 @@ function Quan() {
             {isSnackbarOpen && <Snackbar
                 icon={<IconCheck/>}
                 message={"Success"}
-                position={"bottomCenter"}
-                type={"success"}
+                position={"topLeft"}
+                type={"awdawd"}
                 onClose={closeSnackbar}
                 timeout={3000}
                 

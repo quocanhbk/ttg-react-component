@@ -12,7 +12,7 @@ const StyledButton = styled.button`
     --disabledTextColor: ${props => props.theme.color.text.disabled};
     --disabledFillColor: ${props => props.theme.color.fill.disabled};
     margin: ${props => props.demo? "8px": "0px"};
-    padding: ${props => props.ingroup ? "2px 8px" : props.type === "outline" ? "2px 8px" : "4px 10px"};
+    padding: ${props => props.ingroup ? "2px 10px" : props.type === "outline" ? "2px 11px" : "4px 12px"};
     transition: background 0.15s linear;
     font-size: ${props => props.theme.textSize[props.size] || "1rem" };
     font-weight: ${props => props.theme.weight[props.fontWeight] || 500};
@@ -21,11 +21,11 @@ const StyledButton = styled.button`
     user-select: none;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
     color:${props => props.type === "contained" ? "var(--textColor)" : "var(--fillColor)"};
-    background: ${props=>props.type === "contained" ? "var(--fillColor)" : "var(--textColor)"};
+    background: ${props=>props.type === "contained" ? "var(--fillColor)" : "transparent"};
     flex: 1;
     border-style: solid;
-    border-color: var(--fillColor);
-    border-width: ${props => props.ingroup === "left" ? "0 1px 0 0" : props.ingroup === "right" ? "0 0 0 1px" : props.ingroup === "middle" ? "0 1px 0 1px" : props.type === "outline" ? "2px": "0px"};
+    border-color: ${props => props.ingroup ? props.theme.color.border.primary : "var(--fillColor)"};
+    border-width: ${props => props.ingroup === "left" ? "0 1px 0 0" : props.ingroup === "right" ? "0 0 0 1px" : props.ingroup === "middle" ? "0 1px 0 1px" : props.type === "outline" ? "1px": "0px"};
     border-radius: ${props => props.ingroup ? "0" : "4px"};
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     width: ${props => props.fullWidth ? "100%": "auto"};
@@ -47,7 +47,7 @@ const StyledButton = styled.button`
 
 const Button = (props) => {
     return (
-        <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled} onClick={props.onClick} onClick={props.onSelect}>
+        <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled}>
         {props.children}
         </StyledButton>
     )
@@ -59,8 +59,7 @@ Button.defaultProps = {
     displayMode: "edit",
     size: "medium",
     disabled: false,
-    onClick: () => {},
-    onSelect: () => {}
+    onClick: () => {}
 }
 
 Button.propTypes ={
@@ -71,7 +70,6 @@ Button.propTypes ={
     displayMode: PropTypes.oneOf(["edit", "view", "disabled"]),
     fullWidth: PropTypes.bool,
     type: PropTypes.string,
-    onSelect: PropTypes.func,
     onClick:PropTypes.func
 }
 export default Button

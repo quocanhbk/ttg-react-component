@@ -43,13 +43,13 @@ const SpanChkBox = styled.span`
         transition: border-color 0.15s linear;
         content: "";
         position: absolute;
-        left: 4px;
-        top: 0px;
-        width: 4px;
-        height: 8px;
+        left: 0.25rem;
+        top: 0.05rem;
+        width: 0.25rem;
+        height: 0.5rem;
         border-style: solid;
         border-color: transparent;
-        border-width: 0 3px 3px 0;
+        border-width: 0 0.2rem 0.2rem 0;
         transform: rotate(45deg);
     }
     &:hover{

@@ -48,8 +48,8 @@ function Quanh() {
 
           <Container headline="Theme" >
             <ButtonGroup fullWidth onSelect={x => setTheme(x)}>
-              <Button value="light" default >Light</Button>
-              <Button value="dark">Dark</Button>
+              <Button value="light">Light</Button>
+              <Button value="dark" default>Dark</Button>
             </ButtonGroup>
           </Container>
 
@@ -58,7 +58,7 @@ function Quanh() {
             <Box headline="Combox" block>
               <Combox>
               {ComboxData.map(data => 
-                <Combox.Option id={data.id} value={data.name}>{data.name}</Combox.Option>
+                <Combox.Option id={data.id} searchText={[data.job]} value={data.name}>{data.name}</Combox.Option>
               )}
               </Combox>
             </Box>
@@ -150,9 +150,9 @@ function Quanh() {
             </Box>
             <Box headline="Button" block>
               <Button color="success" size="small" displayMode={mode} demo onSelect={() => console.log("Wow")}>Success small</Button>
-              <Button color="warning" size="medium" displayMode={mode} demo ><IcoAlertTriangle/> Warning medium</Button>
+              <Button color="warning" size="medium" displayMode={mode} demo >Warning medium</Button>
               <Button color="danger" size="large" displayMode={mode} demo >Danger large</Button>
-              <Button color="primary"size="medium" displayMode={mode} demo >Primary</Button>
+              <Button color="primary"size="medium" type="contained" displayMode={mode} demo >Primary</Button>
               <Button color="secondary"size="small" displayMode={mode} demo >Secondary</Button>
               <Button displayMode={mode} demo type="outline" >Outline</Button>
               <Button size="medium" displayMode={mode} demo type="text" >Text</Button>

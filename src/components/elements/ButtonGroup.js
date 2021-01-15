@@ -10,10 +10,10 @@ const StyledButtonGroup = styled.div`
     padding: 0px;
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     align-items: flex-start;
-    border-radius: 5px;
+    border-radius: 4px;
     overflow: hidden;
-    background: var(--fillColor);
-    border: 2px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : "var(--fillColor)"};
+    background: ${props => props.theme.color.background.secondary};
+    border: 0px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : "var(--fillColor)"};
 `;
 
 const ButtonGroup = (props) => {
@@ -62,7 +62,7 @@ const ButtonGroup = (props) => {
                         color: props.color,
                         ingroup: idx === 0 ? "left" : idx === props.children.length - 1 ? "right" : "middle", 
                         type: value === child.props.value ? "contained": "outline", 
-                        onSelect: () => handleClick(child.props.value)})
+                        onClick: () => handleClick(child.props.value)})
             })}
         </StyledButtonGroup>
     )
