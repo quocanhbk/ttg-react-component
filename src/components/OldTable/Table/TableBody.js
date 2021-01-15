@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import useSortableData from './useSortableData'
 import IcoSort from '../icons/IcoRepeat'
 const TableBody = (props) => {
-    const { headers, rows } = props;
+    const { headers, rows, getvalue } = props;
     const {requestSort} = useSortableData(rows)
     const [rotate, setRotate] = useState(false);
     const buildRow = (rows, headers) => {
       return (
            <tr key={rows.id}>
            { headers.map((value, index) => {
-               return <td key={index}>{rows[value]}</td>
+               return <td key={index} onClick={()=>getvalue(rows.id)}>{rows[value]}</td>
             })}
            </tr>
        )

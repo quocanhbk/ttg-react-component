@@ -24,7 +24,6 @@ const Snackbar = (props) => {
     )
 };
 Snackbar.propTypes = {
-
 }
 Snackbar.defaultProps={
 
