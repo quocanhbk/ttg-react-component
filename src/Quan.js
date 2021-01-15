@@ -75,9 +75,9 @@ function Quan() {
     <div>
       <ThemeProvider theme={ theme.dark}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-        <Button demo onSelect={() => setOpen(true)}>Open Modal With Title</Button>
-            <Snackbar>
-              <Alert icon={<IconCheck/>} timeout={3000} type="success" visible={open} onClickOutside={() => setOpen(false)}>This is a success message!</Alert>
+        <Button demo onSelect={()=> setOpen(true)}>Open Snackbar</Button>
+            <Snackbar onClickOutside={() =>setOpen(false)} timeout={3000}>
+              <Alert icon={<IconCheck/>}  type="success" visible={open} onClickOutside={() => setOpen(false)}>This is a success message!</Alert>
             </Snackbar>
         </Container>
       </ThemeProvider>

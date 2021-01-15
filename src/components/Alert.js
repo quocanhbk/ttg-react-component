@@ -34,7 +34,7 @@ const Alert = (props) =>{
     const AlertIcon = styled.div`
         padding:5px;
         & svg{
-            width: 26px;
+            width: 25px;
             height: auto;
             color:#fff;
         }
@@ -71,9 +71,7 @@ const Alert = (props) =>{
         } else {
             setOpen(props.visible)
         }
-        const snackbarTimeout = setTimeout(props.onClickOutside, props.timeout);
 
-        return () => clearTimeout(snackbarTimeout);
 
     }, [props.visible])
     return (
@@ -101,12 +99,11 @@ const Alert = (props) =>{
 Alert.propType={
     icon: PropTypes.element,
     type:PropTypes.string,
-    timeout:PropTypes.number
+    onClickOutside: PropTypes.func
 }
 Alert.defaultProps={
     onClickOutside: ()=> {},
     type: "default",
     message: "default",
-    timeout: 3000,
 }
 export default Alert

@@ -16,17 +16,35 @@ const modalEnter = keyframes`
 
 const Snackbar = (props) => {
     
+    useEffect(() => {
+        const snackbarTimeout = setTimeout(props.onClickOutside, props.timeout);
+
+        return () => clearTimeout(snackbarTimeout);
+
+    }, )
 
     return (
     <StyledSnackbarWrapper {...props}>
-        {props.children}
+        {
+            React.Children.map(props.children, child => {
+                return React.cloneElement(
+                    child, 
+                    {
+                        displayMode: props.displayMode,
+                        ingroup: true
+                    })
+            })
+        }
     </StyledSnackbarWrapper>
     )
 };
 Snackbar.propTypes = {
+    timeout: PropTypes.number,
+    onClickOutside: PropTypes.func
 }
 Snackbar.defaultProps={
-
+    onClickOutside: ()=> {},
+    timeout: 3000
 }
 
 export default Snackbar;
