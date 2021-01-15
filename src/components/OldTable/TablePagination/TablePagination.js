@@ -1,7 +1,7 @@
 import Pagination from './Pagination'
 
 const TablePagination = (props)=>{
-    const {headers,rows, totalPage, pageSize} = props
+    const {headers,rows, totalPage, pageSize, getvalue} = props
     return(
         <>
             <Pagination 
@@ -9,6 +9,7 @@ const TablePagination = (props)=>{
                 headers={headers}
                 rows={rows} 
                 pageSize={pageSize}   
+                getvalue = {getvalue}
             />
         </>
     )

@@ -4,7 +4,6 @@ import Table from '../Table/Table'
 
 const DivPagination = styled.div`
     display: inline-block;
-    margin-left: 10%;
     .active{
         background: #8080804f;
     }
@@ -31,7 +30,7 @@ const ChildPagination = styled.a`
 
 // truyen vao totalPage
 const Pagination = (props) =>{
-    const {totalPage, headers, rows, pageSize} = props;
+    const {totalPage, headers, rows, pageSize, getvalue} = props;
     var temp_page = [];
     var size = pageSize;
     const [pagemax, setPageMax] = useState(size);
@@ -111,12 +110,10 @@ const Pagination = (props) =>{
             },1)
         }
     }
-
-    
     
     return(
         <>
-        <Table headers={headers} rows={temp_page}/>
+        <Table headers={headers} rows={temp_page} getvalue={getvalue}/>
         <DivPagination>
             <ChildPagination onClick={()=>PrePage()} value="pre">&laquo;</ChildPagination>
             {

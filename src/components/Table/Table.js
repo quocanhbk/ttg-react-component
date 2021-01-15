@@ -1,92 +1,98 @@
-import TableBody from "./TableBody";
-import TableHeader from "./TableHeader";
-import styled from 'styled-components';
-import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import React from 'react'
 
-const DivContainer = styled.div`
-  margin: auto;
-  overflow-x: auto;
-  border-radius: 4px;
-  background: ${props => props.theme.color.background.primary};;
-  box-shadow: 0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
-`;
-const TableStyle = styled.table`
-  min-width: 650px;
-  width: 100%;
-  display:table;
-  border-spacing: 0;
-  border-collapse: collapse;
-
-  & tr{
-    color: inherit;
-    display: table-row;
-    outline:   0;
-    vertical-align: middle;
-  }
-  & td{
-    color: ${props => props.theme.color.text.primary};
-    font-weight: normal;
-    line-height: 1.5rem;
-    padding: 15px;
-    font-size: 0.875rem;
+const Table = styled.table`
+    width: 50%;
+    background: #fff;
+    margin: auto;
+    border: 1px solid rgba(34,36,38,.15); 
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: .28571429rem; 
     text-align: left;
-    border-bottom: 1px solid ${props => props.theme.color.border.primary};
-    letter-spacing: 0.01071em;
-    vertical-align: inherit;
-  }
-  & th {
-    color: ${props => props.theme.color.text.primary};
-    padding: 15px;
-    text-align: left;
-    font-size: 0.875rem;
-    border-bottom: 1px solid rgba(224,224,224,1);
-    letter-spacing: 0.01071em;
-    vertical-align: inherit;
-  }
-  & button{
-    display:block;
-    border:0;
-    background:transparent;
-    line-height: 1.5rem;
-    cursor:pointer;
-  }
-  & .tr-sort-data button{
-    position: absolute;
-    top: -34px;
-    right: 10px;
-  }
-
-  & .tr-sort-data th{
-    padding: 0;
+    color: rgba(0,0,0,.87);
+    border-collapse: separate; 
+    border-spacing: 0;  
     position: relative;
-  }
-  & .tr-sort-data svg{
-    color:${props => props.theme.color.text.primary};
-    width: 16px;
-    height: auto;
-    opacity: 0.5; 
-    display:block;   
+
+    tr{
+        width: 100%;
+        background: #fff;
+        margin: 1em 0;
+        border: 1px solid rgba(34,36,38,.15);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+        border-radius: .28571429rem;
+        text-align: left;
+        color: rgba(0,0,0,.87);
+        border-collapse: separate;
+        border-spacing: 0;
+
+        &:hover{
+            background: rgba(0,0,0,.05)!important;
+            color: rgba(0,0,0,.95)!important;
+        }
+    }
+
+    th{
+        cursor: auto;
+        background: #f9fafb;
+        text-align: inherit;
+        color: rgba(0,0,0,.87);
+        padding: .92857143em .78571429em;
+        vertical-align: inherit;
+        font-style: none;
+        font-weight: 700;
+        text-transform: none;
+        border-bottom: 1px solid rgba(34,36,38,.1);
+        border-left: none;
+        border-left: 1px solid rgba(34,36,38,.1);
+    }
+
+    td{
+        padding: .78571429em .78571429em;
+        text-align: inherit;
+        border-left: 1px solid rgba(34,36,38,.1);
+        border-bottom: 1px solid rgba(34,36,38,.1);
+    }
+`;
+const Header = styled.thead``;
+const Row = styled.tr``;
+const HeaderCell = styled.th``;
+const Body = styled.tbody``;
+const Cell = styled.td``;
+const TableFooter = styled.tr`
+    right: 0;
+    position: absolute;
 `;
 
-const Table = (props) => {
-    const { headers, rows } = props;
-
-    return (
-      <DivContainer className="MuiTableContainer-root">
-        <TableStyle className="table table-bordered table-hover">
-          <TableHeader headers={headers}></TableHeader>
-          <TableBody headers={headers} rows={rows}></TableBody>
-        </TableStyle>
-      </DivContainer>
-    );
-  }
-
-Table.defaultProps = {
-  headers: {},
-  rows: {}
+const handleClick = (props)=>{
+    console.log(props)
 }
-Table.propTypes={
-  headers:PropTypes.object,
-  rows:PropTypes.object
-}
-export default Table
+function TableComponent(props){
+    return(
+        <Table {...props}>
+        {
+            React.Children.map(props.children, child => {
+                return React.cloneElement(
+                    child, 
+                    {
+                        onSelect: () => handleClick(child.props.value), 
+                        displayMode: props.displayMode,
+                        ingroup: true
+                    })
+            })
+        }
+        </Table>
+    )
+};
+
+TableComponent.Header = Header
+TableComponent.Row = Row
+TableComponent.HeaderCell = HeaderCell
+TableComponent.Body = Body
+TableComponent.Cell = Cell
+TableComponent.TableFooter = TableFooter
+
+
+export default TableComponent

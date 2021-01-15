@@ -11,8 +11,6 @@ import  Snackbar  from "./components/Snackbar";
 import theme from './utils/theme'
 import {useState,useRef} from 'react'
 import { Icon } from '@material-ui/core';
-import Table from './components/Table/Table';
-import TablePagination from './components/TablePagination/TablePagination'
 
 
 const items=[
@@ -53,7 +51,7 @@ function Quan() {
 };
 
   const closeSnackbar = () => setIsSnackbarOpen(false);
-  
+
   // lay ra phan tu cua mang
 var count = data.length
 // so cot hien thi
@@ -61,17 +59,13 @@ var pageSize = 3;
 // so table
 var page = Math.ceil(count/pageSize)
 // console.log(page
+const GetValue = (props)=>{
+  console.log(props)
+}
   return (
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          {/* <Table headers={Object.keys(title)} rows={data} /> */}
-          <TablePagination
-            headers={Object.keys(title)}
-            rows={data}
-            totalPage={page}
-            pageSize={pageSize}
-          />
         </Container>
       </ThemeProvider>
     </div>
