@@ -8,9 +8,13 @@ const modalEnter = keyframes`
 `;
 
  const StyledSnackbarWrapper = styled.div`
-    & .notification-container{   
+    &>div{
         transition: all 500ms linear;
         animation: ${modalEnter} 0.5s ease-out 0s 1 forwards normal;
+        position: fixed;
+        bottom: 10px;
+        left:50%;
+        transform: translateX(-50%);
     }
 `;
 

@@ -11,10 +11,6 @@ const Alert = (props) =>{
 
     const DivContainer = styled.div`
         box-sizing: border-box;
-        position: fixed;
-        bottom: 10px;
-        left:50%;
-        transform: translateX(-50%);
         display: ${props => props.visible ? "block" : "none"};
     `;
     const AlertStyle = styled.div`
