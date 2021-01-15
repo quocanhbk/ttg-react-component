@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 
 const StyledButtonGroup = styled.div`
     --fillColor: ${props => props.theme.color.fill[props.color] || props.theme.color.fill.primary};
-
     margin: ${props => props.demo ? "8px": "0px"};
     padding: 0px;
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
@@ -31,7 +30,7 @@ const ButtonGroup = (props) => {
             runInit.current = true
         }
         
-    }, [children, onSelect])
+    }, [])
 
     useEffect(() => {
         // Catching errors

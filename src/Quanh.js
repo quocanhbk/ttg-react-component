@@ -34,6 +34,7 @@ function Quanh() {
   const [modalState, setModalState] = useState(false)
   const [modalState2, setModalState2] = useState(false)
   const [dateValue, setDateValue] = useState("")
+  const [comboxResult, setComboxResult] = useState("")
   return (
     <div>
       <ThemeProvider theme={theme[myTheme] || theme.light}>
@@ -55,12 +56,13 @@ function Quanh() {
 
           <br/>
           <Container headline={"Elements"} fullWidth>
-            <Box headline="Combox" block>
-              <Combox>
+            <Box headline="Combox">
+              <Combox onSelect={(v) => setComboxResult(v)} sea>
               {ComboxData.map(data => 
                 <Combox.Option id={data.id} searchText={[data.job]} value={data.name}>{data.name}</Combox.Option>
               )}
               </Combox>
+              <Code>{JSON.stringify(comboxResult)}</Code>
             </Box>
             <Box headline="Tab" block>
               <div style={{height: "160px"}}>

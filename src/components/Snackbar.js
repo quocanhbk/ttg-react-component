@@ -102,7 +102,6 @@ Snackbar.propTypes = {
     position: PropTypes.string,
     type: PropTypes.string,
     message : PropTypes.string
-    
 }
 Snackbar.defaultProps={
     onClose: ()=> {},

@@ -1,37 +1,50 @@
 import React, {useState, useEffect, useRef} from 'react'
 import IcoChevronDown from '../icons/IcoChevronDown'
+import IcoX from '../icons/IcoX'
 import PropTypes from 'prop-types'
-import Option from './Option'
 import styled, {keyframes} from 'styled-components'
 import useClickOutside from '../../hooks/useClickOutside'
-import {getLighter} from '../../utils/color'
+
+const Option = (props) => <div>{props.children}</div>
+
+Option.propTypes = {
+    id: PropTypes.string,
+    searchText: PropTypes.arrayOf(PropTypes.string),
+    value: PropTypes.string
+}
+
 const opa = keyframes `
-    0% {transform: translateX(4vw);opacity: 0;}
-    100% {transform: translateX(0);opacity: 1;}
+    0% {transform: translateY(100%);opacity: 0;}
+    100% {transform: translateY(0%);opacity: 1;}
 `;
 const out = keyframes`
-    100% {transform: translateX(4vw); opacity: 0;}
+    100% {transform: translateY(100%); opacity: 0;}
 `;
 
 
 const Container = styled.div`
     display: block;
     width: 100%;
-    height: 2.5rem;
     position: relative;
     cursor: pointer;
-    
+`;
+const Dummy = styled.div`
+    padding: 0px;
+    margin-top: 4px;
+    font-size: ${props=> props.theme.textSize.medium};
+    width: 0px;
+    overflow: hidden;
 `;
 const Bar = styled.div`
-    
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    height: 100%;
     border: 2px solid ${props => props.open ? props.theme.color.fill.primary : props.theme.color.border.primary};
     border-radius: 5px;
     transition: border 0.15s linear;
 `;
 const ItemContainer = styled.div`
+    flex-wrap: wrap;
     width: 100%;
     background: transparent;
     height: 100%;
@@ -39,8 +52,12 @@ const ItemContainer = styled.div`
     align-items: center;
     flex-wrap: wrap;
     overflow-y: auto;
-    padding: 4px 6px;
+    padding: 0px 6px 4px 6px;
     overflow-x: hidden;
+    transition: all 1s linear;
+    &::-webkit-scrollbar {
+        display: none;
+    }
     
 `;
 const OpenButton = styled.div`
@@ -66,6 +83,7 @@ const SelectContainer = styled.div`
     z-index: 2;
     border-radius: 5px;
     margin-top: 0.4rem;
+    top: 100%;
     animation: ${slideDown} 0.3s ease-out 0s 1 forwards normal;
 `;
 const Selection = styled.div`
@@ -76,21 +94,27 @@ const Selection = styled.div`
     }
 `;
 const StyledItem = styled.div`
-    height: 100%;
     display: flex;
     align-items: center;
-    background: ${props => props.theme.color.fill.primary};
-    color: ${props => props.theme.color.background.primary};
-    animation: ${opa} 0.3s linear 0s 1 normal forwards;
-    border-radius: 5px;
-    padding: 2px 8px;
+    background: ${props => props.theme.color.background.secondary};
+    color: ${props => props.theme.color.text.primary};
+    animation: ${opa} 0.15s linear 0s 1 normal forwards;
+    border-radius: 2px;
+    padding: 0px 0px 0px 8px;
     margin-right: 6px;
+    margin-top: 4px;
     font-size: ${props=> props.theme.textSize.medium};
     cursor: pointer;
     transition: all 1s linear;
     &.item-out {
-        animation: ${out} 0.3s ease-out 0s 1 normal forwards;
+        animation: ${out} 0.15s ease-out 0s 1 normal forwards;
     }
+`;
+const XContainer = styled.div`
+    //background: red;
+    margin-left: 6px;
+    padding: 0px 2px;
+    border-left: 1px solid ${props => props.theme.color.border.primary};
 `;
 const SearchBarContainer = styled.div`
     background: transparent;
@@ -106,32 +130,23 @@ const SearchBar = styled.input`
     border-bottom: 1px solid ${props => props.theme.color.border.primary};
     color: ${props => props.theme.color.fill.primary};
 `;
-function Item(props) {
-    const [out, setOut] = useState(false)
-    const onClick = () => {
-        setOut(true);
-        setTimeout(() => {
-            props.removeItem()
-        },300)
-    }
-    return (
-        <StyledItem className={out ? "item-out" : ""} onClick={onClick} style={{backgroundColor: props.bg}}>{props.children}</StyledItem>
-    )
-}
+
 function Combox(props) {
+    const {onSelect} = props
     const [isOpen, setIsOpen] = useState(false);
     const comboxRef = useClickOutside(() => setIsOpen(false))
     // Selected item
     const [items, setItems] = useState([])
+    const [returnItems, setReturnItems] = useState([])
     const [seachText, setSeachText] = useState("")
-
+    const [removingItem, setRemovingItem] = useState("")
     const refSearchBar = useRef(null)
 
     const addItem = (itemProp) => {
         if (props.multiple) {
             if (items.map(item => item.id).includes(itemProp.id)) {
                 console.log("Existed")
-                setItems(items.filter(i => i.id !== itemProp.id))
+                removeItem(itemProp.id)
             }
             else 
                 setItems([...items, itemProp])
@@ -143,11 +158,20 @@ function Combox(props) {
     }
 
     useEffect(() => {
-        props.returnData(items)
-    })
+        setReturnItems(items.map(item => item.value))
+    },[items])
+
+    useEffect(() => {
+        onSelect(returnItems)
+    }, [returnItems, onSelect])
 
     const removeItem = (id) => {
-        setItems(items.filter(item => item.id !== id))
+        setRemovingItem(id)
+        setTimeout(() => {
+            setItems(items.filter(item => item.id !== id))
+            setRemovingItem("")
+        }, 300)
+        
     }
 
     const handleSearchText = (e) => {
@@ -156,14 +180,20 @@ function Combox(props) {
 
     const handleOpen = (state) => {
         setIsOpen(state)
-        console.log(refSearchBar.current)
     }
+
     return (
         <Container ref={comboxRef}>
             <Bar open={isOpen}>
                 <ItemContainer onClick={() => handleOpen(true)}>
+                    <Dummy>x</Dummy>
                     {items.map(item => 
-                    <Item key={item.id} removeItem={() => removeItem(item.id)}>{item.children}</Item>
+                    <StyledItem key={item.id} className={removingItem === item.id ? "item-out" : ""}>
+                        {item.children}
+                        <XContainer onClick={() => removeItem(item.id)}>
+                            <IcoX size="small"/>
+                        </XContainer>
+                    </StyledItem>
                     )}
                 </ItemContainer>
                 <OpenButton onClick={() => handleOpen(!isOpen)}><IcoChevronDown/></OpenButton>
@@ -176,7 +206,7 @@ function Combox(props) {
                     </SearchBarContainer>
                     }
                     {props.children
-                        .filter(child => child.props.searchText.concat([child.props.value]).map(c => c.toUpperCase()).join("|").includes(seachText.toUpperCase()))
+                        .filter(child => child.props.searchText.concat([child.props.value]).map(c => c.toUpperCase()).join("|").includes(seachText.toUpperCase().trim()))
                             .map(child => 
                                 <Selection 
                                     selected={items.map(item => item.id).includes(child.props.id)} 
@@ -193,17 +223,17 @@ function Combox(props) {
 
 Combox.Option = Option
 
-Combox.propsTypes = {
-    returnData: PropTypes.func,
+Combox.propTypes = {
     multiple: PropTypes.bool,
     searchable: PropTypes.bool,
-    searchText: PropTypes.arrayOf(PropTypes.string)
+    searchText: PropTypes.arrayOf(PropTypes.string),
+    onSelect: PropTypes.func
 }
 
 Combox.defaultProps = {
-    returnData: (v) => console.log(v),
-    multiple: true,
-    searchable: true,
+    multiple: false,
+    searchable: false,
+    onSelect: (v) => console.log(v)
 }
 
 export default Combox
