@@ -3,15 +3,16 @@ import { React } from "react";
 import Container from './components/Container'
 import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput} from './components/elements'
 import IconCheck from './components/icons/IcoCheckCircle';
-import IconError from './components/icons/IcoAlertCircle';
+import IconError from './components/icons/IcoAlertTriangle';
 import IconPlus from './components/icons/IcoEdit2';
-
+import IconInfo from "./components/icons/IcoInfo";
 import FB from './components/elements/FloatingActionButton';
 import  Snackbar  from "./components/Snackbar";
 import theme from './utils/theme'
 import {useState,useRef} from 'react'
 import { Icon } from '@material-ui/core';
 import Table from './components/Table/Table';
+import Alert from './components/Alert';
 
 
 const items=[
@@ -58,7 +59,6 @@ const data= [{
   "released": "08/15/2011"
 },]
 
-
 function Quan() {
   const [mode, setMode] = useState("edit")
   const [myTheme, setTheme] = useState("light")
@@ -67,18 +67,18 @@ function Quan() {
   const onChangeSlider = e => {
     setRangeValue(parseInt(e.target.value, 10))
   }
-  const [ isSnackbarOpen, setIsSnackbarOpen ] = useState(null);
-  const openSnackbar = () => {
-    setIsSnackbarOpen(true);
-};
+  
+  const [open, setOpen] = useState(false)
 
-  const closeSnackbar = () => setIsSnackbarOpen(false);
   
   return (
     <div>
-      <ThemeProvider theme={ theme.light}>
+      <ThemeProvider theme={ theme.dark}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          <Table headers={Object.keys(title)} rows={data} />
+        <Button demo onSelect={() => setOpen(true)}>Open Modal With Title</Button>
+            <Snackbar>
+              <Alert icon={<IconCheck/>} timeout={3000} type="success" visible={open} onClickOutside={() => setOpen(false)}>This is a success message!</Alert>
+            </Snackbar>
         </Container>
       </ThemeProvider>
     </div>
