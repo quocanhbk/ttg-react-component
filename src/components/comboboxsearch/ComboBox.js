@@ -122,14 +122,14 @@ const DivDropList = styled.div`
 `;
 
 const Tag = styled.div`
-    background: #f00;
+    background: #80808063;
     margin-bottom: 1%;
     padding: 1%;
     cursor: pointer;
 
     &:hover{
         background: gray;
-        color: yellow;
+        color: white;
     }
 `;  
 
@@ -215,8 +215,10 @@ const ComboBox = (props) => {
                 for(let i=0; i<Choose.length; i++){
                     for(let j=0; j<ArrayDefault.length; j++){
                         if(Choose[i] === ArrayDefault[j]){}
+                        else{
+                            search.push(ArrayDefault[j])
+                        }
                     }
-                    search.push(ArrayDefault[j])
                 }
                 search_temp = [...new Set(search)]
             }
