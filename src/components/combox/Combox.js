@@ -44,13 +44,11 @@ const Bar = styled.div`
     transition: border 0.15s linear;
 `;
 const ItemContainer = styled.div`
-    flex-wrap: wrap;
     width: 100%;
     background: transparent;
     height: 100%;
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
     overflow-y: auto;
     padding: 0px 6px 4px 6px;
     overflow-x: hidden;
@@ -68,6 +66,8 @@ const OpenButton = styled.div`
     border: none;
     border-radius: 0;
     outline: 0;
+    transform: ${props => props.isOpen ? "rotateX(180deg)" : "rotateX(0deg)"};
+    transition: all 0.15s linear;
 `;
 const slideDown = keyframes`
     from {max-height: 0px; opacity: 0;}
@@ -76,7 +76,7 @@ const slideDown = keyframes`
 const SelectContainer = styled.div`
     border: 2px solid ${props => props.theme.color.border.primary};
     background: ${props => props.theme.color.background.primary};
-    //max-height: 15rem;
+    max-height: 15rem;
     position: absolute;
     overflow: hidden;
     width: 100%;
@@ -84,7 +84,7 @@ const SelectContainer = styled.div`
     border-radius: 5px;
     margin-top: 0.4rem;
     top: 100%;
-    animation: ${slideDown} 0.3s ease-out 0s 1 forwards normal;
+    animation: ${slideDown} 0.15s ease-out 0s 1 forwards normal;
 `;
 const Selection = styled.div`
     padding: 0.5rem;
@@ -104,6 +104,7 @@ const StyledItem = styled.div`
     margin-right: 6px;
     margin-top: 4px;
     font-size: ${props=> props.theme.textSize.medium};
+    overflow-x: hidden;
     cursor: pointer;
     transition: all 1s linear;
     &.item-out {
@@ -181,7 +182,14 @@ function Combox(props) {
     const handleOpen = (state) => {
         setIsOpen(state)
     }
-
+    useEffect(() => {
+        if (isOpen) {
+            if (refSearchBar.current) {
+                refSearchBar.current.focus()
+                setSeachText("")
+            }
+        }
+    }, [isOpen])
     return (
         <Container ref={comboxRef}>
             <Bar open={isOpen}>
@@ -196,7 +204,7 @@ function Combox(props) {
                     </StyledItem>
                     )}
                 </ItemContainer>
-                <OpenButton onClick={() => handleOpen(!isOpen)}><IcoChevronDown/></OpenButton>
+                <OpenButton isOpen={isOpen} onClick={() => handleOpen(!isOpen)}><IcoChevronDown/></OpenButton>
             </Bar>
             {isOpen && 
                 <SelectContainer>
@@ -226,7 +234,6 @@ Combox.Option = Option
 Combox.propTypes = {
     multiple: PropTypes.bool,
     searchable: PropTypes.bool,
-    searchText: PropTypes.arrayOf(PropTypes.string),
     onSelect: PropTypes.func
 }
 

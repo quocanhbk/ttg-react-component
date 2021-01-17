@@ -57,7 +57,7 @@ function Quanh() {
           <br/>
           <Container headline={"Elements"} fullWidth>
             <Box headline="Combox">
-              <Combox onSelect={(v) => setComboxResult(v)} sea>
+              <Combox onSelect={(v) => setComboxResult(v)} multiple>
               {ComboxData.map(data => 
                 <Combox.Option id={data.id} searchText={[data.job]} value={data.name}>{data.name}</Combox.Option>
               )}
@@ -133,11 +133,11 @@ function Quanh() {
               <Modal visible={modalState} onClickOutside={() => setModalState(false)} title="Great Title">
                 {text}
               </Modal>
-              <Button demo onSelect={() => setModalState(true)}>Open Modal With Title</Button>
+              <Button demo onClick={() => setModalState(true)}>Open Modal With Title</Button>
               <Modal visible={modalState2} onClickOutside={() => setModalState2(false)}>
                 {text}
               </Modal>
-              <Button color="secondary" demo onSelect={() => setModalState2(true)}>Open Modal With No Title</Button>
+              <Button color="secondary" demo onClick={() => setModalState2(true)}>Open Modal With No Title</Button>
             </Box>
             <Box headline="Link" block>
               Very beautiful <Link href="https://google.com">link</Link>
@@ -162,12 +162,7 @@ function Quanh() {
             </Box>
             <Box headline="Calendar">
               <div>
-                <p>Made by me</p>
                 <Calendar demo onSelect={date => setDateValue(date)}/>
-                <p>Using third-party library</p>
-                <div style={{margin: "8px"}}>
-                  <TableDatePicker/>
-                </div>
               </div>
               <Code>{dateValue.toString()}</Code>
             </Box>

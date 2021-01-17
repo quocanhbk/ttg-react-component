@@ -5,14 +5,16 @@ import {Button, ButtonGroup, Checkbox, Radio, RadioGroup, SimpleInput} from './c
 import IconCheck from './components/icons/IcoCheckCircle';
 import IconError from './components/icons/IcoAlertCircle';
 import IconPlus from './components/icons/IcoEdit2';
-
+import TableComponent from './components/Table/Table'
+import IcoBluetooth from './components/icons/IcoBluetooth'
+import TablePagination from './components/Table/TablePagination'
+import { TableFooter } from '@material-ui/core'
+import TablePaginations from './components/OldTable/TablePagination/TablePagination'
 import FB from './components/elements/FloatingActionButton';
 import  Snackbar  from "./components/Snackbar";
 import theme from './utils/theme'
 import {useState,useRef} from 'react'
 import { Icon } from '@material-ui/core';
-import Table from './components/Table/Table';
-import TablePagination from './components/TablePagination/TablePagination'
 
 
 const items=[
@@ -53,7 +55,7 @@ function Quan() {
 };
 
   const closeSnackbar = () => setIsSnackbarOpen(false);
-  
+
   // lay ra phan tu cua mang
 var count = data.length
 // so cot hien thi
@@ -61,17 +63,67 @@ var pageSize = 3;
 // so table
 var page = Math.ceil(count/pageSize)
 // console.log(page
+const GetValue = (props)=>{
+  console.log(props)
+}
   return (
     <div>
       <ThemeProvider theme={ theme.light}>
         <Container title= {myTheme === "light" ? "Light Theme" : "Dark Theme"}>
-          {/* <Table headers={Object.keys(title)} rows={data} /> */}
-          <TablePagination
-            headers={Object.keys(title)}
-            rows={data}
-            totalPage={page}
-            pageSize={pageSize}
-          />
+        <TableComponent>
+
+<TableComponent.Header>
+  <TableComponent.Row>
+    <TableComponent.HeaderCell>Name</TableComponent.HeaderCell>
+    <TableComponent.HeaderCell>Age</TableComponent.HeaderCell>
+    <TableComponent.HeaderCell>Status</TableComponent.HeaderCell>
+    <TableComponent.HeaderCell>Button</TableComponent.HeaderCell>
+  </TableComponent.Row>
+</TableComponent.Header>
+
+<TableComponent.Body>
+  <TableComponent.Row>
+    <TableComponent.Cell>Apple</TableComponent.Cell>
+    <TableComponent.Cell>Banana</TableComponent.Cell>
+    <TableComponent.Cell>Orange</TableComponent.Cell>
+    <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
+  </TableComponent.Row>
+
+  <TableComponent.Row>
+    <TableComponent.Cell>Apple</TableComponent.Cell>
+    <TableComponent.Cell>Banana</TableComponent.Cell>
+    <TableComponent.Cell>Orange</TableComponent.Cell>
+    <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
+  </TableComponent.Row>
+
+  <TableComponent.Row>
+    <TableComponent.Cell>Apple</TableComponent.Cell>
+    <TableComponent.Cell>Banana</TableComponent.Cell>
+    <TableComponent.Cell>Orange</TableComponent.Cell>
+    <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
+  </TableComponent.Row>
+
+  <TableComponent.Row>
+    <TableComponent.Cell>Apple</TableComponent.Cell>
+    <TableComponent.Cell>Banana</TableComponent.Cell>
+    <TableComponent.Cell>Orange</TableComponent.Cell>
+    <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
+  </TableComponent.Row>
+
+  <TableComponent.Row>
+    <TableComponent.Cell>Apple</TableComponent.Cell>
+    <TableComponent.Cell>Banana</TableComponent.Cell>
+    <TableComponent.Cell>Oranádasdasdasdasdasdge</TableComponent.Cell>
+    <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
+  </TableComponent.Row>
+</TableComponent.Body>
+
+<TableFooter>
+  <TablePagination totalPage="3"/>
+  
+</TableFooter>
+</TableComponent>
+<TablePaginations totalPage={page} headers={title} rows={data}/>
         </Container>
       </ThemeProvider>
     </div>

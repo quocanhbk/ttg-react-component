@@ -12,7 +12,7 @@ const StyledButton = styled.button`
     --disabledTextColor: ${props => props.theme.color.text.disabled};
     --disabledFillColor: ${props => props.theme.color.fill.disabled};
     margin: ${props => props.demo? "8px": "0px"};
-    padding: ${props => props.ingroup ? "2px 10px" : props.type === "outline" ? "2px 11px" : "4px 12px"};
+    padding: ${props => props.ingroup ? "2px 12px" : props.type === "outline" ? "2px 13px" : "4px 14px"};
     transition: background 0.15s linear;
     font-size: ${props => props.theme.textSize[props.size] || "1rem" };
     font-weight: ${props => props.theme.weight[props.fontWeight] || 500};
