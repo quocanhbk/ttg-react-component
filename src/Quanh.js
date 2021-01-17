@@ -1,15 +1,37 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge, Breadcrumb, Avatar, AvatarGroup, TabPane, Tab, TableDatePicker} from './components/elements'
+import {
+  Button, 
+  ButtonGroup, 
+  Checkbox, 
+  CheckboxGroup, 
+  Radio, 
+  RadioGroup, 
+  Slider, 
+  SimpleInput, 
+  Toggle, 
+  ToggleGroup, 
+  Link, 
+  Modal, 
+  Badge, 
+  Breadcrumb, 
+  Avatar, 
+  AvatarGroup, 
+  TabPane, 
+  Tab,
+  Alert,
+  Calendar,
+  Snackbar
+} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
 import Code from './components/Code'
-import Calendar from './components/elements/Calendar'
 import IcoMail from './components/icons/IcoMail'
 import IcoAlertTriangle from './components/icons/IcoAlertTriangle'
 import IcoSettings from './components/icons/IcoSettings'
-import Combox from './components/combox/Combox'
+import IcoX from './components/icons/IcoX'
+import Combox from './components/elements/Combox'
 function Quanh() {
   useEffect(() => {
     document.title = "Theme: " + theme[myTheme].name
@@ -35,6 +57,7 @@ function Quanh() {
   const [modalState2, setModalState2] = useState(false)
   const [dateValue, setDateValue] = useState("")
   const [comboxResult, setComboxResult] = useState("")
+  const [snackbarState, setSnackbarState] = useState(false)
   return (
     <div>
       <ThemeProvider theme={theme[myTheme] || theme.light}>
@@ -56,6 +79,19 @@ function Quanh() {
 
           <br/>
           <Container headline={"Elements"} fullWidth>
+            <Box headline="Snackbar" block>
+              <Snackbar visible={snackbarState} onClose={() => setSnackbarState(false)} timeOut={200000}>
+                <Alert color="info" action={<IcoX onClick={() => setSnackbarState(!snackbarState)}/>}>Warning message</Alert>
+              </Snackbar>
+              <Button onClick={() => setSnackbarState(!snackbarState)}>Toggle Snackbar</Button>
+            </Box>
+            <Box headline="Alert" block>
+              <Alert demo color="success" action={<strong>UNDO</strong>}>
+                <Alert.Title>Success</Alert.Title>
+                This is a success message!
+              </Alert>
+              <Alert demo color="danger" type="outline" action={<IcoX/>}>This is a danger message!</Alert>
+            </Box>
             <Box headline="Combox">
               <Combox onSelect={(v) => setComboxResult(v)} multiple>
               {ComboxData.map(data => 

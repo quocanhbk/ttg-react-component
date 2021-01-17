@@ -48,6 +48,7 @@ const ItemContainer = styled.div`
     background: transparent;
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     overflow-y: auto;
     padding: 0px 6px 4px 6px;
