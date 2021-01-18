@@ -4,8 +4,7 @@ import IcoBluetooth from './components/icons/IcoBluetooth'
 import TablePagination from './components/Table/TablePagination'
 import {Button} from './components/elements'
 import { TableFooter } from '@material-ui/core'
-import { ThemeProvider } from 'styled-components'
-import theme from './utils/theme'
+import TablePaginations from './components/OldTable/TablePagination/TablePagination'
 // const data = ['banana','mango','apple','fruits']
 const title = {
   "id": "",
@@ -37,7 +36,6 @@ var page = Math.ceil(count/pageSize)
 export default function Dat() {
     return (
       <>
-      <ThemeProvider theme={theme.dark}>
       <TableComponent>
 
         <TableComponent.Header>
@@ -90,7 +88,7 @@ export default function Dat() {
           <TablePagination totalPage="3"/>
         </TableComponent.TableFooter>
       </TableComponent>
-      </ThemeProvider>
+      <TablePaginations totalPage={page} headers={Headers} rows={data}/>
       </>
     )
 }
