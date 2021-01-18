@@ -15,7 +15,8 @@ const theme = {
                 disabled: "#C3C3C3",
                 success: "#0A842F",
                 warning: "#FFA000",
-                danger: "#CC1D33"
+                danger: "#CC1D33",
+                info: "#256EC2"
             },
             background: {
                 primary: "#FFFFFF",
@@ -72,7 +73,8 @@ const theme = {
                 disabled: "#C3C3C3", 
                 success: "#56C26A",
                 warning: "#FFD54F",
-                danger: "#ED323B"
+                danger: "#ED323B",
+                info: "#76D7EA"
             },
             background: {
                 primary: "#212223", //Obsidian 900

@@ -1,12 +1,16 @@
-import Dat from './Dat'
-import Quanh from './Quanh'
 import Quan from './Quan'
-
-import {useEffect} from 'react'
+import Quanh from './Quanh'
+import Dat from './Dat'
+import {Router} from '@reach/router'
 function App() {
-  
   return (
-    <Dat/>
+    <Router>
+      <Quanh path="/"/>
+      <Quanh path="/quanh"/>
+      <Quan path="/quan"/>
+      <Dat path="/dat"/>
+    </Router>
+    
   )
 }
 

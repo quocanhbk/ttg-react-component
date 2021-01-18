@@ -1,15 +1,37 @@
 import {ThemeProvider} from 'styled-components'
 import Container from './components/Container'
-import {Button, ButtonGroup, Checkbox, CheckboxGroup, Radio, RadioGroup, Slider, SimpleInput, Toggle, ToggleGroup, Link, Modal, Badge, Breadcrumb, Avatar, AvatarGroup, TabPane, Tab, TableDatePicker} from './components/elements'
+import {
+  Button, 
+  ButtonGroup, 
+  Checkbox, 
+  CheckboxGroup, 
+  Radio, 
+  RadioGroup, 
+  Slider, 
+  SimpleInput, 
+  Toggle, 
+  ToggleGroup, 
+  Link, 
+  Modal, 
+  Badge, 
+  Breadcrumb, 
+  Avatar, 
+  AvatarGroup, 
+  TabPane, 
+  Tab,
+  Alert,
+  Calendar,
+  Snackbar
+} from './components/elements'
 import theme from './utils/theme'
 import {useState, useEffect} from 'react'
 import Box from './components/Box'
 import Code from './components/Code'
-import Calendar from './components/elements/Calendar'
 import IcoMail from './components/icons/IcoMail'
 import IcoAlertTriangle from './components/icons/IcoAlertTriangle'
 import IcoSettings from './components/icons/IcoSettings'
-import Combox from './components/combox/Combox'
+import IcoX from './components/icons/IcoX'
+import Combox from './components/elements/Combox'
 function Quanh() {
   useEffect(() => {
     document.title = "Theme: " + theme[myTheme].name
@@ -34,6 +56,8 @@ function Quanh() {
   const [modalState, setModalState] = useState(false)
   const [modalState2, setModalState2] = useState(false)
   const [dateValue, setDateValue] = useState("")
+  const [comboxResult, setComboxResult] = useState("")
+  const [snackbarState, setSnackbarState] = useState(false)
   return (
     <div>
       <ThemeProvider theme={theme[myTheme] || theme.light}>
@@ -48,19 +72,33 @@ function Quanh() {
 
           <Container headline="Theme" >
             <ButtonGroup fullWidth onSelect={x => setTheme(x)}>
-              <Button value="light" default >Light</Button>
-              <Button value="dark">Dark</Button>
+              <Button value="light">Light</Button>
+              <Button value="dark" default>Dark</Button>
             </ButtonGroup>
           </Container>
 
           <br/>
           <Container headline={"Elements"} fullWidth>
-            <Box headline="Combox" block>
-              <Combox>
+            <Box headline="Snackbar" block>
+              <Snackbar visible={snackbarState} onClose={() => setSnackbarState(false)} timeOut={200000}>
+                <Alert color="info" action={<IcoX onClick={() => setSnackbarState(!snackbarState)}/>}>Warning message</Alert>
+              </Snackbar>
+              <Button onClick={() => setSnackbarState(!snackbarState)}>Toggle Snackbar</Button>
+            </Box>
+            <Box headline="Alert" block>
+              <Alert demo color="success" action={<strong>UNDO</strong>}>
+                <Alert.Title>Success</Alert.Title>
+                This is a success message!
+              </Alert>
+              <Alert demo color="danger" type="outline" action={<IcoX/>}>This is a danger message!</Alert>
+            </Box>
+            <Box headline="Combox">
+              <Combox onSelect={(v) => setComboxResult(v)} multiple>
               {ComboxData.map(data => 
-                <Combox.Option id={data.id} value={data.name}>{data.name}</Combox.Option>
+                <Combox.Option id={data.id} searchText={[data.job]} value={data.name}>{data.name}</Combox.Option>
               )}
               </Combox>
+              <Code>{JSON.stringify(comboxResult)}</Code>
             </Box>
             <Box headline="Tab" block>
               <div style={{height: "160px"}}>
@@ -131,11 +169,11 @@ function Quanh() {
               <Modal visible={modalState} onClickOutside={() => setModalState(false)} title="Great Title">
                 {text}
               </Modal>
-              <Button demo onSelect={() => setModalState(true)}>Open Modal With Title</Button>
+              <Button demo onClick={() => setModalState(true)}>Open Modal With Title</Button>
               <Modal visible={modalState2} onClickOutside={() => setModalState2(false)}>
                 {text}
               </Modal>
-              <Button color="secondary" demo onSelect={() => setModalState2(true)}>Open Modal With No Title</Button>
+              <Button color="secondary" demo onClick={() => setModalState2(true)}>Open Modal With No Title</Button>
             </Box>
             <Box headline="Link" block>
               Very beautiful <Link href="https://google.com">link</Link>
@@ -150,9 +188,9 @@ function Quanh() {
             </Box>
             <Box headline="Button" block>
               <Button color="success" size="small" displayMode={mode} demo onSelect={() => console.log("Wow")}>Success small</Button>
-              <Button color="warning" size="medium" displayMode={mode} demo ><IcoAlertTriangle/> Warning medium</Button>
+              <Button color="warning" size="medium" displayMode={mode} demo >Warning medium</Button>
               <Button color="danger" size="large" displayMode={mode} demo >Danger large</Button>
-              <Button color="primary"size="medium" displayMode={mode} demo >Primary</Button>
+              <Button color="primary"size="medium" type="contained" displayMode={mode} demo >Primary</Button>
               <Button color="secondary"size="small" displayMode={mode} demo >Secondary</Button>
               <Button displayMode={mode} demo type="outline" >Outline</Button>
               <Button size="medium" displayMode={mode} demo type="text" >Text</Button>
@@ -160,12 +198,7 @@ function Quanh() {
             </Box>
             <Box headline="Calendar">
               <div>
-                <p>Made by me</p>
                 <Calendar demo onSelect={date => setDateValue(date)}/>
-                <p>Using third-party library</p>
-                <div style={{margin: "8px"}}>
-                  <TableDatePicker/>
-                </div>
               </div>
               <Code>{dateValue.toString()}</Code>
             </Box>

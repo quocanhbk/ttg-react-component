@@ -50,17 +50,17 @@ const InputStyle = styled.input`
     -webkit-appearance: none;
     -moz-appearance: none;
     width: 100%;
-    height: 3px;
+    height: 0.2rem;
     outline: none;
     background: transparent; //${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.color.fill.primary};
     &::-webkit-slider-thumb {
         pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
         appearance: none;
         background: ${props => props.theme.color.background.primary};
-        width: 20px;
-        height: 20px;
-        border: 3px solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.color.fill.primary};
-        border-radius: 50%;
+        width: 1.3rem;
+        height: 1.3rem;
+        border: 0.2rem solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.color.fill.primary};
+        border-radius: 999px;
         cursor: pointer;
         transition: all .15s ease-in-out;
     }
@@ -68,20 +68,21 @@ const InputStyle = styled.input`
         transform: scale(1.3, 1.3)
     }
     &::-webkit-slider-thumb:hover {
-        box-shadow: 0px 0px 16px ${props => props.displayMode === "edit" ? getFader(props.theme.color.fill.primary, 0.8) : "transparent"};
+        box-shadow: 0px 0px 1rem ${props => props.displayMode === "edit" ? getFader(props.theme.color.fill.primary, 0.8) : "transparent"};
     }
     &:hover ~ span {
         opacity: 1;
     }
     &::-moz-range-thumb {
+        pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
         appearance: none;
         background: ${props => props.theme.color.background.primary};
-        width: 20px;
-        height: 20px;
-        border: 2px solid ${props => props.theme.color.fill.primary};
-        border-radius: 50%;
+        width: 1.3rem;
+        height: 1.3rem;
+        border: 0.2rem solid ${props => props.displayMode === "disabled" ? "#A3A3A3" : props.theme.color.fill.primary};
+        border-radius: 999px;
         cursor: pointer;
-        transition: background .15s ease-in-out;
+        transition: all .15s ease-in-out;
     }
 `;
 InputStyle.defaultProps = {
@@ -94,13 +95,13 @@ const SliderValue= styled.span`
     opacity: 0;
     position: absolute;
     transition: opacity 0.15s ease-in;
-    top: 16px;
+    top: 1rem;
     background: ${props => props.theme.backgroundColor};
-    box-shadow: 0px 0px 2px ${props => getFader(props.theme.color.text.primary, 0.8)};
+    box-shadow: 0px 0px 0.125rem ${props => getFader(props.theme.color.text.primary, 0.8)};
     text-align: center;
     border-radius: 5px;
     padding: 1px 4px;
-    font-size: 0.8rem;
+    font-size: ${props => props.theme.textSize.small};
 `;
 
 

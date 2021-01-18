@@ -65,7 +65,7 @@ const TableStyle = styled.table`
     width: 16px;
     height: auto;
     opacity: 0.5; 
-    display:block;   
+    display:block;   }
 `;
 
 const Table = (props) => {

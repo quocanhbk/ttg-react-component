@@ -17,6 +17,10 @@ import AvatarGroup from './AvatarGroup'
 import TableDatePicker from './TableDatePicker'
 import Tab from './Tab'
 import TabPane from './TabPane'
+import Icon from './Icon'
+import Snackbar from './Snackbar'
+import Alert from './Alert'
+import Calendar from './Calendar'
 export {
     Button, 
     ButtonGroup, 
@@ -36,5 +40,9 @@ export {
     AvatarGroup,
     TableDatePicker,
     Tab,
-    TabPane
+    TabPane,
+    Icon,
+    Alert,
+    Snackbar,
+    Calendar
 }

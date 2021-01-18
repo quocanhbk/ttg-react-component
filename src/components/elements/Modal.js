@@ -95,7 +95,7 @@ const StyledBody = styled.div`
 const Modal = (props) => {
     const [open, setOpen] = useState(props.visible)
     const [runAni, setRunAni] = useState(true)
-    let {onClickOutside} = props
+    let { onClickOutside } = props
     useEffect(() => {
         if (!props.visible) {
             setRunAni(false)
