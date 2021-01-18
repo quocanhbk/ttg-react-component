@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import {getLighter, getDarker} from '../../utils/color'
 
-
 const BreadcrumbContainer = styled.ul`
     display:flex;
     list-style:none;
@@ -31,23 +30,22 @@ const StyledBreadcrumbItem = styled.li`
         color: ${props => getDarker(props.theme.color.fill.primary)};;
     }
 `;
-
-const Breadcrumb = ({ ...props }) => (
+const Breadcrumb = (props) => (
     <BreadcrumbContainer name={props.name}>
-          {/* Render "not last" item along with the separator*/}
-          {props.children.slice(0, -1).map(child => 
-              <>
-                  <StyledBreadcrumbItem key={child.children}>{child}</StyledBreadcrumbItem>
-                  <StyledBreadcrumbSeparator  {...props}>{'/'}</StyledBreadcrumbSeparator>
-              </>)
-          }
-          {/* Render last item alone*/}
-          <StyledBreadcrumbItem key={props.children[props.children.length-1].children}>{props.children[props.children.length-1]}</StyledBreadcrumbItem>
+        {/* Render "not last" item along with the separator*/}
+        {props.children.slice(0, -1).map(child => { 
+            return(
+                <>
+                    <StyledBreadcrumbItem key={child.children}>{child}</StyledBreadcrumbItem>
+                    <StyledBreadcrumbSeparator  {...props}>{'/'}</StyledBreadcrumbSeparator>
+                </>
+            )}
+        )}
+        {/* Render last item alone*/}
+        <StyledBreadcrumbItem key={props.children[props.children.length-1].children}>{props.children[props.children.length-1]}</StyledBreadcrumbItem>
     </BreadcrumbContainer>
 )
-Breadcrumb.defaultProps ={
-    
-}
+Breadcrumb.defaultProps ={}
 Breadcrumb.propsTypes={
     name: PropTypes.string
 }

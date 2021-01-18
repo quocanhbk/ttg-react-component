@@ -7,13 +7,10 @@ const Container = styled.div`
     display: flex;
     flex-direction: column
 `;
-
-
 const DivTab = styled.div`
     display:flex;
     align-items:center;
     justify-content:center;
-    //box-shadow: 0px 2px 1px 3px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12);
 `;
 const ButtonTab=styled.button`
     display:block;
@@ -27,10 +24,8 @@ const ButtonTab=styled.button`
     font-size:1rem;
     color:${props => props.theme.color.fill.primary};
     background: ${props => getFader(props.theme.color.fill.primary, 0.05)};
-
     &:disabled {
         color: ${props => props.theme.color.text.disabled};
-
     }
 `;
 const TabContain=styled.div`
@@ -49,10 +44,9 @@ const TabContent=styled.div`
 `;
 
 const Tab = (props) => {
-    const [tabs,SetTabs]= useState((props.children.find(child => child.props.selected) || props.children.find(child => !child.props.disabled)).props.value);
+    const [tabs,SetTabs]= useState((props.children.find(child => child.props.selected) || props.children.find(child => !child.props.disabled)).props.value)
     const [index, setIndex] = useState(0)
     const selectTab = (value) => {
-        console.log(value)
         if (props.children.find(child => child.props.value === value).props.disabled)
             return
         SetTabs(value)
@@ -70,11 +64,9 @@ const Tab = (props) => {
                     </ButtonTab>
                 ))}
             </DivTab>
-
             <TabContain>
                 <StyleIndicator style={{width: 100 / props.children.length + "%", transform: `translateX(${index * 100}%)`}}/>
             </TabContain>
-            
             <TabContent {...props}>{props.children.find(child => child.props.value === tabs)}</TabContent>
         </Container>
     )

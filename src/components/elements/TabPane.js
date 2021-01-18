@@ -5,12 +5,10 @@ const DivTab = styled.div`
     display:block;
     flex:1;
     background:transparent;
-    
 `;
 const TabPane = (props) => {
     return(
-        <DivTab {...props}>
-        </DivTab>
+        <DivTab {...props}/>
     )
 }
 TabPane.propTypes = {

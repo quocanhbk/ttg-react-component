@@ -6,7 +6,6 @@ const DivInput = styled.div`
     display: inline-block;
     height: 50px;
     overflow: hidden;
-
 `;
 
 const InputComponent = styled.input`

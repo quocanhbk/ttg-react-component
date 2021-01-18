@@ -16,17 +16,13 @@ const StyledInput = styled.input`
     width: ${props => props.fullWidth ? "100%" : "auto"};
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
     background-color: transparent;
-    
     &:disabled {
         color: ${props => props.theme.color.text.disabled};
         border-color: ${props => props.theme.color.fill.disabled};
     }
-
     &:focus {
         border-color: ${props => props.theme.color.fill.primary};
     }
-   
-
 `;
 
 const SimpleInput = (props) => {
@@ -39,7 +35,7 @@ const SimpleInput = (props) => {
     }
     useEffect(() => {
         if (!runInit.current) {
-            console.log("I run")
+            // console.log("I run")
             if (defaultValue) 
                 onChange(defaultValue)
             runInit.current = true

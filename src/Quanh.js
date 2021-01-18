@@ -94,8 +94,8 @@ function Quanh() {
             </Box>
             <Box headline="Combox">
               <Combox onSelect={(v) => setComboxResult(v)} multiple>
-              {ComboxData.map(data => 
-                <Combox.Option id={data.id} searchText={[data.job]} value={data.name}>{data.name}</Combox.Option>
+              {ComboxData.map((data, index) => 
+                <Combox.Option id={data.id} searchText={[data.job]} value={data.name} key={index}>{data.name}</Combox.Option>
               )}
               </Combox>
               <Code>{JSON.stringify(comboxResult)}</Code>
@@ -103,19 +103,19 @@ function Quanh() {
             <Box headline="Tab" block>
               <div style={{height: "160px"}}>
                 <Tab name="group tab" fullHeight>
-                  <TabPane name="Active" value="1">
+                  <TabPane name="Active" value="1" key="1">
                     <Button>Active Tab 160px</Button>
                   </TabPane>
-                  <TabPane name="Default Tab" value="2" selected>
+                  <TabPane name="Default Tab" value="2" key="2" selected>
                     This is default
                   </TabPane>
-                  <TabPane name="Just Another Tab" value="3">
+                  <TabPane name="Just Another Tab" value="3" key="3">
                     Just Another Tab
                   </TabPane>
-                  <TabPane name="Last Tab" value="4">
+                  <TabPane name="Last Tab" value="4" key="4">
                     Last Tab
                   </TabPane>
-                  <TabPane name="Disabled Tab" value="5" disabled>
+                  <TabPane name="Disabled Tab" value="5" key="5" disabled>
                     You Can't See This! Can You?
                   </TabPane>
                 </Tab>

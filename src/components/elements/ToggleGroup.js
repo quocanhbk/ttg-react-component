@@ -3,13 +3,13 @@ import styled from 'styled-components'
 import  Toggle  from './Toggle'
 import PropTypes from "prop-types"
 
-    const StyleGroup = styled.div`
-    display: ${props => props.fullWidth ? "flex" : "inline-flex"};
-    flex-direction: ${props => props.horizontal ? "row" : "column"};
-
+const StyleGroup = styled.div`
+display: ${props => props.fullWidth ? "flex" : "inline-flex"};
+flex-direction: ${props => props.horizontal ? "row" : "column"};
 `;
 const ToggleGroup = (props) =>{
     useEffect(() => {
+        props.onSelect(value)
         props.children.forEach(child => {
             if (child.type !== Toggle)
                 throw Error("Children of ToggleGroup must be Toggle")
@@ -23,10 +23,6 @@ const ToggleGroup = (props) =>{
     const handleClick = (obj) => {
         setValue([...value.filter(x => x.value !== obj.value), obj])
     }
-
-    useEffect(() => {
-        props.onSelect(value)
-    })
     
     return (
         <StyleGroup {...props}>

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import {getFader} from '../../utils/color'
 import PropTypes from 'prop-types'
 
-
 const RadioLabel = styled.label`
     display: inline-block;
     position: relative;
@@ -44,7 +43,6 @@ const SpanRadio = styled.span`
     border: 2px solid ${props => props.displayMode === "disabled" ? props.theme.color.text.disabled : getFader(props.theme.color.fill.primary, 0.4)};
     border-radius: 50%;
     background: transparent;
-
 
     &:hover {
         box-shadow: 0px 0px 16px ${props => getFader(props.theme.color.fill.primary, 0.8)};

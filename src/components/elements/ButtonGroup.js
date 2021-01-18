@@ -17,12 +17,12 @@ const StyledButtonGroup = styled.div`
 
 const ButtonGroup = (props) => {
     let runInit = useRef(false)
-    let {onSelect, children} = props
+    let {children} = props
     const [value, setValue] = useState("")
     useEffect(() => {
-        console.log("rn")
+        // console.log("rn")
         if (!runInit.current) {
-            console.log("Btn group run")
+            // console.log("Btn group run")
             let defElement = children.find(child => child.props.default)
             if (defElement) {
                 handleClick(defElement.props.value)

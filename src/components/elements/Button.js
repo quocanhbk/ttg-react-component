@@ -44,15 +44,13 @@ const StyledButton = styled.button`
         background: ${props => props.type === "contained" ? "var(--textColor)" : props.type === "outline" ? "var(--fillColor)" : "transparent"};
     }
 `;
-
 const Button = (props) => {
     return (
         <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled}>
-        {props.children}
+            {props.children}
         </StyledButton>
     )
 }
-
 Button.defaultProps = {
     color: "primary",
     type: "contained",
@@ -61,7 +59,6 @@ Button.defaultProps = {
     disabled: false,
     onClick: () => {}
 }
-
 Button.propTypes ={
     color: PropTypes.string,
     disabled: PropTypes.bool,

@@ -67,9 +67,9 @@ const StyleFAB = styled.span`
 const Button = (props) => {
     return (
         <StyleFloatDiv {...props}>
-        <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled} onClick={props.onClick} onClick={props.onSelect}>
-        <StyleFAB>{props.children}</StyleFAB>
-        </StyledButton>
+            <StyledButton {...props} disabled={props.displayMode === "disabled" || props.disabled} onClick={props.onClick} onClick={props.onSelect}>
+                <StyleFAB>{props.children}</StyleFAB>
+            </StyledButton>
         </StyleFloatDiv>
     )
 }

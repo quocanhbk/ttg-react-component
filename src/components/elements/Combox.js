@@ -6,13 +6,11 @@ import styled, {keyframes} from 'styled-components'
 import useClickOutside from '../../hooks/useClickOutside'
 
 const Option = (props) => <div>{props.children}</div>
-
 Option.propTypes = {
-    id: PropTypes.string,
+    id: PropTypes.number,
     searchText: PropTypes.arrayOf(PropTypes.string),
     value: PropTypes.string
 }
-
 const opa = keyframes `
     0% {transform: translateY(100%);opacity: 0;}
     100% {transform: translateY(0%);opacity: 1;}
@@ -20,8 +18,6 @@ const opa = keyframes `
 const out = keyframes`
     100% {transform: translateY(100%); opacity: 0;}
 `;
-
-
 const Container = styled.div`
     display: block;
     width: 100%;
@@ -57,7 +53,6 @@ const ItemContainer = styled.div`
     &::-webkit-scrollbar {
         display: none;
     }
-    
 `;
 const OpenButton = styled.div`
     display: flex;
@@ -113,7 +108,6 @@ const StyledItem = styled.div`
     }
 `;
 const XContainer = styled.div`
-    //background: red;
     margin-left: 6px;
     padding: 0px 2px;
     border-left: 1px solid ${props => props.theme.color.border.primary};
@@ -146,12 +140,8 @@ function Combox(props) {
 
     const addItem = (itemProp) => {
         if (props.multiple) {
-            if (items.map(item => item.id).includes(itemProp.id)) {
-                console.log("Existed")
-                removeItem(itemProp.id)
-            }
-            else 
-                setItems([...items, itemProp])
+            if (items.map( item => item.id).includes(itemProp.id) ) { removeItem(itemProp.id) }
+            else setItems([...items, itemProp])
         }
         else {
             setItems([itemProp])
@@ -167,13 +157,21 @@ function Combox(props) {
         onSelect(returnItems)
     }, [returnItems, onSelect])
 
+    useEffect(() => {
+        if (isOpen) {
+            if (refSearchBar.current) {
+                refSearchBar.current.focus()
+                setSeachText("")
+            }
+        }
+    }, [isOpen])
+
     const removeItem = (id) => {
         setRemovingItem(id)
         setTimeout(() => {
             setItems(items.filter(item => item.id !== id))
             setRemovingItem("")
         }, 300)
-        
     }
 
     const handleSearchText = (e) => {
@@ -183,14 +181,7 @@ function Combox(props) {
     const handleOpen = (state) => {
         setIsOpen(state)
     }
-    useEffect(() => {
-        if (isOpen) {
-            if (refSearchBar.current) {
-                refSearchBar.current.focus()
-                setSeachText("")
-            }
-        }
-    }, [isOpen])
+    
     return (
         <Container ref={comboxRef}>
             <Bar open={isOpen}>
@@ -231,13 +222,11 @@ function Combox(props) {
 }
 
 Combox.Option = Option
-
 Combox.propTypes = {
     multiple: PropTypes.bool,
     searchable: PropTypes.bool,
     onSelect: PropTypes.func
 }
-
 Combox.defaultProps = {
     multiple: false,
     searchable: false,

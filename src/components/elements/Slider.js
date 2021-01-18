@@ -7,7 +7,6 @@ const StyleSlider = styled.div`
     display: ${props => props.fullWidth ? "block" : "inline-block"};
     width: ${props => props.fullWidth ? "100%": props.width + "px"};
     padding: 4px 8px;
-    
 `;
 const Container = styled.div`
     position: absolute;
@@ -28,12 +27,8 @@ const Left = styled.div`
     background: ${props => props.displayMode === "disabled" ? props.theme.color.text.disabled : props.theme.color.fill.primary};
 `;
 const bg = keyframes`
-    from {
-        left: -50%;
-    }
-    to {
-        left: 100%;
-    }
+    from {left: -50%;}
+    to {left: 100%;}
 `;
 const InLeft = styled.div`
     --clr: ${props => getFader(props.theme.color.background.primary, 0.8)};
@@ -85,11 +80,8 @@ const InputStyle = styled.input`
         transition: all .15s ease-in-out;
     }
 `;
-InputStyle.defaultProps = {
-    width: "100%"
-}
+InputStyle.defaultProps = {width: "100%"}
 
-//Value
 const SliderValue= styled.span`
     color  : ${props => props.theme.color.text.primary};
     opacity: 0;
@@ -104,18 +96,17 @@ const SliderValue= styled.span`
     font-size: ${props => props.theme.textSize.small};
 `;
 
-
 const Slider = (props) =>{
     let runInit = useRef(false)
     const {step, min, max, defaultLength, defaultValue, onSlide} = props
-    const [range,setRange]=useState(defaultLength);
+    const [range,setRange]=useState(defaultLength)
     const x = useRef()
     const handleChange = (v) => {
         if (props.displayMode === "edit") {
-            props.onSlide(parseInt(v))
+            onSlide(parseInt(v))
             setRange(v);
         }
-    }
+    };
 
     useEffect(() => {
         if (!runInit.current) {
@@ -132,13 +123,13 @@ const Slider = (props) =>{
                     <InLeft/>
                 </Left>
                 <InputStyle {...props}
-                ref={x}
-                type="range"
-                step={step}
-                min={min}
-                max={max}
-                value={range}
-                onChange={(e) => handleChange(e.target.value)}
+                    ref={x}
+                    type="range"
+                    step={step}
+                    min={min}
+                    max={max}
+                    value={range}
+                    onChange={(e) => handleChange(e.target.value)}
                 />
                 <SliderValue 
                     style={{

@@ -7,9 +7,9 @@ const StyleChkGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     flex-direction: ${props => props.horizontal ? "row" : "column"};
 `;
-
 const CheckboxGroup = (props) =>{
     useEffect(() => {
+        props.onSelect(value)
         props.children.forEach(child => {
             if (child.type !== Checkbox)
                 throw Error("Children of CheckboxGroup must be Checkbox")
@@ -23,10 +23,6 @@ const CheckboxGroup = (props) =>{
     const handleClick = (obj) => {
         setValue([...value.filter(x => x.value !== obj.value), obj])
     }
-
-    useEffect(() => {
-        props.onSelect(value)
-    })
 
     return (
         <StyleChkGroup {...props}>

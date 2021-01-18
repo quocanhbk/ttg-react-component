@@ -16,7 +16,6 @@ const DivStyle= styled.div`
     margin: ${props => props.demo ? "8px" : "0"};
     display:flex;
     align-items:center;
-
     &>div{
         margin-right: -8px;
     }

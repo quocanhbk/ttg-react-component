@@ -24,6 +24,7 @@ const ExitIcon = styled.div`
     transition: all 0.3s ease-in-out;
     &:hover {
         transform: translate(-140%, -50%) rotate(225deg);
+        cursor: pointer;
     }
     &::before {
         border-radius: 25%;
@@ -52,7 +53,6 @@ const modalEnter = keyframes`
     from { top: -20%; }
     to { top: 50%; }
 `;
-
 const grayen = keyframes`
     from { background: rgba(0,0,0,0);}
     to {background: rgba(0,0,0,0.3);}
@@ -110,16 +110,12 @@ const Modal = (props) => {
     }, [props.visible])
     useEffect(() => {
         document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape") {
-                onClickOutside()
-            }
+            if (e.key === "Escape")  {onClickOutside() }
         })
 
         return(() => {
             document.removeEventListener("keydown", (e) => {
-                if (e.key === "Escape") {
-                    onClickOutside()
-                }
+                if (e.key === "Escape") { onClickOutside() }
             })
         })
       }, [onClickOutside])

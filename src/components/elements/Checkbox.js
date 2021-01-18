@@ -10,12 +10,9 @@ const LabelCheckbox = styled.label`
     cursor: pointer;
     user-select: none;
     pointer-events: ${props => props.displayMode !== "edit" ? "none" : "auto"};
-
 `;
-
 const InputChkbox = styled.input`
     display: none;
-    
     &:checked ~ span:after {
         border-color: ${props => props.displayMode === "disabled" ? "#A0A0A0" : "var(--fillColor)"};
     }
@@ -23,7 +20,6 @@ const InputChkbox = styled.input`
         border-color: ${props => props.displayMode === "disabled" ? "var(--disabledTextColor)" : "var(--fillColor)"};
     }
 `;
-
 const SpanChkBox = styled.span`
     --fillColor: ${props => props.theme.color.fill[props.color] || props.theme.color.fill.primary};
     --textColor: ${props => props.theme.color.background.primary};
@@ -38,7 +34,6 @@ const SpanChkBox = styled.span`
     background-color: transparent;
     border-radius: 4px;
     border:2px solid ${props => props.displayMode === "disabled" ? "var(--disabledTextColor)" : getFader(props.theme.color.fill.primary, 0.4)};
-
     &:after{
         transition: border-color 0.15s linear;
         content: "";
@@ -62,7 +57,6 @@ const SpanChkName= styled.span`
     display:block;
     font-size:1rem;
     color: ${props => props.displayMode === "disabled" ? "var(--disabledTextColor)": "var(--textColor)"};
-
 `;
 
 
@@ -106,7 +100,6 @@ Checkbox.propTypes = {
     theme: PropTypes.string,
     onSelect: PropTypes.func
 }
-
 Checkbox.defaultProps = {
     onSelect: (x) => console.log(x),
     default: false,

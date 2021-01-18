@@ -3,7 +3,6 @@ import RadioButton from './Radio'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-
 const StyledRadioGroup = styled.div`
     display: ${props => props.fullWidth ? "flex" : "inline-flex"};
     flex-direction: ${props => props.horizontal ? "row" : "column"};
@@ -58,7 +57,6 @@ RadioGroup.propTypes = {
     fullWidth: PropTypes.bool,
     horizontal: PropTypes.bool
 }
-
 RadioGroup.defaultProps = {
     onSelect: (x) => console.log(x),
     displayMode: "edit",

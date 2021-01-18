@@ -8,8 +8,6 @@ const StyledSpan = styled.span`
 `;
 
 const Icon = (props) => {
-    let color = props.color
-    let fill = props.fill
     let size = props.size === 'big' ? 36 : props.size === 'small' ? 16 : 24;
     return (
         <StyledSpan {...props}>

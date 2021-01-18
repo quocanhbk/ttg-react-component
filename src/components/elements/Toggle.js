@@ -17,11 +17,9 @@ const ToggleSpan = styled.span`
     display:block;
     width: 2rem;
     height: 1.1rem;
-    
 `;
 const StyleInput = styled.input`
     display: none;
-
     &:checked + .toggle-switch:before{
         transform: translateX(0.90rem);
     }
@@ -47,7 +45,7 @@ const StyleSpan = styled.span`
     &:hover {
         box-shadow: 0px 0px 1rem ${props => getFader(props.theme.color.fill.primary, 0.8)};
     }
-    //the dot
+    //the dotted
     &:before{
         position: absolute;
         content: "";
@@ -68,7 +66,6 @@ const StyleName= styled.span`
     display:inline-block;
     padding: 0px 8px;
     color: ${props => props.displayMode === "disabled" ? props.theme.color.text.disabled: props.theme.color.text.primary};
-
 `;
 const Toggle = (props) => {
     const [mount, setMount] = useState(false)

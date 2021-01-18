@@ -15,7 +15,6 @@ const ImgStyle = styled.img`
     width:  ${props => props.fluid ? "100%" : props.theme.avatarSize[props.size] || "36px" };
     height:  ${props => props.fluid ? "100%" : props.theme.avatarSize[props.size] || "36px" };
     border-radius:50%;
-    
 `;
 const DivImg = styled.div`
     display:flex;
@@ -29,13 +28,11 @@ const DivImg = styled.div`
     font-weight:bold;
     font-size: ${props => props.theme.textSize.medium};
     color:${props => props.theme.color.text.primary};
-    
 `;
 const Avatar = (props) => {
     let strNameImg = props.alt
     let lastName = strNameImg.split(' ').slice(-1).join(' ');
     let NameImg =lastName.split(/\s/).reduce((response,word)=> response+=word.toUpperCase().slice(0,1),'')
-
     let inner = props.src ? 
         <ImgStyle {...props}></ImgStyle> :
         <DivImg {...props}>{NameImg}</DivImg>

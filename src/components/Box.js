@@ -4,7 +4,6 @@ import styled, {css} from 'styled-components'
 const StyledBox = styled.div`
     border: 1px solid #333;
     border-radius: 8px;
-
     margin-bottom: 8px;
     & h4 {
         border-bottom: 1px solid #333;
@@ -22,7 +21,6 @@ const StyledBox = styled.div`
             display: block;
         `}
     }
-    
 `;
 
 const Box = (props) => {
@@ -30,7 +28,7 @@ const Box = (props) => {
         <StyledBox {...props}>
             <h4>{props.headline}</h4>
             <div className="grid">
-            {props.children}
+                {props.children}
             </div>
         </StyledBox>
     )

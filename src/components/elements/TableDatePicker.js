@@ -3,7 +3,6 @@ import "react-datepicker/dist/react-datepicker.css"
 import {useState} from "react"
 import styled from 'styled-components'
 
-
 const StyleTable = styled.div`
     position:relative;
     & input{
@@ -41,24 +40,22 @@ const StyleTable = styled.div`
     }
 `;
 
-
 const  TableDatePicker = (props) => {
     const [startDate, setStartDate] = useState(new Date());
-   
     return (
         <StyleTable {...props}>
-      <DatePicker selected={startDate}
-       dateFormat="dd/MM/yyyy"
-        onChange={date => setStartDate(date)}
-        onSelect={date => props.onSelect(date)}
-        isClearable
-        placeholderText="Select date"
-        >
-      <div style={{color:"red"}}>{props.children}</div>
-    </DatePicker>
-      </StyleTable>
+            <DatePicker selected={startDate}
+                dateFormat="dd/MM/yyyy"
+                onChange={date => setStartDate(date)}
+                onSelect={date => props.onSelect(date)}
+                isClearable
+                placeholderText="Select date"
+                >
+            <div style={{color:"red"}}>{props.children}</div>
+            </DatePicker>
+        </StyleTable>
     );
-   }
+}
 TableDatePicker.defaultProps = {
     onSelect: (x) => console.log(x)
 }

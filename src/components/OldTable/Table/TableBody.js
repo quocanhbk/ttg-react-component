@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import useSortableData from './useSortableData'
-import IcoSort from '../../icons/IcoRepeat'
+import IcoSort from '../../../icons/IcoRepeat'
 const TableBody = (props) => {
     const { headers, rows, getvalue } = props;
     const {requestSort} = useSortableData(rows)

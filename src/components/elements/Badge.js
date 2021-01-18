@@ -42,10 +42,11 @@ const Badge = (props) => {
     return (
             <SpanParent {...props}>
                 {props.icon}
-                {props.dot ? 
-                props.value > 0 ? <Dot/> : "" : 
-                <Amount>{display()}</Amount>
-            }
+                {
+                    props.dot ? 
+                    props.value > 0 ? <Dot/> : "" : 
+                    <Amount>{display()}</Amount>
+                }
             </SpanParent>
     )
 }
