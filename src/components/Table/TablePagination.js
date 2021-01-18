@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import styled from 'styled-components'
 
 const DivPagination = styled.div`
@@ -43,12 +43,8 @@ const Pagination = (props) =>{
     const Active = (index)=>{
         var x = document.querySelectorAll('a');
         for(var i=1; i<x.length - 1; i++){
-            if(index === i){
-                x[index].classList.add('active');
-            }
-            else{
-                x[i].classList.remove('active');
-            }
+            if(index === i){ x[index].classList.add('active')}
+            else{x[i].classList.remove('active')}
         }
     }
     const NextPage = ()=>{
@@ -57,19 +53,11 @@ const Pagination = (props) =>{
         if(classActive.length > 0){
             var temp = Number(classActive[0].getAttribute('value')) + 1;
             var index = 0;
-            if(temp === x.length -1){
-                index = x.length -2;
-            }
-            else{
-                index = temp
-            }
+            if(temp === x.length -1){index = x.length -2}
+            else{index = temp}
             for(var i=1; i<x.length - 1; i++){
-                if(index === i){
-                    x[i].classList.add('active')
-                }
-                else{
-                    x[i].classList.remove('active')
-                }
+                if(index === i){ x[i].classList.add('active')}
+                else{x[i].classList.remove('active')}
             }
         }
     }   
@@ -79,19 +67,11 @@ const Pagination = (props) =>{
         if(classActive.length > 0){
             var temp = Number(classActive[0].getAttribute('value')) - 1;
             var index = 0;
-            if(temp > 1){
-                index = temp
-            }
-            else{
-                index = 1
-            }
+            if(temp > 1){index = temp}
+            else{index = 1}
             for(var i=1; i<x.length - 1; i++){
-                if(index === i){
-                    x[i].classList.add('active')
-                }
-                else{
-                    x[i].classList.remove('active')
-                }
+                if(index === i){x[i].classList.add('active')}
+                else{x[i].classList.remove('active')}
             }
         }
     }

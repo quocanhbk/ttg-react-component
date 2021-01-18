@@ -83,11 +83,10 @@ export default function Dat() {
             <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
           </TableComponent.Row>
         </TableComponent.Body>
-        
-        <TableFooter>
+
+        <TableComponent.TableFooter>
           <TablePagination totalPage="3"/>
-          
-        </TableFooter>
+        </TableComponent.TableFooter>
       </TableComponent>
       <TablePaginations totalPage={page} headers={Headers} rows={data}/>
       </>
