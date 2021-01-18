@@ -24,6 +24,7 @@ const AlertMsg = styled.div`
 `;
 const Action = styled.div`
     margin-left: auto;
+    cursor:pointer;
 `;
 const Title = styled.div`
     font-weight: ${props => props.theme.weight.bold};

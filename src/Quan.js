@@ -79,7 +79,7 @@ function Quan() {
             <Alert demo color="danger" action={<strong>UNDO</strong>}>Danger message</Alert>
             <Alert demo color="warning">Warning message</Alert>
             <div>Snackbar</div>
-            <Snackbar visible={open} onClose={() => setOpen(false)} timeOut={2000}>
+            <Snackbar visible={open} position="topRight" onClose={() => setOpen(false)} timeOut={2000}>
                 <Alert color="info" action={<IcoX onClick={() => setOpen(!open)}/>}>
                   Min-width: 288px
                 </Alert>

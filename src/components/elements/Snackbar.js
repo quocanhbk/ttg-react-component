@@ -13,16 +13,34 @@ const snackbarOut = keyframes`
 
  const StyledSnackbarWrapper = styled.div`
     position: fixed;
+    
+    ${props =>props.horizontal === "center" && 'left:50%;'}
+    ${props =>props.horizontal === "center" && 'transform: translateX(-50%);'}
+    ${props => props.horizontal === 'left' && 'left: 20px;'}
+    ${props => props.horizontal === 'right' && 'right: 20px;'}
+
+    ${props => props.vertical === 'top' && 'top: 1rem;'}
+    ${props => props.vertical === 'bottom' && 'bottom: 1rem;'}
+
     transition: all 500ms linear;
     animation: ${props => props.slideIn ? snackbarIn : snackbarOut} 0.3s linear 0s 1 forwards normal;
-    left:50%;
-    transform: translateX(-50%);
-    bottom: 1rem;
     display: ${props => props.visible ? "block" : "none"};
     z-index: 999;
     box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);
     min-width: 288px;
+
 `;
+const getHorizontalPosition = position => {
+    if (position === 'topLeft' || position === 'bottomLeft') return 'left';
+    if (position === 'topRight' || position === 'bottomRight') return 'right';
+    return 'center';
+};
+
+const getVerticalPosition = position => {
+    if (position === 'bottomLeft' || position === 'bottomCenter' || position === 'bottomRight') 
+    return 'bottom';
+    return 'top';
+};
 
 const Snackbar = (props) => {
     const [open, setOpen] = useState(false)
@@ -48,7 +66,7 @@ const Snackbar = (props) => {
     })
 
     return (
-        <StyledSnackbarWrapper {...props} visible={open} slideIn={slideIn}>
+        <StyledSnackbarWrapper {...props} horizontal={getHorizontalPosition(props.position)} vertical={getVerticalPosition(props.position)}  visible={open} slideIn={slideIn}>
             {props.children }
         </StyledSnackbarWrapper>
     )
@@ -56,10 +74,12 @@ const Snackbar = (props) => {
 Snackbar.propTypes = {
     timeOut: PropTypes.number,
     visible : PropTypes.bool,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    position: PropTypes.string
 }
 Snackbar.defaultProps={
-    timeOut: 5000
+    timeOut: 5000,
+    position: "bottomCenter"
 }
 
 export default Snackbar;
