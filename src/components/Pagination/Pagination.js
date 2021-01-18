@@ -3,8 +3,6 @@ import styled from 'styled-components'
 
 const DivPagination = styled.div`
     display: inline-block;
-    position: absolute;
-    right: 0;
     .active{
         background: #8080804f;
     }
