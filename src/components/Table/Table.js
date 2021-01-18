@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import React from 'react'
 
 const Table = styled.table`
-    width: ${props => props.width ? props.width : '100%'};
+    width: 50%;
     background: #fff;
     margin: auto;
     border: 1px solid rgba(34,36,38,.15); 
@@ -18,6 +18,7 @@ const Table = styled.table`
     tr{
         width: 100%;
         background: #fff;
+        margin: 1em 0;
         border: 1px solid rgba(34,36,38,.15);
         -webkit-box-shadow: none;
         box-shadow: none;
@@ -55,13 +56,12 @@ const Table = styled.table`
         border-bottom: 1px solid rgba(34,36,38,.1);
     }
 `;
-
 const Header = styled.thead``;
 const Row = styled.tr``;
 const HeaderCell = styled.th``;
 const Body = styled.tbody``;
 const Cell = styled.td``;
-const TableFooter = styled.div`
+const TableFooter = styled.tr`
     right: 0;
     position: absolute;
 `;
