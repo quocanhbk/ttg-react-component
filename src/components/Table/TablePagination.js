@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const DivPagination = styled.div`
     display: inline-block;
     .active{
-        background: #8080804f;
+        background: gray;
     }
 `;
 
@@ -15,7 +15,7 @@ const ChildPagination = styled.a`
     -webkit-text-decoration: none;
     text-decoration: none;
     border-right: 1px solid rgba(0,0,0,.05);
-    background: rgba(0,0,0,.05);
+    background: ${props => props.background ? props.background : 'white'};
     cursor: pointer;
 
     &:active{
@@ -23,7 +23,7 @@ const ChildPagination = styled.a`
     }
 
     &:hover{
-        background: #8080804f;
+        background: gray;
     }
 `;
 

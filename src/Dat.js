@@ -2,9 +2,6 @@ import React from 'react'
 import TableComponent from './components/Table/Table'
 import IcoBluetooth from './components/icons/IcoBluetooth'
 import TablePagination from './components/Table/TablePagination'
-import {Button} from './components/elements'
-import { TableFooter } from '@material-ui/core'
-import TablePaginations from './components/OldTable/TablePagination/TablePagination'
 // const data = ['banana','mango','apple','fruits']
 const title = {
   "id": "",
@@ -79,7 +76,7 @@ export default function Dat() {
           <TableComponent.Row>
             <TableComponent.Cell>Apple</TableComponent.Cell>
             <TableComponent.Cell>Banana</TableComponent.Cell>
-            <TableComponent.Cell>Oranádasdasdasdasdasdge</TableComponent.Cell>
+            <TableComponent.Cell>Orange</TableComponent.Cell>
             <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
           </TableComponent.Row>
         </TableComponent.Body>
@@ -88,7 +85,6 @@ export default function Dat() {
           <TablePagination totalPage="3"/>
         </TableComponent.TableFooter>
       </TableComponent>
-      <TablePaginations totalPage={page} headers={Headers} rows={data}/>
       </>
     )
 }
