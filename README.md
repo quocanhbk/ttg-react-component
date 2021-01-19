@@ -202,7 +202,6 @@ Name|Type|Default|Description
 `timeOut`|`number`|`5000`|Time to turn off Snackbar
 #### Example:
 `<Snackbar visible={snackbarState} onClose={() => setSnackbarState(false)} timeOut={200000}></Snackbar>`
-### 21. `
 
  
 

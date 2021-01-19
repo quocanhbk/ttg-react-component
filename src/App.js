@@ -3,8 +3,7 @@ import Quanh from './Quanh'
 import Dat from './Dat'
 function App() {
   return (
-      <Quanh/>
-    
+      <Dat/>
   )
 }
 
