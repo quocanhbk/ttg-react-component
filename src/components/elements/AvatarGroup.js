@@ -33,18 +33,18 @@ const AvatarGroup = (props) =>{
     const extraAvatars = children.length > clampedMax ? children.length - clampedMax + 1 : 0
 
     return(
-        <DivStyle {...props}>
-      {children.slice(0, children.length - extraAvatars).map((child, index) => {
-        return React.cloneElement(child, {
-          style: {zIndex: children.length - index}, size: props.size
-        });
-      })}
-      {extraAvatars !== 0 && 
-        <AvatarPlus {...props} className="avatar-max-limited">
-          +{extraAvatars}
-        </AvatarPlus>
-      }
-    </DivStyle>
+      <DivStyle {...props}>
+          {children.slice(0, children.length - extraAvatars).map((child, index) => {
+            return React.cloneElement(child, {
+              style: {zIndex: children.length - index}, size: props.size
+            });
+          })}
+          {extraAvatars !== 0 && 
+            <AvatarPlus {...props} className="avatar-max-limited">
+              +{extraAvatars}
+            </AvatarPlus>
+          }
+      </DivStyle>
     )
 }
 

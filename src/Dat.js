@@ -1,5 +1,4 @@
 import React from 'react'
-import Select from './components/ComboBox/Select'
 // const data = ['banana','mango','apple','fruits']
 const title = {
   "id": "",
@@ -31,63 +30,7 @@ var page = Math.ceil(count/pageSize)
 export default function Dat() {
     return (
       <>
-<<<<<<< HEAD
-        <Select/>
-=======
-      <TableComponent>
-
-        <TableComponent.Header>
-          <TableComponent.Row>
-            <TableComponent.HeaderCell>Name</TableComponent.HeaderCell>
-            <TableComponent.HeaderCell>Age</TableComponent.HeaderCell>
-            <TableComponent.HeaderCell>Status</TableComponent.HeaderCell>
-            <TableComponent.HeaderCell>Button</TableComponent.HeaderCell>
-          </TableComponent.Row>
-        </TableComponent.Header>
-
-        <TableComponent.Body>
-          <TableComponent.Row>
-            <TableComponent.Cell>Apple</TableComponent.Cell>
-            <TableComponent.Cell>Banana</TableComponent.Cell>
-            <TableComponent.Cell>Orange</TableComponent.Cell>
-            <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
-          </TableComponent.Row>
-
-          <TableComponent.Row>
-            <TableComponent.Cell>Apple</TableComponent.Cell>
-            <TableComponent.Cell>Banana</TableComponent.Cell>
-            <TableComponent.Cell>Orange</TableComponent.Cell>
-            <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
-          </TableComponent.Row>
-
-          <TableComponent.Row>
-            <TableComponent.Cell>Apple</TableComponent.Cell>
-            <TableComponent.Cell>Banana</TableComponent.Cell>
-            <TableComponent.Cell>Orange</TableComponent.Cell>
-            <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
-          </TableComponent.Row>
-
-          <TableComponent.Row>
-            <TableComponent.Cell>Apple</TableComponent.Cell>
-            <TableComponent.Cell>Banana</TableComponent.Cell>
-            <TableComponent.Cell>Orange</TableComponent.Cell>
-            <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
-          </TableComponent.Row>
-
-          <TableComponent.Row>
-            <TableComponent.Cell>Apple</TableComponent.Cell>
-            <TableComponent.Cell>Banana</TableComponent.Cell>
-            <TableComponent.Cell>Orange</TableComponent.Cell>
-            <TableComponent.Cell><IcoBluetooth/></TableComponent.Cell>
-          </TableComponent.Row>
-        </TableComponent.Body>
         
-        <TableFooter>
-          <TablePagination totalPage="3"/>
-          
-        </TableFooter>
-      </TableComponent>
->>>>>>> a5c07fbdee8bf5bc9cd7779752111fa26af8db79
       </>
     )
 }

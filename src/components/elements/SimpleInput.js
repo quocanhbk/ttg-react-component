@@ -35,7 +35,7 @@ const SimpleInput = (props) => {
     }
     useEffect(() => {
         if (!runInit.current) {
-            // console.log("I run")
+            console.log("I run")
             if (defaultValue) 
                 onChange(defaultValue)
             runInit.current = true

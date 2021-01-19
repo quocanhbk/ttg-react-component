@@ -31,11 +31,9 @@ const DivImg = styled.div`
 `;
 const Avatar = (props) => {
     let strNameImg = props.alt
-    let lastName = strNameImg.split(' ').slice(-1).join(' ');
+    let lastName = strNameImg.split(' ').slice(-1).join(' ')
     let NameImg =lastName.split(/\s/).reduce((response,word)=> response+=word.toUpperCase().slice(0,1),'')
-    let inner = props.src ? 
-        <ImgStyle {...props}></ImgStyle> :
-        <DivImg {...props}>{NameImg}</DivImg>
+    let inner = props.src ? <ImgStyle {...props}></ImgStyle> : <DivImg {...props}>{NameImg}</DivImg>
 
     return <DivStyle {...props}>{inner}</DivStyle>
 }
